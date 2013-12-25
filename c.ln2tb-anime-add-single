@@ -1,0 +1,60 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+name=$(dialog --extra-button --extra-label "Back" --stdout --inputbox \
+"Please Enter the name of the Anime" 10 50 )
+
+case $? in
+0)
+
+echo $name | sed 's/ /\\ /g' | sed "s/'\+//g" | sed "s/(/\\\(/g" | sed "s/)/\\\)/g" | sed 's/&/\\&/g' | sed 's/;/\\;/g' | sed 's/://g'  > /tmp/pipe
+name2=$(tail /tmp/pipe)
+
+
+name3=$(dialog --extra-button --extra-label "Back" --stdout  --inputbox "Is this Correct ?" 10 50 "$name2" )
+
+case $? in
+0)
+
+echo -e "\n\n\n"
+
+if [ -d "$TV_SYM2"/"$name" ]
+then RED
+else GREEN
+fi
+
+mkdir -v "$TV_SYM2"/"$name"
+
+
+if [ "$?" = 0 ]
+then
+
+sudo echo "mv -v "$name3"*                \""\$TV_SYM2"\"/\""$name"\"/              2>/dev/null && echo -e \"\\n\\n\"" >> /usr/local/bin/move
+
+sudo echo "mv -v "$name3"*                \""\$TV_SYM2"\"/\""$name"\"/             && echo -e \"\\n\\n\" " >> /usr/local/bin/move1
+
+fi
+
+;;
+1)
+_CANCEL_MSG ;; 
+
+3)
+ln2tb ;;
+
+esac
+
+;;
+1)
+_CANCEL_MSG ;; 
+
+3)
+ln2tb ;;
+
+esac

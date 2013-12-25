@@ -1,0 +1,92 @@
+#!/bin/bash
+# cut segments from a video file
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+set -e
+
+
+# Do Not Change
+DATE=$(date -I )
+
+TIME=$(date +%I:%M )
+
+
+player=$(dialog --extra-button --extra-label "Back" --stdout  --clear --menu \
+"Which Video player to cut from?" 10 50 50 \
+"SMPlayer" "" "VLC" "" )
+
+if [ "$player" = "SMPlayer" ];
+then video_file=$(ps x | grep /usr/bin/smplayer | grep -v grep | cut -d/ -f5-100 )
+
+
+elif [ "$player" = "VLC" ];
+then video_file=$(ps x | grep /usr/bin/vlc | grep -v grep | cut -d/ -f5-100 )
+
+fi
+
+   
+format=$(echo "$video_file" | sed 's/^.*\.\([^.]*\)$/\1/' )
+
+path=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox "Enter the path of the input file" 10 50 "/$video_file" )
+
+save_path=$(dialog --extra-button --extra-label "Back" --stdout  --clear --menu \
+"Where to save the file?" 10 50 50 \
+"Home" "" "Shared - Dropbox" "" "Shared - BTSync" "" )
+
+if [ "$save_path" = "Home" ];
+then path2=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox "Enter the path of the output file" 10 50 "$MYHOME/($DATE)-($TIME).$format" )
+
+
+
+elif [ "$save_path" = "Shared - Dropbox" ];
+then path2=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox "Enter the path of the output file" 10 50 "$DROPBOX/($DATE)-($TIME).$format" )
+
+
+
+elif [ "$save_path" = "Shared - BTSync" ];
+then path2=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox "Enter the path of the output file" 10 50 "$BTSYNC/($DATE)-($TIME).$format" )
+
+
+fi
+
+
+
+
+# Start
+S_HOURS=$(dialog --extra-button --extra-label "Back" --stdout  --title "START POSITION" --menu "Hour (hh:0?)" 13 50 50 "00" "" "01" "" "02" "" "03" "" "04" "" )
+S_MINUTES=$(dialog --extra-button --extra-label "Back" --stdout  --title "START POSITION" --menu "Minute (First Digit) (mm:?*)" 14 50 50 "0" "" "1" "" "2" "" "3" "" "4" "" "5" "" )
+S_MINUTES_2=$(dialog --extra-button --extra-label "Back" --stdout  --title "START POSITION" --menu "Minute (Second Digit) (mm:*?)" 17 50 50 "0" "" "1" "" "2" "" "3" "" "4" "" "5" "" "6" "" "7" "" "8" "" "9" "" )
+S_SECONDS=$(dialog --extra-button --extra-label "Back" --stdout  --title "START POSITION" --menu "Second (First Digit) (ss:?*)" 14 50 50 "0" "" "1" "" "2" "" "3" "" "4" "" "5" "" )
+S_SECONDS_2=$(dialog --extra-button --extra-label "Back" --stdout  --title "START POSITION" --menu "Second (Second Digit) (ss:*?)" 17 50 50 "0" "" "1" "" "2" "" "3" "" "4" "" "5" "" "6" "" "7" "" "8" "" "9" "" )
+
+C_START=""$S_HOURS":"$S_MINUTES""$S_MINUTES_2":"$S_SECONDS""$S_SECONDS_2""
+
+# End
+E_HOURS=$(dialog --extra-button --extra-label "Back" --stdout  --title "END POSITION" --menu "Hour (hh:0?)" 13 50 50 "00" "" "01" "" "02" "" "03" "" "04" "" )
+E_MINUTES=$(dialog --extra-button --extra-label "Back" --stdout  --title "END POSITION" --menu "Minute (First Digit) (mm:?*)" 14 50 50 "0" "" "1" "" "2" "" "3" "" "4" "" "5" "" )
+E_MINUTES_2=$(dialog --extra-button --extra-label "Back" --stdout  --title "END POSITION" --menu "Minute (Second Digit) (mm:*?)" 17 50 50 "0" "" "1" "" "2" "" "3" "" "4" "" "5" "" "6" "" "7" "" "8" "" "9" "" )
+E_SECONDS=$(dialog --extra-button --extra-label "Back" --stdout  --title "END POSITION" --menu "Second (First Digit) (ss:?*)" 14 50 50 "0" "" "1" "" "2" "" "3" "" "4" "" "5" "" )
+E_SECONDS_2=$(dialog --extra-button --extra-label "Back" --stdout  --title "END POSITION" --menu "Second (Second Digit) (ss:*?)" 17 50 50 "0" "" "1" "" "2" "" "3" "" "4" "" "5" "" "6" "" "7" "" "8" "" "9" "" )
+
+C_END=""$E_HOURS":"$E_MINUTES""$E_MINUTES_2":"$E_SECONDS""$E_SECONDS_2""
+
+
+# start=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox "Enter the start position (hh:mm:ss)" 10 50 "00::" )
+
+# end=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox "Enter the end position (hh:mm:ss)" 10 50 "00::" )
+
+
+
+
+ # Maybe copy multiple streams 
+ #ffmpeg -i "$path" -vcodec copy -c:a copy -map 0:1 -map 0:2 -acodec copy -ss $start -t $end "$path2"
+
+
+  #Alternative method (-endpos is seeking not absolute)
+#    mencoder "$path" -ss $start -endpos $end -ovc copy -oac copy -noskip -skiplimit 1 -ofps 25 -mc 0 -o "$path2"
+
+
+  ffmpeg -i "$path" -vcodec copy -acodec copy -ss "$C_START" -to "$C_END" "$path2"

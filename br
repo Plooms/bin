@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Adjust brightness of the screen
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+TEMP=/tmp/redshift.tmp
+[ ! -f "$TEMPFILE" ] && echo off > $TEMP && echo "creating temp file $TEMP"
+
+#############if cat temp file / 2 = true then do this ;or else do this
+COUNTER=$(cat $TEMP)
+
+
+
+if [ $COUNTER = off ]
+then
+	echo "Turning ON redshift" && echo on >| $TEMP && redshift -r -b 0.5 &
+else
+	sudo killall redshift && echo "Turning OFF redshift" && echo off >| $TEMP
+fi
+
+
+#cat $TEMP
+
+#COUNTER=$(($(cat $TEMP) + 1))
+
+ #   echo "increasing by 1"
+
+
+#COUNTER=$($(cat $TEMP)+1)
+
+# Store the new value
+#echo $COUNTER >| $TEMP
+#echo $COUNTER
+

@@ -1,0 +1,51 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+
+start=$(dialog --stdout  --help-button --help-label "Cancel" --yesno \
+"Did you add the Show names to $BATCH_FILE_TV_ADD_DELETE " 10 50 )
+
+case $? in
+0)
+if [ -f $BATCH_FILE_TV_ADD_DELETE ]
+then
+
+cat $BATCH_FILE_TV_ADD_DELETE | while read LINE ; \
+
+do 
+
+if [ -d "$TV_SYM"/"$LINE" ]
+then RED
+else GREEN
+fi
+
+mkdir -v "$TV_SYM"/"$LINE"
+
+done
+
+# The sed expressions here are special to this file only, for general use sed's , go to c.ln2tb-tv-add
+cat $BATCH_FILE_TV_ADD_DELETE | while read name ; do echo $name | sed 's/ /\\\\\\ /g' | sed "s/'//g" | sed "s/(/\\\\\\\(/g" | sed "s/)/\\\\\\\)/g" | sed 's/&/\\\\\\&/g' | sed 's/;/\\\\\\;/g' | sed 's/://g' ; done > $BATCH_FILE_TV_ADD_DELETE2
+
+while read name3 name2 ; do sudo echo "mv -v "$name3"*                \""\$TV_SYM"\"/\""$name2"\"/              2>/dev/null && echo -e \"\\n\\n\"" >> /usr/local/bin/move; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
+
+while read name3 name2 ; do sudo echo "mv -v "$name3"*                \""\$TV_SYM"\"/\""$name2"\"/              && echo -e \"\\n\\n\" " >> /usr/local/bin/move1; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
+
+
+
+else
+sudo nano $BATCH_FILE_TV_ADD_DELETE ; c.ln2tb-tv-add-batch
+
+fi
+;;
+1)
+sudo nano $BATCH_FILE_TV_ADD_DELETE ; c.ln2tb-tv-add-batch
+;;
+2)
+_CANCEL_MSG ;; 
+esac

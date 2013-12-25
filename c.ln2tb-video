@@ -1,0 +1,40 @@
+#!/bin/bash
+# cut sections from a video 
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+answer=$(dialog --extra-button --extra-label "Back" --stdout  --menu \
+"Choose the command You Wish to Execute" 10 50 50 \
+"Join Video" "" \
+"Splice Video" "" \
+"Convert Video" "" )
+
+case $? in
+0)
+
+if [ "$answer" = "Join Video" ]
+then c.ln2tb-video-join
+fi
+
+if [ "$answer" = "Splice Video" ]
+then c.ln2tb-video-splice
+fi
+
+if [ "$answer" = "Convert Video" ]
+then c.ln2tb-video-convert
+fi
+
+;;
+1)
+_CANCEL_MSG ;; 
+
+3)
+ln2tb ;;
+
+esac
+
+

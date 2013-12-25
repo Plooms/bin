@@ -1,0 +1,40 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+name=$(dialog --extra-button --extra-label "Back" --stdout --backtitle "Make Your Selection with the SPACE button" --title "Choose The Anime" --dselect \
+"$TV_SYM2"/ 14 60 )
+
+case $? in 
+0)
+name2=$(echo $name| rev | cut -d/ -f1 | rev )
+
+
+du -hs "$TV_SYM2"/"$name2"
+
+
+
+echo -e "${RED}Do you want to remove Episodes in this Folder?		y ${WHITE}"
+read confirmation
+if [ "$confirmation" = "y" ]
+then 
+
+sudo rm -rv $TV_SYM2/"$name2"/"$name2"* ; \
+sudo rm -rv $TV_SYM2/"$name2"/*.{avi,mkv,mp4,ts,AVI,MKV,MP4,TS} ; \
+
+else _CANCEL_MSG
+fi
+
+;;
+1)
+_CANCEL_MSG ;; 
+
+3)
+ln2tb ;;
+
+esac

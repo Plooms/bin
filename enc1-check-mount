@@ -1,0 +1,22 @@
+#!/bin/bash
+# check if ecryptfs is mounted on ~/Private
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+export DISPLAY=:0.0
+
+
+if findmnt -S ~/.Private -T ~/Private
+then 
+
+notify-send -u critical "eCryptFS is Mounted" --icon=dialog-warning
+
+echo "eCryptFS is Mounted"
+
+
+else echo "Everything's Good"
+
+fi
+

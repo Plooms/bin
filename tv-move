@@ -1,0 +1,39 @@
+#!/bin/bash
+# Move episodes
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Integration with dolphin tvnamer script
+if [ -z "$TV_PATH" ];
+then
+        export TV_DOWNLOAD_DIR="$TV_DOWNLOAD_DIR"
+else
+        export TV_DOWNLOAD_DIR="$TV_PATH"
+
+fi
+
+
+
+cd "$TV_DOWNLOAD_DIR" && tv 2>&1 | tee -a .Rename.log ; date >> .Rename.log
+
+echo -e "${YELLOW}\n\n\n\nDo you want to Move?           y\n\n\n\n"
+
+read confirmation
+
+if [ "$confirmation" = "y" ]
+
+then
+
+move 2>&1 | tee -a .Move.log ; date >> .Move.log
+
+
+exit 0
+
+else
+
+_CANCEL_MSG
+
+fi

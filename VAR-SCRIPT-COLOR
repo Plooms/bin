@@ -1,0 +1,163 @@
+#!/bin/bash
+# Terminal Color Collection used for sourcing in other scripts (23 sep 2013)
+
+# Reset
+COLOR_OFF='\e[0m'
+
+# Bold High Intensty (Best)
+BLACK='\e[1;90m'
+RED='\e[1;91m'
+GREEN='\e[1;92m'
+YELLOW='\e[1;93m'
+BLUE='\e[1;94m'
+PURPLE='\e[1;95m'
+CYAN='\e[1;96m'
+WHITE='\e[1;97m'
+
+# Dialog
+REDz='\Z1'
+GREENz='\Z2'
+
+# Regular Colors
+RBLACK='\e[0;30m'
+RRED='\e[0;31m'
+RGREEN='\e[0;32m'
+RYELLOW='\e[0;33m'
+RBLUE='\e[0;34m'
+RPURPLE='\e[0;35m'
+RCYAN='\e[0;36m'
+RWHITE='\e[0;37m'
+
+# Bold
+BBLACK='\e[1;30m'
+BRED='\e[1;31m'
+BGREEN='\e[1;32m'
+BYELLOW='\e[1;33m'
+BBLUE='\e[1;34m'
+BPURPLE='\e[1;35m'
+BCYAN='\e[1;36m'
+BWHITE='\e[1;37m'
+
+# Underline
+UBLACK='\e[4;30m'
+URED='\e[4;31m'
+UGREEN='\e[4;32m'
+UYELLOW='\e[4;33m'
+UBLUE='\e[4;34m'
+UPURPLE='\e[4;35m'
+UCYAN='\e[4;36m'
+UWHITE='\e[4;37m'
+
+# Background
+ON_BLACK='\e[40m'
+ON_RED='\e[41m'
+ON_GREEN='\e[42m'
+ON_YELLOW='\e[43m'
+ON_BLUE='\e[44m'
+ON_PURPLE='\e[45m'
+ON_CYAN='\e[46m'
+ON_WHITE='\e[47m'
+
+# High Intensty
+IBLACK='\e[0;90m'
+IRED='\e[0;91m'
+IGREEN='\e[0;92m'
+IYELLOW='\e[0;93m'
+IBLUE='\e[0;94m'
+IPURPLE='\e[0;95m'
+ICYAN='\e[0;96m'
+IWHITE='\e[0;97m'
+
+# High Intensty backgrounds
+ON_IBLACK='\e[0;100m'
+ON_IRED='\e[0;101m'
+ON_IGREEN='\e[0;102m'
+ON_IYELLOW='\e[0;103m'
+ON_IBLUE='\e[0;104m'
+ON_IPURPLE='\e[10;95m'
+ON_ICYAN='\e[0;106m'
+ON_IWHITE='\e[0;107m'
+
+
+
+
+
+# Same as before but as functions
+
+COLOR_OFF() { echo -e "\e[0m" ; }
+
+# Bold High Intensty (Best)
+BLACK() { echo -e "\e[1;90m" ; }
+RED() { echo -e "\e[1;91m" ; }
+GREEN() { echo -e "\e[1;92m" ; }
+YELLOW() { echo -e "\e[1;93m" ; }
+BLUE() { echo -e "\e[1;94m" ; }
+PURPLE() { echo -e "\e[1;95m" ; }
+CYAN() { echo -e "\e[1;96m" ; }
+WHITE() { echo -e "\e[1;97m" ; }
+
+# Dialog
+REDz() { echo -e "\Z1" ; }
+GREENz() { echo -e "\Z2" ; }
+
+# Regular Colors
+RBLACK() { echo -e "\e[0;30m" ; }
+RRED() { echo -e "\e[0;31m" ; }
+RGREEN() { echo -e "\e[0;32m" ; }
+RYELLOW() { echo -e "\e[0;33m" ; }
+RBLUE() { echo -e "\e[0;34m" ; }
+RPURPLE() { echo -e "\e[0;35m" ; }
+RCYAN() { echo -e "\e[0;36m" ; }
+RWHITE() { echo -e "\e[0;37m" ; }
+
+# Bold
+BBLACK() { echo -e "\e[1;30m" ; }
+BRED() { echo -e "\e[1;31m" ; }
+BGREEN() { echo -e "\e[1;32m" ; }
+BYELLOW() { echo -e "\e[1;33m" ; }
+BBLUE() { echo -e "\e[1;34m" ; }
+BPURPLE() { echo -e "\e[1;35m" ; }
+BCYAN() { echo -e "\e[1;36m" ; }
+BWHITE() { echo -e "\e[1;37m" ; }
+
+# Underline
+UBLACK() { echo -e "\e[4;30m" ; }
+URED() { echo -e "\e[4;31m" ; }
+UGREEN() { echo -e "\e[4;32m" ; }
+UYELLOW() { echo -e "\e[4;33m" ; }
+UBLUE() { echo -e "\e[4;34m" ; }
+UPURPLE() { echo -e "\e[4;35m" ; }
+UCYAN() { echo -e "\e[4;36m" ; }
+UWHITE() { echo -e "\e[4;37m" ; }
+
+# Background
+ON_BLACK() { echo -e "\e[40m" ; }
+ON_RED() { echo -e "\e[41m" ; }
+ON_GREEN() { echo -e "\e[42m" ; }
+ON_YELLOW() { echo -e "\e[43m" ; }
+ON_BLUE() { echo -e "\e[44m" ; }
+ON_PURPLE() { echo -e "\e[45m" ; }
+ON_CYAN() { echo -e "\e[46m" ; }
+ON_WHITE() { echo -e "\e[47m" ; }
+
+# High Intensty
+IBLACK() { echo -e "\e[0;90m" ; }
+IRED() { echo -e "\e[0;91m" ; }
+IGREEN() { echo -e "\e[0;92m" ; }
+IYELLOW() { echo -e "\e[0;93m" ; }
+IBLUE() { echo -e "\e[0;94m" ; }
+IPURPLE() { echo -e "\e[0;95m" ; }
+ICYAN() { echo -e "\e[0;96m" ; }
+IWHITE() { echo -e "\e[0;97m" ; }
+
+# High Intensty backgrounds
+ON_IBLACK() { echo -e "\e[0;100m" ; }
+ON_IRED() { echo -e "\e[0;101m" ; }
+ON_IGREEN() { echo -e "\e[0;102m" ; }
+ON_IYELLOW() { echo -e "\e[0;103m" ; }
+ON_IBLUE() { echo -e "\e[0;104m" ; }
+ON_IPURPLE() { echo -e "\e[10;95m" ; }
+ON_ICYAN() { echo -e "\e[0;106m" ; }
+ON_IWHITE() { echo -e "\e[0;107m" ; }
+
+

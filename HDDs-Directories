@@ -1,0 +1,18 @@
+#!/bin/bash
+# Mirror all media folders to file
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+
+
+if _CHECK_NAS
+then
+echo "Mirroring Media Tree to file" ; \
+tree -d -L 3 /media/ > "$LIST_LOCATION"/HDDs-Directories ; \
+tree -d -L 1 "$MOVIE_DIR1" > "$LIST_LOCATION"/Movies-list
+else echo "Not Mounted or Something went wrong"
+fi

@@ -1,0 +1,17 @@
+#!/bin/bash
+# A Script for Completely uninstalling a program.
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+yaourt -Rsu "$@"
+if [ "$?" = "0" ]
+then echo "
+Uninstalled "[ "$@" ]"
+"
+else
+echo "
+error in removing "[ "$@" ]"
+"
+fi

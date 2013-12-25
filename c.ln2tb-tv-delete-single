@@ -1,0 +1,44 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+name=$(dialog --extra-button --extra-label "Back" --stdout  --backtitle "Make Your Selection with the SPACE button" --title \
+"Choose The Show with the SPACE button" --dselect "$TV_SYM"/ 14 50 ) 
+
+
+case $? in 
+0)
+name2="$(echo $name| rev | cut -d/ -f1 | rev )"
+
+du -hs "$TV_SYM"/"$name2"
+
+
+echo -e "${RED}Do you want to remove this Folder?	y ${WHITE}"
+read confirmation
+if [ "$confirmation" = "y" ]
+then 
+sudo rm -rv "$TV_SYM"/"$name2" ; \
+echo -e "${YELLOW}" ; \
+sed -n "/\"$name2\"/p" /usr/local/bin/move ; \
+echo -e "${RED}" ; \
+sudo sed -i "/\"$name2\"/d" /usr/local/bin/move ; \
+sudo sed -i "/\"$name2\"/d" /usr/local/bin/move1 ; \
+echo -e "${CYAN} Dont forget SickBeard" ; echo -e "${WHITE}"
+
+else _CANCEL_MSG 
+fi
+
+
+;;
+1)
+_CANCEL_MSG ;; 
+
+3)
+ln2tb ;;
+
+esac

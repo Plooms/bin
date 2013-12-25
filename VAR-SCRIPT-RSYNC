@@ -1,0 +1,368 @@
+#!/bin/bash
+# The RSYNC MOAS (Mother of All Scripts)
+
+
+
+#########################  Rsync exclude list ##########################
+
+#####################  11-media*  ########################
+# Change the excluded directories & files
+echo "
+
+lost*found
+HOME-DAILY-BACKUP/
+Other/Apps/couchpotato/*
+Other/Apps/sickbeard/*
+Other/Apps/sabnzbd/*
+Other/Apps/xbmc/*
+Other/Downloads/Download-folder/*
+Other/Downloads/temp*/*
+Other/shared-folder/*
+Other/Shows-clean/*
+.Trash*
+.directory
+.C1
+.C2
+.mount-check
+
+" >| "$RSYNC_EXCLUDE_11"
+
+
+##########################  12-home* / 14-home* #################################
+# Change the excluded directories & files
+echo "
+
+.ABZ-LOCKS/*
+.gvfs/
+.kde/
+.config/google-chrome*
+.cache/
+.dropbox/
+.local/
+.mozilla/*.log
+.thumbnails/
+*.socket
+*.pipe
+*.log
+.directory
+Dropbox/.dropbox*
+Private/*
+qBT_dir/*
+
+
+
+" >| "$RSYNC_EXCLUDE_22"
+
+
+
+
+
+
+
+##########################  14-media-offsite clean media only #################################
+# Change the included directories & files
+echo "
+
+Shows
+Shows/24/***
+Shows/30 Rock/***
+Shows/According to Jim/***
+Shows/American Dad/***
+Shows/American Pickers/***
+Shows/American Restoration/***
+Shows/Arrested Development/***
+Shows/Auction Hunters/***
+Shows/Auction Kings/***
+Shows/Bait Car/***
+Shows/Becker/***
+Shows/Bering Sea Gold/***
+Shows/Bering Sea Gold: Under the Ice/***
+Shows/Beyond Scared Straight/***
+Shows/Black Gold/***
+Shows/Bob's Burgers/***
+Shows/Cajun Pawn Stars/***
+Shows/Community/***
+Shows/Deadliest Catch/***
+Shows/Dirty Money (2011)/***
+Shows/Drugs, Inc./***
+Shows/Dual Survival/***
+Shows/Everybody Loves Raymond/***
+Shows/Extreme Makeover Home Edition/***
+Shows/Face Off/***
+Shows/Family Guy/***
+Shows/Frasier/***
+Shows/Friends/***
+Shows/Futurama/***
+Shows/George Lopez/***
+Shows/Gold Rush/***
+Shows/Hard Time/***
+Shows/Heroes/***
+Shows/How Do They Do It/***
+Shows/How Its Made/***
+Shows/IRT: Deadliest Roads/***
+Shows/Jackass/***
+Shows/Jail/***
+Shows/King of the Hill/***
+Shows/Las Vegas Jailhouse/***
+Shows/Lockup/***
+Shows/Lost/***
+Shows/Malcolm in the Middle/***
+Shows/Man vs Wild/***
+Shows/Mind of Mencia/***
+Shows/Modern Family/***
+Shows/Monk/***
+Shows/Most Daring/***
+Shows/MythBusters/***
+Shows/Only In America with Larry the Cable Guy/***
+Shows/Parking Wars/***
+Shows/Parks & Recreation/***
+Shows/Pawn Stars/***
+Shows/Pimp My Ride/***
+Shows/Reno 911!/***
+Shows/Scrubs/***
+Shows/Seinfeld/***
+Shows/Sons Of Guns/***
+Shows/South Park/***
+Shows/Storage Wars/***
+Shows/Storage Wars Texas/***
+Shows/Storm Chasers/***
+Shows/Surviving The Cut/***
+Shows/Tanked/***
+Shows/That 70's Show/***
+Shows/The Amazing Race/***
+Shows/The Bernie Mac Show/***
+Shows/The Cleveland Show/***
+Shows/The Fresh Prince of Bel-Air/***
+Shows/The Office (US)/***
+Shows/The Simpsons/***
+Shows/Third Rock from the Sun/***
+Shows/Time Warp/***
+Shows/Top 20 Most Shocking/***
+Shows/Top Shot/***
+Shows/Vegas Strip/***
+Shows/Wipeout (US)/***
+
+
+Movies
+Movies/A Goofy Movie (1995)/***
+Movies/Aladdin (1992)/***
+Movies/Cars (2006)/***
+Movies/Cars 2 (2011)/***
+Movies/Chicken Little (2005)/***
+Movies/Chicken Run (2000)/***
+Movies/Despicable Me (2010)/***
+Movies/Despicable Me 2 (2013)/***
+Movies/Escape from Planet Earth (2013)/***
+Movies/Garfield (2004)/***
+Movies/Garfield A Tail of Two Kitties (2006)/***
+Movies/Home on the Range (2004)/***
+Movies/Horton Hears a Who! (2008)/***
+Movies/Hotel Transylvania (2012)/***
+Movies/Kangaroo Jack (2003)/***
+Movies/Kung Fu Panda (2008)/***
+Movies/Kung Fu Panda 2 (2011)/***
+Movies/Monsters, Inc. (2001)/***
+Movies/Monsters University (2013)/***
+Movies/Open Season (2006)/***
+Movies/Over the Hedge (2006)/***
+Movies/Planes (2013)/***
+Movies/Puss in Boots (2011)/***
+Movies/Rango (2011)/***
+Movies/Ratatouille (2007)/***
+Movies/Rio (2011)/***
+Movies/Robots (2005)/***
+Movies/Shrek (2001)/***
+Movies/Shrek 2 (2004)/***
+Movies/Shrek Forever After (2010)/***
+Movies/Shrek the Third (2007)/***
+Movies/Space Jam (1996)/***
+Movies/Stuart Little (1999)/***
+Movies/Stuart Little 2 (2002)/***
+Movies/The Croods (2013)/***
+Movies/The Emperor's New Groove (2000)/***
+Movies/The Incredibles (2004)/***
+Movies/The Jetsons Meet the Flintstones (1987)/***
+Movies/The Lion King (1994)/***
+Movies/The Simpsons Movie (2007)/***
+Movies/The Smurfs (2011)/***
+Movies/The Smurfs 2 (2013)/***
+Movies/Toy Story (1995)/***
+Movies/Toy Story 2 (1999)/***
+Movies/Toy Story 3 (2010)/***
+Movies/Turbo (2013)/***
+Movies/WALL-E (2008)/***
+Movies/Zambezia (2012)/***
+
+- *
+
+
+" >| "$RSYNC_EXCLUDE_33"
+
+
+
+
+
+
+
+
+
+
+
+#########################  Snapshot Variables ##################################
+
+##Todays date:
+export DAY0=$( date -I)
+##Yesterdays date:
+export DAY1=$( date -I -d "1 day ago")
+##This Hour:
+export HOUR0="$( date +%p-%H)"
+##Previous Hour
+export HOUR1="$(date +%p-%H -d "1 hour ago")"
+##This Minute:
+export MIN0="$(date +%M)"
+##Previous Minute:
+export MIN1="$(date +%M -d "1 minute ago")"
+##30 days ago in ISO-8601 format
+export DAY30=$(date -I -d "30 days ago")
+##60 days ago in ISO-8601 format
+export DAY60=$(date -I -d "60 days ago")
+
+
+###Delete the backup from 29 days ago, if it exists
+##if [ -d /backup/website/$DAY29 ]
+##then
+##rm /backup/website/$DAY29
+##fi
+
+
+
+########################### RSYNC #############################
+
+#################################################### /
+# NOTE:                                              /
+#	 when TRG is in SRC folder                   	 /
+#	 rsync must be = "$SRC_15"*  (Notice the *)  	 /
+#	 to avoid duplication of TRG                 	 /
+#################################################### /
+
+####################################################
+
+export SNAPSHOT_DIR="Snapshots/$DAY0/$HOUR0"
+
+export SNAPSHOT_DIR_OLD="Snapshots/$DAY60"
+
+export RSYNC_LOG="logs/$SCRIPT_NAME-$DAY0-$HOUR0"
+
+export LINK_SYM="current"
+
+
+###############################################################
+
+#The source directory:
+export SRC_11="/media/C1/"
+
+#The target directory:
+export TRG_11="/media/C2/$SNAPSHOT_DIR"
+export TRG_11_OLD="/media/C2/$SNAPSHOT_DIR_OLD"
+
+#The link destination directory:
+export LNK_11="/media/C2/$LINK_SYM"
+
+#The Log file
+export LOG_11="/media/C2/$RSYNC_LOG"
+
+# Rsync Options
+OPT_11=("-iavhHP"  "--exclude-from=$RSYNC_EXCLUDE_11" "--log-file=$LOG_11" "--link-dest=$LNK_11")
+
+
+###############################################################
+
+#The source directory:
+export SRC_12="$MYHOME/"
+export SRC_12_2="$MYHOME/"
+
+#The target directory:
+export TRG_12="$HOME_BACKUP_FOLDER/$SNAPSHOT_DIR"
+export TRG_12_OLD="$HOME_BACKUP_FOLDER/$SNAPSHOT_DIR_OLD"
+
+export TRG_12_2="$HOME_BACKUP_FOLDER2/$SNAPSHOT_DIR"
+export TRG_12_2_OLD="$HOME_BACKUP_FOLDER2/$SNAPSHOT_DIR_OLD"
+
+
+#The link destination directory:
+export LNK_12="$HOME_BACKUP_FOLDER/$LINK_SYM"
+export LNK_12_2="$HOME_BACKUP_FOLDER2/$LINK_SYM"
+
+
+#The Log file
+export LOG_12="$HOME_BACKUP_FOLDER/$RSYNC_LOG"
+export LOG_12_2="$HOME_BACKUP_FOLDER2/$RSYNC_LOG"
+
+#The rsync options:
+OPT_12=("-iavhHP" "--link-dest=$LNK_12" "--exclude-from=$RSYNC_EXCLUDE_22" "--log-file=$LOG_12")
+OPT_12_2=("-iavhHP"  "--link-dest=$LNK_12_2" "--exclude-from=$RSYNC_EXCLUDE_22" "--log-file=$LOG_12_2")
+OPT_12_TAR=(--exclude='Private/*')
+
+
+###############################################################
+
+#The source directory:
+SRC_13="/etc"
+
+#The target directory:
+TRG_13="$ETC_BACKUP_FOLDER/Snapshots/$DAY0/$HOUR0"
+
+
+###############################################################
+
+#The source directory:
+export SRC_14="/media/C1/"
+
+#The target directory:
+export TRG_14="/media/C3/"
+
+#The rsync options: ( Array ooooh :) )
+OPT_14=("-iavhP" "--del" "--include-from=$RSYNC_EXCLUDE_33")
+
+
+###############################################################
+
+#The source directory:
+export SRC_15="/usr/local/bin/"
+
+#The target directory:
+export TRG_15="/home/abz/Ares/My-Scripts/ArchLinux/Snapshots/$DAY0/$HOUR0"
+
+
+###############################################################
+
+#The source directory:
+export SRC_16="/usr/share/webapps/"
+
+#The target directory:
+export TRG_16="/home/abz/Ares/My-Website/sderawi.dyndns.org/$DAY0"
+
+# Tar Options
+export OPT_16=""
+
+
+###############################################################
+
+#The source directory:
+export SRC_17="/home/abz/Open-Office/Tips-and-Tricks/"
+
+#The target directory:
+export TRG_17="/home/abz/Open-Office/Tips-and-Tricks/.Backups/Snapshots/$DAY0/$HOUR0"
+
+# Tar Options
+export OPT_17="--exclude=.*"
+
+
+###############################################################
+
+
+
+
+
+
+

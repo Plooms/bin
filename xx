@@ -1,0 +1,11 @@
+#! /bin/bash
+# A script for x2x mouse SSH
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+echo 'Connected to your Desktop'
+ssh -XC 10.0.0.8  x2x -west -to :0.0
+echo 'You are Disconnected from your Desktop'
+exit

@@ -1,0 +1,160 @@
+#!/bin/bash
+# The Variable MOAS (Mother of All Scripts)
+
+
+# Source the colors file
+source /usr/local/bin/VAR-SCRIPT-COLOR
+
+
+# NOTE: make sure to turn on "Case Sensitive"
+# change "abz" to "sal"
+# change "C1" to "S1"
+# change "C2" to "S2"
+# change "10.0.0.101" to "192.168.1.9"
+# change "10.0.0.102" to "192.168.1.10"
+
+
+
+##########################  Variables #################################
+
+export USERNAME="abz"
+
+export MYHOME="/home/abz"
+
+export LOGS_DIR="/home/abz/xLogsx"
+
+
+# How many NAS servers do you have ?
+export NAS_COUNT="3"
+
+
+# NAS1 Mount Point (/media/?)
+export NAS1_MOUNT_POINT="/media/C1"
+export NAS1_IP="10.0.0.101"
+
+
+# NAS2 Mount Point (/media/?)
+export NAS2_MOUNT_POINT="/media/C2"
+export NAS2_IP="10.0.0.102"
+
+
+# NAS3 Mount Point (/media/?)
+export NAS3_MOUNT_POINT="/media/C4"
+export NAS3_IP="10.0.0.104"
+
+
+# NAS4 Mount Point (/media/?)
+export NAS4_MOUNT_POINT="/media/C3"
+export NAS4_IP="10.0.0.103"
+
+# Mount Anchor
+export MOUNT_ANCHOR="/media/Cx"
+
+# File to make sure the pool is alive /media/C1/?
+export NAS_ALIVE_CHECK=".mount-check"
+
+
+export MOVIE_DIR1="/media/C1/Movies"
+export MOVIE_DIR2="/media/C2/current/Movies"
+
+
+export HOME_BACKUP_FOLDER="/media/C1/HOME-DAILY-BACKUP"
+export HOME_BACKUP_FOLDER2="/media/C2/HOME-DAILY-BACKUP"
+
+
+# Download folder for TV episodes
+export TV_DOWNLOAD_DIR="/home/abz/qBT_dir/Download-folder"
+
+
+# Media Log
+export PLAYER_LAST_WATCHED="/home/abz/Ares/Media/Last-Watched"
+
+
+# HDDs-Directories list location
+export LIST_LOCATION="/home/abz/Ares/Media"
+
+
+# /etc Backup location
+export ETC_BACKUP_FOLDER="/home/abz/Ares/Config-files"
+
+
+# Dropbox folder
+export DROPBOX="/home/abz/Dropbox/Shared (1)"
+
+
+# BTSync folder
+export BTSYNC="/home/abz/qBT_dir/BTSync"
+
+
+# Movie symlink in /home/?/?
+export MOVIE_SYM="/home/abz/Movies"
+
+
+# TV symlink in /home/?/?
+export TV_MASTER_SYM="/home/abz/TV"
+
+
+# Show symlink /home/?/TV/Shows?
+export TV_SYM="/home/abz/TV/Shows"
+
+
+# Anime symlink /home/?/TV/Anime?
+export TV_SYM2="/home/abz/TV/Anime"
+
+
+
+########################################################################################################
+# eCryptfs
+export OPEN_DIR_ECRYPT="$MYHOME/Private"
+export ENCRYPTED_DIR_ECRYPT="/media/C1/Other/Encrypted/Private"
+
+# EncFS
+export OPEN_DIR_ENCFS="$MYHOME/Private"
+export ENCRYPTED_DIR_ENCFS="/media/C1/Other/Encrypted/Private2"
+########################################################################################################
+
+
+
+
+
+
+
+
+########################################################################################################
+# No need to change these
+export USERNAME_CAPS="$( echo $USERNAME | tr '[:lower:]' '[:upper:]' )"
+export LOCKFOLDER="$MYHOME/.$USERNAME_CAPS-LOCKS"
+export LOCKFOLDER2="$MYHOME/.$USERNAME_CAPS-LOCKS/ln2tb"
+export LOCKFILE="$LOCKFOLDER/lock-$SCRIPT_NAME"
+export BATCH_FILE_MOVIE_FIND="$LOCKFOLDER2/MOVIES-FIND"
+export BATCH_FILE_MOVIE_FIND2="$LOCKFOLDER2/MOVIES-FIND-BATCH"
+export BATCH_FILE_MOVIE_ADD_DELETE="$LOCKFOLDER2/MOVIE-ADD-DELETE"
+export BATCH_FILE_TV_ADD_DELETE="$LOCKFOLDER2/SHOWS-ADD-DELETE"
+export BATCH_FILE_TV_ADD_DELETE2="$LOCKFOLDER2/SHOWS-ADD-DELETE-BATCH"
+export BATCH_FILE_TV_FIND="$LOCKFOLDER2/TV-FIND-BATCH"
+export DUPES_BUFFER="$LOCKFOLDER/DUPES"
+export RSYNC_EXCLUDE_11="$LOCKFOLDER/RSYNC-EXCLUDE-11"
+export RSYNC_EXCLUDE_22="$LOCKFOLDER/RSYNC-EXCLUDE-22"
+export RSYNC_EXCLUDE_33="$LOCKFOLDER/RSYNC-EXCLUDE-33"
+export PID=$( pidof -x $SCRIPT_NAME )
+export MOUNTS_1=$( if grep -qs $NAS1_MOUNT_POINT /proc/mounts ;then  echo -e "${GREENz}Mounted" ;else echo -e "${REDz}Unmounted!!!" ; fi )
+export MOUNTS_2=$( if grep -qs $NAS2_MOUNT_POINT /proc/mounts ;then  echo -e "${GREENz}Mounted" ;else echo -e "${REDz}Unmounted!!!" ; fi )
+[ -n "$NAS3_MOUNT_POINT" ] && export MOUNTS_3=$( if grep -qs $NAS3_MOUNT_POINT /proc/mounts ;then  echo -e "${GREENz}Mounted" ;else echo -e "${REDz}Unmounted!!!" ; fi )
+[ -n "$NAS4_MOUNT_POINT" ] && export MOUNTS_4=$( if grep -qs $NAS4_MOUNT_POINT /proc/mounts ;then  echo -e "${GREENz}Mounted" ;else echo -e "${REDz}Unmounted!!!" ; fi )
+export NAS1_MOUNT_POINT_ESCAPED="$(echo $NAS1_MOUNT_POINT | sed "s/\//\\\\\//g" )" # dupes
+export NAS2_MOUNT_POINT_ESCAPED="$(echo $NAS2_MOUNT_POINT | sed "s/\//\\\\\//g" )" # dupes
+[ -n "$NAS3_MOUNT_POINT" ] && export NAS3_MOUNT_POINT_ESCAPED="$(echo $NAS3_MOUNT_POINT | sed "s/\//\\\\\//g" )" # dupes
+[ -n "$NAS4_MOUNT_POINT" ] && export NAS4_MOUNT_POINT_ESCAPED="$(echo $NAS4_MOUNT_POINT | sed "s/\//\\\\\//g" )" # dupes
+export TV_SYM_ESCAPED="$(echo $TV_SYM | sed "s/\//\\\\\//g" )" # dupes
+export TV_SYM2_ESCAPED="$(echo $TV_SYM2 | sed "s/\//\\\\\//g" )" # dupes
+export MOVIE_SYM_ESCAPED="$(echo $MOVIE_SYM | sed "s/\//\\\\\//g" )" # dupes
+########################################################################################################
+
+
+
+# Source the RSYNC file
+source /usr/local/bin/VAR-SCRIPT-RSYNC
+
+# Source the FUNC file
+source /usr/local/bin/VAR-SCRIPT-FUNC
+

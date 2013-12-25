@@ -1,0 +1,54 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+start=$(dialog --stdout --help-button --help-label "Cancel" --yesno \
+"Did you add the Anime names to $BATCH_FILE_TV_ADD_DELETE ?" 10 50 )
+
+case $? in 
+0)
+if [ -f $BATCH_FILE_TV_ADD_DELETE ]
+then
+
+
+while read line ; do du -hs "$TV_SYM2"/"$line" ; done < $BATCH_FILE_TV_ADD_DELETE
+
+
+echo -e "${RED}Do you want to remove these Folders?		y ${WHITE}"
+
+read confirmation
+
+if [ "$confirmation" = "y" ]
+then 
+
+while read line ; do \
+sudo rm -rv "$TV_SYM2"/"$line" ; \
+echo -e "${YELLOW}" ; \
+sed -n "/\"$line\"/p" /usr/local/bin/move ; \
+echo -e "${RED}" ; \
+sudo sed -i "/\"$line\"/d" /usr/local/bin/move ; \
+sudo sed -i "/\"$line\"/d" /usr/local/bin/move1 ; \
+echo -e "${CYAN} Dont forget SickBeard" ; \
+echo -e "${WHITE}" ; \
+done < $BATCH_FILE_TV_ADD_DELETE
+
+
+else _CANCEL_MSG
+fi
+
+
+else 
+sudo nano $BATCH_FILE_TV_ADD_DELETE ; c.ln2tb-anime-delete-batch
+
+fi
+;;
+1)
+sudo nano $BATCH_FILE_TV_ADD_DELETE ; c.ln2tb-anime-delete-batch
+;;
+2)
+_CANCEL_MSG ;; 
+esac

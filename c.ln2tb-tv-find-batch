@@ -1,0 +1,37 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Find) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+start=$(dialog --stdout  --clear --help-button --help-label "Cancel" --yesno \
+"Did you add the Show names to $BATCH_FILE_TV_FIND ?" 10 50 )
+
+case $? in
+0)
+if [ -f $BATCH_FILE_TV_FIND ]
+then
+
+echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}" 
+
+cat $BATCH_FILE_TV_FIND | while read LINE ; do ls -1d "$TV_SYM"/* | grep -i "$LINE" ; done |sort -bf
+
+echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
+
+
+
+else
+sudo nano $BATCH_FILE_TV_FIND ; c.ln2tb-tv-find-batch
+
+fi
+;;
+1)
+sudo nano $BATCH_FILE_TV_FIND ; c.ln2tb-tv-find-batch
+;;
+2)
+_CANCEL_MSG ;; 
+esac
+

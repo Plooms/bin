@@ -1,0 +1,40 @@
+#!/bin/bash
+
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+export DISPLAY=:0.0
+
+wmctrl -l |grep SMPlayer
+
+if [ "$?" = "0" ]
+then
+echo "$(date |sed 's/AST 2013//g' ) <-----> ($(wmctrl -l |grep SMPlayer |cut -d" " -f5- | sed 's/ - SMPlayer2//g' |sed "s/'//g"  ))" >> "$PLAYER_LAST_WATCHED"
+else
+echo "
+
+Smplayer Not Running
+
+"
+fi
+
+
+
+
+wmctrl -l |grep VLC
+
+if [ "$?" = "0" ]
+then
+echo "$(date |sed 's/AST 2013//g' ) <-----> ($( wmctrl -l |grep VLC |cut -d" " -f5- | sed 's/ - VLC media player//g' |sed "s/'//g" ))" >> "$PLAYER_LAST_WATCHED"
+
+else
+echo "
+
+VLC Not Running
+
+"
+fi
+

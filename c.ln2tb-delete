@@ -1,0 +1,39 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+answer=$(dialog --extra-button --extra-label "Back" --stdout  --menu \
+"Choose the command You Wish to Execute" 14 50 50 \
+"1- Delete Show" "" \
+"2- Delete Movie" "" \
+"3- Delete Anime" "" )
+
+
+case $? in
+0)
+
+if [ "$answer" = "1- Delete Show" ]
+then c.ln2tb-tv-delete
+
+elif [ "$answer" = "2- Delete Movie" ]
+then c.ln2tb-movie-delete
+
+elif [ "$answer" = "3- Delete Anime" ]
+then c.ln2tb-anime-delete
+
+fi
+
+;;
+1)
+_CANCEL_MSG ;; 
+
+3)
+ln2tb ;;
+
+esac
+
+

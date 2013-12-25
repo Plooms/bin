@@ -1,0 +1,34 @@
+#!/bin/bash
+# Backup Tips and Tricks (Snapshot Style)
+SCRIPT_NAME="17-TipsTricks-ss"
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+######################################################### 
+
+RANDOM_COLOR
+
+# Tar Snapshot
+mkdir -p "$TRG_17"
+sudo tar "$OPT_17" -cpvf "$TRG_17".tgz "$SRC_17"
+echo -e "\n\n Copied to: $TRG_17".tgz
+rmdir "$TRG_17"
+
+
+#########################################################
+
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF
+

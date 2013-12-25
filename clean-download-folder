@@ -1,0 +1,13 @@
+#!/bin/bash
+# Clean the download folder from junk
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+sudo find "$TV_DOWNLOAD_DIR"/ -name "WWW.YIFY*.jpg" -exec sudo rm -v {} \;
+sudo find "$TV_DOWNLOAD_DIR"/ -name "*.txt" -exec sudo rm -v {} \;
+
+

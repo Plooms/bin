@@ -1,0 +1,35 @@
+#!/bin/bash
+# Backup Home (Snapshot Style)
+SCRIPT_NAME="14-media-offsite"
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+#########################################################
+
+# Rsync the clean shows to the offsite NAS
+if _CHECK_NAS4
+then
+
+RANDOM_COLOR
+
+sudo rsync "${OPT_14[@]}" "$SRC_14" "$TRG_14"
+
+
+fi
+#########################################################
+
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF
+

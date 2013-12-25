@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+#NOTE: to find uuid of connections "nmcli con list"
+
+
+#while [ "true" ]
+#do
+	VPNCON=$(nmcli con status)
+	if [[ $VPNCON != "New York" ]]; then
+		echo "Disconnected, trying to reconnect..."
+		(sleep 1 && nmcli con up uuid 049a7b11-7a42-4969-8932-1229b2c1002c)
+	else
+		echo "Already connected !"
+	fi
+#done

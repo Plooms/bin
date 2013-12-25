@@ -1,0 +1,27 @@
+#!/bin/bash
+
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+#dump the list of windows to a file
+wmctrl -lx > /tmp/window_list.txt
+x=1928; y=27
+
+#read the window information from the file
+while read id sticky real_name host win_title; do
+
+    #move any non-sticky windows except the desktop
+    if [ "$sticky" == "0" -a "$real_name" != "xbmc.bin.xbmc.bin" -a "$real_name" != "smplayer.Smplayer" -a "real_name" != "xfdesktop.Xfdesktop" ]
+      then
+        wmctrl -i -r $id -e 0,$x,$y,-1,-1
+        x=$(($x + 40))
+        y=$(($y + 40))
+    fi
+
+done < /tmp/window_list.txt
+
+#delete the temporary file
+rm /tmp/window_list.txt
+exit 0

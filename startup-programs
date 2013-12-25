@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+sudo systemctl restart couchpotato
+sudo systemctl restart sickbeard
+

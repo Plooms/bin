@@ -1,0 +1,37 @@
+#!/bin/bash
+# join multiple videos into one file
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+set -e
+
+
+
+DIR=$(dialog --extra-button --extra-label "Back" --stdout  --clear --backtitle "Choose The Directory that has the files" --dselect \
+"/" 10 70 )
+
+name=$(dialog --extra-button --extra-label "Back" --stdout  --clear --backtitle "Choose The First File" --fselect \
+"$DIR" 10 200 )
+
+name2=$(dialog --extra-button --extra-label "Back" --stdout  --clear --backtitle "Choose The Second File" --fselect \
+"$DIR" 10 200 )
+
+OUTPUT=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox "Enter the Name of the Combined file" 10 50 "$name" )
+
+case $? in
+0)
+
+clear 
+
+mencoder -oac copy -ovc copy -idx -o "$OUTPUT" "$name" "$name2"
+
+;;
+1)
+_CANCEL_MSG ;; 
+
+3)
+ln2tb ;;
+
+
+esac

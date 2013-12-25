@@ -1,0 +1,34 @@
+#!/bin/bash
+# Backup "/usr/local/bin" (Snapshot Style)
+SCRIPT_NAME="15-bin-ss"
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Time Calculation
+_START_TIME
+ 
+# Start Lock
+_LOCK_ON
+
+#########################################################
+
+# Backup /usr/local/bin/
+RANDOM_COLOR
+
+# Tar Snapshot
+mkdir -p "$TRG_15"
+sudo tar -cpvf "$TRG_15".tgz "$SRC_15"
+echo -e "\n\n Copied to: $TRG_15".tgz
+rmdir "$TRG_15"
+
+#########################################################
+
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF
+

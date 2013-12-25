@@ -1,0 +1,418 @@
+#!/bin/bash
+# Check to see if an HDD is unmounted
+SCRIPT_NAME="c.ln2tb-mount-check"
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+# Start Lock
+_LOCK_ON
+
+
+export DISPLAY=:0.0
+
+
+RUN_TIMES="0"
+
+
+while [[ $RUN_TIMES < 2 ]] ;do
+
+
+
+###################################################################
+###################################################################
+WHITE
+echo ""
+echo "#############################################################"
+echo "			$NAS1_MOUNT_POINT"
+echo "#############################################################"
+###################################################################
+###################################################################
+
+CONTINUE="YES"
+
+
+# Ping NAS 1
+ping -c 5 "$NAS1_IP" >/dev/null
+
+
+	if [ "$?" = 0 ]
+	then
+		GREEN ; echo "$NAS1_MOUNT_POINT Reachable"
+	else
+		RED ; echo "$NAS1_MOUNT_POINT Not Reachable"
+
+		notify-send 'HDD Warning!' "$NAS1_MOUNT_POINT Not Reachable" --icon=dialog-warning
+	fi
+
+
+
+
+
+# Check if NAS 1 is mounted
+grep -qs "$NAS1_MOUNT_POINT" /proc/mounts >/dev/null
+	
+	
+	if [ "$?" = 0 ]
+	then
+		GREEN ; echo "$NAS1_MOUNT_POINT Mounted"
+	else
+		RED ; echo "$NAS1_MOUNT_POINT Not Mounted"
+		
+		notify-send 'HDD Warning!' "$NAS1_MOUNT_POINT Not Mounted" --icon=dialog-warning
+		
+		CONTINUE="NO"
+		
+		export NEEDS_MOUNT="$NAS1_MOUNT_POINT"
+				
+		/usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null
+
+	fi
+
+
+
+if [ "$CONTINUE" = YES ]
+then
+
+
+	# Check if NAS 1 is really alive
+	[ ! -z "$NAS_ALIVE_CHECK" ] && [ -f "$NAS1_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ]
+	
+	if [ "$?" = 0 ]
+	then
+	
+	CHECK="$(cat $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK)"
+	
+	[ -r $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+
+
+		if [ "$?" = 0 ]
+		then 
+			GREEN ; echo "$NAS1_MOUNT_POINT Appears to be Alive & Kicking"
+		else
+			RED ; echo "$NAS1_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+				  echo "Check if ($NAS_ALIVE_CHECK) file exists"
+		fi
+		
+		else
+			RED ; echo "$NAS1_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+				  echo "Check if ($NAS_ALIVE_CHECK) file exists"
+
+	fi
+		
+fi
+
+
+###################################################################
+###################################################################
+WHITE
+echo ""
+echo "#############################################################"
+echo "			$NAS2_MOUNT_POINT"
+echo "#############################################################"
+###################################################################
+###################################################################
+
+CONTINUE="YES"
+
+
+# Ping NAS 2
+ping -c 5 "$NAS2_IP" >/dev/null
+
+
+	if [ "$?" = 0 ]
+	then 
+		GREEN ; echo "$NAS2_MOUNT_POINT Reachable"
+	else
+		RED ; echo "$NAS2_MOUNT_POINT Not Reachable"
+		
+		notify-send 'HDD Warning!' "$NAS2_MOUNT_POINT Not Reachable" --icon=dialog-warning
+	fi
+
+
+
+
+
+# Check if NAS 2 is mounted
+grep -qs "$NAS2_MOUNT_POINT" /proc/mounts >/dev/null
+	
+	
+	if [ "$?" = 0 ]
+	then
+		GREEN ; echo "$NAS2_MOUNT_POINT Mounted"
+	else
+		RED ; echo "$NAS2_MOUNT_POINT Not Mounted"
+		
+		notify-send 'HDD Warning!' "$NAS2_MOUNT_POINT Not Mounted" --icon=dialog-warning
+		
+		CONTINUE="NO"
+		
+		export NEEDS_MOUNT="$NAS2_MOUNT_POINT"
+		
+		/usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null
+
+	fi
+
+
+
+if [ "$CONTINUE" = YES ]
+then
+
+
+	# Check if NAS 2 is really alive
+	[ ! -z "$NAS_ALIVE_CHECK" ] && [ -f "$NAS2_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ]
+		
+	if [ "$?" = 0 ]
+	then
+	
+	CHECK="$(cat $NAS2_MOUNT_POINT/$NAS_ALIVE_CHECK)"
+	
+	[ -r $NAS2_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+
+
+		if [ "$?" = 0 ]
+		then 
+			GREEN ; echo "$NAS2_MOUNT_POINT Appears to be Alive & Kicking"
+		else
+			RED ; echo "$NAS2_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+				  echo "Check if ($NAS_ALIVE_CHECK) file exists"
+		fi
+
+		else
+			RED ; echo "$NAS2_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+				  echo "Check if ($NAS_ALIVE_CHECK) file exists"
+
+	fi
+		
+fi
+
+
+
+
+###################################################################
+###################################################################
+if [[ $NAS_COUNT > 2 ]]
+then
+WHITE
+echo ""
+echo "#############################################################"
+echo "			$NAS3_MOUNT_POINT"
+echo "#############################################################"
+###################################################################
+###################################################################
+
+CONTINUE="YES"
+
+
+# Ping NAS 3
+ping -c 5 "$NAS3_IP" >/dev/null
+
+
+	if [ "$?" = 0 ]
+	then 
+		GREEN ; echo "$NAS3_MOUNT_POINT Reachable"
+	else
+		RED ; echo "$NAS3_MOUNT_POINT Not Reachable"
+		
+		notify-send 'HDD Warning!' "$NAS3_MOUNT_POINT Not Reachable" --icon=dialog-warning
+	fi
+
+
+
+
+
+# Check if NAS 3 is mounted
+grep -qs "$NAS3_MOUNT_POINT" /proc/mounts >/dev/null
+	
+	
+	if [ "$?" = 0 ]
+	then
+		GREEN ; echo "$NAS3_MOUNT_POINT Mounted"
+	else
+		RED ; echo "$NAS3_MOUNT_POINT Not Mounted"
+		
+		notify-send 'HDD Warning!' "$NAS3_MOUNT_POINT Not Mounted" --icon=dialog-warning
+		
+		CONTINUE="NO"
+		
+		export NEEDS_MOUNT="$NAS3_MOUNT_POINT"
+		
+		/usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null
+
+	fi
+
+
+
+if [ "$CONTINUE" = YES ]
+then
+
+
+		# Check if NAS 3 is really alive
+		[ ! -z "$NAS_ALIVE_CHECK" ] && [ -f "$NAS3_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ]
+		
+		if [ "$?" = 0 ]
+		then
+		
+		CHECK="$(cat $NAS3_MOUNT_POINT/$NAS_ALIVE_CHECK)"
+		
+		[ -r $NAS3_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+
+
+			if [ "$?" = 0 ]
+			then 
+				GREEN ; echo "$NAS3_MOUNT_POINT Appears to be Alive & Kicking"
+			else
+				RED ; echo "$NAS3_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+					  echo "Check if ($NAS_ALIVE_CHECK) file exists"
+			fi
+		
+		else
+			RED ; echo "$NAS3_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+				  echo "Check if ($NAS_ALIVE_CHECK) file exists"
+
+		fi
+		
+	fi
+
+
+fi
+
+
+
+
+
+
+
+###################################################################
+###################################################################
+if [[ $NAS_COUNT > 3 ]]
+then
+WHITE
+echo ""
+echo "#############################################################"
+echo "			$NAS4_MOUNT_POINT"
+echo "#############################################################"
+###################################################################
+###################################################################
+
+CONTINUE="YES"
+
+
+# Ping NAS 4
+ping -c 5 "$NAS4_IP" >/dev/null
+
+
+	if [ "$?" = 0 ]
+	then 
+		GREEN ; echo "$NAS4_MOUNT_POINT Reachable"
+	else
+		RED ; echo "$NAS4_MOUNT_POINT Not Reachable"
+		
+		notify-send 'HDD Warning!' "$NAS4_MOUNT_POINT Not Reachable" --icon=dialog-warning
+	fi
+
+
+
+
+
+# Check if NAS 4 is mounted
+grep -qs "$NAS4_MOUNT_POINT" /proc/mounts >/dev/null
+	
+	
+	if [ "$?" = 0 ]
+	then
+		GREEN ; echo "$NAS4_MOUNT_POINT Mounted"
+	else
+		RED ; echo "$NAS4_MOUNT_POINT Not Mounted"
+		
+		notify-send 'HDD Warning!' "$NAS4_MOUNT_POINT Not Mounted" --icon=dialog-warning
+		
+		CONTINUE="NO"
+		
+		export NEEDS_MOUNT="$NAS4_MOUNT_POINT"
+		
+		/usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null
+
+	fi
+
+
+
+if [ "$CONTINUE" = YES ]
+then
+
+
+		# Check if NAS 4 is really alive
+		[ ! -z "$NAS_ALIVE_CHECK" ] && [ -f "$NAS4_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ]
+		
+		if [ "$?" = 0 ]
+		then
+		
+		CHECK="$(cat $NAS4_MOUNT_POINT/$NAS_ALIVE_CHECK)"
+		
+		[ -r $NAS4_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+
+
+			if [ "$?" = 0 ]
+			then 
+				GREEN ; echo "$NAS4_MOUNT_POINT Appears to be Alive & Kicking"
+			else
+				RED ; echo "$NAS4_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+					  echo "Check if ($NAS_ALIVE_CHECK) file exists"
+			fi
+		
+		
+		else
+			RED ; echo "$NAS4_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+				  echo "Check if ($NAS_ALIVE_CHECK) file exists"
+				  notify-send "$NAS4_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+
+
+		fi
+
+		
+	fi
+
+fi
+
+
+
+###################################################################
+###################################################################
+WHITE
+echo ""
+echo "#############################################################"
+###################################################################
+###################################################################
+
+if [[ $NAS_COUNT > 4 ]]
+then
+
+	YELLOW
+	echo ""
+	echo "NOTE: There are more NAS Servers than this script handles  ( > 4 )"
+
+fi
+
+
+
+if [ -z "$NEEDS_MOUNT" ]
+then
+	# No need for a second run if everything was mounted
+	break
+else
+	# Run for a second time if needed
+	RUN_TIMES=$((RUN_TIMES+1))
+	unset NEEDS_MOUNT
+	clear
+	echo -e "\n\n	Second Run.................."
+fi
+
+
+done
+
+
+
+# End Lock
+_LOCK_OFF

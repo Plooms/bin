@@ -1,0 +1,12 @@
+#!/bin/bash
+#Script for searching Arch repository
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+yaourt $1
+
+

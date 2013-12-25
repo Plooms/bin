@@ -1,0 +1,36 @@
+#!/bin/bash
+# Backup the system config files (Snapshot Style)
+SCRIPT_NAME="13-etc-ss"
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+#########################################################
+
+RANDOM_COLOR
+
+# Tar Snapshot
+mkdir -p "$TRG_13"
+sudo tar -cpvf "$TRG_13".tgz "$SRC_13"
+echo -e "\n\n Copied to: $TRG_13".tgz
+rmdir "$TRG_13"
+
+#########################################################
+
+sudo crontab -u $USERNAME -l > "$TRG_13"-crontab
+
+#########################################################
+
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF

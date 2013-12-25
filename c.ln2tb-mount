@@ -1,0 +1,101 @@
+#!/bin/bash
+# Check to see if an HDD is mounted
+SCRIPT_NAME="c.ln2tb-mount"
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Start Lock
+_LOCK_ON
+
+
+export DISPLAY=:0.0
+
+
+
+[ -z "$NEEDS_MOUNT" ] && GREEN ; echo -e "\n\n\n   Nothing to Mount"
+
+
+
+
+if [ "$NEEDS_MOUNT" = "$NAS1_MOUNT_POINT" ]
+then
+	Answer=$(dialog --extra-button --extra-label "Back" --stdout  --clear --colors --menu \
+	"Choose the command You Wish to Execute" 14 70 20 \
+	"Mount $NAS1_MOUNT_POINT" "-- $MOUNTS_1" )
+
+	if [ "$Answer" = "Mount $NAS1_MOUNT_POINT" ]
+	then
+	sudo mount $NAS1_MOUNT_POINT && sudo mount -R "$NAS1_MOUNT_POINT" "$MOUNT_ANCHOR" && \
+	echo -e "\n\n\n\n\nMounted $NAS1_MOUNT_POINT" && sleep 2
+
+	else
+	_CANCEL_MSG
+	fi
+fi
+
+
+
+
+
+if [ "$NEEDS_MOUNT" = "$NAS2_MOUNT_POINT" ]
+then
+	Answer=$(dialog --extra-button --extra-label "Back" --stdout  --clear --colors --menu \
+	"Choose the command You Wish to Execute" 14 70 20 \
+	"Mount $NAS2_MOUNT_POINT" "-- $MOUNTS_2" )
+
+	if [ "$Answer" = "Mount $NAS2_MOUNT_POINT" ]
+	then
+	sudo mount $NAS2_MOUNT_POINT && \
+	echo -e "\n\n\n\n\nMounted $NAS2_MOUNT_POINT" && sleep 2
+
+	else
+	_CANCEL_MSG
+	fi
+fi
+
+
+
+
+
+if [ "$NEEDS_MOUNT" = "$NAS3_MOUNT_POINT" ]
+then
+	Answer=$(dialog --extra-button --extra-label "Back" --stdout  --clear --colors --menu \
+	"Choose the command You Wish to Execute" 14 70 20 \
+	"Mount $NAS3_MOUNT_POINT" "-- $MOUNTS_3" )
+
+	if [ "$Answer" = "Mount $NAS3_MOUNT_POINT" ]
+	then
+	sudo mount $NAS3_MOUNT_POINT && \
+	echo -e "\n\n\n\n\nMounted $NAS3_MOUNT_POINT" && sleep 2
+
+	else
+	_CANCEL_MSG
+	fi
+fi
+
+
+
+
+
+if [ "$NEEDS_MOUNT" = "$NAS4_MOUNT_POINT" ]
+then
+	Answer=$(dialog --extra-button --extra-label "Back" --stdout  --clear --colors --menu \
+	"Choose the command You Wish to Execute" 14 70 20 \
+	"Mount $NAS4_MOUNT_POINT" "-- $MOUNTS_4" )
+
+	if [ "$Answer" = "Mount $NAS4_MOUNT_POINT" ]
+	then
+	sudo mount $NAS4_MOUNT_POINT && \
+	echo -e "\n\n\n\n\nMounted $NAS4_MOUNT_POINT" && sleep 2
+
+	else
+	_CANCEL_MSG
+	fi
+fi
+
+
+
+# End Lock
+_LOCK_OFF

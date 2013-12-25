@@ -1,0 +1,46 @@
+#!/bin/bash
+# Delete Movies
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+start=$(dialog --stdout  --help-button --help-label "Cancel" --yesno \
+"Did you add the Show names to $BATCH_FILE_MOVIE_ADD_DELETE ?" 10 50 )
+
+case $? in 
+0)
+if [ -f $BATCH_FILE_MOVIE_ADD_DELETE ]
+then
+
+
+
+while read line ; do du -hs $MOVIE_SYM/"$line" ; done < $BATCH_FILE_MOVIE_ADD_DELETE
+
+
+echo -e "${RED}Do you want to remove these Folders?		y ${WHITE}"
+
+read confirmation
+
+if [ "$confirmation" = "y" ]
+then 
+
+while read line ; do sudo rm -rv $MOVIE_SYM/"$line" ; done < $BATCH_FILE_MOVIE_ADD_DELETE
+
+
+else _CANCEL_MSG
+fi
+
+
+else 
+sudo nano $BATCH_FILE_MOVIE_ADD_DELETE ; c.ln2tb-movie-delete-batch
+
+fi
+;;
+1)
+sudo nano $BATCH_FILE_MOVIE_ADD_DELETE ; c.ln2tb-movie-delete-batch
+;;
+2)
+_CANCEL_MSG ;; 
+esac

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+iptables -F
+iptables -t nat -F
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+export LAN=eth0
+export WAN=ppp0
+iptables -A FORWARD -i ${LAN} -s 10.0.0.0/255.255.255.0 -j ACCEPT
+iptables -t nat -A POSTROUTING -o ${WAN} -j MASQUERADE
+ip link set dev $LAN promisc on
+upnpd $WAN $LAN

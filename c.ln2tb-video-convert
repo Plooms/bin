@@ -1,0 +1,60 @@
+#!/bin/bash
+#script to convert all video files in the current directory  By: ABZ v12.3
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+set -e
+
+
+DIR=$(dialog --extra-button --extra-label "Back" --stdout  --backtitle "Select the directory containing the files to convert" \
+--dselect "/" 10 50 )
+
+cd "$DIR"
+
+extension=$(dialog --extra-button --extra-label "Back" --stdout  --inputbox \
+"Type the extension of the files you want to convert e.g: [ avi, MPEG , Mts, mP4 ] (Case sensitive)" \
+10 50 )
+
+resolution=$(dialog --extra-button --extra-label "Back" --stdout  --inputbox \
+"Type the desired resolution of the files you want to convert e.g: [ hd480 , hd720 , hd1080 ]" \
+10 50 )
+
+
+#concatinate the number of MTS files currently in dir
+#AVICOUNT=$(ls | grep avi | tr -d [0-9] | nl | tail -n 1 | cut -b '5-6' )
+MTSCOUNT=$(ls | grep $extension | tr -d [0-9] | nl | tail -n 1 | cut -b '5-6' )
+
+
+
+##### Track time ##################
+timestart=$(echo "$(date +%I:%M)" )
+timestop=$(echo "$(date +%I:%M)" )
+timestat=$( echo "started $timestart finished $timestop" )
+MTSSIZE_TOTAL=$(du -ch *$extension | tr -d [a-z] | tail -n 1 )
+
+echo $timestart
+
+echo "*********************************************************************"
+echo "$PWD $MTSDIR contains $MTSCOUNT $extension files totaling $MTSSIZE_TOTAL"
+
+echo "*********************************************************************"
+
+sleep 3
+
+for mtsfiles in *.$extension ; do
+echo "n" | ffmpeg -i $mtsfiles -s  $resolution -qscale 0  -ac 2  -tvstd PAL "${mtsfiles%.$extension}.avi"
+done
+
+echo $timestop
+
+clear ; echo >&2
+
+AVICOUNT=$(ls | grep avi | tr -d [0-9] | nl | tail -n 1 | cut -b '5-6' )
+AVISIZE_TOTAL=$(du -ch *avi | tr -d [a-z] | tail -n 1 )
+
+
+echo $timestat
+echo "*************************************************************"
+echo "$AVICOUNT .$extension files down converted to avi totaling $AVISIZE_TOTAL"
+echo "*************************************************************"

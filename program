@@ -1,0 +1,9 @@
+#!/bin/bash
+#Show package binaries
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+pacman -Ql $1 | grep bin

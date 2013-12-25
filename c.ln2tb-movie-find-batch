@@ -1,0 +1,92 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Find) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+start=$(dialog --stdout  --clear --help-button --help-label "Cancel" --yesno \
+"Did you add the Show names to $BATCH_FILE_MOVIE_FIND ?" 10 50 )
+
+case $? in
+0)
+if [ -f $BATCH_FILE_MOVIE_FIND ]
+then
+
+clear
+echo "Searching for Video Files"
+
+while read name
+do
+
+find "$MOVIE_SYM"/ -iname "*$name*" -size +25M |sort -bf >> /tmp/tmp
+
+done < "$BATCH_FILE_MOVIE_FIND"
+
+cat /tmp/tmp|sort -bf >/tmp/temp
+
+while read FILE ;do movie_array+=("$FILE");done </tmp/temp
+
+rm /tmp/temp 2>/dev/null
+rm /tmp/tmp 2>/dev/null
+
+clear
+
+for i in "${movie_array[@]}"
+do
+
+echo -e "${YELLOW} The Information for the Video File:${WHITE}
+"$i""
+
+RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' )
+RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' )
+
+
+GREEN
+echo -e "Size =  ${WHITE}$(du -h "$i" | awk '{print $1}')${COLOR_OFF}"
+
+GREEN
+echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}"
+
+
+echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
+
+done
+
+
+
+#---#
+
+echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}" 
+
+while read name
+do
+find "$MOVIE_SYM"/ -type d -iname "*$name*" | sort -bf >> /tmp/temp
+done < "$BATCH_FILE_MOVIE_FIND"
+
+WHITE 
+cat /tmp/temp |sort -bf
+
+echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
+
+rm /tmp/temp 2>/dev/null
+rm /tmp/tmp 2>/dev/null
+
+
+
+else
+sudo nano $BATCH_FILE_MOVIE_FIND ; c.ln2tb-movie-find-batch
+
+fi
+
+exit 0
+
+;;
+1)
+sudo nano $BATCH_FILE_MOVIE_FIND ; c.ln2tb-movie-find-batch
+;;
+2)
+_CANCEL_MSG ;; 
+esac

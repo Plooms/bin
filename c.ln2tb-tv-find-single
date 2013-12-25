@@ -1,0 +1,41 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Find) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+name=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox \
+"Please Enter the name of the Show" 10 50 )
+
+case $? in
+0)
+
+clear
+
+
+echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
+
+ls -1 "$TV_SYM" | grep -i "$name" | sort -bf
+
+echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
+
+
+
+;;
+1)
+_CANCEL_MSG ;; 
+
+3)
+ln2tb ;;
+
+esac
+
+
+
+
+
+
+

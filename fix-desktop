@@ -1,0 +1,21 @@
+#!/bin/bash
+# Fix desktop after moving to secondary
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+#dump the list of windows to a file
+wmctrl -lx > /tmp/window_list.txt
+
+#read the window information from the file
+while read id sticky real_name host win_title; do
+
+    # move the desktop
+    if [ "$real_name" == "xfdesktop.Xfdesktop" ]
+      then
+        wmctrl -i -r $id -e 0,0,0,-1,-1
+    fi
+
+done < /tmp/window_list.txt

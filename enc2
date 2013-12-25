@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+if mount | grep "$OPEN_DIR_ENCFS" >/dev/null
+then
+sleep 2
+echo "Finished Unmounting" ; sudo umount "$OPEN_DIR_ENCFS"
+sleep 2
+else
+encfs -o nonempty "$ENCRYPTED_DIR_ENCFS" "$OPEN_DIR_ENCFS" \
+&& echo "
+
+
+
+
+
+--------------------------
+  Mounted  EncFS
+--------------------------
+
+
+
+"
+
+fi

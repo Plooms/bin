@@ -1,0 +1,227 @@
+#!/bin/bash
+# The Function MOAS (Mother of All Scripts)
+
+
+
+##########################  Functions #################################
+####################################################
+
+
+RANDOM_COLOR()
+{
+
+  # This is really random color generation
+
+  COLOR=$((RANDOM % 7 + 31)) # set 31 to 30 for dark on light
+  RC="\e[1;${COLOR}m"    # set 1 to 0 for dark on light
+  echo -e "$RC"
+}
+
+
+####################################################
+####################################################
+
+
+
+RANDOM_COLOR_SEQ()
+{
+
+  # This is sequential and not really random
+
+  COLOR=$((31 + (++COLOR % 7)))   # set 31 to 30 for dark on light
+  RC="\e[1;${COLOR}m" # set 1 to 0 for dark on light
+  echo -e "$RC"
+}
+
+
+####################################################
+####################################################
+
+
+
+_CANCEL_MSG() { clear ; YELLOW ; echo -e "\n\n\n JOB CANCELED \n\n" ; }
+
+
+####################################################
+####################################################
+
+
+
+_CANCEL_MSG2() 
+{
+
+  clear ; YELLOW ;
+
+  echo -e "\n\n\n  JOB CANCELED
+  
+  [  $HOME_BACKUP_FOLDER  ]
+  
+  OR
+  
+  [  $HOME_BACKUP_FOLDER2  ]
+
+  ${RED}(Not Available) 
+  \n\n"
+
+}
+
+
+####################################################
+####################################################
+
+
+
+_CHECK_NAS1() 
+{ 
+
+ping -c1 -t2 $NAS1_IP > /dev/null \
+&& mount | grep $NAS1_MOUNT_POINT > /dev/null \
+&&	[ ! -z "$NAS_ALIVE_CHECK" ] \
+&& [ -f "$NAS1_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
+&& CHECK="$(cat $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
+&& [ -r $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+	if [ "$?" != 0 ]
+	then echo "Please check that $NAS1_MOUNT_POINT is mounted and alive"
+	exit 1
+	fi
+
+}
+
+
+
+_CHECK_NAS2() 
+{ 
+
+ping -c1 -t2 $NAS2_IP > /dev/null \
+&& mount | grep $NAS2_MOUNT_POINT > /dev/null \
+&&	[ ! -z "$NAS_ALIVE_CHECK" ] \
+&& [ -f "$NAS2_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
+&& CHECK="$(cat $NAS2_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
+&& [ -r $NAS2_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+	if [ "$?" != 0 ]
+	then echo "Please check that $NAS2_MOUNT_POINT is mounted and alive"
+	exit 1
+	fi
+
+}
+
+
+_CHECK_NAS3() 
+{ 
+
+ping -c1 -t2 $NAS3_IP > /dev/null \
+&& mount | grep $NAS3_MOUNT_POINT > /dev/null \
+&&	[ ! -z "$NAS_ALIVE_CHECK" ] \
+&& [ -f "$NAS3_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
+&& CHECK="$(cat $NAS3_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
+&& [ -r $NAS3_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+	if [ "$?" != 0 ]
+	then echo "Please check that $NAS3_MOUNT_POINT is mounted and alive"
+	exit 1
+	fi
+
+}
+
+
+_CHECK_NAS4() 
+{ 
+
+ping -c1 -t2 $NAS4_IP > /dev/null \
+&& mount | grep $NAS4_MOUNT_POINT > /dev/null \
+&&	[ ! -z "$NAS_ALIVE_CHECK" ] \
+&& [ -f "$NAS4_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
+&& CHECK="$(cat $NAS4_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
+&& [ -r $NAS4_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+	if [ "$?" != 0 ]
+	then echo "Please check that $NAS4_MOUNT_POINT is mounted and alive"
+	exit 1
+	fi
+
+}
+
+
+
+####################################################
+####################################################
+
+
+
+_DATE() { date >> $LOGS_DIR/"$SCRIPT_NAME" ; }
+
+
+####################################################
+####################################################
+
+
+
+_START_TIME() { START_TIME=$(date +%s) ; }
+
+
+####################################################
+####################################################
+
+
+
+_END_TIME()
+{ 
+	END_TIME=$(date +%s)
+	END_TIME_MIN=$(( END_TIME - START_TIME ))
+	
+	RANDOM_COLOR
+	echo -e "\n Script Name:   $SCRIPT_NAME"
+	echo -e "\n Elapsed Time:  $(( END_TIME - START_TIME )) s - $(( END_TIME_MIN / 60 ))  Min"
+  
+}
+
+
+####################################################
+####################################################
+
+
+
+_LOCK_ON() 
+{
+
+  if [ -e "${LOCKFILE}" ] && kill -0 "$(cat "${LOCKFILE}")" 2>/dev/null ; then
+  _LOCK_MSG
+  exit
+  fi
+  
+  trap "rm -f ${LOCKFILE} ; exit" INT TERM EXIT
+  echo $$ > "${LOCKFILE}"
+}
+
+
+####################################################
+####################################################  
+
+
+
+_LOCK_OFF() { rm -f "${LOCKFILE}" ;exit ; }
+
+
+####################################################
+####################################################
+
+
+
+_LOCK_MSG() 
+{ 
+
+  echo -e "
+  ${RED} The process is already running with PID:($(cat "$LOCKFILE")), please wait...
+		
+  if you are sure it is not running, then ${YELLOW}
+
+      rm -f $LOCKFILE  
+
+      sudo kill -9 $(cat "$LOCKFILE")" 
+	
+	exit 1
+}
+
+
+
+####################################################
+####################################################
+

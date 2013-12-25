@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+sudo systemctl restart lvmetad
+sudo vgscan
+sudo vgchange -ay
+sudo mount /dev/mapper/Original-Media /mnt/Original \
+&& startup-programs
+

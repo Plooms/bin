@@ -1,0 +1,34 @@
+#!/bin/bash
+# (Add - Move - Delete - Rename - Change - Find) and do lots of shit to the Media Collection
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+answer=$(dialog --extra-button --extra-label "Back" --stdout  --clear --menu \
+"Choose the command You Wish to Execute (Find)" 14 50 50 \
+"1- Single Movie" "" \
+"2- Multiple Movies" "" )
+
+case $? in
+0)
+
+if [ "$answer" = "1- Single Movie" ]
+then c.ln2tb-movie-find-single
+
+elif [ "$answer" = "2- Multiple Movies" ]
+then c.ln2tb-movie-find-batch
+
+fi
+
+
+;;
+1)
+_CANCEL_MSG ;; 
+
+3)
+ln2tb ;;
+
+esac

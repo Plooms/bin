@@ -1,0 +1,10 @@
+#!/bin/bash
+# change permission to executable "/usr/local/bin"
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+sudo chmod -R +x /usr/local/bin/*

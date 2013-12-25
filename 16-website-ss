@@ -1,0 +1,29 @@
+#!/bin/bash
+# Backup "My Website" (Snapshot style)
+SCRIPT_NAME="16-website-ss"
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+#########################################################
+
+# Tar Snapshot
+sudo tar "$OPT_16" -cpvf "$TRG_16".tgz "$SRC_16" 
+echo -e "\n\n Copied to: $TRG_16".tgz
+
+#########################################################
+
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF
+

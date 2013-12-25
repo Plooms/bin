@@ -1,0 +1,16 @@
+#!/bin/bash
+# Shutdown script
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+echo -e "Do you want to Shutdown? y "
+read confirmation
+if [ "$confirmation" = "y" ]
+then
+sudo shutdown now
+else
+_CANCEL_MSG
+fi

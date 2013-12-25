@@ -1,0 +1,17 @@
+#!/bin/bash
+# do Tvnamer on media files
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+PURPLE
+
+tvnamer -c ~/.tvnamer.json *
+
+RED
+
+tvnamer -c ~/.tvnamer.json * |grep skipping 
+
+exit 0

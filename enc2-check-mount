@@ -1,0 +1,23 @@
+#!/bin/bash
+# check if EncFS is mounted on ~/Private2
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+export DISPLAY=:0.0
+
+
+if findmnt -S encfs -T ~/Private2
+then 
+
+notify-send -u critical "EncFS is Mounted" --icon=dialog-warning
+
+echo "EncFS is Mounted"
+
+else echo "Everything's Good"
+
+fi
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+# Disable screen from blanking or turning off
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+xset -dpms; xset s off

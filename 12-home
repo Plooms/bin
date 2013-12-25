@@ -1,0 +1,98 @@
+#!/bin/bash
+# Backup "/home"
+SCRIPT_NAME="12-home"
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+#########################################################
+
+# Sync $HOME to NAS1
+
+if _CHECK_NAS1
+then
+
+
+
+if [ -d "$TRG_12_OLD" ]
+then
+echo "Removing Old Backups"
+echo ""
+sudo find "$TRG_12_OLD" -maxdepth 1 -type d | sort | tail -n +3 | xargs sudo rm -r
+fi
+
+
+
+
+mkdir -p "$TRG_12" \
+&& echo "Created Dir: "$TRG_12"" \
+&& sudo rsync "${OPT_12[@]}" "$SRC_12" "$TRG_12" \
+&& sudo rm -f "$LNK_12" \
+&& sudo ln -s "$TRG_12" "$LNK_12" \
+&& RANDOM_COLOR && echo -e " $TRG_12 \n--->\n $LNK_12 "
+
+##
+##
+
+#echo "Created Dir: "$TRG_12".tgz" \
+#&& sudo tar "${OPT_12_TAR[@]}" -cpvf "$TRG_12".tgz "$SRC_12"
+
+
+
+else
+
+_CANCEL_MSG2
+
+fi
+#########################################################
+RANDOM_COLOR
+#########################################################
+# Sync $HOME to NAS2
+
+if _CHECK_NAS2
+then
+
+
+if [ -d "$TRG_12_2_OLD" ]
+then
+echo "Removing Backups Older than 30 Days"
+echo ""
+sudo find "$TRG_12_2_OLD" -maxdepth 1 -type d | sort | tail -n +3 | xargs sudo rm -r
+fi
+
+
+mkdir -p "$TRG_12_2" \
+&& echo "Created Dir: "$TRG_12_2"" \
+&& sudo rsync "${OPT_12_2[@]}" "$SRC_12_2" "$TRG_12_2" \
+&& rm -f "$LNK_12_2" \
+&& ln -s "$TRG_12_2" "$LNK_12_2" \
+&& RANDOM_COLOR && echo -e " $TRG_12_2 \n--->\n $LNK_12_2 "
+
+##
+##
+
+#echo "Created Dir: "$TRG_12_2".tgz" \
+#&& sudo tar "${OPT_12_TAR[@]}" -cpvf "$TRG_12_2".tgz "$SRC_12_2"
+
+else
+
+_CANCEL_MSG2
+
+fi
+
+#########################################################
+
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF
+
