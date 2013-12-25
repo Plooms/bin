@@ -1,5 +1,5 @@
 #!/bin/bash
-# Backup "/media" (Snapshot Style)
+# Backup "/media" (Snapshot Style-oooooh yeah)
 SCRIPT_NAME="11-media-ss"
 
 # Source the VAR MOAS
