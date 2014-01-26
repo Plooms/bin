@@ -7,7 +7,13 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
-sudo find "$TV_DOWNLOAD_DIR"/ -name "WWW.YIFY*.jpg" -exec sudo rm -v {} \;
-sudo find "$TV_DOWNLOAD_DIR"/ -name "*.txt" -exec sudo rm -v {} \;
-
-
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.jp*g" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.png" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.txt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.bmp" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.gif" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.nfo" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -type d -iname "sample" -exec sudo rm -r {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -type d -not -name "zNew Folder" -exec sudo rmdir {} \; 2>/dev/null
+echo "Fixing Subtitles, If any!!!"
+sudo find "$TV_DOWNLOAD_DIR"/ -type f -name "*.srt" -exec sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d' {} \; -exec echo {} \;

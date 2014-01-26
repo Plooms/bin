@@ -1,0 +1,35 @@
+#! /bin/bash
+# Find Dirs without a certain file extension inside them
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# USAGE : script-name (extension) /dir/
+
+if [ -z $1 ]
+then echo "USAGE : [command] [extension] [dir]"
+exit 1
+fi
+
+EXT="$1"
+DIRECTORY="$2/"
+COUNT=0
+
+
+find "$DIRECTORY" -depth -type d | sort | while read -r DIR
+ do
+ v=$(find "$DIR" -iname "*.$EXT")
+ case "$v" in
+ ""  )
+	echo "$DIR"
+	COUNT=$(($(echo $COUNT) + 1))
+	echo $COUNT >| /tmp/counter
+ ;;
+ esac
+done
+
+YELLOW
+echo "Search completed"
+echo "($(cat /tmp/counter)) Directories don't have any ($EXT) files"

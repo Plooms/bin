@@ -41,8 +41,8 @@ mkdir -p "$TRG_12" \
 ##
 ##
 
-#echo "Created Dir: "$TRG_12".tgz" \
-#&& sudo tar "${OPT_12_TAR[@]}" -cpvf "$TRG_12".tgz "$SRC_12"
+echo "Created Dir: "$TRG_12".tgz" \
+&& sudo tar "${OPT_12_TAR[@]}" -cpvf "$TRG_12".tgz "$SRC_12"
 
 
 
@@ -78,8 +78,8 @@ mkdir -p "$TRG_12_2" \
 ##
 ##
 
-#echo "Created Dir: "$TRG_12_2".tgz" \
-#&& sudo tar "${OPT_12_TAR[@]}" -cpvf "$TRG_12_2".tgz "$SRC_12_2"
+echo "Created Dir: "$TRG_12_2".tgz" \
+&& sudo tar "${OPT_12_TAR[@]}" -cpvf "$TRG_12_2".tgz "$SRC_12_2"
 
 else
 

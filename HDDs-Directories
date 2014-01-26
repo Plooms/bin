@@ -9,7 +9,7 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
-if _CHECK_NAS
+if _CHECK_NAS1
 then
 echo "Mirroring Media Tree to file" ; \
 tree -d -L 3 /media/ > "$LIST_LOCATION"/HDDs-Directories ; \

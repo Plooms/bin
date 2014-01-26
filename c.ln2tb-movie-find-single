@@ -6,8 +6,12 @@
 source /usr/local/bin/VAR-SCRIPT
 
 
+if [ -n "$TERM_LAUNCH" ]
+then name="$(xclip -o)"
+else
 name=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox \
 "Please Enter the name of the Show" 10 50 )
+fi
 
 case $? in
 0)
@@ -47,7 +51,9 @@ find "$MOVIE_SYM"/ -type d -iname "*$name*" | sort -bf
 
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
-
+if [ -n "$TERM_LAUNCH" ]
+then sleep 1000
+fi
 ;;
 1)
 _CANCEL_MSG ;; 

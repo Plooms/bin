@@ -240,3 +240,6 @@ mv -v Big\ Love*                "$TV_SYM"/"Big Love"/             && echo -e "\n
 mv -v Big\ Love*                "$TV_SYM"/"Big Love"/             && echo -e "\n\n" 
 mv -v House*                "$TV_SYM"/"House"/             && echo -e "\n\n" 
 mv -v Sabrina\ The\ Teenage\ Witch*                "$TV_SYM"/"Sabrina The Teenage Witch"/             && echo -e "\n\n" 
+mv -v Roc*                "$TV_SYM"/"Roc"/             && echo -e "\n\n" 
+mv -v Border\ Security\ Canadas\ Front\ Line*                "$TV_SYM"/"Border Security: Canada's Front Line"/              && echo -e "\n\n" 
+mv -v Border\ Security*                "$TV_SYM"/"Border Security"/              && echo -e "\n\n" 

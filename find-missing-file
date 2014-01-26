@@ -1,0 +1,57 @@
+#!/bin/bash
+# Find Files without a certain file extension beside them
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+DIR="$TV_SYM"
+TMP="$(mktemp)"
+TMP1="$(mktemp)"
+TMP2="$(mktemp)"
+TMP_D="$(mktemp -d /tmp/Shows.XXXX)"
+#TMP_D_SUB="$(mktemp -d -p $TMP_D)"
+
+echo "Searching for media files without subtitles...."
+echo ""
+
+# Shows
+find "$DIR" -depth -type f -size +10M | sort | while read i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev  ;done >| "$TMP" 2>/dev/null
+find "$DIR" -depth -type f -iname "*.srt" | sort | while read i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
+find "$DIR" -depth -type f -iname "*.sub" | sort | while read i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.eng//'|sed 's/\.en//g' ;done  >> "$TMP" 2>/dev/null
+sort "$TMP" | uniq -u >| "$TMP1"
+while read i ;do sudo touch "$TMP_D"/"$i".avi ; done < "$TMP1"
+
+
+#while [ "$(find "$TMP_D" -maxdepth 1 -type f)" ]
+#do
+#       find "$TMP_D" -maxdepth 1 -type f | sort | head -n 250 >| "$TMP2"
+#       while read i ; do mv "$i" "$TMP_D_SUB" ; done < "$TMP2"
+#       TMP_D_SUB="$(mktemp -d -p $TMP_D)"
+#done
+
+#rmdir "$TMP_D"/* 2>/dev/null
+
+
+
+
+# Movies
+DIR="$MOVIE_SYM"
+sudo rm /tmp/a{1,2,3,4} 2>/dev/null
+find-missing-dir srt "$DIR" > /tmp/a1
+find-missing-dir sub "$DIR" >> /tmp/a1
+cat  /tmp/a1|sort| uniq -d > /tmp/a2
+cd "$DIR"
+while read dir ;do find "$dir" -size +30M ;done < /tmp/a2 >| /tmp/a3 2>/dev/null
+cat  /tmp/a3 | cut -d/ -f6 >| /tmp/a4
+TMP="$(mktemp -d /tmp/Movies.XXXX)"
+while read dir ;do touch "$TMP"/"$dir";done < /tmp/a4
+export Path="$TMP" && parent
+
+
+YELLOW
+
+echo ""
+echo "The files are now in $TMP_D & $TMP"
+dolphin "$TMP_D" "$TMP" 2>/dev/null &

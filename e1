@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+if findmnt -S "$ENCRYPTED_DIR_ECRYPT" -T "$OPEN_DIR_ECRYPT" >/dev/null
+then
+sleep 1
+echo "Finished Unmounting" ; sudo umount "$OPEN_DIR_ECRYPT" ; sudo rmdir "$OPEN_DIR_ECRYPT"
+sleep 1
+else
+sudo mkdir "$OPEN_DIR_ECRYPT" && sudo mount -t ecryptfs "$ENCRYPTED_DIR_ECRYPT" "$OPEN_DIR_ECRYPT" -o key=passphrase,ecryptfs_cipher=aes,ecryptfs_key_bytes=16,ecryptfs_passthrough=n,ecryptfs_enable_filename_crypto=yes \
+|| sudo rmdir "$OPEN_DIR_ECRYPT" 2>/dev/null
+#,ecryptfs_fnek_sig=xxxxxxxxxxxxxxxx;
+fi

@@ -25,7 +25,7 @@ export LOGS_DIR="/home/abz/xLogsx"
 
 
 # How many NAS servers do you have ?
-export NAS_COUNT="3"
+export NAS_COUNT="2"
 
 
 # NAS1 Mount Point (/media/?)
@@ -63,7 +63,7 @@ export HOME_BACKUP_FOLDER2="/media/C2/HOME-DAILY-BACKUP"
 
 
 # Download folder for TV episodes
-export TV_DOWNLOAD_DIR="/home/abz/qBT_dir/Download-folder"
+export TV_DOWNLOAD_DIR="/home/abz/NAS/Other/Downloads/Download-folder"
 
 
 # Media Log
@@ -83,23 +83,23 @@ export DROPBOX="/home/abz/Dropbox/Shared (1)"
 
 
 # BTSync folder
-export BTSYNC="/home/abz/qBT_dir/BTSync"
+export BTSYNC="/home/abz/xxx"
 
 
 # Movie symlink in /home/?/?
-export MOVIE_SYM="/home/abz/Movies"
+export MOVIE_SYM="/home/abz/NAS/Movies"
 
 
 # TV symlink in /home/?/?
-export TV_MASTER_SYM="/home/abz/TV"
+export TV_MASTER_SYM="/home/abz/NAS"
 
 
 # Show symlink /home/?/TV/Shows?
-export TV_SYM="/home/abz/TV/Shows"
+export TV_SYM="/home/abz/NAS/Shows"
 
 
 # Anime symlink /home/?/TV/Anime?
-export TV_SYM2="/home/abz/TV/Anime"
+export TV_SYM2="/home/abz/NAS/Anime"
 
 
 

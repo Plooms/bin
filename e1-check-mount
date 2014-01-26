@@ -8,7 +8,8 @@ source /usr/local/bin/VAR-SCRIPT
 export DISPLAY=:0.0
 
 
-if findmnt -S ~/.Private -T ~/Private
+if findmnt -S "$ENCRYPTED_DIR_ECRYPT" -T "$OPEN_DIR_ECRYPT" >/dev/null
+
 then 
 
 notify-send -u critical "eCryptFS is Mounted" --icon=dialog-warning

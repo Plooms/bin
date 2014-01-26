@@ -30,6 +30,11 @@ then
 move 2>&1 | tee -a .Move.log ; date >> .Move.log
 
 
+if [ -n "$TERM_LAUNCH" ]
+then sleep 3
+fi
+
+
 exit 0
 
 else

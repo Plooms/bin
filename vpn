@@ -12,9 +12,11 @@ source /usr/local/bin/VAR-SCRIPT
 #while [ "true" ]
 #do
 	VPNCON=$(nmcli con status)
-	if [[ $VPNCON != "New York" ]]; then
+	if [[ $VPNCON != "VPN" ]]; then
 		echo "Disconnected, trying to reconnect..."
-		(sleep 1 && nmcli con up uuid 049a7b11-7a42-4969-8932-1229b2c1002c)
+	(sleep 1 && nmcli con up id VPN)
+
+# second method (by uuid)	(sleep 1 && nmcli con up uuid 049a7b11-7a42-4969-8932-1229b2c1002c)
 	else
 		echo "Already connected !"
 	fi

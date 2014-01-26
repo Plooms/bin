@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+trap "rmdir "$OPEN_DIR_ENCFS" 2>/dev/null ; exit" INT TERM EXIT
+
+if mount | grep "$OPEN_DIR_ENCFS" >/dev/null
+then
+sleep 1
+echo "Finished Unmounting" ; sudo umount "$OPEN_DIR_ENCFS" ; sudo rmdir "$OPEN_DIR_ENCFS"
+sleep 1
+else
+mkdir "$OPEN_DIR_ENCFS" && encfs -o nonempty "$ENCRYPTED_DIR_ENCFS" "$OPEN_DIR_ENCFS"
+sudo rmdir "$OPEN_DIR_ENCFS" 2>/dev/null
+fi

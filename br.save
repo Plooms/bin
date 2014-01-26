@@ -22,7 +22,7 @@ if [ "$COUNTER" = off ]
 then
 	echo "Brightness = HIGH" && echo high >| "$TEMP" && xbrightness 40000 24000 20000 > /dev/null
 	echo -e "\n\n\n OFF [HIGH] LOW "
-	notify-send Brightness HIGH
+	notify-send Brightness HIGH HIGH HIGH HIGH HIGH HIGH
 
 
 elif [ "$COUNTER" = low ]

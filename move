@@ -24,8 +24,11 @@ CYAN
 
 
 #mv -v /media/{"/2 TB"/,"/TB 7"/Downloads}/{Finished,Finished/*}/                "$TV_SYM"/""/ 2>/dev/null && echo -e "\n\n"
-MUTE='2>/dev/null && echo -e "\n\n"'
 
+
+echo "Fixing Subtitles, If there are any!"
+sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d' *.srt 2>/dev/null
+echo""
 
 
 
@@ -33,7 +36,6 @@ MUTE='2>/dev/null && echo -e "\n\n"'
 mv -v CSI*Miami*                    "$TV_SYM"/"CSI: Miami"/                                               2>/dev/null && echo -e "\n\n"
 mv -v CSI*{New,NY}*                 "$TV_SYM"/"CSI: NY"/                                                  2>/dev/null && echo -e "\n\n"
 mv -v CSI*Scene*                    "$TV_SYM"/"CSI: Crime Scene Investigation"/                           2>/dev/null && echo -e "\n\n"
-mv -v CSI\ NY*                      "$TV_SYM"/"CSI: NY"/              				      2>/dev/null && echo -e "\n\n"
 
 # Can sort
 mv -v 24*                           "$TV_SYM"/"24"/						              2>/dev/null && echo -e "\n\n"
@@ -221,3 +223,7 @@ mv -v George\ Lopez*                "$TV_SYM"/"George Lopez"/              2>/de
 mv -v Big\ Love*                "$TV_SYM"/"Big Love"/              2>/dev/null && echo -e "\n\n"
 mv -v House*                "$TV_SYM"/"House"/              2>/dev/null && echo -e "\n\n"
 mv -v Sabrina\ The\ Teenage\ Witch*                "$TV_SYM"/"Sabrina The Teenage Witch"/              2>/dev/null && echo -e "\n\n"
+mv -v Roc*                "$TV_SYM"/"Roc"/              2>/dev/null && echo -e "\n\n"
+mv -v Border\ Security\ Canadas\ Front\ Line*                "$TV_SYM"/"Border Security: Canada's Front Line"/              2>/dev/null && echo -e "\n\n"
+mv -v Border\ Security*                "$TV_SYM"/"Border Security"/              2>/dev/null && echo -e "\n\n"
+mv -v Seinfeld*                "$TV_SYM"/"Seinfeld"/              2>/dev/null && echo -e "\n\n"
