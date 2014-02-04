@@ -6,4 +6,4 @@
 source /usr/local/bin/VAR-SCRIPT
 
 
-x11vnc -forever
+x11vnc -forever -repeat

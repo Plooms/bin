@@ -10,7 +10,8 @@
 echo "
 
 lost*found
-HOME-DAILY-BACKUP/
+Home-Backup/
+Storage/
 Other/Apps/NO-SYNC/*/*
 Other/Downloads/Download-folder/*
 Other/Downloads/temp*/*

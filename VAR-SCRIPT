@@ -58,8 +58,8 @@ export MOVIE_DIR1="/media/C1/Movies"
 export MOVIE_DIR2="/media/C2/current/Movies"
 
 
-export HOME_BACKUP_FOLDER="/media/C1/HOME-DAILY-BACKUP"
-export HOME_BACKUP_FOLDER2="/media/C2/HOME-DAILY-BACKUP"
+export HOME_BACKUP_FOLDER="/media/C1/Home-Backup"
+export HOME_BACKUP_FOLDER2="/media/C2/Home-Backup"
 
 
 # Download folder for TV episodes
@@ -67,7 +67,7 @@ export TV_DOWNLOAD_DIR="/home/abz/NAS/Other/Downloads/Download-folder"
 
 
 # Media Log
-export PLAYER_LAST_WATCHED="/home/abz/Ares/Media/Last-Watched"
+export PLAYER_LAST_WATCHED="/home/abz/Ares/Media/Last-Watched.txt"
 
 
 # HDDs-Directories list location

@@ -21,8 +21,10 @@ clear
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 find "$MOVIE_SYM"/ -iname "*$name*" -size +25M |sort -bf > /tmp/temp
+find "$MOVIE_SYM"/ -iname "*$name*nfo" -size -25M |sort -bf > /tmp/temp1
 
-while read FILE ;do movie_array+=("$FILE");done </tmp/temp
+while read FILE  ; do movie_array+=("$FILE") ;done < /tmp/temp
+while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < /tmp/temp1
 
 for i in "${movie_array[@]}"
 do
@@ -32,12 +34,20 @@ echo -e "${YELLOW} The Information for the Video File:${WHITE}
 
 RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' )
 RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' )
+NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
+PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')"
+
+if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
+
 
 GREEN
 echo -e "Size =  ${WHITE}$(du -h "$i" | awk '{print $1}')${COLOR_OFF}"
 
 GREEN
 echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}"
+
+GREEN
+echo -e "Watched = ${WHITE}$WATCHED"
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 

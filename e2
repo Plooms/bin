@@ -6,7 +6,8 @@
 source /usr/local/bin/VAR-SCRIPT
 
 
-trap "rmdir "$OPEN_DIR_ENCFS" 2>/dev/null ; exit" INT TERM EXIT
+trap "rmdir $OPEN_DIR_ENCFS 2>/dev/null ; exit" INT TERM EXIT
+
 
 if mount | grep "$OPEN_DIR_ENCFS" >/dev/null
 then

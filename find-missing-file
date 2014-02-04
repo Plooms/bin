@@ -6,22 +6,28 @@
 source /usr/local/bin/VAR-SCRIPT
 
 
-DIR="$TV_SYM"
-TMP="$(mktemp)"
-TMP1="$(mktemp)"
-TMP2="$(mktemp)"
-TMP_D="$(mktemp -d /tmp/Shows.XXXX)"
-#TMP_D_SUB="$(mktemp -d -p $TMP_D)"
+export DIR="$TV_SYM"
+export TMP="$(mktemp)"
+export TMP1="$(mktemp)"
+export TMP2="$(mktemp)"
+export TMP_D="$(mktemp -d /tmp/Shows.XXXX)"
+#export TMP_D_SUB="$(mktemp -d -p $TMP_D)"
 
 echo "Searching for media files without subtitles...."
 echo ""
 
 # Shows
-find "$DIR" -depth -type f -size +10M | sort | while read i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev  ;done >| "$TMP" 2>/dev/null
-find "$DIR" -depth -type f -iname "*.srt" | sort | while read i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
-find "$DIR" -depth -type f -iname "*.sub" | sort | while read i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.eng//'|sed 's/\.en//g' ;done  >> "$TMP" 2>/dev/null
+find "$DIR" -type f -size +10M | sort | while read i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev  ;done >| "$TMP" 2>/dev/null
+find "$DIR" -type f -iname "*.srt" | sort | while read i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
+find "$DIR" -type f -iname "*.sub" | sort | while read i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.eng//'|sed 's/\.en//g' ;done  >> "$TMP" 2>/dev/null
 sort "$TMP" | uniq -u >| "$TMP1"
 while read i ;do sudo touch "$TMP_D"/"$i".avi ; done < "$TMP1"
+find "$DIR" -maxdepth 1 |cut -d/ -f6 | while read i ; do mkdir -p "$TMP_D"/Shows/"$i" ; done
+cd "$TMP_D"
+export find_missing_file_move="Y" && /usr/local/bin/move >/dev/null
+sudo mv "$TMP_D"/Shows/* "$TMP_D"/
+sudo rm -r "$TMP_D"/Shows 2>/dev/null
+sudo rmdir "$TMP_D"/* 2>/dev/null
 
 
 #while [ "$(find "$TMP_D" -maxdepth 1 -type f)" ]
@@ -44,11 +50,14 @@ find-missing-dir sub "$DIR" >> /tmp/a1
 cat  /tmp/a1|sort| uniq -d > /tmp/a2
 cd "$DIR"
 while read dir ;do find "$dir" -size +30M ;done < /tmp/a2 >| /tmp/a3 2>/dev/null
-cat  /tmp/a3 | cut -d/ -f6 >| /tmp/a4
+cat  /tmp/a3 | cut -d/ -f7 >| /tmp/a4
 TMP="$(mktemp -d /tmp/Movies.XXXX)"
 while read dir ;do touch "$TMP"/"$dir";done < /tmp/a4
 export Path="$TMP" && parent
 
+
+# cleanup exported vars
+export find_missing_file_move=""
 
 YELLOW
 

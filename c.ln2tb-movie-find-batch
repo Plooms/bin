@@ -5,7 +5,9 @@
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
-
+TMP1="$(mktemp)"
+TMP2="$(mktemp)"
+TMP3="$(mktemp)"
 
 start=$(dialog --stdout  --clear --help-button --help-label "Cancel" --yesno \
 "Did you add the Show names to $BATCH_FILE_MOVIE_FIND ?" 10 50 )
@@ -21,16 +23,13 @@ echo "Searching for Video Files"
 while read name
 do
 
-find "$MOVIE_SYM"/ -iname "*$name*" -size +25M |sort -bf >> /tmp/tmp
+find "$MOVIE_SYM"/ -iname "*$name*" -size +25M |sort -bf >> "$TMP1"
 
 done < "$BATCH_FILE_MOVIE_FIND"
 
-cat /tmp/tmp|sort -bf >/tmp/temp
+cat "$TMP1"|sort -bf >"$TMP2"
 
-while read FILE ;do movie_array+=("$FILE");done </tmp/temp
-
-rm /tmp/temp 2>/dev/null
-rm /tmp/tmp 2>/dev/null
+while read FILE ;do movie_array+=("$FILE");done < "$TMP2"
 
 clear
 
@@ -42,6 +41,10 @@ echo -e "${YELLOW} The Information for the Video File:${WHITE}
 
 RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' )
 RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' )
+NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
+PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')"
+
+if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
 
 
 GREEN
@@ -50,6 +53,9 @@ echo -e "Size =  ${WHITE}$(du -h "$i" | awk '{print $1}')${COLOR_OFF}"
 GREEN
 echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}"
 
+
+GREEN
+echo -e "Watched = ${WHITE}$WATCHED"
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
@@ -63,16 +69,14 @@ echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 
 while read name
 do
-find "$MOVIE_SYM"/ -type d -iname "*$name*" | sort -bf >> /tmp/temp
+find "$MOVIE_SYM"/ -type d -iname "*$name*" | sort -bf >> "$TMP3"
 done < "$BATCH_FILE_MOVIE_FIND"
 
 WHITE 
-cat /tmp/temp |sort -bf
+cat "$TMP3" |sort -bf
 
 echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 
-rm /tmp/temp 2>/dev/null
-rm /tmp/tmp 2>/dev/null
 
 
 
