@@ -3,17 +3,15 @@
 
 echo "/usr/local/bin"
 cd /usr/local/bin
-git add -A . ; git commit -m N/A ; git push origin
-
+git add -A . 2>/dev/null ; git commit -m N/A 2>/dev/null ; git push origin 2>/dev/null
 echo ""
 
 echo "/home/abz/Open-Office/Tips-and-Tricks"
 cd /home/abz/Open-Office/Tips-and-Tricks
-git add -A . ; git commit -m N/A ; git push origin
+git add -A . 2>/dev/null ; git commit -m N/A 2>/dev/null ; git push origin 2>/dev/null
 echo ""
 
 echo "/home/abz/BTSync-Central-Repo"
 cd /home/abz/BTSync-Central-Repo
-git add -A . ; git commit -m N/A ; git push origin
-
+git add -A . 2>/dev/null ; git commit -m N/A 2>/dev/null ; git push origin 2>/dev/null
 echo ""
