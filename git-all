@@ -6,5 +6,5 @@ if [ ! -z "$1" ]
 then cd "$1"
 fi
 
-git add . ; git commit -m N/A ; git push origin
+git add -A . ; git commit -m N/A ; git push origin
 
