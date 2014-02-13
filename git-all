@@ -1,10 +1,10 @@
 #!/bin/bash
 # Do all the git shit
 
+cd /usr/local/bin
+git add -A . ; git commit -m N/A ; git push origin
 
-if [ ! -z "$1" ]
-then cd "$1"
-fi
 
+cd /home/abz/Open-Office/ips-and-Tricks
 git add -A . ; git commit -m N/A ; git push origin
 
