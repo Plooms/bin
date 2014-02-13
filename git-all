@@ -1,6 +1,13 @@
 #!/bin/bash
 # Do all the git shit
 
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+
 echo "/usr/local/bin"
 cd /usr/local/bin
 git add -A . 2>/dev/null ; git commit -m N/A 2>/dev/null ; git push origin 2>/dev/null

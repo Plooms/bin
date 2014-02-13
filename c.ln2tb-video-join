@@ -1,6 +1,7 @@
 #!/bin/bash
 # join multiple videos into one file
 
+
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
