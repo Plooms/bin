@@ -5,6 +5,6 @@ cd /usr/local/bin
 git add -A . ; git commit -m N/A ; git push origin
 
 
-cd /home/abz/Open-Office/ips-and-Tricks
+cd /home/abz/Open-Office/Tips-and-Tricks
 git add -A . ; git commit -m N/A ; git push origin
 
