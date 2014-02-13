@@ -27,6 +27,7 @@ fi
 
 
 mkdir -v "$TV_SYM2"/"$LINE"
+sudo chmod 777 "$TV_SYM2"/"$LINE"
 
 done
 

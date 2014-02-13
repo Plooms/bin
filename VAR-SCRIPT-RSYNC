@@ -16,7 +16,6 @@ Other/Apps/NO-SYNC/*/*
 Other/Downloads/Download-folder/*
 Other/Downloads/temp*/*
 Other/Shows-clean/*
-Other/FTP-Share/*
 .Trash*
 .directory
 .C1
@@ -38,6 +37,8 @@ echo "
 .dropbox/
 .local/
 .mozilla/*.log
+.macromedia/
+.nv
 .thumbnails/
 .xbmc/*
 *.socket
@@ -209,11 +210,11 @@ Movies/Zambezia (2012)/***
 #########################  Snapshot Variables ##################################
 
 ##Todays date:
-export DAY0=$( date -I)
+export DAY0=$(date -I)
 ##Yesterdays date:
-export DAY1=$( date -I -d "1 day ago")
+export DAY1=$(date -I -d "1 day ago")
 ##This Hour:
-export HOUR0="$( date +%p-%H)"
+export HOUR0="$(date +%p-%H)"
 ##Previous Hour
 export HOUR1="$(date +%p-%H -d "1 hour ago")"
 ##This Minute:

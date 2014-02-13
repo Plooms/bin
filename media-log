@@ -12,7 +12,7 @@ wmctrl -l |grep SMPlayer
 
 if [ "$?" = "0" ]
 then
-echo "$(date |sed 's/AST 2013//g' ) <-----> ($(wmctrl -l |grep SMPlayer |cut -d" " -f5- | sed 's/ - SMPlayer2//g' |sed "s/'//g"  ))" >> "$PLAYER_LAST_WATCHED"
+echo "$(date |sed 's/AST 2014//g' )<-> ($(wmctrl -l |grep SMPlayer |cut -d" " -f5- | sed 's/ - SMPlayer2//g' |sed "s/'//g"  ))" > "$PLAYER_LAST_WATCHED"/"$DAY0"
 else
 echo "
 
@@ -28,7 +28,7 @@ wmctrl -l |grep VLC
 
 if [ "$?" = "0" ]
 then
-echo "$(date |sed 's/AST 2013//g' ) <-----> ($( wmctrl -l |grep VLC |cut -d" " -f5- | sed 's/ - VLC media player//g' |sed "s/'//g" ))" >> "$PLAYER_LAST_WATCHED"
+echo "$(date |sed 's/AST 2014//g' )<-> ($( wmctrl -l |grep VLC |cut -d" " -f5- | sed 's/ - VLC media player//g' |sed "s/'//g" ))" >> "$PLAYER_LAST_WATCHED"/"$DAY0"
 
 else
 echo "

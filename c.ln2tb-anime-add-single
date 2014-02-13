@@ -30,6 +30,7 @@ else GREEN
 fi
 
 mkdir -v "$TV_SYM2"/"$name"
+sudo chmod 777 "$TV_SYM2"/"$name"
 
 
 if [ "$?" = 0 ]

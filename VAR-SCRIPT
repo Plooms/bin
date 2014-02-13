@@ -67,7 +67,7 @@ export TV_DOWNLOAD_DIR="/home/abz/NAS/Other/Downloads/Download-folder"
 
 
 # Media Log
-export PLAYER_LAST_WATCHED="/home/abz/Ares/Media/Last-Watched.txt"
+export PLAYER_LAST_WATCHED="/home/abz/Ares/Media/Last-Watched"
 
 
 # HDDs-Directories list location

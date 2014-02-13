@@ -26,6 +26,7 @@ else GREEN
 fi
 
 mkdir -v "$TV_SYM"/"$LINE"
+sudo chmod 777 "$TV_SYM"/"$LINE"
 
 done
 
