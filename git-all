@@ -9,19 +9,25 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 YELLOW ; echo "/usr/local/bin" ; COLOR_OFF
+
 cd /usr/local/bin
 git add -A . 2>/dev/null ; git commit -m N/A 2>/dev/null ; git push origin 2>/dev/null
+
 echo "#############################################################"
 echo ""
 
 YELLOW ; echo "/home/abz/Open-Office/Tips-and-Tricks" ; COLOR_OFF
+
 cd /home/abz/Open-Office/Tips-and-Tricks
 git add -A . 2>/dev/null ; git commit -m N/A 2>/dev/null ; git push origin 2>/dev/null
+
 echo "#############################################################"
 echo ""
 
 YELLOW ; echo "/home/abz/BTSync-Central-Repo" ; COLOR_OFF
+
 cd /home/abz/BTSync-Central-Repo
 git add -A . 2>/dev/null ; git commit -m N/A 2>/dev/null ; git push origin 2>/dev/null
+
 echo "#############################################################"
 echo ""
