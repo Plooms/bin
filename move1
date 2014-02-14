@@ -269,3 +269,4 @@ mv -v Getting\ On\ \(US\)*                "$TV_SYM"/"Getting On (US)"/          
 mv -v The\ Goldbergs\ \(2013\)*                "$TV_SYM"/"The Goldbergs (2013)"/             && echo -e "\n\n" 
 mv -v Dads\ \(2013\)*                "$TV_SYM"/"Dads (2013)"/             && echo -e "\n\n" 
 mv -v Nip*Tuck*                "$TV_SYM"/"Nip Tuck"/             && echo -e "\n\n" 
+mv -v Lilyhammer*                "$TV_SYM"/"Lilyhammer"/             && echo -e "\n\n" 
