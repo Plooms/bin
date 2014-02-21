@@ -8,6 +8,7 @@ source /usr/local/bin/VAR-SCRIPT
 TMP1="$(mktemp)"
 TMP2="$(mktemp)"
 TMP3="$(mktemp)"
+TMP_LOG1="$(mktemp)"
 
 start=$(dialog --stdout  --clear --help-button --help-label "Cancel" --yesno \
 "Did you add the Show names to $BATCH_FILE_MOVIE_FIND ?" 10 50 )
@@ -65,7 +66,7 @@ echo -e "Watched = ${WHITE}$WATCHED"
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
-done
+done | tee "$TMP_LOG1"
 
 
 
@@ -84,7 +85,7 @@ cat "$TMP3" |sort -bf
 echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 
 
-
+echo "Log File: $TMP_LOG"
 
 else
 sudo nano $BATCH_FILE_MOVIE_FIND ; c.ln2tb-movie-find-batch

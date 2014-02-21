@@ -69,6 +69,9 @@ find "$MOVIE_SYM"/ -type d -iname "*$name*" | sort -bf
 
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
+
+echo "Log File: $TMP_LOG"
+
 if [ -n "$TERM_LAUNCH" ]
 then sleep 1000
 fi
