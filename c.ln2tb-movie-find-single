@@ -7,6 +7,7 @@ source /usr/local/bin/VAR-SCRIPT
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
+TMP_LOG1="$(mktemp)"
 
 
 if [ -n "$TERM_LAUNCH" ]
@@ -59,7 +60,7 @@ echo -e "Watched = ${WHITE}$WATCHED"
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
-done
+done | tee "$TMP_LOG1"
 
 #---#
 
@@ -70,7 +71,7 @@ find "$MOVIE_SYM"/ -type d -iname "*$name*" | sort -bf
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
 
-echo "Log File: $TMP_LOG"
+echo "Log File: $TMP_LOG1"
 
 if [ -n "$TERM_LAUNCH" ]
 then sleep 1000

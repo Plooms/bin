@@ -85,7 +85,7 @@ cat "$TMP3" |sort -bf
 echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 
 
-echo "Log File: $TMP_LOG"
+echo "Log File: $TMP_LOG1"
 
 else
 sudo nano $BATCH_FILE_MOVIE_FIND ; c.ln2tb-movie-find-batch
