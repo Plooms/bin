@@ -41,6 +41,7 @@ echo -e "${YELLOW} The Information for the Video File:${WHITE}
 
 RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' )
 RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' )
+DEF=$( [ $RES2 -lt 600 ] && echo "[SD]")
 NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
 PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
 
@@ -52,7 +53,7 @@ GREEN
 echo -e "Size =  ${WHITE}$(du -h "$i" | awk '{print $1}')${COLOR_OFF}"
 
 GREEN
-echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}"
+echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}${PURPLE}  $DEF ${COLOR_OFF}"
 
 
 GREEN
