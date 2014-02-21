@@ -60,7 +60,22 @@ echo -e "Watched = ${WHITE}$WATCHED"
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
-done | tee "$TMP_LOG1"
+
+####### For the log file#########
+
+echo -e "
+Name =  $NAME
+Size =  $(du -h "$i" | awk '{print $1}')
+Resolution = $RES1 x $RES2p  $DEF
+Watched = $WATCHED
+\n-----------################-------------\n
+
+" >> "$TMP_LOG1"
+
+####### For the log file#########
+
+
+done
 
 #---#
 
