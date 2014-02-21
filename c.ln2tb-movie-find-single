@@ -62,14 +62,12 @@ echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 
 ####### For the log file#########
-
 echo -e "
 Name =  $NAME
-Size =  $(du -h "$i" | awk '{print $1}')
-Resolution = $RES1 x $RES2p  $DEF
+Size =  "$(du -h "$i" | awk '{print $1}')"
+Resolution = "$RES1" x "$RES2"p  $DEF
 Watched = $WATCHED
-\n-----------################-------------\n
-
+-----------################-------------
 " >> "$TMP_LOG1"
 
 ####### For the log file#########
@@ -86,7 +84,7 @@ find "$MOVIE_SYM"/ -type d -iname "*$name*" | sort -bf
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
 
-echo "Log File: $TMP_LOG1"
+echo "Log File: g $TMP_LOG1"
 
 if [ -n "$TERM_LAUNCH" ]
 then sleep 1000
