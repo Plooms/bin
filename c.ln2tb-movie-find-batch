@@ -42,7 +42,8 @@ echo -e "${YELLOW} The Information for the Video File:${WHITE}
 RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' )
 RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' )
 NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
-PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')"
+PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
+
 
 if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
 
