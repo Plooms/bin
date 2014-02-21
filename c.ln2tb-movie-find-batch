@@ -39,9 +39,9 @@ do
 echo -e "${YELLOW} The Information for the Video File:${WHITE}
 "$i""
 
-RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' )
-RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' )
-DEF=$( [ $RES2 -lt 600 ] && echo "[SD]")
+RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' )
+RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' )
+DEF=$([ $RES2 -lt 600 ] && echo "[SD]")
 NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
 PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
 
