@@ -5,6 +5,9 @@
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+TMP="$(mktemp)"
+TMP2="$(mktemp)"
+
 
 if [ -n "$TERM_LAUNCH" ]
 then name="$(xclip -o)"
@@ -20,11 +23,11 @@ clear
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
-find "$MOVIE_SYM"/ -iname "*$name*" -size +25M |sort -bf > /tmp/temp
-find "$MOVIE_SYM"/ -iname "*$name*nfo" -size -25M |sort -bf > /tmp/temp1
+find "$MOVIE_SYM"/ -iname "*$name*" -size +25M |sort -bf > $TMP
+find "$MOVIE_SYM"/ -iname "*$name*nfo" -size -25M |sort -bf > $TMP2
 
-while read FILE  ; do movie_array+=("$FILE") ;done < /tmp/temp
-while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < /tmp/temp1
+while read FILE  ; do movie_array+=("$FILE") ;done < $TMP
+while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
 
 for i in "${movie_array[@]}"
 do
