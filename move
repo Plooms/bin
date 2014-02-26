@@ -265,3 +265,5 @@ mv -v The\ Goldbergs\ \(2013\)*                "$TV_SYM"/"The Goldbergs (2013)"/
 mv -v Dads\ \(2013\)*                "$TV_SYM"/"Dads (2013)"/              2>/dev/null && echo -e "\n\n"
 mv -v Nip*Tuck*                "$TV_SYM"/"Nip Tuck"/              2>/dev/null && echo -e "\n\n"
 mv -v Lilyhammer*                "$TV_SYM"/"Lilyhammer"/              2>/dev/null && echo -e "\n\n"
+mv -v Jackass*                "$TV_SYM"/"Jackass"/              2>/dev/null && echo -e "\n\n"
+
