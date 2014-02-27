@@ -197,7 +197,7 @@ mv -v Tanked*                       "$TV_SYM"/"Tanked"/              				      2
 mv -v That*70*Show*                 "$TV_SYM"/"That 70's Show"/                                           2>/dev/null && echo -e "\n\n"
 mv -v The\ 4400*                    "$TV_SYM"/"The 4400"/                                                 2>/dev/null && echo -e "\n\n"
 mv -v The\ Amazing*Race*            "$TV_SYM"/"The Amazing Race"/                                         2>/dev/null && echo -e "\n\n"
-mv -v The\ Americans\ \(2013\)*     "$TV_SYM"/"The Americans (2013)"/     			              2>/dev/null && echo -e "\n\n"
+mv -v The\ Americans*		    "$TV_SYM"/"The Americans"/     			              2>/dev/null && echo -e "\n\n"
 mv -v The\ Bernie\ Mac\ Show*       "$TV_SYM"/"The Bernie Mac Show"/			              2>/dev/null && echo -e "\n\n"
 mv -v The\ Bridge\ \(US\)*          "$TV_SYM"/"The Bridge (US)"/				              2>/dev/null && echo -e "\n\n"
 mv -v The\ Cleveland*               "$TV_SYM"/"The Cleveland Show"/                                       2>/dev/null && echo -e "\n\n"
