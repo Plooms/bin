@@ -40,7 +40,7 @@ RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g'
 RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' )
 DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
 NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
-NOTE="$(cat "$( echo $i | rev |cut -b 5- | rev )"-NOTES.txt)"
+NOTE="$(cat "$( echo $i | rev |cut -b 5- | rev )"-NOTES.txt)" 2>/dev/null
 NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
 
