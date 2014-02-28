@@ -30,7 +30,7 @@ else
 fi
 
 mysql --user=root --password=0 playground << EOF
-INSERT INTO movies (Movie_name,Size,Resolution,Watched,Notes) VALUES ("$NAME", "$SIZE", "$RES1 x $RES2"p, "$WATCHED", "$NOTE");
+INSERT INTO movies (Movie_name,Size,Resolution,Watched,Notes) VALUES ("$NAME", "$SIZE", "$RES1 x $RES2p", "$WATCHED", "$NOTE");
 EOF
 
 done
