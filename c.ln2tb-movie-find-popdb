@@ -27,6 +27,9 @@ for i in "${movie_array[@]}"
 do
 RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' )
 RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' )
+
+if [ -z "$RES1" -o -z "$RES2"  ]; then RES1="0" && RES2="0" ; fi
+
 DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
 NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
 NOTES="$(cat "$(echo $i | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
