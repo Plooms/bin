@@ -7,7 +7,7 @@ TMP2="$(mktemp)"
 TMP_LOG1="$(mktemp)"
 
 find "$MOVIE_SYM"/ -size +25M |sort -bf > $TMP
-find "$MOVIE_SYM"/ "*nfo" -size -25M |sort -bf > $TMP2
+find "$MOVIE_SYM"/ -iname "*.nfo" -size -25M |sort -bf > $TMP2
 while read FILE  ; do movie_array+=("$FILE") ;done < $TMP
 while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
 
