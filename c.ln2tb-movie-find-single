@@ -68,7 +68,12 @@ GREEN
 echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
 YELLOW
 
-mysql --user=root --password=0 movies -e "select * from movies where Name LIKE '$NAME'"
+mysql --user=root --password=0 movies -e "select Name from movies where Name LIKE '$NAME'" -ss
+mysql --user=root --password=0 movies -e "select Reswidth,resheight from movies where Name LIKE '$NAME'" -ss
+mysql --user=root --password=0 movies -e "select size_mb from movies where Name LIKE '$NAME'" -ss
+mysql --user=root --password=0 movies -e "select Watched from movies where Name LIKE '$NAME'" -ss
+mysql --user=root --password=0 movies -e "select notes from movies where Name LIKE '$NAME'" -ss
+mysql --user=root --password=0 movies -e "select definition from movies where Name LIKE '$NAME'" -ss
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
