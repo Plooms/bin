@@ -25,8 +25,8 @@ while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
 
 for i in "${movie_array[@]}"
 do
-RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' )
-RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' )
+RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
+RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
 
 if [ -z "$RES1" -o -z "$RES2"  ]; then RES1="0" && RES2="0" ; fi
 
