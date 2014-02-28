@@ -29,8 +29,8 @@ else
 	WATCHED="(N/A): No NFO file found"
 fi
 
-mysql --user=root --password=0 playground << EOF
-INSERT INTO movies (Movie_name,Size,Resolution,Watched,Notes) VALUES ("$NAME", "$SIZE", "$RES1 x $RES2p", "$WATCHED", "$NOTE");
+mysql --user=root --password=0 movies << EOF
+INSERT INTO movies (Movie_name,Size,Resolution_width,Resolution_height,Watched,Notes) VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTE");
 EOF
 
 done
