@@ -1,6 +1,18 @@
 #!/bin/bash
 # Populate my DB of Movies
+
+
+# Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
+
+
+#
+#
+#<<<< NOTE: there is a password down under that needs to be obscured >>>>>#
+#
+# e.g : --password='???'
+#
+
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
