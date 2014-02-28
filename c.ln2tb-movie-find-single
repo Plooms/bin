@@ -69,6 +69,7 @@ echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 ####### For the log file#########
 echo -e "
+Path= $i
 Name =  $NAME
 Size =  "$(du -h "$i" | awk '{print $1}')"
 Resolution = "$RES1" x "$RES2"p  $DEF
