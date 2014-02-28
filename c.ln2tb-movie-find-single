@@ -56,17 +56,17 @@ else
 fi
 
 
-GREEN
-echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
-GREEN
-echo -e "Size =  ${WHITE}$SIZE${COLOR_OFF}"
-GREEN
-echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}${PURPLE}  $DEF ${COLOR_OFF}"
-GREEN
-echo -e "Watched = ${WHITE}$WATCHED"
-GREEN
-echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
-YELLOW
+#GREEN
+#echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
+#GREEN
+#echo -e "Size =  ${WHITE}$SIZE${COLOR_OFF}"
+#GREEN
+#echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}${PURPLE}  $DEF ${COLOR_OFF}"
+#GREEN
+#echo -e "Watched = ${WHITE}$WATCHED"
+#GREEN
+#echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
+#YELLOW
 
 
 
@@ -75,8 +75,7 @@ YELLOW
 
 
 GREEN
-echo -e "Name =  ${WHITE}$(mysql --user=root --password=0 movies -e "select Name from movies where Name LIKE '$NAME'" -ss
-)${COLOR_OFF}"
+echo -e "Name =  ${WHITE}$(mysql --user=root --password=0 movies -e "select Name from movies where Name LIKE '$NAME'" -ss)${COLOR_OFF}"
 GREEN
 echo -e "Size =  ${WHITE}$(mysql --user=root --password=0 movies -e "select size_mb from movies where Name LIKE '$NAME'" -ss) MB${COLOR_OFF}"
 GREEN
