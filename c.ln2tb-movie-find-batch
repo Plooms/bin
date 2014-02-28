@@ -108,7 +108,7 @@ sudo nano $BATCH_FILE_MOVIE_FIND ; c.ln2tb-movie-find-batch
 
 fi
 
-exit 0
+return 0
 
 ;;
 1)
