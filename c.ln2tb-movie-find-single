@@ -67,7 +67,9 @@ echo -e "Watched = ${WHITE}$WATCHED"
 GREEN
 echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
 YELLOW
-###########   mysql --user=root --password=0 movies --execute="select * from movies where Name LIKE '$i' "
+mysql --user=root --password=0 movies << EOF
+select * from movies where Name LIKE '%$i%'
+EOF
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 
