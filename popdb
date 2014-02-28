@@ -1,0 +1,36 @@
+#!/bin/bash
+# Populate my DB of Movies
+source /usr/local/bin/VAR-SCRIPT
+
+TMP="$(mktemp)"
+TMP2="$(mktemp)"
+TMP_LOG1="$(mktemp)"
+
+find "$MOVIE_SYM"/ -size +25M |sort -bf > $TMP
+find "$MOVIE_SYM"/ "*nfo" -size -25M |sort -bf > $TMP2
+while read FILE  ; do movie_array+=("$FILE") ;done < $TMP
+while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
+
+for i in "${movie_array[@]}"
+do
+RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' )
+RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' )
+DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
+NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
+NOTE="$(cat "$(echo $i | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
+SIZE="$(du -h "$i" | awk '{print $1}')"
+NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
+SIZE="$(du -h "$i" | awk '{print $1}')"
+[ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
+if [ -f "$NFO" ]
+then
+	if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
+else
+	WATCHED="(N/A): No NFO file found"
+fi
+
+mysql --user=root --password=0 playground << EOF
+INSERT INTO movies (Movie_name,Size,Resolution,Watched,Notes) VALUES ("$NAME", "$SIZE", "$RES1 x $RES2"p, "$WATCHED", "$NOTE");
+EOF
+
+done
