@@ -56,17 +56,17 @@ else
 fi
 
 
-#GREEN
-#echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
-#GREEN
-#echo -e "Size =  ${WHITE}$SIZE${COLOR_OFF}"
-#GREEN
-#echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}${PURPLE}  $DEF ${COLOR_OFF}"
-#GREEN
-#echo -e "Watched = ${WHITE}$WATCHED"
-#GREEN
-#echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
-#YELLOW
+GREEN
+echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
+GREEN
+echo -e "Size =  ${WHITE}$SIZE${COLOR_OFF}"
+GREEN
+echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}${PURPLE}  $DEF ${COLOR_OFF}"
+GREEN
+echo -e "Watched = ${WHITE}$WATCHED"
+GREEN
+echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
+YELLOW
 
 
 
