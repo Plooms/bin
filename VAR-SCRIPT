@@ -17,11 +17,11 @@ source /usr/local/bin/VAR-SCRIPT-COLOR
 
 ##########################  Variables #################################
 
+export DB_PASSWORD="0"
+
 export USERNAME="abz"
 
 export MYHOME="/home/abz"
-
-export LOGS_DIR="/home/abz/xLogsx"
 
 
 # How many NAS servers do you have ?
