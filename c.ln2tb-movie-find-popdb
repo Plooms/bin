@@ -6,13 +6,6 @@
 source /usr/local/bin/VAR-SCRIPT
 
 
-#
-#
-#<<<< NOTE: there is a password down under that needs to be obscured >>>>>#
-#
-# e.g : --password='???'
-#
-
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
@@ -43,7 +36,7 @@ else
 	WATCHED="(N/A): No NFO file found"
 fi
 
-mysql --user=root --password=0 movies << EOF
+mysql --user=root --password="$DB_PASSWORD" movies << EOF
 INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition) 
 VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF");
 EOF
