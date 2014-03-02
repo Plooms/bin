@@ -19,14 +19,13 @@ fi
 
 case $? in
 0)
+echo ass0
 
 find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
 | sort | while read -r FILE ; do movie_array+=("$FILE") ; done
 echo ass1
-
-for i in "${movie_array[@]}"; do
-echo ass2
-
+for i in "${movie_array[@]}"
+do
 #################################
 MOVIE_NAME="$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
 
@@ -41,7 +40,7 @@ GREEN
 echo -e "Name =  
 ${WHITE}$NAME${COLOR_OFF}"
 
-
+done
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
@@ -49,7 +48,7 @@ echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 
 
-done
+
 
 
 #---#
