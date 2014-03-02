@@ -22,62 +22,32 @@ case $? in
 
 find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
 | sort | while read -r FILE ; do movie_array+=("$FILE") ; done
+echo ass1
 
-for i in "${movie_array[@]}"
-do
+for i in "${movie_array[@]}"; do
+echo ass2
 
 #################################
 MOVIE_NAME="$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
 
-#MOVIE_NAME="$( echo $MOVIE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )"
-#NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" )"
-#SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" ) MB"
-#RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" )"
-#RES2="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" )"
-#DEF="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '%$MOVIE_NAME%'" )"
-#WATCHED="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" )"
-#NOTES="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '%$MOVIE_NAME%'" )"
 NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select * from movies where Name LIKE '%$MOVIE_NAME%'" )"
-echo ass
+
+echo ass3
 #################################
 
-#if [ ! -z "$NAME" ]
-#then
+
 
 GREEN
 echo -e "Name =  
-${WHITE}$NAME${COLOR_OFF}"|column -t
-GREEN
-echo -e "Size =  
-${WHITE}$SIZE${COLOR_OFF}"
-GREEN
-echo -e "Resolution = 
-${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
-GREEN
-echo -e "Watched = 
-${WHITE}$WATCHED"
-GREEN
-echo -e "Notes =  
-${CYAN}$NOTES${COLOR_OFF}"
-YELLOW
+${WHITE}$NAME${COLOR_OFF}"
 
 
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
-#fi
 
-####### For the log file#########
-echo -e "
-Path= $i
-Name =  $NAME
-Size =  $SIZE
-Resolution = $RES1 x $RES2p  $DEF
-Watched = $WATCHED
------------################-------------
-" >> "$TMP_LOG1"
 
-####### For the log file#########
+
 
 done
 
