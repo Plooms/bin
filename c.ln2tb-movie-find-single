@@ -28,10 +28,12 @@ while read -r FILE2 ; do movie_array+=("$FILE2") ; done
 for i in "${movie_array[@]}"
 do
 echo "$i"
-echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 MOVIE_NAME="$(basename "$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")")"
 echo "$MOVIE_NAME"
+NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select * from movies where Name LIKE '%$MOVIE_NAME%'" )"
+echo "$NAME"
+echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 done
 
