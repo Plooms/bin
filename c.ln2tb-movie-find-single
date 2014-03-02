@@ -20,27 +20,32 @@ fi
 case $? in
 0)
 
-find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
+find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*jackass*" \
 | sort | while read -r FILE1 ; do basename "$FILE1" ; done | \
 while read -r FILE2 ; do movie_array+=("$FILE2") ; done
 
 
-
-MOVIE_NAME="$(basename "$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")")"
-
-NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select * from movies where Name LIKE '%$MOVIE_NAME%'" )"
-
-
-
-
-GREEN
-echo -e "Name =  
-${WHITE}$NAME${COLOR_OFF}"
-
-
-
+for i in "${movie_array[@]}"
+do
+echo "$i"
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
+MOVIE_NAME="$(basename "$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")")"
+echo "$MOVIE_NAME"
+
+done
+
+
+#MOVIE_NAME="$(basename "$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")")"
+
+#NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select * from movies where Name LIKE '%$MOVIE_NAME%'" )"
+
+
+
+
+#GREEN
+#echo -e "Name =  
+#${WHITE}$NAME${COLOR_OFF}"
 
 
 
