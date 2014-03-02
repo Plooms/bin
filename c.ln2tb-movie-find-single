@@ -19,22 +19,17 @@ fi
 
 case $? in
 0)
-echo ass0
 
 find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
-| sort | while read -r FILE1 ; do basename "$FILE" ; done | \
+| sort | while read -r FILE1 ; do basename "$FILE1" ; done | \
 while read -r FILE2 ; do movie_array+=("$FILE2") ; done
 
-echo "${movie_array[@]}"
-echo ass1
 
-for i in "${movie_array[*]}"
-do
+
 MOVIE_NAME="$(basename "$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")")"
 
 NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select * from movies where Name LIKE '%$MOVIE_NAME%'" )"
 
-echo ass3
 
 
 
@@ -46,7 +41,6 @@ ${WHITE}$NAME${COLOR_OFF}"
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
-done
 
 
 
