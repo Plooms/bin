@@ -11,68 +11,18 @@ TMP_LOG1="$(mktemp)"
 
 
 if [ -n "$TERM_LAUNCH" ]
-then name="$(xclip -o)"
+then MOVIE_NAME="$(xclip -o)"
 else
-name=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox \
+MOVIE_NAME=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox \
 "Please Enter the name of the Show" 10 50 )
 fi
 
 case $? in
 0)
 
-clear
-
-echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
-
-find "$MOVIE_SYM"/ -iname "*$name*" -size +25M |sort -bf > $TMP
-find "$MOVIE_SYM"/ -iname "*$name*nfo" -size -25M |sort -bf > $TMP2
-
-while read FILE  ; do movie_array+=("$FILE") ;done < $TMP
-while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
-
-for i in "${movie_array[@]}"
-do
 		
-#echo -e "${YELLOW} The Information for the Video File:${WHITE}
-#"$i""
-
-#RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
-#RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
-
-#if [ -z "$RES1" -o -z "$RES2"  ]; then RES1="0" && RES2="0" ; fi
-
-#DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
-
-MOVIE_NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )")"
-#NAME="$( basename "$( echo $i | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\'/g" )")"
-
-#NOTES="$(cat "$(echo $i | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
-#SIZE="$(du -h "$i" | awk '{print $1}')"
-#NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
-#[ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
-
-#if [ -f "$NFO" ]
-#then
-#	if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
-#else
-#	WATCHED="(N/A): No NFO file found"
-#fi
-
-
-#GREEN
-#echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
-#GREEN
-#echo -e "Size =  ${WHITE}$SIZE${COLOR_OFF}"
-#GREEN
-#echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}${PURPLE}  $DEF ${COLOR_OFF}"
-#GREEN
-#echo -e "Watched = ${WHITE}$WATCHED"
-#GREEN
-#echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
-#YELLOW
-
-
 #################################
+MOVIE_NAME="$( echo $MOVIE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )"
 NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
 RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
@@ -117,18 +67,17 @@ Watched = $WATCHED
 ####### For the log file#########
 
 
-done
 
 #---#
 
 echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}"
 WHITE
-find "$MOVIE_SYM"/ -type d -iname "*$name*" | sort -bf
+find "$MOVIE_SYM"/ -type d -iname "*$MOVIE_NAME*" | sort -bf
 
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
 
-echo "Log File: g $TMP_LOG1"
+echo "Log File:   sudo geany $TMP_LOG1"
 
 if [ -n "$TERM_LAUNCH" ]
 then sleep 1000
