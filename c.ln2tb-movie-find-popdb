@@ -33,7 +33,7 @@ if [ -f "$NFO" ]
 then
 	if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
 else
-	WATCHED="(N/A): No NFO file found"
+	WATCHED="(N/A): No NFO file"
 fi
 
 mysql --user=root --password="$DB_PASSWORD" movies << EOF
@@ -48,4 +48,5 @@ ON DUPLICATE KEY UPDATE
     Definition = "$DEF";
 EOF
 
+echo "$NAME"
 done
