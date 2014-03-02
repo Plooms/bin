@@ -90,7 +90,7 @@ echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${C
 GREEN
 echo -e "Watched = ${WHITE}$WATCHED"
 GREEN
-echo -e "Notes =  ${RED}$NOTES${COLOR_OFF}"
+echo -e "Notes =  ${CYAN}$NOTES${COLOR_OFF}"
 YELLOW
 
 
