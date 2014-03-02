@@ -21,7 +21,7 @@ then
 clear
 echo "Searching for Video Files"
 
-while read name
+while read FILE
 do
 movie_array+=("$FILE")
 done < "$BATCH_FILE_MOVIE_FIND"
@@ -31,9 +31,8 @@ for i in "${movie_array[@]}"
 do
 
 		
-
 #################################
-#MOVIE_NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )")"
+MOVIE_NAME="$i"
 NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
 RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
