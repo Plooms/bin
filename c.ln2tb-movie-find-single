@@ -23,13 +23,14 @@ case $? in
 		
 #################################
 MOVIE_NAME="$( echo $MOVIE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )"
-NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
-RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-RES2="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-DEF="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-WATCHED="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-NOTES="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+#NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" )"
+#SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" ) MB"
+#RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" )"
+#RES2="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" )"
+#DEF="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '%$MOVIE_NAME%'" )"
+#WATCHED="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" )"
+#NOTES="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '%$MOVIE_NAME%'" )"
+NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select * from movies where Name LIKE '%$MOVIE_NAME%'" )"
 
 #################################
 
@@ -37,15 +38,20 @@ if [ ! -z "$NAME" ]
 then
 
 GREEN
-echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
+echo -e "Name =  
+${WHITE}$NAME${COLOR_OFF}"
 GREEN
-echo -e "Size =  ${WHITE}$SIZE${COLOR_OFF}"
+echo -e "Size =  
+${WHITE}$SIZE${COLOR_OFF}"
 GREEN
-echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
+echo -e "Resolution = 
+${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
 GREEN
-echo -e "Watched = ${WHITE}$WATCHED"
+echo -e "Watched = 
+${WHITE}$WATCHED"
 GREEN
-echo -e "Notes =  ${CYAN}$NOTES${COLOR_OFF}"
+echo -e "Notes =  
+${CYAN}$NOTES${COLOR_OFF}"
 YELLOW
 
 
