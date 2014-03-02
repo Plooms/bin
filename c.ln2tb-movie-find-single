@@ -27,7 +27,7 @@ for MOVIE_NAME in "${movie_array[@]}"
 do
 
 #################################
-MOVIE_NAME="$(basename "$( echo $MOVIE_NAME | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )")"
+MOVIE_NAME="echo $MOVIE_NAME  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g""
 
 #MOVIE_NAME="$( echo $MOVIE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )"
 #NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" )"
@@ -79,6 +79,7 @@ Watched = $WATCHED
 
 ####### For the log file#########
 
+done
 
 
 #---#
