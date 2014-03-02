@@ -39,7 +39,7 @@ then
 
 GREEN
 echo -e "Name =  
-${WHITE}$NAME${COLOR_OFF}"
+${WHITE}$NAME${COLOR_OFF}"|column -t
 GREEN
 echo -e "Size =  
 ${WHITE}$SIZE${COLOR_OFF}"
