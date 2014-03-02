@@ -26,13 +26,11 @@ find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
 echo ass1
 for i in "${movie_array[@]}"
 do
-#################################
-MOVIE_NAME="$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
+MOVIE_NAME="$(basename "$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")")"
 
 NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select * from movies where Name LIKE '%$MOVIE_NAME%'" )"
 
 echo ass3
-#################################
 
 
 
