@@ -39,13 +39,13 @@ fi
 mysql --user=root --password="$DB_PASSWORD" movies << EOF
 INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition) 
 VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF")
-ON DUPLICATE UPDATE 
+ON DUPLICATE KEY UPDATE 
     Size_MB = "$SIZE",
     ResWidth = "$RES1",
     ResHeight = "$RES2",
     Watched = "$WATCHED",
     Notes = "$NOTES",
-    Definition = "$DEF",;
+    Definition = "$DEF";
 EOF
 
 done
