@@ -86,11 +86,11 @@ echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
 GREEN
 echo -e "Size =  ${WHITE}$SIZE${COLOR_OFF}"
 GREEN
-echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}${PURPLE}  $DEF ${COLOR_OFF}"
+echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
 GREEN
 echo -e "Watched = ${WHITE}$WATCHED"
 GREEN
-echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
+echo -e "Notes =  ${RED}$NOTES${COLOR_OFF}"
 YELLOW
 
 
@@ -102,8 +102,8 @@ echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 echo -e "
 Path= $i
 Name =  $NAME
-Size =  "$(du -h "$i" | awk '{print $1}')"
-Resolution = "$RES1" x "$RES2"p  $DEF
+Size =  $SIZE
+Resolution = $RES1 x $RES2p  $DEF
 Watched = $WATCHED
 -----------################-------------
 " >> "$TMP_LOG1"
