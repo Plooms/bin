@@ -43,7 +43,7 @@ do
 
 #DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
 
-NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\\'/g" )")"
+NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )")"
 #NAME="$( basename "$( echo $i | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\'/g" )")"
 
 #NOTES="$(cat "$(echo $i | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
