@@ -20,9 +20,16 @@ fi
 case $? in
 0)
 
-		
+sudo find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
+| sort | while read -r FILE ; do movie_array+=("$FILE") ; done
+
+for MOVIE_NAME in "${movie_array[@]}"
+do
+
 #################################
-MOVIE_NAME="$( echo $MOVIE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )"
+MOVIE_NAME="$(basename "$( echo $MOVIE_NAME | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )")"
+
+#MOVIE_NAME="$( echo $MOVIE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )"
 #NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" )"
 #SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" ) MB"
 #RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" )"
