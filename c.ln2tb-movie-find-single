@@ -20,14 +20,14 @@ fi
 case $? in
 0)
 
-sudo find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
+find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
 | sort | while read -r FILE ; do movie_array+=("$FILE") ; done
 
-for MOVIE_NAME in "${movie_array[@]}"
+for i in "${movie_array[@]}"
 do
 
 #################################
-MOVIE_NAME="$(echo $MOVIE_NAME  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
+MOVIE_NAME="$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
 
 #MOVIE_NAME="$( echo $MOVIE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )"
 #NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" )"
@@ -41,8 +41,8 @@ NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select * from mov
 echo ass
 #################################
 
-if [ ! -z "$NAME" ]
-then
+#if [ ! -z "$NAME" ]
+#then
 
 GREEN
 echo -e "Name =  
@@ -65,7 +65,7 @@ YELLOW
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
-fi
+#fi
 
 ####### For the log file#########
 echo -e "
