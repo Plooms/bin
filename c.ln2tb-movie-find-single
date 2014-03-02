@@ -80,6 +80,8 @@ NOTES="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select notes fro
 
 #################################
 
+if [ ! -z "$NAME" ]
+then
 
 GREEN
 echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
@@ -97,6 +99,7 @@ YELLOW
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
+fi
 
 ####### For the log file#########
 echo -e "
