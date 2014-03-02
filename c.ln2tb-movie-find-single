@@ -33,27 +33,52 @@ while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
 for i in "${movie_array[@]}"
 do
 		
-echo -e "${YELLOW} The Information for the Video File:${WHITE}
-"$i""
+#echo -e "${YELLOW} The Information for the Video File:${WHITE}
+#"$i""
 
-RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
-RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
+#RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
+#RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
 
-if [ -z "$RES1" -o -z "$RES2"  ]; then RES1="0" && RES2="0" ; fi
+#if [ -z "$RES1" -o -z "$RES2"  ]; then RES1="0" && RES2="0" ; fi
 
-DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
-NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
-NOTES="$(cat "$(echo $i | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
-SIZE="$(du -h "$i" | awk '{print $1}')"
-NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
-[ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
+#DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
+#NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
+#NOTES="$(cat "$(echo $i | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
+#SIZE="$(du -h "$i" | awk '{print $1}')"
+#NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
+#[ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
 
-if [ -f "$NFO" ]
-then
-	if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
-else
-	WATCHED="(N/A): No NFO file found"
-fi
+#if [ -f "$NFO" ]
+#then
+#	if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
+#else
+#	WATCHED="(N/A): No NFO file found"
+#fi
+
+
+#GREEN
+#echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
+#GREEN
+#echo -e "Size =  ${WHITE}$SIZE${COLOR_OFF}"
+#GREEN
+#echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p${COLOR_OFF}${PURPLE}  $DEF ${COLOR_OFF}"
+#GREEN
+#echo -e "Watched = ${WHITE}$WATCHED"
+#GREEN
+#echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
+#YELLOW
+
+
+#################################
+NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '$NAME'" -ss)"
+SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '$NAME'" -ss) MB"
+RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '$NAME'" -ss)"
+RES2="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '$NAME'" -ss)"
+DEF="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '$NAME'" -ss)"
+WATCHED="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '$NAME'" -ss)"
+NOTES="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '$NAME'" -ss)"
+
+#################################
 
 
 GREEN
@@ -68,23 +93,6 @@ GREEN
 echo -e "Notes =  ${WHITE}$NOTES${COLOR_OFF}"
 YELLOW
 
-
-
-
-
-
-
-GREEN
-echo -e "Name =  ${WHITE}$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '$NAME'" -ss)${COLOR_OFF}"
-GREEN
-echo -e "Size =  ${WHITE}$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '$NAME'" -ss) MB${COLOR_OFF}"
-GREEN
-echo -e "Resolution = ${WHITE}$($(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '$NAME'" -ss) x $(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '$NAME'" -ss)${COLOR_OFF}${PURPLE}  $(mysql --user=root --password="$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '$NAME'" -ss) ${COLOR_OFF} )"
-GREEN
-echo -e "Watched = ${WHITE}$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '$NAME'" -ss)"
-GREEN
-echo -e "Notes =  ${WHITE}$(mysql --user=root --password="$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '$NAME'" -ss)${COLOR_OFF}"
-YELLOW
 
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
