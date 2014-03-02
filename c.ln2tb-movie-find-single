@@ -22,9 +22,13 @@ case $? in
 echo ass0
 
 find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
-| sort | while read -r FILE ; do movie_array+=("$FILE") ; done
+| sort | while read -r FILE1 ; do basename "$FILE" ; done | \
+while read -r FILE2 ; do movie_array+=("$FILE2") ; done
+
+echo "${movie_array[@]}"
 echo ass1
-for i in "${movie_array[@]}"
+
+for i in "${movie_array[*]}"
 do
 MOVIE_NAME="$(basename "$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")")"
 
@@ -38,10 +42,11 @@ GREEN
 echo -e "Name =  
 ${WHITE}$NAME${COLOR_OFF}"
 
-done
+
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
+done
 
 
 
