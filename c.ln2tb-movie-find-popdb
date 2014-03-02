@@ -45,7 +45,7 @@ ON DUPLICATE UPDATE
     ResHeight = "$RES2",
     Watched = "$WATCHED",
     Notes = "$NOTES",
-    Definition = "$DEF";
+    Definition = "$DEF",;
 EOF
 
 done
