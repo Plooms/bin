@@ -23,16 +23,9 @@ echo "Searching for Video Files"
 
 while read name
 do
-
-find "$MOVIE_SYM"/ -iname "*$name*" -size +25M |sort -bf >> "$TMP1"
-
+movie_array+=("$FILE")
 done < "$BATCH_FILE_MOVIE_FIND"
 
-cat "$TMP1"|sort -bf >"$TMP2"
-
-while read FILE ;do movie_array+=("$FILE");done < "$TMP2"
-
-clear
 
 for i in "${movie_array[@]}"
 do
@@ -40,7 +33,7 @@ do
 		
 
 #################################
-MOVIE_NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )")"
+#MOVIE_NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed "s/(//g;s/)//g;s/'/\\\\\\'/g" )")"
 NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
 RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
@@ -111,7 +104,7 @@ sudo nano $BATCH_FILE_MOVIE_FIND ; c.ln2tb-movie-find-batch
 
 fi
 
-return 0
+exit 0
 
 ;;
 1)
