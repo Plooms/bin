@@ -38,7 +38,7 @@ for i in "${movie_array[@]}"
 do
 
 #################################
-MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
+MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 SIZE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Size_MB from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
 RES1="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
