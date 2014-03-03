@@ -64,7 +64,7 @@ done
 
 echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}"
 WHITE
-find "$MOVIE_SYM"/ -type d -iname "*$FILE_NAME*" | sort -bf
+find "$MOVIE_SYM"/ -maxdepth 2 -type d -iname "*$FILE_NAME*" | sort -bf
 
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
