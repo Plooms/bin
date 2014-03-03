@@ -22,9 +22,6 @@ fi
 case $? in
 0)
 
-clear
-clear
-
 
 find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$FILE_NAME*" \
 | sort | while read -r FILE1 ; do basename "$FILE1" ; done > $TMP
@@ -42,6 +39,7 @@ do
 
 #################################
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
+NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 SIZE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Size_MB from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
 RES1="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 RES2="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
