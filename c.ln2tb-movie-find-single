@@ -32,6 +32,11 @@ find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$FILE_NAME*" \
 while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
 
 
+
+echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
+
+
+
 for i in "${movie_array[@]}"
 do
 

@@ -30,6 +30,10 @@ while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP1
 
 
 
+echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
+
+
+
 for i in "${movie_array[@]}"
 do
 
