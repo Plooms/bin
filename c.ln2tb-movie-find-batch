@@ -15,21 +15,16 @@ start=$(dialog --stdout  --clear --help-button --help-label "Cancel" --yesno \
 
 case $? in
 0)
-if [ -f $BATCH_FILE_MOVIE_FIND ]
+if [ -f "$BATCH_FILE_MOVIE_FIND" ]
 then
 
 
 while read FILE_NAME ; do 
 find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$FILE_NAME*" \
 | sort | while read -r FILE1 ; do basename "$FILE1" ;done
-done < "$BATCH_FILE_MOVIE_FIND" > $TMP
+done < "$BATCH_FILE_MOVIE_FIND" > $TMP1
 
-while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
-
-clear
-
-#while read FILE ; do movie_array+=("$FILE")
-#done < "$BATCH_FILE_MOVIE_FIND"
+while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP1
 
 clear
 
@@ -38,7 +33,7 @@ do
 
 		
 #################################
-MOVIE_NAME="$i"
+MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
 NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
 RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
