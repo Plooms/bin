@@ -97,7 +97,7 @@ find "$MOVIE_SYM"/ -maxdepth 2 -type d -iname "*$name*" | sort -bf >> "$TMP3"
 done < "$BATCH_FILE_MOVIE_FIND"
 
 WHITE 
-cat "$TMP3" |sort -bf
+sort -bf "$TMP3" 
 
 echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 
