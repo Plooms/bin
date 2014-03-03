@@ -18,6 +18,8 @@ case $? in
 if [ -f "$BATCH_FILE_MOVIE_FIND" ]
 then
 
+clear
+clear
 
 while read FILE_NAME ; do 
 find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$FILE_NAME*" \
@@ -26,7 +28,7 @@ done < "$BATCH_FILE_MOVIE_FIND" > $TMP1
 
 while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP1
 
-clear
+
 
 for i in "${movie_array[@]}"
 do
