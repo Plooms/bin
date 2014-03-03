@@ -22,6 +22,9 @@ fi
 case $? in
 0)
 
+# To remove whitespaces from the beginning & the end
+FILE_NAME="$(echo $FILE_NAME | sed "s/^[ \t]*//;s/[ \t]*$//")"
+
 
 find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$FILE_NAME*" \
 | sort | while read -r FILE1 ; do basename "$FILE1" ; done > $TMP
