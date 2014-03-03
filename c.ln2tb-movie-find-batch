@@ -40,13 +40,13 @@ do
 		
 #################################
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
-NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
-RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-RES2="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-DEF="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-WATCHED="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-NOTES="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+SIZE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
+RES1="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+RES2="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+DEF="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 #################################
 
 if [ ! -z "$NAME" ]

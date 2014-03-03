@@ -36,7 +36,7 @@ else
 	WATCHED="(N/A): No NFO file"
 fi
 
-mysql --user=root --password="$DB_PASSWORD" movies << EOF
+mysql -uroot -p"$DB_PASSWORD" movies << EOF
 INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition) 
 VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF")
 ON DUPLICATE KEY UPDATE 
