@@ -19,13 +19,13 @@ if [ -f $BATCH_FILE_MOVIE_FIND ]
 then
 
 clear
-echo "Searching for Video Files"
 
 while read FILE
 do
 movie_array+=("$FILE")
 done < "$BATCH_FILE_MOVIE_FIND"
 
+clear
 
 for i in "${movie_array[@]}"
 do
@@ -87,7 +87,7 @@ echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 
 while read name
 do
-find "$MOVIE_SYM"/ -type d -iname "*$name*" | sort -bf >> "$TMP3"
+find "$MOVIE_SYM"/ -maxdepth 2 -type d -iname "*$name*" | sort -bf >> "$TMP3"
 done < "$BATCH_FILE_MOVIE_FIND"
 
 WHITE 
