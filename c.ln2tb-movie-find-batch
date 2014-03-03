@@ -18,12 +18,18 @@ case $? in
 if [ -f $BATCH_FILE_MOVIE_FIND ]
 then
 
+
+while read FILE_NAME ; do 
+find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$FILE_NAME*" \
+| sort | while read -r FILE1 ; do basename "$FILE1" ;done
+done < "$BATCH_FILE_MOVIE_FIND" > $TMP
+
+while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
+
 clear
 
-while read FILE
-do
-movie_array+=("$FILE")
-done < "$BATCH_FILE_MOVIE_FIND"
+#while read FILE ; do movie_array+=("$FILE")
+#done < "$BATCH_FILE_MOVIE_FIND"
 
 clear
 
