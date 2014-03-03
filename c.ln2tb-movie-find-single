@@ -11,16 +11,16 @@ TMP_LOG1="$(mktemp)"
 
 
 if [ -n "$TERM_LAUNCH" ]
-then MOVIE_NAME="$(xclip -o)"
+then FILE_NAME="$(xclip -o)"
 else
-MOVIE_NAME=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox \
+FILE_NAME=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox \
 "Please Enter the name of the Show" 10 50 )
 fi
 
 case $? in
 0)
 
-find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$MOVIE_NAME*" \
+find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$FILE_NAME*" \
 | sort | while read -r FILE1 ; do basename "$FILE1" ; done > $TMP
 
 while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
@@ -29,19 +29,16 @@ while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
 for i in "${movie_array[@]}"
 do
 
-
-#MOVIE_NAME="$(basename "$(echo $i  | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")")"
-
-#NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select * from movies where Name LIKE '%$MOVIE_NAME%'" )"
-
-NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '$NAME'" -ss)"
-SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Size_MB from movies where Name LIKE '$NAME'" -ss) MB"
-RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '$NAME'" -ss)"
-RES2="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '$NAME'" -ss)"
-DEF="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '$NAME'" -ss)"
-WATCHED="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '$NAME'" -ss)"
-NOTES="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '$NAME'" -ss)"
-
+#################################
+MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
+NAME="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+SIZE="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Size_MB from movies where Name LIKE '$MOVIE_NAME'" -ss) MB"
+RES1="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+RES2="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+DEF="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+WATCHED="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+NOTES="$(mysql --user=root --password="$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+#################################
 
 GREEN
 echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
@@ -67,7 +64,7 @@ done
 
 echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}"
 WHITE
-find "$MOVIE_SYM"/ -type d -iname "*$MOVIE_NAME*" | sort -bf
+find "$MOVIE_SYM"/ -type d -iname "*$FILE_NAME*" | sort -bf
 
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
