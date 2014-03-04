@@ -20,10 +20,15 @@ COUNTER=$(cat "$TEMP")
 
 if [ "$COUNTER" = off ]
 then
+	echo "Brightness = Low-1-M" && echo low-1-m >| "$TEMP" && xrandr --output DVI-I-1 --brightness 0.2 > /dev/null
+	echo -e "\n\n\n OFF [Low-1-M] HIGH LOW "
+	notify-send Brightness Low-1-m
+
+elif [ "$COUNTER" = low-1-m ]
+then
 	echo "Brightness = HIGH" && echo high >| "$TEMP" && xbrightness 40000 24000 20000 > /dev/null
 	echo -e "\n\n\n OFF [HIGH] LOW "
 	notify-send Brightness HIGH
-
 
 elif [ "$COUNTER" = low ]
 then
