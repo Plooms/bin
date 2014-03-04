@@ -8,13 +8,13 @@ source /usr/local/bin/VAR-SCRIPT
 
 answer=$(dialog --stdout  --menu \
 "Choose the command You Wish to Execute" 15 50 50 \
-"1- Add" "" \
-"2- Delete" "" \
-"3- Find & Check Resolution" "" \
-"4- Edit Videos" "" \
-"5- Check for Duplicates" "" \
-"6- Change Symlinks" "" \
-"7- Check Mounts" "" )
+"1- find SD files" "" \
+"2- sort files by size" "" \
+"3- " "" \
+"4- " "" \
+"5- " "" \
+"6- " "" \
+"7- " "" )
 
 
 
