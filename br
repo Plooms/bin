@@ -20,26 +20,32 @@ COUNTER=$(cat "$TEMP")
 
 if [ "$COUNTER" = off ]
 then
-	echo "Brightness = Low-1-M" && echo low-1-m >| "$TEMP" && xrandr --output DVI-I-1 --brightness 0.2 > /dev/null
-	echo -e "\n\n\n OFF [Low-1-M] HIGH LOW "
-	notify-send Brightness Low-1-m
+	echo "Brightness = Low-M-1" && echo low-m-1 >| "$TEMP" && xrandr --output DVI-I-1 --brightness 0.3 > /dev/null
+	echo -e "\n\n\n OFF [LOW-M-1] LOW-M-2 HIGH LOW "
+	notify-send Brightness LOW-M-1
 
-elif [ "$COUNTER" = low-1-m ]
+elif [ "$COUNTER" = low-m-1 ]
+then
+	echo "Brightness = Low-M-2" && echo low-m-2 >| "$TEMP" && xrandr --output VGA-0 --brightness 0.3 ; xrandr --output DVI-I-1 --brightness 1.0 > /dev/null
+	echo -e "\n\n\n OFF LOW-M-1 [LOW-M-2] HIGH LOW "
+	notify-send Brightness LOW-M-2
+
+elif [ "$COUNTER" = low-m-2 ]
 then
 	echo "Brightness = HIGH" && echo high >| "$TEMP" && xbrightness 40000 24000 20000 > /dev/null
-	echo -e "\n\n\n OFF [HIGH] LOW "
+	echo -e "\n\n\n OFF LOW-M-1 LOW-M-2 [HIGH] LOW "
 	notify-send Brightness HIGH
 
 elif [ "$COUNTER" = low ]
 then
         xbrightness 63000 && echo "Brightness = OFF" && echo off >| "$TEMP"
-	echo -e "\n\n\n [OFF] HIGH LOW "
+	echo -e "\n\n\n [OFF] LOW-M-1 LOW-M-2 HIGH LOW "
 	notify-send Brightness OFF
 
 elif [ "$COUNTER" = high ]
 then
         echo "Brightness = LOW" && echo low >| "$TEMP" && xbrightness 30000 17000 17000 > /dev/null
-	echo -e "\n\n\n OFF HIGH [LOW] "
+	echo -e "\n\n\n OFF LOW-M-1 LOW-M-2 HIGH [LOW] "
 	notify-send Brightness LOW
 fi
 
