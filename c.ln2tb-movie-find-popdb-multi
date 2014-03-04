@@ -10,7 +10,7 @@ answer=$(dialog --stdout  --menu \
 "Choose the command You Wish to Execute" 15 50 50 \
 "1- find SD files" "" \
 "2- sort files by size" "" \
-"3- " "" \
+"3- ss" "" \
 "4- " "" \
 "5- " "" \
 "6- " "" \
@@ -22,31 +22,13 @@ case $? in
 0)
 
 if [ "$answer" = "1- Add" ]
-then c.ln2tb-add
+then 
 
 
 elif [ "$answer" = "2- Delete" ]
-then c.ln2tb-delete
+then 
 
 
-elif [ "$answer" = "3- Find & Check Resolution" ]
-then c.ln2tb-find
-
-
-elif [ "$answer" = "4- Edit Videos" ]
-then c.ln2tb-video
-
-
-elif [ "$answer" = "5- Check for Duplicates" ]
-then c.ln2tb-dupes
-
-
-elif [ "$answer" = "6- Change Symlinks" ]
-then c.ln2tb-symlinks
-
-
-elif [ "$answer" = "7- Check Mounts" ]
-then c.ln2tb-mount-check
 
 
 
