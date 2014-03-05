@@ -97,7 +97,6 @@ mv -v Deadliest*Catch*              "$TV_SYM"/"Deadliest Catch"/                
 mv -v Dexter*                       "$TV_SYM"/"Dexter"/                                                    && echo -e "\n\n"
 mv -v Dirty*Money*                  "$TV_SYM"/"Dirty Money (2011)"/                                        && echo -e "\n\n"
 mv -v Drawn\ Together*              "$TV_SYM"/"Drawn Together"/				               && echo -e "\n\n"
-mv -v Drugs,\ Inc.*                 "$TV_SYM"/"Drugs, Inc."/                                               && echo -e "\n\n"
 mv -v Dual*Survival*                "$TV_SYM"/"Dual Survival"/                                             && echo -e "\n\n"
 mv -v Eastbound\ \&\ Down*          "$TV_SYM"/"Eastbound & Down"/				               && echo -e "\n\n"
 mv -v Everybody\ Loves\ Raymond*    "$TV_SYM"/"Everybody Loves Raymond"/            		       && echo -e "\n\n"
