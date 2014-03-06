@@ -15,6 +15,7 @@ sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.gif" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.nfo" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.url" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.htm" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*swe.srt" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -type d -iname "sample" -exec sudo rm -r {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "*sample*" -size -200M -exec sudo rm -r {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "zNew Folder" -exec sudo rmdir {} \; 2>/dev/null
