@@ -25,7 +25,7 @@ then
 #then
 #echo "Removing Old Backups"
 #echo ""
-#sudo find "$TRG_12_OLD" -maxdepth 1 -type d | sort | tail -n +3 | xargs sudo rm -r
+#sudo find "$TRG_12_OLD" -maxdepth 1 -type d | sort |head -n -1 |tail -n +2 |xargs rm -r
 #fi
 
 
@@ -68,7 +68,9 @@ then
 #then
 #echo "Removing Backups Older than 30 Days"
 #echo ""
-#sudo find "$TRG_12_2_OLD" -maxdepth 1 -type d | sort | tail -n +3 | xargs sudo rm -r
+#sudo find "$TRG_12_2_OLD" -maxdepth 1 -type d | sort |head -n -1 |tail -n +2 |xargs rm -r
+
+
 #fi
 
 if [ "$RSYNC" = "On" ]
