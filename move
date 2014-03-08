@@ -126,7 +126,7 @@ mv -v Homeland*-*                   "$TV_SYM"/"Homeland"/                       
 mv -v Hot*Cleveland*                "$TV_SYM"/"Hot In Cleveland"/                                         2>/dev/null && echo -e "\n\n"
 mv -v House\ of\ Cards\ \(US\)*     "$TV_SYM"/"House of Cards (US)"/           			      2>/dev/null && echo -e "\n\n"
 mv -v House\ of\ Lies*              "$TV_SYM"/"House of Lies"/           				      2>/dev/null && echo -e "\n\n"
-mv -v House -*                	    "$TV_SYM"/"House"/              2>/dev/null && echo -e "\n\n"
+mv -v House\ *               	    "$TV_SYM"/"House"/              2>/dev/null && echo -e "\n\n"
 mv -v How*Do*They*Do*It*            "$TV_SYM"/"How Do They Do It"/                                        2>/dev/null && echo -e "\n\n"
 mv -v How*I**other*                 "$TV_SYM"/"How I met Your Mother"/                                    2>/dev/null && echo -e "\n\n"
 mv -v How*It*Made*                  "$TV_SYM"/"How Its Made"/                                             2>/dev/null && echo -e "\n\n"
