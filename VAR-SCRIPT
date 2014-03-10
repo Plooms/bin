@@ -17,7 +17,7 @@ source /usr/local/bin/VAR-SCRIPT-COLOR
 
 ##########################  Variables #################################
 
-export DB_PASSWORD="$(expr 193746482004 / 1639402764294787665535)"
+export DB_PASSWORD="$(expr 193746482004 / 1639402764294787)"
 
 export USERNAME="abz"
 
