@@ -266,3 +266,4 @@ mv -v Nip*Tuck*                "$TV_SYM"/"Nip Tuck"/              2>/dev/null &&
 mv -v Lilyhammer*                "$TV_SYM"/"Lilyhammer"/              2>/dev/null && echo -e "\n\n"
 mv -v Jackass*                "$TV_SYM"/"Jackass"/              2>/dev/null && echo -e "\n\n"
 
+mv -v Parenthood\ \(2010\)*                "$TV_SYM"/"Parenthood (2010)"/              2>/dev/null && echo -e "\n\n"
