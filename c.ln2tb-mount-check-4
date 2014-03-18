@@ -6,6 +6,7 @@ SCRIPT_NAME="c.ln2tb-mount-check"
 source /usr/local/bin/VAR-SCRIPT
 
 
+#trap "_LOCK_OFF ; exit" INT TERM
 
 # Start Lock
 _LOCK_ON

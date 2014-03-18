@@ -1,6 +1,6 @@
 #!/bin/bash
-
 # Adjust zoom of the screen
+
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
