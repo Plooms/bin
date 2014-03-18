@@ -15,11 +15,6 @@ _LOCK_ON
 export DISPLAY=:0.0
 
 
-RUN_TIMES="0"
-
-
-while [[ $RUN_TIMES < 2 ]] ;do
-
 
 
 ###################################################################
@@ -109,10 +104,21 @@ then
 fi
 
 
+if [ ! -z "$NEEDS_MOUNT" ]
+then
+	# No need for a second run if everything was mounted
+	echo -e "\n\nEverything's good"
+else
+	unset NEEDS_MOUNT
+	clear
+	RED
+	echo "Something went wrong with Mounting or reaching $NAS1_MOUNT_POINT"
+	beep 2>/dev/null ; sleep .1 ; beep 2>/dev/null ; sleep .1 ; beep 2>/dev/null ; sleep .5 ; beep 2>/dev/null
 
 
+fi
 
-done
+
 
 
 
