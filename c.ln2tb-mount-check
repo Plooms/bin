@@ -23,7 +23,7 @@ while [[ $RUN_TIMES < 2 ]] ;do
 /usr/local/bin/c.ln2tb-mount-check-2
 /usr/local/bin/c.ln2tb-mount-check-3
 /usr/local/bin/c.ln2tb-mount-check-4
-sleep 5
+sleep 20
 
 
 	RUN_TIMES=$((RUN_TIMES+1))
