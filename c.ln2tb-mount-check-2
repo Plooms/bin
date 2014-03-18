@@ -60,7 +60,6 @@ grep -qs "$NAS2_MOUNT_POINT" /proc/mounts >/dev/null
 	else
 		RED ; echo "$NAS2_MOUNT_POINT Not Mounted"
 		
-		notify-send 'HDD Warning!' "$NAS2_MOUNT_POINT Not Mounted" --icon=dialog-warning
 		
 		CONTINUE="NO"
 		
