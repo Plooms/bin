@@ -111,7 +111,7 @@ else
 	unset NEEDS_MOUNT
 	clear
 	RED
-	echo "Something went wrong with Mounting or reaching $NAS2_MOUNT_POINT"
+	echo "Something went wrong with Mounting or reaching $NAS2_MOUNT_POINT" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
 	beep 2>/dev/null ; sleep .1 ; beep 2>/dev/null ; sleep .1 ; beep 2>/dev/null ; sleep .5 ; beep 2>/dev/null
 
 
