@@ -19,11 +19,35 @@ RUN_TIMES="0"
 
 while [[ $RUN_TIMES < 2 ]] ;do
 
-/usr/local/bin/c.ln2tb-mount-check-1
-/usr/local/bin/c.ln2tb-mount-check-2
-/usr/local/bin/c.ln2tb-mount-check-3
-/usr/local/bin/c.ln2tb-mount-check-4
-sleep 20
+
+	if [ "$NAS_COUNT" -lt 1 ] ; then 
+	echo "Less than 1 Server Count Specified in VAR-SCRIPT" 
+	exit
+	else
+	/usr/local/bin/c.ln2tb-mount-check-1
+	fi
+	
+	if [ "$NAS_COUNT" -lt 2 ] ; then 
+	echo "Less than 2 Server Count Specified in VAR-SCRIPT" 
+	else
+	/usr/local/bin/c.ln2tb-mount-check-2
+	fi
+	
+	if [ "$NAS_COUNT" -lt 3 ] ; then 
+	echo "Less than 3 Server Count Specified in VAR-SCRIPT" 
+	exit
+	else
+	/usr/local/bin/c.ln2tb-mount-check-3
+	fi
+	
+	if [ "$NAS_COUNT" -lt 4 ] ; then 
+	echo "Less than 4 Server Count Specified in VAR-SCRIPT" 
+	exit
+	else
+	/usr/local/bin/c.ln2tb-mount-check-4
+	fi
+	
+	sleep 20
 
 
 	RUN_TIMES=$((RUN_TIMES+1))
