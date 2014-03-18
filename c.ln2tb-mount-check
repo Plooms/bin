@@ -21,26 +21,25 @@ while [[ $RUN_TIMES < 2 ]] ;do
 
 
 	if [ "$NAS_COUNT" -lt 1 ] ; then 
-	echo "$NAS1_MOUNT_POINT: Less than 1 Server Count Specified in VAR-SCRIPT" 
+	echo -e "\n\n$NAS1_MOUNT_POINT: Less than 1 Server Count Specified in VAR-SCRIPT (Not Checking)" 
 	else
 	/usr/local/bin/c.ln2tb-mount-check-1
 	fi
 	
 	if [ "$NAS_COUNT" -lt 2 ] ; then 
-	echo "$NAS2_MOUNT_POINT: Less than 2 Server Count Specified in VAR-SCRIPT" 
+	echo -e "\n\n$NAS2_MOUNT_POINT: Less than 2 Server Count Specified in VAR-SCRIPT (Not Checking)" 
 	else
 	/usr/local/bin/c.ln2tb-mount-check-2
 	fi
 
-
 	if [ "$NAS_COUNT" -lt 3 ] ; then 
-	echo -e "$NAS3_MOUNT_POINT: Less than 3 Server Count Specified in VAR-SCRIPT" 
+	echo -e "\n\n$NAS3_MOUNT_POINT: Less than 3 Server Count Specified in VAR-SCRIPT (Not Checking)" 
 	else
 	/usr/local/bin/c.ln2tb-mount-check-3
 	fi
 	
 	if [ "$NAS_COUNT" -lt 4 ] ; then 
-	echo "$NAS4_MOUNT_POINT: Less than 4 Server Count Specified in VAR-SCRIPT" 
+	echo -e "\n\n$NAS4_MOUNT_POINT: Less than 4 Server Count Specified in VAR-SCRIPT (Not Checking)" 
 	else
 	/usr/local/bin/c.ln2tb-mount-check-4
 	fi

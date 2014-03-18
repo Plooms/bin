@@ -25,7 +25,7 @@ export MYHOME="/home/abz"
 
 
 # How many NAS servers do you have ?
-export NAS_COUNT="2"
+export NAS_COUNT="0"
 
 
 # NAS1 Mount Point (/media/?)
