@@ -270,3 +270,4 @@ mv -v Dads\ \(2013\)*                "$TV_SYM"/"Dads (2013)"/             && ech
 mv -v Nip*Tuck*                "$TV_SYM"/"Nip Tuck"/             && echo -e "\n\n" 
 mv -v Lilyhammer*                "$TV_SYM"/"Lilyhammer"/             && echo -e "\n\n" 
 mv -v Parenthood\ \(2010\)*                "$TV_SYM"/"Parenthood (2010)"/             && echo -e "\n\n" 
+mv -v Desperate\ Housewives*                "$TV_SYM"/"Desperate Housewives"/             && echo -e "\n\n" 
