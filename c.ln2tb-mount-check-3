@@ -103,7 +103,7 @@ then
 fi
 
 
-if [ ! -z "$NEEDS_MOUNT" ]
+if [ -z "$NEEDS_MOUNT" ]
 then
 	# No need for a second run if everything was mounted
 	echo -e "\n\nEverything's good"
