@@ -45,7 +45,10 @@ ping -c 5 "$NAS1_IP" >/dev/null
 	else
 		RED ; echo "$NAS1_MOUNT_POINT Not Reachable"
 
-		notify-send 'HDD Warning!' "$NAS1_MOUNT_POINT Not Reachable" --icon=dialog-warning
+		
+	    echo "HDD Warning! $NAS1_MOUNT_POINT Not Reachable" | tee $MYHOME/script-error-"$SCRIPT_NAME"
+	    beep 2>/dev/null
+			
 	fi
 
 
