@@ -1,6 +1,6 @@
 #!/bin/bash
 # Check to see if an HDD is unmounted
-SCRIPT_NAME="c.ln2tb-mount-check"
+SCRIPT_NAME="c.ln2tb-mount-check-1"
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
@@ -109,17 +109,7 @@ then
 fi
 
 
-if [ -z "$NEEDS_MOUNT" ]
-then
-	# No need for a second run if everything was mounted
-	break
-else
-	# Run for a second time if needed
-	RUN_TIMES=$((RUN_TIMES+1))
-	unset NEEDS_MOUNT
-	clear
-	echo -e "\n\n	Second Run.................."
-fi
+
 
 
 done
