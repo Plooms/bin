@@ -50,17 +50,18 @@ ping -c 5 "$NASx_IP" >/dev/null
 
 # Check if NASx is mounted
 _Check_NAS() {
-    grep -qs "$NASx_MOUNT_POINT" /proc/mounts >/dev/null
+   while grep -qs "$NASx_MOUNT_POINT" /proc/mounts >/dev/null ;do
 	if [ "$?" = 0 ]
 	then	GREEN ; echo "$NASx_MOUNT_POINT Mounted"
 	else	RED ; echo "$NASx_MOUNT_POINT Not Mounted"
 	
 	CONTINUE="NO"
 	export NEEDS_MOUNT="$NASx_MOUNT_POINT"
-	while /usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null ; do _Check_NAS;done
+	/usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null
 	
 	exit
 	fi
+	done
 }
 
 
