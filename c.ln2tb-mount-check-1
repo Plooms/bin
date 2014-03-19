@@ -39,8 +39,7 @@ ping -c 5 "$NASx_IP" >/dev/null
 	else
 		RED ; echo "$NASx_MOUNT_POINT Not Reachable"
 
-		
-	    echo "HDD Warning! $NASx_MOUNT_POINT Not Reachable" | tee $MYHOME/script-error-"$SCRIPT_NAME"
+	    echo "Warning! $NASx_MOUNT_POINT Not Reachable" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
 	    beep 2>/dev/null
 			
 	fi
@@ -50,25 +49,22 @@ ping -c 5 "$NASx_IP" >/dev/null
 
 
 # Check if NASx is mounted
-grep -qs "$NASx_MOUNT_POINT" /proc/mounts >/dev/null
-	
-	
+_Check_NAS() {
+    grep -qs "$NASx_MOUNT_POINT" /proc/mounts >/dev/null
 	if [ "$?" = 0 ]
-	then
-		GREEN ; echo "$NASx_MOUNT_POINT Mounted"
-	else
-		RED ; echo "$NASx_MOUNT_POINT Not Mounted"
-		
-		
-		CONTINUE="NO"
-		
-		export NEEDS_MOUNT="$NASx_MOUNT_POINT"
-				
-		/usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null
-
+	then	GREEN ; echo "$NASx_MOUNT_POINT Mounted"
+	else	RED ; echo "$NASx_MOUNT_POINT Not Mounted"
+	
+	CONTINUE="NO"
+	export NEEDS_MOUNT="$NASx_MOUNT_POINT"
+	/usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null
+	_Check_NAS
+	exit
 	fi
+}
 
 
+_Check_NAS
 
 if [ "$CONTINUE" = YES ]
 then
