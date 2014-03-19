@@ -45,7 +45,6 @@ while [[ $RUN_TIMES < 2 ]] ;do
 	export NASx_IP="$NAS3_IP"
 	export NASx_MOUNT_POINT="$NAS3_MOUNT_POINT"
 	/usr/local/bin/c.ln2tb-mount-check-1
-
 	fi
 	
 	if [ "$NAS_COUNT" -lt 4 ] ; then 
@@ -55,10 +54,9 @@ while [[ $RUN_TIMES < 2 ]] ;do
 	export NASx_IP="$NAS4_IP"
 	export NASx_MOUNT_POINT="$NAS4_MOUNT_POINT"
 	/usr/local/bin/c.ln2tb-mount-check-1
-
 	fi
 	
-	sleep 20
+	
 
 
 	RUN_TIMES=$((RUN_TIMES+1))
