@@ -50,7 +50,7 @@ ping -c 5 "$NASx_IP" >/dev/null
 
 # Check if NASx is mounted
 _Check_NAS() {
-   while grep -qs "$NASx_MOUNT_POINT" /proc/mounts >/dev/null ;do
+    grep -qs "$NASx_MOUNT_POINT" /proc/mounts >/dev/null
 	if [ "$?" = 0 ]
 	then	GREEN ; echo "$NASx_MOUNT_POINT Mounted"
 	else	RED ; echo "$NASx_MOUNT_POINT Not Mounted"
@@ -61,11 +61,11 @@ _Check_NAS() {
 	
 	exit
 	fi
-	done
+	
 }
 
 
-_Check_NAS
+until _Check_NAS;do _Check_NAS;done
 
 if [ "$CONTINUE" = YES ]
 then
