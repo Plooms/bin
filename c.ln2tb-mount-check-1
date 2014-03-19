@@ -22,25 +22,25 @@ export DISPLAY=:0.0
 WHITE
 echo ""
 echo "#############################################################"
-echo "			$NAS1_MOUNT_POINT"
+echo "			$NASx_MOUNT_POINT"
 echo "#############################################################"
 ###################################################################
 ###################################################################
 
 CONTINUE="YES"
 
-# Ping NAS 1
-ping -c 5 "$NAS1_IP" >/dev/null
+# Ping NASx
+ping -c 5 "$NASx_IP" >/dev/null
 
 
 	if [ "$?" = 0 ]
 	then
-		GREEN ; echo "$NAS1_MOUNT_POINT Reachable"
+		GREEN ; echo "$NASx_MOUNT_POINT Reachable"
 	else
-		RED ; echo "$NAS1_MOUNT_POINT Not Reachable"
+		RED ; echo "$NASx_MOUNT_POINT Not Reachable"
 
 		
-	    echo "HDD Warning! $NAS1_MOUNT_POINT Not Reachable" | tee $MYHOME/script-error-"$SCRIPT_NAME"
+	    echo "HDD Warning! $NASx_MOUNT_POINT Not Reachable" | tee $MYHOME/script-error-"$SCRIPT_NAME"
 	    beep 2>/dev/null
 			
 	fi
@@ -49,20 +49,20 @@ ping -c 5 "$NAS1_IP" >/dev/null
 
 
 
-# Check if NAS 1 is mounted
-grep -qs "$NAS1_MOUNT_POINT" /proc/mounts >/dev/null
+# Check if NASx is mounted
+grep -qs "$NASx_MOUNT_POINT" /proc/mounts >/dev/null
 	
 	
 	if [ "$?" = 0 ]
 	then
-		GREEN ; echo "$NAS1_MOUNT_POINT Mounted"
+		GREEN ; echo "$NASx_MOUNT_POINT Mounted"
 	else
-		RED ; echo "$NAS1_MOUNT_POINT Not Mounted"
+		RED ; echo "$NASx_MOUNT_POINT Not Mounted"
 		
 		
 		CONTINUE="NO"
 		
-		export NEEDS_MOUNT="$NAS1_MOUNT_POINT"
+		export NEEDS_MOUNT="$NASx_MOUNT_POINT"
 				
 		/usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null
 
@@ -74,27 +74,27 @@ if [ "$CONTINUE" = YES ]
 then
 
 
-	# Check if NAS 1 is really alive
-	[ ! -z "$NAS_ALIVE_CHECK" ] && [ -f "$NAS1_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ]
+	# Check if NASx is really alive
+	[ ! -z "$NAS_ALIVE_CHECK" ] && [ -f "$NASx_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ]
 	
 	if [ "$?" = 0 ]
 	then
 	
-	CHECK="$(cat $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK)"
+	CHECK="$(cat $NASx_MOUNT_POINT/$NAS_ALIVE_CHECK)"
 	
-	[ -r $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+	[ -r $NASx_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
 
 
 		if [ "$?" = 0 ]
 		then 
-			GREEN ; echo "$NAS1_MOUNT_POINT Appears to be Alive & Kicking"
+			GREEN ; echo "$NASx_MOUNT_POINT Appears to be Alive & Kicking"
 		else
-			RED ; echo "$NAS1_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+			RED ; echo "$NASx_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
 				  echo "Check if ($NAS_ALIVE_CHECK) file exists"
 		fi
 		
 		else
-			RED ; echo "$NAS1_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
+			RED ; echo "$NASx_MOUNT_POINT Appears to be Ghost Mounted (Not Really alive)"
 				  echo "Check if ($NAS_ALIVE_CHECK) file exists"
 
 	fi
@@ -110,9 +110,9 @@ else
 	unset NEEDS_MOUNT
 	clear
 	RED
-	echo "Something went wrong with Mounting or reaching $NAS1_MOUNT_POINT" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
+	echo "Something went wrong with Mounting or reaching $NASx_MOUNT_POINT" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
 	beep 2>/dev/null ; sleep .1 ; beep 2>/dev/null ; sleep .1 ; beep 2>/dev/null ; sleep .5 ; beep 2>/dev/null
-
+exit
 
 fi
 

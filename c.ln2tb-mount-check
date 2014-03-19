@@ -21,27 +21,41 @@ while [[ $RUN_TIMES < 2 ]] ;do
 
 
 	if [ "$NAS_COUNT" -lt 1 ] ; then 
+	COLOR_OFF
 	echo -e "\n\n$NAS1_MOUNT_POINT: Less than 1 Server Count Specified in VAR-SCRIPT (Not Checking)" 
 	else
+	export NASx_IP="$NAS1_IP"
+	export NASx_MOUNT_POINT="$NAS1_MOUNT_POINT"
 	/usr/local/bin/c.ln2tb-mount-check-1
 	fi
 	
 	if [ "$NAS_COUNT" -lt 2 ] ; then 
+	COLOR_OFF
 	echo -e "\n\n$NAS2_MOUNT_POINT: Less than 2 Server Count Specified in VAR-SCRIPT (Not Checking)" 
 	else
-	/usr/local/bin/c.ln2tb-mount-check-2
+	export NASx_IP="$NAS2_IP"
+	export NASx_MOUNT_POINT="$NAS2_MOUNT_POINT"
+	/usr/local/bin/c.ln2tb-mount-check-1
 	fi
 
 	if [ "$NAS_COUNT" -lt 3 ] ; then 
+	COLOR_OFF
 	echo -e "\n\n$NAS3_MOUNT_POINT: Less than 3 Server Count Specified in VAR-SCRIPT (Not Checking)" 
 	else
-	/usr/local/bin/c.ln2tb-mount-check-3
+	export NASx_IP="$NAS3_IP"
+	export NASx_MOUNT_POINT="$NAS3_MOUNT_POINT"
+	/usr/local/bin/c.ln2tb-mount-check-1
+
 	fi
 	
 	if [ "$NAS_COUNT" -lt 4 ] ; then 
+	COLOR_OFF
 	echo -e "\n\n$NAS4_MOUNT_POINT: Less than 4 Server Count Specified in VAR-SCRIPT (Not Checking)" 
 	else
-	/usr/local/bin/c.ln2tb-mount-check-4
+	export NASx_IP="$NAS4_IP"
+	export NASx_MOUNT_POINT="$NAS4_MOUNT_POINT"
+	/usr/local/bin/c.ln2tb-mount-check-1
+
 	fi
 	
 	sleep 20
