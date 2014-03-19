@@ -58,9 +58,7 @@ _Check_NAS() {
 	CONTINUE="NO"
 	export NEEDS_MOUNT="$NASx_MOUNT_POINT"
 	/usr/bin/terminator -x /usr/local/bin/c.ln2tb-mount  2>/dev/null
-
-until [ "$CONTINUE" = "YES" ];do _Check_NAS;done
-	
+	_Check_NAS
 	exit
 	fi
 	
