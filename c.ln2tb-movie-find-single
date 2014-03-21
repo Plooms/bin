@@ -52,15 +52,15 @@ NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select notes from movies where
 #################################
 
 GREEN
-echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
+echo -en "Name =  ${WHITE}$NAME${COLOR_OFF}"
 GREEN
-echo -e "Size =  ${WHITE}$SIZE${COLOR_OFF}"
+echo -en "Size =  ${WHITE}$SIZE${COLOR_OFF}"
 GREEN
-echo -e "Resolution = ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
+echo -en "Resolution = ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
 GREEN
-echo -e "Watched = ${WHITE}$WATCHED"
+echo -en "Watched = ${WHITE}$WATCHED"
 GREEN
-echo -e "Notes =  ${CYAN}$NOTES${COLOR_OFF}"
+echo -en "Notes =  ${CYAN}$NOTES${COLOR_OFF}"
 YELLOW
 
 
@@ -76,11 +76,11 @@ echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}"
 #################################
 for i in "${movie_array[@]}"
 do
-MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+MOVIE_NAME="$i"
 NAME="$(mysql -uroot -p"$DB_PASSWORD" movie_folders -e "select Movie_Folder from folders where Movie_Folder LIKE '%$MOVIE_NAME%'" -ss)"
 
 #find "$MOVIE_SYM"/ -maxdepth 2 -type d -iname "*$FILE_NAME*" | sort -bf
-echo -e "Name =  ${WHITE}$NAME${COLOR_OFF}"
+echo -e "$MOVIE_SYM/${WHITE}$NAME${COLOR_OFF}"
 
 done
 #################################
