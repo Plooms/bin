@@ -99,7 +99,7 @@ MOVIE_NAME2="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$/
 WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME2%'" -ss)"
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 
-echo -e "${WHITE}$NAME${COLOR_OFF}	$WATCHED"
+echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
 
 done
 #################################
