@@ -61,7 +61,7 @@ echo -e "Res:	${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF
 GREEN
 echo -e "Watched: ${WHITE}$WATCHED"
 GREEN
-echo -e "Notes:	${CYAN}$NOTES${COLOR_OFF}"
+[ ! -z "$NOTES" ] && echo -e "Notes:	${CYAN}$NOTES${COLOR_OFF}"
 YELLOW
 
 
@@ -77,7 +77,7 @@ echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}"
 #################################
 for i in "${movie_array[@]}"
 do
-MOVIE_NAME="$i"
+MOVIE_NAME="$(echo $i | sed "s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 NAME="$(mysql -uroot -p"$DB_PASSWORD" movie_folders -e "select Movie_Folder from folders where Movie_Folder LIKE '%$MOVIE_NAME%'" -ss)"
 
 #find "$MOVIE_SYM"/ -maxdepth 2 -type d -iname "*$FILE_NAME*" | sort -bf
