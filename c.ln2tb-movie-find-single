@@ -52,15 +52,15 @@ NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select notes from movies where
 #################################
 
 GREEN
-echo -en "Name =  ${WHITE}$NAME${COLOR_OFF}"
+echo -e "Name:	${WHITE}$NAME${COLOR_OFF}"
 GREEN
-echo -en "Size =  ${WHITE}$SIZE${COLOR_OFF}"
+echo -e "Size:	${WHITE}$SIZE${COLOR_OFF}"
 GREEN
-echo -en "Resolution = ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
+echo -e "Res:	${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
 GREEN
-echo -en "Watched = ${WHITE}$WATCHED"
+echo -e "Watched: ${WHITE}$WATCHED"
 GREEN
-echo -en "Notes =  ${CYAN}$NOTES${COLOR_OFF}"
+echo -e "Notes:	${CYAN}$NOTES${COLOR_OFF}"
 YELLOW
 
 
