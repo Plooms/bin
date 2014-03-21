@@ -71,11 +71,12 @@ fi
 
 
 ####### For the log file#########
+if [[ "$WATCHED" = *"YES" ]] ; then WATCHED="(YES)";else WATCHED="(NO)";fi
 echo -e "
 Path= $i
 Name:  $NAME
 Size:  $SIZE
-Resolution: $RES1 x $RES2p  $DEF
+Resolution: $RES1 x "$RES2"p  $DEF
 Watched: $WATCHED
 -----------################-------------
 " >> "$TMP_LOG1"
@@ -101,7 +102,8 @@ sort -bf "$TMP3"
 echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 
 
-echo "Log File: g $TMP_LOG1"
+
+echo "Log File:   sudo geany $TMP_LOG1"
 
 else
 sudo nano $BATCH_FILE_MOVIE_FIND ; c.ln2tb-movie-find-batch
