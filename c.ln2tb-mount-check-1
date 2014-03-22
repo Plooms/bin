@@ -35,11 +35,11 @@ ping -c 5 "$NASx_IP" >/dev/null
 
 	if [ "$?" = 0 ]
 	then
-		GREEN ; echo "$NASx_MOUNT_POINT Reachable"
+		GREEN ; echo "$NASx_IP Reachable"
 	else
-		RED ; echo "$NASx_MOUNT_POINT Not Reachable"
+		RED ; echo "$NASx_IP Not Reachable"
 
-	    echo "Warning! $NASx_MOUNT_POINT Not Reachable" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
+	    echo "Warning! $NASx_IP Not Reachable" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
 	    beep 2>/dev/null
 			
 	fi
