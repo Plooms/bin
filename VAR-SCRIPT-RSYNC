@@ -282,24 +282,24 @@ export SRC_12_2="$MYHOME/"
 
 #The target directory:
 export TRG_12="$HOME_BACKUP_FOLDER/$SNAPSHOT_DIR"
-export TRG_12_OLD="$HOME_BACKUP_FOLDER/$SNAPSHOT_DIR_OLD"
+#export TRG_12_OLD="$HOME_BACKUP_FOLDER/$SNAPSHOT_DIR_OLD"
 
-export TRG_12_2="$HOME_BACKUP_FOLDER2/$SNAPSHOT_DIR"
-export TRG_12_2_OLD="$HOME_BACKUP_FOLDER2/$SNAPSHOT_DIR_OLD"
+export TRG_12_2="$HOME_BACKUP_FOLDER/ALL"
+#export TRG_12_2_OLD="$HOME_BACKUP_FOLDER2/$SNAPSHOT_DIR_OLD"
 
 
 #The link destination directory:
 export LNK_12="$HOME_BACKUP_FOLDER/$LINK_SYM"
-export LNK_12_2="$HOME_BACKUP_FOLDER2/$LINK_SYM"
+#export LNK_12_2="$HOME_BACKUP_FOLDER2/$LINK_SYM"
 
 
 #The Log file
 export LOG_12="$HOME_BACKUP_FOLDER/$RSYNC_LOG"
-export LOG_12_2="$HOME_BACKUP_FOLDER2/$RSYNC_LOG"
+#export LOG_12_2="$HOME_BACKUP_FOLDER2/$RSYNC_LOG"
 
 #The rsync options:
 OPT_12=("-iavhHP" "--link-dest=$LNK_12" "--exclude-from=$RSYNC_EXCLUDE_22" "--log-file=$LOG_12")
-OPT_12_2=("-iavhHP"  "--link-dest=$LNK_12_2" "--exclude-from=$RSYNC_EXCLUDE_22" "--log-file=$LOG_12_2")
+OPT_12_2=("-iavhHP"  "--exclude-from=$RSYNC_EXCLUDE_22")
 OPT_12_TAR=(--exclude='Private/*' --exclude='.xbmc' --exclude='.thumbnails/*' --exclude='.cache/*')
 
 
