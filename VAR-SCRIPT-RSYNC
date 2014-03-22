@@ -280,7 +280,7 @@ export SRC_12_2="$MYHOME/"
 
 #The target directory:
 export TRG_12="$HOME_BACKUP_FOLDER/$SNAPSHOT_DIR"
-#export TRG_12_OLD="$HOME_BACKUP_FOLDER/$SNAPSHOT_DIR_OLD"
+export TRG_12_OLD="$HOME_BACKUP_FOLDER/$SNAPSHOT_DIR_OLD"
 
 export TRG_12_2="$HOME_BACKUP_FOLDER/ALL"
 #export TRG_12_2_OLD="$HOME_BACKUP_FOLDER2/$SNAPSHOT_DIR_OLD"
@@ -313,7 +313,7 @@ TRG_13="$ETC_BACKUP_FOLDER/Snapshots/$DAY0/$HOUR0"
 ###############################################################
 
 #The source directory:
-export SRC_14="/media/C1/"
+export SRC_14="/media/R1/"
 
 #The target directory:
 export TRG_14="/media/C3/"
