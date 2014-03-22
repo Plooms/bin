@@ -8,7 +8,7 @@ source /usr/local/bin/VAR-SCRIPT-COLOR
 
 # NOTE: make sure to turn on "Case Sensitive"
 # change "abz" to "sal"
-# change "C1" to "S1"
+# change "R1" to "Sx"
 # change "C2" to "S2"
 # change "10.0.0.101" to "192.168.1.9"
 # change "10.0.0.102" to "192.168.1.10"
@@ -50,16 +50,14 @@ export NAS4_IP="10.0.0.103"
 # Mount Anchor
 export MOUNT_ANCHOR="/media/Cx"
 
-# File to make sure the pool is alive /media/C1/?
+# File to make sure the pool is alive /media/R1/?
 export NAS_ALIVE_CHECK=".mount-check"
 
 
-export MOVIE_DIR1="/media/C1/Movies"
-export MOVIE_DIR2="/media/C2/current/Movies"
+export MOVIE_DIR1="/media/R1/Movies"
 
 
-export HOME_BACKUP_FOLDER="/media/C1/Home-Backup"
-export HOME_BACKUP_FOLDER2="/media/C2/Home-Backup"
+export HOME_BACKUP_FOLDER="/media/R1/Home-Backup"
 
 
 # Download folder for TV episodes
@@ -106,11 +104,11 @@ export TV_SYM2="/home/abz/NAS/Anime"
 ########################################################################################################
 # eCryptfs
 export OPEN_DIR_ECRYPT="$MYHOME/Private"
-export ENCRYPTED_DIR_ECRYPT="/media/C1/Other/Encrypted/Private"
+export ENCRYPTED_DIR_ECRYPT="/media/R1/Other/Encrypted/Private"
 
 # EncFS
 export OPEN_DIR_ENCFS="$MYHOME/Private"
-export ENCRYPTED_DIR_ENCFS="/media/C1/Other/Encrypted/Private2"
+export ENCRYPTED_DIR_ENCFS="/media/R1/Other/Encrypted/Private2"
 ########################################################################################################
 
 
