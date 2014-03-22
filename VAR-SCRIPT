@@ -29,12 +29,12 @@ export NAS_COUNT="2"
 
 
 # NAS1 Mount Point (/media/?)
-export NAS1_MOUNT_POINT="/media/C1"
+export NAS1_MOUNT_POINT="/media/R1"
 export NAS1_IP="10.0.0.101"
 
 
 # NAS2 Mount Point (/media/?)
-export NAS2_MOUNT_POINT="/media/C2"
+export NAS2_MOUNT_POINT="/media/R1"
 export NAS2_IP="10.0.0.102"
 
 

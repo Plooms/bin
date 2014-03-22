@@ -14,8 +14,7 @@ answer=$(dialog --stdout  --menu \
 "3- Find & Check Resolution" "" \
 "4- Edit Videos" "" \
 "5- Check for Duplicates" "" \
-"6- Change Symlinks" "" \
-"7- Check Mounts" "" )
+"6- Check Mounts" "" )
 
 
 
@@ -42,11 +41,7 @@ elif [ "$answer" = "5- Check for Duplicates" ]
 then c.ln2tb-dupes
 
 
-elif [ "$answer" = "6- Change Symlinks" ]
-then c.ln2tb-symlinks
-
-
-elif [ "$answer" = "7- Check Mounts" ]
+elif [ "$answer" = "6- Check Mounts" ]
 then c.ln2tb-mount-check
 
 
