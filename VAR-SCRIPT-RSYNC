@@ -11,15 +11,13 @@ echo "
 
 lost*found
 Home-Backup/
-Storage*/
+Backups/
 Other/Apps/NO-SYNC/*/*
 Other/Downloads/Download-folder/*
 Other/Downloads/temp*/*
 Other/Shows-clean/*
 .Trash*
 .directory
-.C1
-.C2
 .mount-check
 
 " >| "$RSYNC_EXCLUDE_11"
@@ -258,17 +256,17 @@ export LINK_SYM="current"
 ###############################################################
 
 #The source directory:
-export SRC_11="/media/C1/"
+export SRC_11="/media/R1/"
 
 #The target directory:
-export TRG_11="/media/C2/$SNAPSHOT_DIR"
-export TRG_11_OLD="/media/C2/$SNAPSHOT_DIR_OLD"
+export TRG_11="/media/R1/Backups/$SNAPSHOT_DIR"
+export TRG_11_OLD="/media/R1/Backups/$SNAPSHOT_DIR_OLD"
 
 #The link destination directory:
-export LNK_11="/media/C2/$LINK_SYM"
+export LNK_11="/media/R1/Backups/$LINK_SYM"
 
 #The Log file
-export LOG_11="/media/C2/$RSYNC_LOG"
+export LOG_11="/media/R1/Backups/$RSYNC_LOG"
 
 # Rsync Options
 OPT_11=("-iavhHP"  "--exclude-from=$RSYNC_EXCLUDE_11" "--log-file=$LOG_11" "--link-dest=$LNK_11")
