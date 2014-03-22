@@ -271,3 +271,4 @@ mv -v Nip*Tuck*                "$TV_SYM"/"Nip Tuck"/             && echo -e "\n\
 mv -v Lilyhammer*                "$TV_SYM"/"Lilyhammer"/             && echo -e "\n\n" 
 mv -v Parenthood\ \(2010\)*                "$TV_SYM"/"Parenthood (2010)"/             && echo -e "\n\n" 
 mv -v Desperate\ Housewives*                "$TV_SYM"/"Desperate Housewives"/             && echo -e "\n\n" 
+mv -v 8\ Simple\ Rules*                "$TV_SYM"/"8 Simple Rules"/             && echo -e "\n\n" 
