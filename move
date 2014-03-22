@@ -269,3 +269,4 @@ mv -v Jackass*                "$TV_SYM"/"Jackass"/              2>/dev/null && e
 mv -v Parenthood\ \(2010\)*                "$TV_SYM"/"Parenthood (2010)"/              2>/dev/null && echo -e "\n\n"
 mv -v Desperate\ Housewives*                "$TV_SYM"/"Desperate Housewives"/              2>/dev/null && echo -e "\n\n"
 mv -v 8\ Simple\ Rules*                "$TV_SYM"/"8 Simple Rules"/              2>/dev/null && echo -e "\n\n"
+mv -v Boy\ Meets\ World*                "$TV_SYM"/"Boy Meets World"/              2>/dev/null && echo -e "\n\n"
