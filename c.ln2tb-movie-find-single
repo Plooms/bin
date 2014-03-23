@@ -70,7 +70,6 @@ echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 ####### For the log file#########
 if [[ "$WATCHED" = *"YES" ]] ; then WATCHED="(YES)";else WATCHED="(NO)";fi
-
 echo -e "
 Path: $i
 Name:  $NAME
