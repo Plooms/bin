@@ -8,4 +8,5 @@ source /usr/local/bin/VAR-SCRIPT
 
 sudo systemctl restart couchpotato
 sudo systemctl restart sickbeard
+sudo systemctl restart sabnzbd
 

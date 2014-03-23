@@ -1,5 +1,5 @@
 #! /bin/bash
-# A script to call install function #
+# A script to call install function without confirming
 
 
 # Source the VAR MOAS
