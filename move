@@ -52,8 +52,6 @@ mv -v House\ of\ Lies*              "$TV_SYM"/"House of Lies"/           				   
 mv -v House\ *               	    "$TV_SYM"/"House"/              2>/dev/null && echo -e "\n\n"
 
 # Can sort
-
-
 mv -v 24*                           "$TV_SYM"/"24"/						              2>/dev/null && echo -e "\n\n"
 mv -v 30*Rock*                      "$TV_SYM"/"30 Rock"/                                                  2>/dev/null && echo -e "\n\n"
 mv -v 8\ Simple\ Rules*                "$TV_SYM"/"8 Simple Rules"/              2>/dev/null && echo -e "\n\n"
