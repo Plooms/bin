@@ -79,7 +79,6 @@ Res: $RES1 x "$RES2"p  $DEF
 Watched: $WATCHED
 -----------################-------------
 " >> "$TMP_LOG1"
-
 ####### For the log file#########
 
 done
