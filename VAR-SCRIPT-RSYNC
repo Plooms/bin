@@ -263,7 +263,7 @@ export TRG_11="/media/R1/Backups/$SNAPSHOT_DIR"
 export TRG_11_OLD="/media/R1/Backups/$SNAPSHOT_DIR_OLD"
 
 #The link destination directory:
-export LNK_11="/media/R1/Backups/$LINK_SYM"
+export LNK_11="/media/R1/"
 
 #The Log file
 export LOG_11="/media/R1/Backups/$RSYNC_LOG"

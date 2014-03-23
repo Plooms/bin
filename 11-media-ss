@@ -37,18 +37,12 @@ else
 #sudo find "$TRG_11_OLD" -maxdepth 1 -type d | sort | tail -n +3 | xargs sudo rm -r
 #fi
 
-_CHECK_NAS1 && _CHECK_NAS2 \
+_CHECK_MOUNT1 \
 && mkdir -p "$TRG_11" \
 && echo "Created Dir: $TRG_11" \
-&& sudo rsync "${OPT_11[@]}" "$SRC_11" "$TRG_11" \
-&& sudo rm -f "$LNK_11" \
-&& sudo ln -s "$TRG_11" "$LNK_11" \
-&& RANDOM_COLOR && echo -e " $TRG_11 \n--->\n $LNK_11 "
-
+&& sudo rsync "${OPT_11[@]}" "$SRC_11" "$TRG_11" 
 
 fi
-
-#########################################################
 
 
 #########################################################
