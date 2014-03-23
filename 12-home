@@ -16,7 +16,7 @@ _LOCK_ON
 
 # Sync $HOME to NAS1
 
-if _CHECK_NAS1
+if _CHECK_MOUNT1
 then
 
 
