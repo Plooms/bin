@@ -32,7 +32,7 @@ then
 # Rsync Backup
 if [ "$RSYNC"x = "On"x ]
 then
-	sudo rsync "${OPT_12[@]}" "$SRC_12" "$TRG_12"
+	sudo rsync "${OPT_12_2[@]}" "$SRC_12_2" "$TRG_12_2"
 else
  	echo "Tar Backup Only"
 fi
