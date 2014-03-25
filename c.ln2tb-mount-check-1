@@ -79,7 +79,7 @@ then
 	
 	CHECK="$(cat $NASx_MOUNT_POINT/$NAS_ALIVE_CHECK)"
 	
-	[ -r $NASx_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+	[ -r $NASx_MOUNT_POINT/$NAS_ALIVE_CHECK ] 2>/dev/null && [ $CHECK = 0 ] 2>/dev/null
 
 
 		if [ "$?" = 0 ]
