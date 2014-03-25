@@ -12,7 +12,7 @@ source /usr/local/bin/VAR-SCRIPT
 if _CHECK_MOUNT1
 then
 echo "Mirroring Media Tree to file" ; \
-tree -d -L 3 /media/ > "$LIST_LOCATION"/HDDs-Directories.txt ; \
+tree -d -L 4 /media/ > "$LIST_LOCATION"/HDDs-Directories.txt ; \
 tree -d -L 1 "$MOVIE_DIR1" > "$LIST_LOCATION"/Movies-list.txt
 else echo "Not Mounted or Something went wrong"
 fi
