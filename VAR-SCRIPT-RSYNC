@@ -45,7 +45,7 @@ echo "
 .directory
 Dropbox/.dropbox*
 Private/*
-
+TMP/*
 
 
 " >| "$RSYNC_EXCLUDE_22"
