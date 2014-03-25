@@ -34,7 +34,8 @@ if [ "$RSYNC"x = "ON"x ]
 then
 	sudo rsync "${OPT_12_2[@]}" "$SRC_12_2" "$TRG_12_2"
 else
- 	echo "Tar Backup Only or maybe no Method was selected  <RSYNC|TAR>=ON"
+ 	echo "Not using Rsync, or maybe no Backup Method was selected  export <RSYNC|TAR>=ON"
+	echo ""
 fi
 
 ##
@@ -48,7 +49,7 @@ rmdir "$TRG_12"
 echo "Created File: $TRG_12-$MIN0.tgz" \
 && sudo tar "${OPT_12_TAR[@]}" -cpvf "$TRG_12-$MIN0".tgz "$SRC_12"
 else
-echo "No Backup Method Selected you must have either <RSYNC|TAR>=ON"
+echo "No Backup Method Selected, you must have either export <RSYNC|TAR>=ON"
 fi
 
 
