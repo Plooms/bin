@@ -25,7 +25,7 @@ export NAS1_IP="10.0.0.101"
 
 
 # NAS2 Mount Point (/media/?)
-export NAS2_MOUNT_POINT="/media/R1"
+export NAS2_MOUNT_POINT="/media/R0"
 export NAS2_IP="10.0.0.102"
 
 
