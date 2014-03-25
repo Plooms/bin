@@ -6,23 +6,14 @@
 source /usr/local/bin/VAR-SCRIPT-COLOR
 
 
-# NOTE: make sure to turn on "Case Sensitive"
-# change "abz" to "sal"
-# change "R1" to "Sx"
-# change "C2" to "S2"
-# change "10.0.0.101" to "192.168.1.9"
-# change "10.0.0.102" to "192.168.1.10"
 
 
 
 ##########################  Variables #################################
 
-export DB_PASSWORD="$(expr 193746482004 / 1639402764294787)"
-
 export USERNAME="abz"
 
 export MYHOME="/home/abz"
-
 
 # How many NAS servers do you have ?
 export NAS_COUNT="2"
@@ -121,6 +112,7 @@ export ENCRYPTED_DIR_ENCFS="/media/R1/Other/Encrypted/Private2"
 ########################################################################################################
 # No need to change these
 export USERNAME_CAPS="$( echo $USERNAME | tr '[:lower:]' '[:upper:]' )"
+export DB_PASSWORD="$(cat $MYHOME/.db-password)"
 export LOCKFOLDER="$MYHOME/.$USERNAME_CAPS-LOCKS"
 export LOCKFOLDER2="$MYHOME/.$USERNAME_CAPS-LOCKS/ln2tb"
 export LOCKFILE="$LOCKFOLDER/lock-$SCRIPT_NAME"
