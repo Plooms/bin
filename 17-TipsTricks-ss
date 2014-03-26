@@ -6,6 +6,9 @@ SCRIPT_NAME="17-TipsTricks-ss"
 source /usr/local/bin/VAR-SCRIPT
 
 
+# Run <script_name> -c to check if the script is running
+if [[ "$1" = "-c"* ]] ;then _LOCK_CHECK ; fi
+
 # Time Calculation
 _START_TIME
 
