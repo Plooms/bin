@@ -46,7 +46,7 @@ echo "
 *.log
 .directory
 Dropbox/.dropbox*
-Private/*
+Private
 TMP/*
 
 
