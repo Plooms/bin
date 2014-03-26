@@ -183,9 +183,10 @@ _LOCK_CHECK()
 
   if [ -e "${LOCKFILE}" ] && kill -0 "$(cat "${LOCKFILE}")" 2>/dev/null ; then
   _LOCK_MSG
-  exit
+  exit 1
   else
   echo "Script Not running"
+  exit 0
   fi
 }
 
