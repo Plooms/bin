@@ -5,7 +5,9 @@ SCRIPT_NAME="11-media-ss"
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
-
+if [ "$1" = "-c" ]
+then _LOCK_CHECK
+fi
 # Time Calculation
 _START_TIME
 
