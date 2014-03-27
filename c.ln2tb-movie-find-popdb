@@ -19,8 +19,8 @@ _CHECK_MOUNT1 && \
 #while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
 
 
-find "$MOVIE_SYM"/ -size +25M |sort -bf | while read -r FILE ; do movie_array+=("$FILE") ;done
-find "$MOVIE_SYM"/ -iname "*.nfo" -size -25M |sort -bf | while read -r FILE2 ; do movie_nfo_array+=("$FILE2") ;done
+find "$MOVIE_SYM"/ -size +25M | while read FILE ; do movie_array+=("$FILE") ;done
+find "$MOVIE_SYM"/ -iname "*.nfo" -size -25M | while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done
 
 
 for i in "${movie_array[@]}"
