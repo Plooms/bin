@@ -6,6 +6,7 @@
 source /usr/local/bin/VAR-SCRIPT
 
 
+trap "rm "$i".md5 2>/dev/null ; exit" INT TERM EXIT
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
