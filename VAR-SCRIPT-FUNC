@@ -167,18 +167,15 @@ _END_TIME()
 { 
 	END_TIME=$(date +%s)
 	END_TIME_MIN=$(( END_TIME - START_TIME ))
-	
-	RANDOM_COLOR
-        END_TIME=$(date +%s)
-        END_TIME_SEC=$(( END_TIME - START_TIME ))
-        END_TIME_MIN=$(( (END_TIME - START_TIME) / 60 ))
-        END_TIME_HR=$(( END_TIME_MIN / 60 ))
+	END_TIME=$(date +%s)
+	END_TIME_SEC=$(( END_TIME - START_TIME ))
+	END_TIME_MIN=$(( (END_TIME - START_TIME) / 60 ))
+	END_TIME_HR=$(( END_TIME_MIN / 60 ))
 	RUN_TIME="$(echo $END_TIME_SEC s)"
 	[[ "$END_TIME_MIN" -gt 0 ]] && RUN_TIME="$(echo $RUN_TIME - $END_TIME_MIN Min)"
 	[[ "$END_TIME_HR"  -gt 0 ]] && RUN_TIME="$(echo $RUN_TIME - $END_TIME_HR Hrs)"
-
-	echo -e "\n Script Name:   $SCRIPT_NAME"
-	echo -e "${YELLOW}Run Time: ${COLOR_OFF} $RUN_TIME"
+	echo -e "\nScript Name:   $SCRIPT_NAME"
+	echo -e "Run    Time: ${COLOR_OFF} $RUN_TIME"
 
 }
 
