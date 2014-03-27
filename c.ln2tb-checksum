@@ -41,7 +41,8 @@ do
 if [ ! -f "$i".md5 ]
 then
 	echo -e "${CYAN}"
-	echo "$((count + 1)): Checking: $i"
+	echo "$((count + 1))) Checking:
+$i"
 	count=$((count + 1))
 	md5sum "$i" > "$i".md5
 
@@ -52,12 +53,14 @@ else
 		echo -e "${RED}"
 		echo "Removing empty or corrupt md5 file: $i.md5"
 		echo -e "${YELLOW}"
-		echo "$((count + 1)): Re-Checking: $i"
+		echo "$((count + 1))) Re-Checking:
+$i"
 		count=$((count + 1))
 		md5sum "$i" > "$i".md5
 	else
 		echo -e "${GREEN}"
-		echo "$((count + 1)): Skipping: $i.md5 exists"
+		echo "$((count + 1))) Skipping:
+$i.md5 exists"
 		count=$((count + 1))
 	fi
 fi
