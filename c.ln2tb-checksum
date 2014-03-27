@@ -26,9 +26,11 @@ while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
 for i in "${movie_array[@]}"
 do
 
-[ -f "$i".md5 ] && break
+[ -f "$i".md5 ] && return
+
+echo "Checksumming: $i"
+
 md5sum "$i" > "$i".md5
 
-echo "Adding File: $i"
 
 done
