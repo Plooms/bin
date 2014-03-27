@@ -1,10 +1,22 @@
 #!/bin/bash
 # Populate my DB of Movies
+SCRIPT_NAME="c.ln2tb-movie-find-popdb"
 
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+
+# Run <script_name> -c to check if the script is running
+_RUN_CHECK
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+#########################################################
 
 
 TMP="$(mktemp)"
@@ -89,3 +101,12 @@ EOF
 
 echo "Adding Folder: $NAME"
 done
+
+
+#########################################################
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF
