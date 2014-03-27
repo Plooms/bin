@@ -28,7 +28,7 @@ do
 
 if [ ! -f "$i".md5 ]
 then
-	echo ""
+	echo -e "${CYAN}"
 	echo "Checking: $i"
 	md5sum "$i" > "$i".md5
 
@@ -36,13 +36,13 @@ else
 	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
 	then
 		rm "$i".md5
-		echo ""
+		echo -e "${RED}"
 		echo "Removing empty or corrupt md5 file: $i.md5"
-		echo ""
+		echo -e "${YELLOW}"
 		echo "Re-Checking: $i"
 		md5sum "$i" > "$i".md5
 	else
-		echo ""
+		echo -e "${GREEN}"
 		echo "Skipping: $i.md5 exists"
 	fi
 fi
