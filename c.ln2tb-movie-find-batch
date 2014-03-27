@@ -46,6 +46,7 @@ DEF="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select definition from movies wh
 WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+DATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Date from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 #################################
 
 if [ ! -z "$NAME" ]
@@ -57,6 +58,8 @@ GREEN
 echo -e "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
 GREEN
 echo -e "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
+GREEN
+echo -e "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
 GREEN
 echo -e "Watched: ${WHITE}$WATCHED"
 GREEN
