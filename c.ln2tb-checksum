@@ -6,7 +6,6 @@
 source /usr/local/bin/VAR-SCRIPT
 
 
-trap "rm "$i".md5 2>/dev/null ; exit" INT TERM EXIT
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
@@ -34,9 +33,16 @@ then
 	md5sum "$i" > "$i".md5
 
 else
-	echo ""
-	echo "Not Checking: $i.md5 exists"
-
+	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
+	then
+		rm "$i".md5
+		echo "Removing empty or corrupt md5 file"
+		echo "Checking: $i"
+		md5sum "$i" > "$i".md5
+	else
+		echo ""
+		echo "Not Checking: $i.md5 exists"
+	fi
 fi
 
 done
