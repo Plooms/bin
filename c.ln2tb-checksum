@@ -26,11 +26,12 @@ while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
 for i in "${movie_array[@]}"
 do
 
-[ ! -f "$i".md5 ] && \
-
-echo "Checksumming: $i"
-
-md5sum "$i" > "$i".md5
-
+if [ ! -f "$i".md5 ]
+then
+	echo "Checksumming: $i"
+	md5sum "$i" > "$i".md5
+else
+	echo "Not Checksumming: $i"
+fi
 
 done
