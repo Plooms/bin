@@ -28,10 +28,14 @@ do
 
 if [ ! -f "$i".md5 ]
 then
-	echo "Checksumming: $i"
+	echo ""
+	echo "Checking: $i"
 	md5sum "$i" > "$i".md5
+
 else
-	echo "Not Checksumming: $i"
+	echo ""
+	echo "Not Checking: $i.md5 exists"
+
 fi
 
 done
