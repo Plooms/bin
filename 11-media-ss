@@ -17,7 +17,7 @@ _LOCK_ON
 
 #########################################################
 
-# Snapshot the NAS1 in NAS2
+# Snapshot NAS1
 
 RANDOM_COLOR
 
