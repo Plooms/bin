@@ -35,9 +35,7 @@ if [ -z "$RES1" -o -z "$RES2"  ]; then RES1="0" && RES2="0" ; fi
 DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
 NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
 NOTES="$(cat "$(echo $i | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
-DATE=`stat "$i"`
-echo $DATE-xxx
-echo $i
+DATE="$(stat "$i" | grep Modify | awk '{print $2}')"
 SIZE="$(du -m "$i" | awk '{print $1}')"
 NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
@@ -63,7 +61,6 @@ EOF
 
 
 echo "Adding File: $NAME"
-echo "$DATE"
 done
 
 
