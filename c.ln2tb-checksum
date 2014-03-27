@@ -36,12 +36,14 @@ else
 	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
 	then
 		rm "$i".md5
-		echo "Removing empty or corrupt md5 file"
-		echo "Checking: $i"
+		echo ""
+		echo "Removing empty or corrupt md5 file: $i.md5"
+		echo ""
+		echo "Re-Checking: $i"
 		md5sum "$i" > "$i".md5
 	else
 		echo ""
-		echo "Not Checking: $i.md5 exists"
+		echo "Skipping: $i.md5 exists"
 	fi
 fi
 
