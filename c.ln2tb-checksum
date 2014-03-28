@@ -16,13 +16,15 @@ _START_TIME
 # Start Lock
 _LOCK_ON
 
-#########################################################
+# Progress indicator
+_PROGRESS &
 
+#########################################################
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
 
-echo "Searching for files to checksum"
+echo -e "\nSearching for files to checksum"
 echo ""
 
 _CHECK_MOUNT1 && \
@@ -32,6 +34,8 @@ find "$TV_SYM"/ -size +25M |sort -bf > $TMP2
 while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
 
 
+
+# Movies
 count="1"
 
 for i in "${movie_array[@]}"
@@ -65,6 +69,51 @@ $i.md5 exists"
 fi
 
 done
+
+echo "################################"
+echo "################################"
+echo "################################"
+
+
+
+# TV
+count="1"
+
+for i in "${tv_array[@]}"
+do
+
+if [ ! -f "$i".md5 ]
+then
+	echo -e "${CYAN}"
+	echo "$((count + 1))) Checking:
+$i"
+	count=$((count + 1))
+	md5sum "$i" > "$i".md5
+
+else
+	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
+	then
+		rm "$i".md5
+		echo -e "${RED}"
+		echo "Removing empty or corrupt md5 file: $i.md5"
+		echo -e "${YELLOW}"
+		echo "$((count + 1))) Re-Checking:
+$i"
+		count=$((count + 1))
+		md5sum "$i" > "$i".md5
+	else
+		echo -e "${GREEN}"
+		echo "$((count + 1))) Skipping:
+$i.md5 exists"
+		count=$((count + 1))
+	fi
+fi
+
+done
+
+
+
+
 
 COLOR_OFF
 
