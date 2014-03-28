@@ -24,14 +24,12 @@ _PROGRESS &
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
 
-echo -e "\nSearching for files to checksum"
+echo -e "\nSearching for Movie files to checksum"
 echo ""
 
 _CHECK_MOUNT1 && \
 find "$MOVIE_SYM"/ -size +25M |sort -bf > $TMP
 while read FILE  ; do movie_array+=("$FILE") ;done < $TMP
-find "$TV_SYM"/ -size +25M |sort -bf > $TMP2
-while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
 
 
 
@@ -75,6 +73,12 @@ echo "################################"
 echo "################################"
 
 
+echo -e "\nSearching for TV files to checksum"
+echo ""
+
+_CHECK_MOUNT1 && \
+find "$TV_SYM"/ -size +25M |sort -bf > $TMP2
+while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
 
 # TV
 count="1"
