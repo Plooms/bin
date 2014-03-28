@@ -65,6 +65,8 @@ $i.md5 exists"
 	fi
 fi
 
+echo -e "Congratulations"
+echo -e "\nNothing else to do"
 done
 
 
