@@ -1,0 +1,143 @@
+#!/bin/bash
+# Checksum all media files
+SCRIPT_NAME="c.ln2tb-checksum"
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Run <script_name> -c to check if the script is running
+_RUN_CHECK
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+# Progress indicator
+_PROGRESS &
+
+#########################################################
+
+TMP="$(mktemp)"
+TMP2="$(mktemp)"
+
+echo -e "\nSearching for Movie files to checksum"
+echo ""
+
+_CHECK_MOUNT1 && \
+find "$MOVIE_SYM"/ -size +25M |sort -bf > $TMP
+while read FILE  ; do movie_array+=("$FILE") ;done < $TMP
+
+
+
+# Movies
+count="1"
+
+for i in "${movie_array[@]}"
+do
+
+if [ ! -f "$i".md5 ]
+then
+	echo -e "${CYAN}"
+	echo "Movie-$((count + 1))) Checking:
+$i"
+	count=$((count + 1))
+	md5sum "$i" > "$i".md5
+
+else
+	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
+	then
+		rm "$i".md5
+		echo -e "${RED}"
+		echo "Removing empty or corrupt md5 file: $i.md5"
+		echo -e "${YELLOW}"
+		echo "Movie-$((count + 1))) Re-Checking:
+$i"
+		count=$((count + 1))
+		md5sum "$i" > "$i".md5
+	else
+		echo -e "${GREEN}"
+		echo "Movie-$((count + 1))) Skipping:
+$i.md5 exists"
+		count=$((count + 1))
+	fi
+fi
+
+done
+
+COLOR_OFF
+
+echo ""
+echo "################################"
+echo "################################"
+echo "################################"
+echo ""
+
+echo -e "\nSearching for TV files to checksum"
+echo ""
+
+_CHECK_MOUNT1 && \
+#find "$TV_SYM"/ -size +25M |sort -bf > $TMP2
+#while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
+
+#find "$TV_SYM"/ -size +25M |sort -bf > $TMP2
+#while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
+
+ass(){
+
+# TV
+count="1"
+
+i="$1"
+
+if [ ! -f "$i".md5 ]
+then
+	echo -e "${CYAN}"
+	echo "TV-$((count + 1))) Checking:
+$i"
+	count=$((count + 1))
+	md5sum "$i" > "$i".md5
+
+else
+	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
+	then
+		rm "$i".md5
+		echo -e "${RED}"
+		echo "Removing empty or corrupt md5 file: $i.md5"
+		echo -e "${YELLOW}"
+		echo "TV-$((count + 1))) Re-Checking:
+$i"
+		count=$((count + 1))
+		md5sum "$i" > "$i".md5
+	else
+		echo -e "${GREEN}"
+		echo "TV-$((count + 1))) Skipping:
+$i.md5 exists"
+		count=$((count + 1))
+	fi
+fi
+
+done
+
+}
+
+
+find "$TV_SYM"/ -size +25M -exec ass {} \;
+
+
+
+
+
+
+COLOR_OFF
+
+#########################################################
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF
