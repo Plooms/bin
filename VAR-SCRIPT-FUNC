@@ -51,11 +51,11 @@ _CANCEL_MSG2()
 
   echo -e "\n\n\n  JOB CANCELED
   
-  [  $HOME_BACKUP_FOLDER  ]
+  [  "$HOME_BACKUP_FOLDER"  ]
   
   OR
   
-  [  $HOME_BACKUP_FOLDER2  ]
+  [  "$HOME_BACKUP_FOLDER2"  ]
 
   ${RED}(Not Available) 
   \n\n"
@@ -174,8 +174,8 @@ _END_TIME()
 	RUN_TIME="$(echo $END_TIME_SEC s)"
 	[[ "$END_TIME_MIN" -gt 0 ]] && RUN_TIME="$(echo $RUN_TIME - $END_TIME_MIN Min)"
 	[[ "$END_TIME_HR"  -gt 0 ]] && RUN_TIME="$(echo $RUN_TIME - $END_TIME_HR Hrs)"
-	echo -e "\nScript Name:	$SCRIPT_NAME"
-	echo -e "Run    Time:	${COLOR_OFF} $RUN_TIME"
+	echo -e "\nScript:  $SCRIPT_NAME"
+	echo -e "Runtime:   ${COLOR_OFF}$RUN_TIME"
 
 }
 
