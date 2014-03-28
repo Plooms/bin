@@ -67,9 +67,7 @@ fi
 
 done
 
-echo -e "${RED}C${GREEN}o${YELLOW}n${WHITE}g${CYAN}r${RED}a${CYAN}t${YELLOW}u${CYAN}l${WHITE}a${YELLOW}t${GREEN}i${RED}o${YELLOW}n${CYAN}s"
-echo -e "\nNothing else to do"
-
+COLOR_OFF
 
 #########################################################
 
