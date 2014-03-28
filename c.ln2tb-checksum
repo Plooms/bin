@@ -80,14 +80,18 @@ echo -e "\nSearching for TV files to checksum"
 echo ""
 
 _CHECK_MOUNT1 && \
-find "$TV_SYM"/ -size +25M |sort -bf > $TMP2
-while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
+#find "$TV_SYM"/ -size +25M |sort -bf > $TMP2
+#while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
+
+#find "$TV_SYM"/ -size +25M |sort -bf > $TMP2
+#while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
+
+ass(){
 
 # TV
 count="1"
 
-for i in "${tv_array[@]}"
-do
+i="$1"
 
 if [ ! -f "$i".md5 ]
 then
@@ -117,6 +121,12 @@ $i.md5 exists"
 fi
 
 done
+
+}
+
+
+find "$TV_SYM"/ -size +25M -exec ass {} \;
+
 
 
 
