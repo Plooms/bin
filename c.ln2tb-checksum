@@ -42,7 +42,7 @@ do
 if [ ! -f "$i".md5 ]
 then
 	echo -e "${CYAN}"
-	echo "$((count + 1))) Checking:
+	echo "Movie-$((count + 1))) Checking:
 $i"
 	count=$((count + 1))
 	md5sum "$i" > "$i".md5
@@ -54,13 +54,13 @@ else
 		echo -e "${RED}"
 		echo "Removing empty or corrupt md5 file: $i.md5"
 		echo -e "${YELLOW}"
-		echo "$((count + 1))) Re-Checking:
+		echo "Movie-$((count + 1))) Re-Checking:
 $i"
 		count=$((count + 1))
 		md5sum "$i" > "$i".md5
 	else
 		echo -e "${GREEN}"
-		echo "$((count + 1))) Skipping:
+		echo "Movie-$((count + 1))) Skipping:
 $i.md5 exists"
 		count=$((count + 1))
 	fi
@@ -68,10 +68,13 @@ fi
 
 done
 
-echo "################################"
-echo "################################"
-echo "################################"
+COLOR_OFF
 
+echo ""
+echo "################################"
+echo "################################"
+echo "################################"
+echo ""
 
 echo -e "\nSearching for TV files to checksum"
 echo ""
@@ -89,7 +92,7 @@ do
 if [ ! -f "$i".md5 ]
 then
 	echo -e "${CYAN}"
-	echo "$((count + 1))) Checking:
+	echo "TV-$((count + 1))) Checking:
 $i"
 	count=$((count + 1))
 	md5sum "$i" > "$i".md5
@@ -101,13 +104,13 @@ else
 		echo -e "${RED}"
 		echo "Removing empty or corrupt md5 file: $i.md5"
 		echo -e "${YELLOW}"
-		echo "$((count + 1))) Re-Checking:
+		echo "TV-$((count + 1))) Re-Checking:
 $i"
 		count=$((count + 1))
 		md5sum "$i" > "$i".md5
 	else
 		echo -e "${GREEN}"
-		echo "$((count + 1))) Skipping:
+		echo "TV-$((count + 1))) Skipping:
 $i.md5 exists"
 		count=$((count + 1))
 	fi
