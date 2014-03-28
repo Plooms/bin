@@ -253,11 +253,14 @@ _LOCK_MSG()
 
 _PROGRESS()
 {	
-	echo -n "Please wait..."
 	while true
 	do
-    echo -n "."
-    sleep 5
+	echo -ne '\ \r'
+	sleep .2
+	echo -ne '.. \r'
+	sleep .2
+	echo -ne '/ \r'
+	sleep .2
 	done
 }
 
