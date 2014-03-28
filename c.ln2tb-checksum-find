@@ -1,6 +1,6 @@
 #!/bin/bash
 # Checksum all media files ("find"s function companion)
-SCRIPT_NAME="c.ln2tb-checksum"
+SCRIPT_NAME="c.ln2tb-checksum-find"
 
 
 # Source the VAR MOAS
