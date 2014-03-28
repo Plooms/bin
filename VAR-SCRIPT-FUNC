@@ -254,13 +254,22 @@ _LOCK_MSG()
 _PROGRESS()
 {	
 	while true
-	do
-	echo -ne '\ \r'
+	do	
+	echo -ne ' \ \r'
 	sleep .2
-	echo -ne '.. \r'
+	echo -ne ' * \r'
+	sleep .1
+	echo -ne ' . \r'	
 	sleep .2
-	echo -ne '/ \r'
+	echo -ne ' * \r'
 	sleep .2
+	echo -ne ' / \r'
+	sleep .2
+	echo -ne ' . \r'
+	sleep .2	
+	echo -ne ' * \r'
+	sleep .2
+
 	done
 }
 
