@@ -39,7 +39,7 @@ ping -c 5 "$NASx_IP" >/dev/null
 	else
 		RED ; echo "$NASx_IP Not Reachable"
 
-	    echo "Warning! $NASx_IP Not Reachable" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
+	    echo "$(date) - Warning! $NASx_IP Not Reachable" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
 	    beep 2>/dev/null
 			
 	fi
@@ -107,8 +107,7 @@ else
 	unset NEEDS_MOUNT
 	clear
 	RED
-	echo "$(date) - Something went wrong with Mounting or reaching $NASx_MOUNT_POINT
-	" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
+	echo "$(date) - Something went wrong with Mounting or reaching $NASx_MOUNT_POINT" | tee "$MYHOME"/script-error-"$SCRIPT_NAME"
 	beep 2>/dev/null ; sleep .1 ; beep 2>/dev/null ; sleep .1 ; beep 2>/dev/null ; sleep .5 ; beep 2>/dev/null
 
 
