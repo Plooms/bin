@@ -45,9 +45,10 @@ then
 	echo "Movie-$((count + 1))) Checking:
 $i"
 	count=$((count + 1))
-	MD5="$(md5sum "$i")"
+	MD5="$(md5sum "$i"|awk '{print $1}')"
 	NAME="$(basename "$i")"
-	echo "$MD5 - $NAME" > "$i".md5
+	
+	echo " $MD5 - "./$NAME"  " > "$i".md5
 
 else
 	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
