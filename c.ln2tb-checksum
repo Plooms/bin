@@ -34,7 +34,7 @@ while read FILE  ; do movie_array+=("$FILE") ;done < $TMP
 
 
 # Movies
-count="1"
+count="0"
 
 for i in "${movie_array[@]}"
 do
@@ -45,7 +45,9 @@ then
 	echo "Movie-$((count + 1))) Checking:
 $i"
 	count=$((count + 1))
-	md5sum "$i" > "$i".md5
+	MD5="$(md5sum "$i")"
+	NAME="$(basename "$i")"
+	echo "$MD5 - $NAME" > "$i".md5
 
 else
 	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
