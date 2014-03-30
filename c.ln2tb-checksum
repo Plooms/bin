@@ -41,9 +41,10 @@ do
 
 if [ ! -f "$i".md5 ]
 then
-	echo -e "${CYAN}"
-	echo "Movie-$((count + 1))) Checking:
-$i"
+	CYAN
+	echo "Movie-$((count + 1))) Checking:"
+	echo "$i"
+	
 	count=$((count + 1))
 	MD5="$(md5sum "$i"|awk '{print $1}')"
 	NAME="$(basename "$i")"
@@ -53,21 +54,24 @@ else
 	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
 	then
 		rm "$i".md5
-		echo -e "${RED}"
+		RED
 		echo "Removing empty or corrupt md5 file: $i.md5"
-		echo -e "${YELLOW}"
-		echo "Movie-$((count + 1))) Re-Checking:
-$i"
+		YELLOW
+		echo "Movie-$((count + 1))) Re-Checking:"
+		echo "$i"
+		
 		count=$((count + 1))
 		MD5="$(md5sum "$i"|awk '{print $1}')"
 		NAME="$(basename "$i")"
 		echo "$MD5  $NAME" > "$i".md5
-		
+	
 	else
-		echo -e "${GREEN}"
-		echo "Movie-$((count + 1))) Skipping:
-$i.md5 exists"
+	
+		GREEN
+		echo "Movie-$((count + 1))) Skipping:"
+		echo "$i.md5 exists"
 		count=$((count + 1))
+		
 	fi
 fi
 
