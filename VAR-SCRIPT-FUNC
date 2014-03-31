@@ -81,21 +81,29 @@ mount | grep $NAS1_MOUNT_POINT > /dev/null \
 
 }
 
+_CHECK_NAS() 
+{ 
+
+sudo ping -c1 -t2 "$NASx_IP" > /dev/null \
+&& mount | grep $NASx_MOUNT_POINT > /dev/null \
+&&	[ ! -z "$NAS_ALIVE_CHECK" ] \
+&& [ -f "$NASx_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
+&& CHECK="$(cat $NASx_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
+&& [ -r $NASx_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+	if [ "$?" != 0 ]
+	then echo "Please check that $NASx_MOUNT_POINT is mounted and alive"
+	exit 1
+	fi
+
+}
 
 
 _CHECK_NAS1() 
 { 
 
-sudo ping -c1 -t2 $NAS1_IP > /dev/null \
-&& mount | grep $NAS1_MOUNT_POINT > /dev/null \
-&&	[ ! -z "$NAS_ALIVE_CHECK" ] \
-&& [ -f "$NAS1_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
-&& CHECK="$(cat $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
-&& [ -r $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
-	if [ "$?" != 0 ]
-	then echo "Please check that $NAS1_MOUNT_POINT is mounted and alive"
-	exit 1
-	fi
+	export NASx_IP="$NAS1_IP"
+	export NASx_MOUNT_POINT="$NAS1_MOUNT_POINT"
+	_CHECK_NAS
 
 }
 
@@ -104,50 +112,29 @@ sudo ping -c1 -t2 $NAS1_IP > /dev/null \
 _CHECK_NAS2() 
 { 
 
-sudo ping -c1 -t2 $NAS2_IP > /dev/null \
-&& mount | grep $NAS2_MOUNT_POINT > /dev/null \
-&&	[ ! -z "$NAS_ALIVE_CHECK" ] \
-&& [ -f "$NAS2_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
-&& CHECK="$(cat $NAS2_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
-&& [ -r $NAS2_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
-	if [ "$?" != 0 ]
-	then echo "Please check that $NAS2_MOUNT_POINT is mounted and alive"
-	exit 1
-	fi
+	export NASx_IP="$NAS2_IP"
+	export NASx_MOUNT_POINT="$NAS2_MOUNT_POINT"
+	_CHECK_NAS
 
 }
 
 
 _CHECK_NAS3() 
-{ 
-
-sudo ping -c1 -t2 $NAS3_IP > /dev/null \
-&& mount | grep $NAS3_MOUNT_POINT > /dev/null \
-&&	[ ! -z "$NAS_ALIVE_CHECK" ] \
-&& [ -f "$NAS3_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
-&& CHECK="$(cat $NAS3_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
-&& [ -r $NAS3_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
-	if [ "$?" != 0 ]
-	then echo "Please check that $NAS3_MOUNT_POINT is mounted and alive"
-	exit 1
-	fi
+{
+	
+	export NASx_IP="$NAS3_IP"
+	export NASx_MOUNT_POINT="$NAS3_MOUNT_POINT"
+	_CHECK_NAS
 
 }
 
 
 _CHECK_NAS4() 
-{ 
-
-sudo ping -c1 -t2 $NAS4_IP > /dev/null \
-&& mount | grep $NAS4_MOUNT_POINT > /dev/null \
-&&	[ ! -z "$NAS_ALIVE_CHECK" ] \
-&& [ -f "$NAS4_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
-&& CHECK="$(cat $NAS4_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
-&& [ -r $NAS4_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
-	if [ "$?" != 0 ]
-	then echo "Please check that $NAS4_MOUNT_POINT is mounted and alive"
-	exit 1
-	fi
+{
+	
+	export NASx_IP="$NAS4_IP"
+	export NASx_MOUNT_POINT="$NAS4_MOUNT_POINT"
+	_CHECK_NAS
 
 }
 
