@@ -21,7 +21,7 @@ CYAN
 
 
 
-
+_PROGRESS &
 
 #mv -v /media/{"/2 TB"/,"/TB 7"/Downloads}/{Finished,Finished/*}/                "$TV_SYM"/""/ 2>/dev/null && echo -e "\n\n"
 
