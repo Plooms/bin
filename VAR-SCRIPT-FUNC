@@ -240,7 +240,7 @@ _LOCK_MSG()
 _PROGRESS()
 {       
 	export PROGRESS_FILE="$(mktemp -t "$SCRIPT_NAME"x-XXXXXXXXXXXX)"
-        while [ -f "$PROGRESS" ]
+        while [ -f "$PROGRESS_FILE" ]
         do      
         echo -ne '/ / / \r'
         sleep .1
@@ -250,7 +250,7 @@ _PROGRESS()
         sleep .1
         echo -ne '| | | \r'
         sleep .1
-        done
+        done &
 }
 
 
