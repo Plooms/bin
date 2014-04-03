@@ -1,5 +1,7 @@
 #!/bin/bash
 #Script for searching Arch repository
+SCRIPT_NAME="se"
+PID=$$
 
 
 # Source the VAR MOAS

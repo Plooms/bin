@@ -1,6 +1,7 @@
 #!/bin/bash
 # Backup the system config files (Snapshot Style)
 SCRIPT_NAME="13-etc-ss"
+PID=$$
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT

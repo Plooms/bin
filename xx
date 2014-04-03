@@ -1,5 +1,7 @@
 #! /bin/bash
 # A script for x2x mouse SSH
+SCRIPT_NAME="xx"
+PID=$$
 
 
 # Source the VAR MOAS

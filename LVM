@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_NAME="LVM"
+PID=$$
 
 
 # Source the VAR MOAS

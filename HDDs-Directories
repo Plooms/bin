@@ -1,5 +1,7 @@
 #!/bin/bash
 # Mirror all media folders to file
+SCRIPT_NAME="HDDs-Directories"
+PID=$$
 
 
 # Source the VAR MOAS

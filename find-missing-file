@@ -1,5 +1,7 @@
 #!/bin/bash
 # Find Files without a certain file extension beside them
+SCRIPT_NAME="find-missing-file"
+PID=$$
 
 
 # Source the VAR MOAS

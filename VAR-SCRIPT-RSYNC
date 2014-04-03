@@ -1,5 +1,7 @@
 #!/bin/bash
 # The RSYNC MOAS (Mother of All Scripts)
+SCRIPT_NAME="VAR-SCRIPT-RSYNC"
+PID=$$
 
 
 

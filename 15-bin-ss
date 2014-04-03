@@ -1,6 +1,7 @@
 #!/bin/bash
 # Backup "/usr/local/bin" (Snapshot Style)
 SCRIPT_NAME="15-bin-ss"
+PID=$$
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT

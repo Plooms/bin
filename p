@@ -1,5 +1,7 @@
 #! /bin/bash
 # A script to call install function #
+SCRIPT_NAME="p"
+PID=$$
 
 
 # Source the VAR MOAS

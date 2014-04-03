@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_NAME="startup-programs"
+PID=$$
 
 
 # Source the VAR MOAS

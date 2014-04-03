@@ -1,6 +1,7 @@
 #!/bin/bash
 # Backup "/home"
 SCRIPT_NAME="12-home"
+PID=$$
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT

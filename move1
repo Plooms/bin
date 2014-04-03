@@ -1,5 +1,7 @@
 #!/bin/bash
 # Move episodes to their folders
+SCRIPT_NAME="move1"
+PID=$$
 
 
 # Source the VAR MOAS

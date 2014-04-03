@@ -1,5 +1,7 @@
 #!/bin/bash
 # Fix desktop after moving to secondary
+SCRIPT_NAME="fix-desktop"
+PID=$$
 
 
 # Source the VAR MOAS

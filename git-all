@@ -1,5 +1,7 @@
 #!/bin/bash
 # Do all the git shit
+SCRIPT_NAME="git-all"
+PID=$$
 
 
 # Source the VAR MOAS

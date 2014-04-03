@@ -1,5 +1,7 @@
 #! /bin/bash
 # A script to call install function without confirming
+SCRIPT_NAME="pp"
+PID=$$
 
 
 # Source the VAR MOAS

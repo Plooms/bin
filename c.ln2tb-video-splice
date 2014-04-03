@@ -1,5 +1,7 @@
 #!/bin/bash
 # cut segments from a video file
+SCRIPT_NAME="c.ln2tb-video-splice"
+PID=$$
 
 
 # Source the VAR MOAS

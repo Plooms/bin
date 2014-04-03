@@ -1,5 +1,7 @@
 #!/bin/bash
 # Update Script
+SCRIPT_NAME="f"
+PID=$$
 
 
 # Source the VAR MOAS

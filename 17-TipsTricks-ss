@@ -1,6 +1,7 @@
 #!/bin/bash
 # Backup Tips and Tricks (Snapshot Style)
 SCRIPT_NAME="17-TipsTricks-ss"
+PID=$$
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT

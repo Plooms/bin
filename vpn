@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_NAME="vpn"
+PID=$$
 
 
 # Source the VAR MOAS

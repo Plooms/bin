@@ -1,5 +1,7 @@
 #!/bin/bash
 # Adjust zoom of the screen
+SCRIPT_NAME="zoom"
+PID=$$
 
 
 # Source the VAR MOAS

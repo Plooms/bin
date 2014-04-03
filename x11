@@ -1,5 +1,7 @@
 #!/bin/bash
 # start a vnc server
+SCRIPT_NAME="x11"
+PID=$$
 
 
 # Source the VAR MOAS

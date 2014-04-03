@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_NAME="e1"
+PID=$$
 
 
 # Source the VAR MOAS

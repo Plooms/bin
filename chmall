@@ -1,5 +1,7 @@
 #!/bin/bash
 # change permission to executable "/usr/local/bin"
+SCRIPT_NAME="chmall"
+PID=$$
 
 
 # Source the VAR MOAS

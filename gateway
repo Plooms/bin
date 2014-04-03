@@ -1,5 +1,7 @@
 #!/bin/bash
 # Change gateways easily
+SCRIPT_NAME="gateway"
+PID=$$
 
 
 # Source the VAR MOAS

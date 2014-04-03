@@ -1,6 +1,7 @@
 #!/bin/bash
 # Backup "/media" (Snapshot Style-oooooh yeah)
 SCRIPT_NAME="11-media-ss"
+PID=$$
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT

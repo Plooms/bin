@@ -1,5 +1,7 @@
 #! /bin/bash
 # Find Dirs without a certain file extension inside them
+SCRIPT_NAME="find-missing-dir"
+PID=$$
 
 
 # Source the VAR MOAS

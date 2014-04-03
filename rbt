@@ -1,5 +1,7 @@
 #!/bin/bash
 # Reboot script
+SCRIPT_NAME="rbt"
+PID=$$
 
 
 # Source the VAR MOAS

@@ -1,5 +1,7 @@
 #!/bin/bash
 # Disable screen from blanking or turning off
+SCRIPT_NAME="monitor-dpms"
+PID=$$
 
 
 # Source the VAR MOAS

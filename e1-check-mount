@@ -1,5 +1,7 @@
 #!/bin/bash
 # check if ecryptfs is mounted on ~/Private
+SCRIPT_NAME="e1-check-mount"
+PID=$$
 
 
 # Source the VAR MOAS

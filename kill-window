@@ -1,5 +1,7 @@
 #!/bin/bash
 # Close active window (use with shortcuts)
+SCRIPT_NAME="kill-window"
+PID=$$
 
 
 # Source the VAR MOAS

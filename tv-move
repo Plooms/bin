@@ -1,5 +1,7 @@
 #!/bin/bash
 # Move episodes
+SCRIPT_NAME="tv-move"
+PID=$$
 
 
 # Source the VAR MOAS

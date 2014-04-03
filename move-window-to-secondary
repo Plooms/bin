@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_NAME="move-window-to-secondary"
+PID=$$
 
 
 # Source the VAR MOAS

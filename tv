@@ -1,5 +1,7 @@
 #!/bin/bash
 # do Tvnamer on media files
+SCRIPT_NAME="tv"
+PID=$$
 
 
 # Source the VAR MOAS

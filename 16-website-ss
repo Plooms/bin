@@ -1,6 +1,7 @@
 #!/bin/bash
 # Backup "My Website" (Snapshot style)
 SCRIPT_NAME="16-website-ss"
+PID=$$
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT

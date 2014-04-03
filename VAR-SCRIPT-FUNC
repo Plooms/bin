@@ -1,5 +1,7 @@
 #!/bin/bash
 # The Function MOAS (Mother of All Scripts)
+SCRIPT_NAME="VAR-SCRIPT-FUNC"
+PID=$$
 
 
 

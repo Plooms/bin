@@ -1,5 +1,7 @@
 #!/bin/bash
 # A Script for Completely uninstalling a program.
+SCRIPT_NAME="crm"
+PID=$$
 
 
 # Source the VAR MOAS

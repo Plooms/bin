@@ -1,5 +1,7 @@
 #!/bin/bash
 # Make a Parent DIR for each item in a directory
+SCRIPT_NAME="parent"
+PID=$$
 
 
 # Source the VAR MOAS
