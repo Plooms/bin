@@ -239,9 +239,7 @@ _LOCK_MSG()
 ####################################################
 _PROGRESS()
 {       
-	export PROGRESS_FILE="$(mktemp -t "$SCRIPT_NAME"x-XXXXXXXXXXXX)"
-        while [ -f "$PROGRESS_FILE" ]
-        do      
+#	export PROGRESS_FILE="$(mktemp -t "$SCRIPT_NAME"x-XXXXXXXXXXXX)"
         echo -ne '/ / / \r'
         sleep .1
         echo -ne '- - - \r'
@@ -250,7 +248,6 @@ _PROGRESS()
         sleep .1
         echo -ne '| | | \r'
         sleep .1
-        done &
 }
 
 
