@@ -258,7 +258,7 @@ _PROGRESS()
 ####################################################
 _PROGRESS_OFF()
 {       
-	kill -9 "$progress_pid"
+	kill -9 "$progress_pid" 2>&1 >/dev/null
 }
 
 
