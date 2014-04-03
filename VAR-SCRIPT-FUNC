@@ -243,30 +243,31 @@ _PROGRESS()
 
 
 
-spin='-\|/'
+#spin='-\|/'
 
-i=0
+#i=0
 
-while kill -0 "$PID" 2>/dev/null
-do
-  i=$(( (i+1) %4 ))
-  printf "\r${spin:$i:1}"
-  sleep .1
-done &
+#while kill -0 "$PID" 2>/dev/null
+#do
+#  i=$(( (i+1) %4 ))
+#  printf "\r${spin:$i:1}"
+#  sleep .1
+#done &
 
 
 
-#	while true
-#	do
-#        echo -ne '/ / / \r'
-#        sleep .1
-#        echo -ne '- - - \r'
-#        sleep .1
-#        echo -ne '\ \ \ \r'
-#        sleep .1
-#        echo -ne '| | | \r'
-#        sleep .1
-#	done
+	while kill -0 "$PID" 2>/dev/null
+	do
+    echo -ne '/ / / \r'
+    sleep .1
+    echo -ne '- - - \r'
+    sleep .1
+    echo -ne '\ \ \ \r'
+    sleep .1
+    echo -ne '| | | \r'
+    sleep .1
+	done &
+	clear
 }
 
 
