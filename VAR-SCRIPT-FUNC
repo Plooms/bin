@@ -249,7 +249,16 @@ _PROGRESS()
         sleep .1
         echo -ne '| | | \r'
         sleep .1
-        done
+        done &
+	export progress_pid=$!
+}
+
+
+####################################################
+####################################################
+_PROGRESS_OFF()
+{       
+	kill -9 "$progress_pid"
 }
 
 

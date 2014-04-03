@@ -16,8 +16,8 @@ _START_TIME
 # Start Lock
 _LOCK_ON
 
-# Progress indicator
-_PROGRESS &
+# Start Progress indicator
+_PROGRESS
 
 #########################################################
 
@@ -110,3 +110,7 @@ _END_TIME
 
 # End Lock
 _LOCK_OFF
+
+# End Progress
+_PROGRESS_OFF
+
