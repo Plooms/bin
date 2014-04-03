@@ -239,7 +239,8 @@ _LOCK_MSG()
 ####################################################
 _PROGRESS()
 {       
-        while true
+	export PROGRESS_FILE="$(mktemp -t "$SCRIPT_NAME"x-XXXXXXXXXXXX)"
+        while [ -f "$PROGRESS" ]
         do      
         echo -ne '/ / / \r'
         sleep .1
@@ -249,8 +250,7 @@ _PROGRESS()
         sleep .1
         echo -ne '| | | \r'
         sleep .1
-        done &
-	export progress_pid=$!
+        done
 }
 
 
@@ -258,7 +258,7 @@ _PROGRESS()
 ####################################################
 _PROGRESS_OFF()
 {       
-	kill -9 "$progress_pid" 2>&1 >/dev/null
+	sudo rm "$PROGRESS_FILE"
 }
 
 
