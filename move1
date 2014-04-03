@@ -274,3 +274,4 @@ mv -v Desperate\ Housewives*                "$TV_SYM"/"Desperate Housewives"/   
 mv -v 8\ Simple\ Rules*                "$TV_SYM"/"8 Simple Rules"/             && echo -e "\n\n" 
 mv -v Boy\ Meets\ World*                "$TV_SYM"/"Boy Meets World"/             && echo -e "\n\n" 
 mv -v Rescue\ Me\ *                "$TV_SYM"/"Rescue Me"/             && echo -e "\n\n" 
+mv -v The\ Big\ Bang\ Theory\ *                "$TV_SYM"/"The Big Bang Theory"/             && echo -e "\n\n" 

@@ -239,7 +239,7 @@ _LOCK_MSG()
 ####################################################
 _PROGRESS()
 {       
-        while [ "$PROGRESS" = "ON" ]
+        while true
         do      
         echo -ne '/ / / \r'
         sleep .1

@@ -270,3 +270,4 @@ mv -v Wipeout*US*                   "$TV_SYM"/"Wipeout (US)"/                   
 mv -v Without*Trace*                "$TV_SYM"/"Without a trace"/                                          2>/dev/null && echo -e "\n\n"
 mv -v Workaholics*                  "$TV_SYM"/"Workaholics"/                                              2>/dev/null && echo -e "\n\n"
 mv -v Rescue\ Me\ *                "$TV_SYM"/"Rescue Me"/              2>/dev/null && echo -e "\n\n"
+mv -v The\ Big\ Bang\ Theory\ *                "$TV_SYM"/"The Big Bang Theory"/              2>/dev/null && echo -e "\n\n"
