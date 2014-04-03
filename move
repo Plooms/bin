@@ -21,7 +21,7 @@ CYAN
 
 
 
-_PROGRESS
+_PROGRESS 2>/dev/null
 
 #mv -v /media/{"/2 TB"/,"/TB 7"/Downloads}/{Finished,Finished/*}/                "$TV_SYM"/""/ 2>/dev/null && echo -e "\n\n"
 
@@ -30,7 +30,6 @@ echo "Fixing Subtitles, If there are any!"
 sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d' *.srt 2>/dev/null
 echo""
 
-kill $! 2>&1 >/dev/null
 
 if [ "$find_missing_file_move" = "Y" ]
 then TV_SYM="$TMP_D/Shows"
