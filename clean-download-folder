@@ -22,4 +22,4 @@ sudo find "$TV_DOWNLOAD_DIR"/ -type d -iname "sample" -exec sudo rm -r {} \; 2>/
 sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "*sample*" -size -200M -exec sudo rm -r {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "zNew Folder" -exec sudo rmdir {} \; 2>/dev/null
 echo "Fixing Subtitles, If any!!!"
-sudo find "$TV_DOWNLOAD_DIR"/ -type f -name "*.srt" -exec sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d' {} \; -exec echo {} \;
+sudo find "$TV_DOWNLOAD_DIR"/ -type f -name "*.srt" -exec sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d' {} \; -exec echo {} \; ; _PROGRESS

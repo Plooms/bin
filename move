@@ -21,13 +21,11 @@ CYAN
 
 
 
-_PROGRESS 2>/dev/null
-
 #mv -v /media/{"/2 TB"/,"/TB 7"/Downloads}/{Finished,Finished/*}/                "$TV_SYM"/""/ 2>/dev/null && echo -e "\n\n"
 
 
 echo "Fixing Subtitles, If there are any!"
-sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d' *.srt 2>/dev/null
+for i in *.srt ;do sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d' "$i" 2>/dev/null ; _PROGRESS ;done
 echo""
 
 
