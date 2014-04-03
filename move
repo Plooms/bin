@@ -269,3 +269,4 @@ mv -v Wilfred*US*                   "$TV_SYM"/"Wilfred (US)"/                   
 mv -v Wipeout*US*                   "$TV_SYM"/"Wipeout (US)"/                                             2>/dev/null && echo -e "\n\n"
 mv -v Without*Trace*                "$TV_SYM"/"Without a trace"/                                          2>/dev/null && echo -e "\n\n"
 mv -v Workaholics*                  "$TV_SYM"/"Workaholics"/                                              2>/dev/null && echo -e "\n\n"
+mv -v Rescue\ Me\ *                "$TV_SYM"/"Rescue Me"/              2>/dev/null && echo -e "\n\n"
