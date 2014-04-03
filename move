@@ -1,10 +1,9 @@
 #!/bin/bash
 # Move episodes to their folders
-
+SCRIPT_NAME="move"
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
-
 
 
 RED
@@ -19,10 +18,11 @@ echo -e "
 
 CYAN
 
-
+_PROGRESS
 
 #mv -v /media/{"/2 TB"/,"/TB 7"/Downloads}/{Finished,Finished/*}/                "$TV_SYM"/""/ 2>/dev/null && echo -e "\n\n"
 
+sleep 10
 
 echo "Fixing Subtitles, If there are any!"
 for i in *.srt ;do sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d' "$i" 2>/dev/null ; _PROGRESS ;done

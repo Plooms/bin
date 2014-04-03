@@ -240,17 +240,33 @@ _LOCK_MSG()
 _PROGRESS()
 {       
 #	export PROGRESS_FILE="$(mktemp -t "$SCRIPT_NAME"x-XXXXXXXXXXXX)"
-	while true
-	do
-        echo -ne '/ / / \r'
-        sleep .1
-        echo -ne '- - - \r'
-        sleep .1
-        echo -ne '\ \ \ \r'
-        sleep .1
-        echo -ne '| | | \r'
-        sleep .1
-	done
+
+
+
+spin='-\|/'
+
+i=0
+
+while kill -0 "$PID" 2>/dev/null
+do
+  i=$(( (i+1) %4 ))
+  printf "\r${spin:$i:1}"
+  sleep .1
+done
+
+
+
+#	while true
+#	do
+#        echo -ne '/ / / \r'
+#        sleep .1
+#        echo -ne '- - - \r'
+#        sleep .1
+#        echo -ne '\ \ \ \r'
+#        sleep .1
+#        echo -ne '| | | \r'
+#        sleep .1
+#	done
 }
 
 
