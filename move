@@ -4,7 +4,7 @@ SCRIPT_NAME="move"
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
-
+export PID=$$
 
 RED
 
