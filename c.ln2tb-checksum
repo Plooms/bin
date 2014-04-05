@@ -94,7 +94,6 @@ echo ""
 #while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
 
 
-export count="1"
 find "$TV_SYM"/ -size +25M -exec c.ln2tb-checksum-find {} \;
 
 
