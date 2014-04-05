@@ -1,7 +1,7 @@
 #!/bin/bash
 # The Variable MOAS (Mother of All Scripts)
-SCRIPT_NAME="VAR-SCRIPT"
-PID=$$
+#SCRIPT_NAME="VAR-SCRIPT"
+#PID=$$
 
 
 # Source the colors file

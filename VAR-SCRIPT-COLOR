@@ -1,7 +1,7 @@
 #!/bin/bash
 # Terminal Color Collection used for sourcing in other scripts (23 sep 2013)
-SCRIPT_NAME="VAR-SCRIPT-COLOR"
-PID=$$
+#SCRIPT_NAME="VAR-SCRIPT-COLOR"
+#PID=$$
 
 # Reset
 COLOR_OFF='\e[0m'
