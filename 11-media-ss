@@ -16,6 +16,9 @@ _START_TIME
 # Start Lock
 _LOCK_ON
 
+# Start Progress indicator
+_PROGRESS
+
 #########################################################
 
 # Snapshot NAS1
