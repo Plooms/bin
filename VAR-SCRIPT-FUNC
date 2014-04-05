@@ -254,14 +254,14 @@ _PROGRESS()
 
 	while kill -0 "$PID" 2>/dev/null
 	do
-    echo -ne '/ / / \r'
-    sleep .1
-    echo -ne '- - - \r'
-    sleep .1
-    echo -ne '\ \ \ \r'
-    sleep .1
-    echo -ne '| | | \r'
-    sleep .1
+	echo -ne '/ / / \r'
+	sleep .1
+	echo -ne '- - - \r'
+	sleep .1
+	echo -ne '\ \ \ \r'
+	sleep .1
+	echo -ne '| | | \r'
+	sleep .1
 	done &
 	
 }
