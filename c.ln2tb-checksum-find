@@ -10,6 +10,8 @@ source /usr/local/bin/VAR-SCRIPT
 
 #########################################################
 
+count_file="$(mktemp)"
+count="$(cat $count_file)"
 
 # TV
 
