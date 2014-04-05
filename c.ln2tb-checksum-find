@@ -18,8 +18,8 @@ i="$1"
 if [ ! -f "$i".md5 ]
 then
 	echo -e "${CYAN}"
-	echo "TV-$((count + 1))) Checking:
-$i"
+	echo "TV-$((count + 1))) Checking:"
+	echo "$i"
 	count=$((count + 1))
 	md5sum "$i" > "$i".md5
 
@@ -28,16 +28,17 @@ else
 	then
 		rm "$i".md5
 		echo -e "${RED}"
-		echo "Removing empty or corrupt md5 file: $i.md5"
+		echo "Removing empty or corrupt md5 file:"
+		echo "$i.md5"
 		echo -e "${YELLOW}"
-		echo "TV-$((count + 1))) Re-Checking:
-$i"
+		echo "TV-$((count + 1))) Re-Checking:"
+		echo "$i"
 		count=$((count + 1))
 		md5sum "$i" > "$i".md5
 	else
 		echo -e "${GREEN}"
-		echo "TV-$((count + 1))) Skipping:
-$i.md5 exists"
+		echo "TV-$((count + 1))) Skipping:"
+		echo "$i.md5 exists"
 		count=$((count + 1))
 	fi
 fi
