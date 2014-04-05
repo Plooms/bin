@@ -24,61 +24,20 @@ _LOCK_ON
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
+export count_file="$(mktemp)"
+
+echo 1 > "$count_file"
+
+
 
 echo -e "\nSearching for Movie files to checksum"
 echo ""
 
+
 _CHECK_MOUNT1 && \
-find "$MOVIE_SYM"/ -size +25M |sort -bf > $TMP
-while read FILE  ; do movie_array+=("$FILE") ;done < $TMP
+find "$MOVIE_SYM"/ -size +25M -exec c.ln2tb-checksum-find {} \;
 
 
-
-# Movies
-count="0"
-
-for i in "${movie_array[@]}"
-do
-
-if [ ! -f "$i".md5 ]
-then
-	CYAN
-	echo "Movie-$((count + 1))) Checking:"
-	echo "$i"
-	
-	count=$((count + 1))
-	MD5="$(md5sum "$i"|awk '{print $1}')"
-	NAME="$(basename "$i")"
-	echo "$MD5  $NAME" > "$i".md5
-
-else
-	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
-	then
-		rm "$i".md5
-		RED
-		echo "Removing empty or corrupt md5 file: $i.md5"
-		YELLOW
-		echo "Movie-$((count + 1))) Re-Checking:"
-		echo "$i"
-		
-		count=$((count + 1))
-		MD5="$(md5sum "$i"|awk '{print $1}')"
-		NAME="$(basename "$i")"
-		echo "$MD5  $NAME" > "$i".md5
-	
-	else
-	
-		GREEN
-		echo "Movie-$((count + 1))) Skipping:"
-		echo "$i.md5 exists"
-		count=$((count + 1))
-		
-	fi
-fi
-
-done
-
-COLOR_OFF
 
 echo ""
 echo "################################"
@@ -88,10 +47,6 @@ echo ""
 
 echo -e "\nSearching for TV files to checksum"
 echo ""
-
-#_CHECK_MOUNT1 && \
-#find "$TV_SYM"/ -size +25M |sort -bf > $TMP2
-#while read FILE2  ; do tv_array+=("$FILE2") ;done < $TMP2
 
 
 find "$TV_SYM"/ -size +25M -exec c.ln2tb-checksum-find {} \;

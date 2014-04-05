@@ -10,41 +10,43 @@ source /usr/local/bin/VAR-SCRIPT
 
 #########################################################
 
-count_file="$(mktemp)"
 count="$(cat $count_file)"
 
-# TV
 
 i="$1"
 
 if [ ! -f "$i".md5 ]
 then
-	echo -e "${CYAN}"
-	echo "TV) Checking:"
+	CYAN
+	echo "$count) Checking:"
 	echo "$i"
 
 	MD5="$(md5sum "$i"|awk '{print $1}')"
 	NAME="$(basename "$i")"
 	echo "$MD5  $NAME" > "$i".md5
-
+	echo $((count + 1)) > "$count_file"
 else
 	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
 	then
 		rm "$i".md5
-		echo -e "${RED}"
+		RED
 		echo "Removing empty or corrupt md5 file:"
 		echo "$i.md5"
-		echo -e "${YELLOW}"
-		echo "TV) Re-Checking:"
+		YELLOW
+		echo "$count) Re-Checking:"
 		echo "$i"
 
 		MD5="$(md5sum "$i"|awk '{print $1}')"
 		NAME="$(basename "$i")"
 		echo "$MD5  $NAME" > "$i".md5
+		echo $((count + 1)) > "$count_file"
+
 	else
-		echo -e "${GREEN}"
-		echo "TV) Skipping:"
+		GREEN
+		echo "$count) Skipping:"
 		echo "$i.md5 exists"
+		echo $((count + 1)) > "$count_file"
+
 	fi
 fi
 
