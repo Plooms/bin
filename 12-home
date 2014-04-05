@@ -36,6 +36,7 @@ then
 # Rsync Backup
 if [ "$RSYNC"x = "ON"x ]
 then
+	GREEN
 	sudo rsync "${OPT_12_2[@]}" "$SRC_12_2" "$TRG_12_2"
 else
  	echo "Not using Rsync, or maybe no Backup Method was selected,  export <RSYNC|TAR>=ON"
@@ -48,6 +49,7 @@ fi
 # Tar Backup
 if [ "$TAR"x = "ON"x ]
 then
+	CYAN
 	mkdir -p "$TRG_12"
 	rmdir "$TRG_12"
 	echo "Created File: $TRG_12-$MIN0.tgz" \
@@ -57,6 +59,7 @@ else
 
 fi
 
+	COLOR_OFF
 
 else
 
