@@ -51,6 +51,7 @@ echo ""
 # Reset the count for the TV files
 echo 1 > "$count_file"
 
+_CHECK_MOUNT1 && \
 find "$TV_SYM"/ -size +25M -exec c.ln2tb-checksum-find {} \;
 
 
