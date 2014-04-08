@@ -28,8 +28,11 @@ case $? in
 FILE_NAME="$(echo $FILE_NAME | sed "s/^[ \t]*//;s/[ \t]*$//")"
 
 
-find "$MOVIE_SYM" -maxdepth 1 -type d -iname "*$FILE_NAME*" \
-| sort | while read -r FILE1 ; do basename "$FILE1" ; done > $TMP
+#find "$MOVIE_SYM" -maxdepth 1 -type d -iname "*$FILE_NAME*" \
+#| sort | while read -r FILE1 ; do basename "$FILE1" ; done > $TMP
+MOVIE_NAME="$(echo $FILE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+
+mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss > $TMP
 
 while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
 
