@@ -102,7 +102,7 @@ MOVIE_NAME="$(echo $i | sed "s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 NAME="$(mysql -uroot -p"$DB_PASSWORD" movie_folders -e "select Movie_Folder from folders where Movie_Folder LIKE '%$MOVIE_NAME%'" -ss)"
 
 # MOVIE_NAME2 For getting watched status correctly
-MOVIE_NAME2="$(echo $i | sed "s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+MOVIE_NAME2="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME2%'" -ss)"
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 
