@@ -32,8 +32,6 @@ case $? in
 FILE_NAME="$(echo $FILE_NAME | sed "s/^[ \t]*//;s/[ \t]*$//")"
 
 
-#find "$MOVIE_SYM" -maxdepth 1 -type d -iname "*$FILE_NAME*" \
-#| sort | while read -r FILE1 ; do basename "$FILE1" ; done > $TMP
 
 MOVIE_NAME="$(echo $FILE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 
@@ -102,16 +100,9 @@ echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
 #################################
 for i in "${movie_array[@]}"
 do
-#MOVIE_NAME="$(echo $i | sed "s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
-#NAME="$(mysql -uroot -p"$DB_PASSWORD" movie_folders -e "select Movie_Folder from folders where Movie_Folder LIKE '%$MOVIE_NAME%'" -ss)"
-
-# MOVIE_NAME2 For getting watched status correctly
-#MOVIE_NAME2="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-
-
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 
 echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
