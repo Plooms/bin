@@ -13,7 +13,7 @@ TMP3="$(mktemp)"
 TMP_LOG1="$(mktemp)"
 
 start=$(dialog --stdout  --clear --help-button --help-label "Cancel" --yesno \
-"Did you add the Show names to $BATCH_FILE_MOVIE_FIND ?" 10 50 )
+"Did you add the Movie names to $BATCH_FILE_MOVIE_FIND ?" 10 50 )
 
 case $? in
 0)

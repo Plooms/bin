@@ -16,7 +16,7 @@ if [ -n "$TERM_LAUNCH" ]
 then FILE_NAME="$(xclip -o)"
 else
 FILE_NAME=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox \
-"Please Enter the name of the Show" 10 50 )
+"Please Enter the name of the Movie" 10 50 )
 fi
 
 
