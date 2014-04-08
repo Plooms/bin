@@ -7,6 +7,10 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+
+# Time Calculation
+_START_TIME
+
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
 TMP_LOG1="$(mktemp)"
@@ -98,12 +102,16 @@ echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
 #################################
 for i in "${movie_array[@]}"
 do
-MOVIE_NAME="$(echo $i | sed "s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
-NAME="$(mysql -uroot -p"$DB_PASSWORD" movie_folders -e "select Movie_Folder from folders where Movie_Folder LIKE '%$MOVIE_NAME%'" -ss)"
+#MOVIE_NAME="$(echo $i | sed "s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+#NAME="$(mysql -uroot -p"$DB_PASSWORD" movie_folders -e "select Movie_Folder from folders where Movie_Folder LIKE '%$MOVIE_NAME%'" -ss)"
 
 # MOVIE_NAME2 For getting watched status correctly
-MOVIE_NAME2="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
-WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME2%'" -ss)"
+#MOVIE_NAME2="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+
+
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 
 echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
@@ -115,6 +123,9 @@ echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
 
 echo "Log File:   sudo geany $TMP_LOG1"
+
+# Time Calculation
+_END_TIME
 
 if [ -n "$TERM_LAUNCH" ]
 then sleep 1000
