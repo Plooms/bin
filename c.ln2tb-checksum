@@ -33,8 +33,7 @@ echo 1 > "$count_file"
 echo -e "\nSearching for Movie files to checksum"
 echo ""
 
-echo "$MOVIE_SYM"
-echo "$TV_SYM"
+find "$MOVIE_SYM"/ -exec echo ass-{} \;
 
 _CHECK_MOUNT1 && \
 find "$MOVIE_SYM"/ -size +25M -exec c.ln2tb-checksum-find {} \;
