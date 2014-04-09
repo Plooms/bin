@@ -32,7 +32,7 @@ case $? in
 FILE_NAME="$(echo $FILE_NAME | sed "s/^[ \t]*//;s/[ \t]*$//")"
 
 
-
+# To get a filename suitable for mysql (no '(' , or ')' , or ' ' ' , or whtespace)
 MOVIE_NAME="$(echo $FILE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 
 mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss > $TMP
