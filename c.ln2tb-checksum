@@ -35,7 +35,7 @@ echo ""
 
 
 _CHECK_MOUNT1 && \
-find "$MOVIE_SYM"/ -size +25M -exec c.ln2tb-checksum-find {} \;
+find "$MOVIE_SYM"/ -size +25M -exec /usr/local/bin/c.ln2tb-checksum-find {} \;
 
 
 
@@ -52,7 +52,7 @@ echo ""
 echo 1 > "$count_file"
 
 _CHECK_MOUNT1 && \
-find "$TV_SYM"/ -size +25M -exec c.ln2tb-checksum-find {} \;
+find "$TV_SYM"/ -size +25M -exec /usr/local/bin/c.ln2tb-checksum-find {} \;
 
 
 
