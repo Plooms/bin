@@ -3,7 +3,6 @@
 SCRIPT_NAME="c.ln2tb-checksum"
 PID=$$
 
-
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
