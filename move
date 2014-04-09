@@ -266,3 +266,4 @@ mv -v Rescue\ Me\ *                "$TV_SYM"/"Rescue Me"/              2>/dev/nu
 mv -v The\ Big\ Bang\ Theory\ *                "$TV_SYM"/"The Big Bang Theory"/              2>/dev/null && echo -e "\n\n"
 mv -v Jail\ *                "$TV_SYM"/"Jail"/              2>/dev/null && echo -e "\n\n"
 mv -v The\ Americans\ \(2013\)\ *                "$TV_SYM"/"The Americans (2013)"/              2>/dev/null && echo -e "\n\n"
+mv -v Hogans\ Heroes\ *                "$TV_SYM"/"Hogans Heroes"/              2>/dev/null && echo -e "\n\n"

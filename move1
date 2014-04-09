@@ -279,3 +279,4 @@ mv -v Rescue\ Me\ *                "$TV_SYM"/"Rescue Me"/             && echo -e
 mv -v The\ Big\ Bang\ Theory\ *                "$TV_SYM"/"The Big Bang Theory"/             && echo -e "\n\n" 
 mv -v Jail\ *                "$TV_SYM"/"Jail"/             && echo -e "\n\n" 
 mv -v The\ Americans\ \(2013\)\ *                "$TV_SYM"/"The Americans (2013)"/             && echo -e "\n\n" 
+mv -v Hogans\ Heroes\ *                "$TV_SYM"/"Hogans Heroes"/             && echo -e "\n\n" 
