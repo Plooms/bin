@@ -173,7 +173,7 @@ _END_TIME()
 
 _RUN_CHECK() 
 {
-	if [[ "$1" = "-c"* ]] ;then _LOCK_CHECK ; fi
+	if [[ "$1" = "ass" ]] ;then _LOCK_CHECK ; fi
 
 }
 
