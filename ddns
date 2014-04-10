@@ -7,7 +7,7 @@ TMPIP=/tmp/tmpIP                      # Temp IP storage file
 TEMP=/tmp/temp                        # Temp storage file
 CIPUSER=sderawi                       # ChangeIP.com Username
 CIPPASS=sderawi8                      # ChangeIP.com Password
-CIPSET=1                              # ChangeIP.com recordset
+CIPSET=3                              # ChangeIP.com recordset
 #################################################################
 
 # get current IP from ip.changeip.com, and store in $TEMP
