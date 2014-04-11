@@ -225,7 +225,8 @@ _LOCK_MSG()
 
 _RUN_CHECK() 
 {
-	if [[ "$1" = "check" ]] ;then _LOCK_CHECK ; fi
+	if [[ "$1" = "check" ]] ;then echo checking;fi
+#_LOCK_CHECK ; fi
 
 }
 
