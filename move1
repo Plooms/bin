@@ -280,3 +280,4 @@ mv -v The\ Big\ Bang\ Theory\ *                "$TV_SYM"/"The Big Bang Theory"/ 
 mv -v Jail\ *                "$TV_SYM"/"Jail"/             && echo -e "\n\n" 
 mv -v The\ Americans\ \(2013\)\ *                "$TV_SYM"/"The Americans (2013)"/             && echo -e "\n\n" 
 mv -v Hogans\ Heroes\ *                "$TV_SYM"/"Hogans Heroes"/             && echo -e "\n\n" 
+mv -v Dragons\ Den\ \(Canada\)\ *                "$TV_SYM"/"Dragons' Den (Canada)"/             && echo -e "\n\n" 
