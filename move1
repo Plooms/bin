@@ -133,7 +133,6 @@ mv -v How*I**other*                 "$TV_SYM"/"How I met Your Mother"/          
 mv -v How*It*Made*                  "$TV_SYM"/"How Its Made"/                                              && echo -e "\n\n"
 mv -v Human*Target*                 "$TV_SYM"/"Human Target"/                                              && echo -e "\n\n"
 mv -v IRT*Deadliest*                "$TV_SYM"/"IRT: Deadliest Roads"/                                      && echo -e "\n\n"
-mv -v Ice\ Road\ Truckers*          "$TV_SYM"/"Ice Road Truckers"/				               && echo -e "\n\n"
 mv -v It*Always*Sunny*              "$TV_SYM"/"Its Always Sunny In Philadelphia"/                          && echo -e "\n\n"
 mv -v JAG*              	    "$TV_SYM"/"JAG"/               && echo -e "\n\n"
 mv -v Jail.*                        "$TV_SYM"/"Jail"/                                                      && echo -e "\n\n"

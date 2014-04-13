@@ -143,7 +143,6 @@ mv -v How*It*Made*                  "$TV_SYM"/"How Its Made"/                   
 mv -v How\ to\ Live\ with\ Your\ Parents*                "$TV_SYM"/"How to Live with Your Parents"/              2>/dev/null && echo -e "\n\n"
 mv -v Human*Target*                 "$TV_SYM"/"Human Target"/                                             2>/dev/null && echo -e "\n\n"
 mv -v IRT*Deadliest*                "$TV_SYM"/"IRT: Deadliest Roads"/                                     2>/dev/null && echo -e "\n\n"
-mv -v Ice\ Road\ Truckers*          "$TV_SYM"/"Ice Road Truckers"/				              2>/dev/null && echo -e "\n\n"
 mv -v Intelligence\ \(2014\)*                "$TV_SYM"/"Intelligence (2014)"/              2>/dev/null && echo -e "\n\n"
 mv -v It*Always*Sunny*              "$TV_SYM"/"Its Always Sunny In Philadelphia"/                         2>/dev/null && echo -e "\n\n"
 mv -v JAG*              	    "$TV_SYM"/"JAG"/              2>/dev/null && echo -e "\n\n"
