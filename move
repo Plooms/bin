@@ -267,3 +267,5 @@ mv -v Jail\ *                "$TV_SYM"/"Jail"/              2>/dev/null && echo 
 mv -v The\ Americans\ \(2013\)\ *                "$TV_SYM"/"The Americans (2013)"/              2>/dev/null && echo -e "\n\n"
 mv -v Hogans\ Heroes\ *                "$TV_SYM"/"Hogans Heroes"/              2>/dev/null && echo -e "\n\n"
 mv -v Dragons\ Den\ \(Canada\)\ *                "$TV_SYM"/"Dragons' Den (Canada)"/              2>/dev/null && echo -e "\n\n"
+mv -v Vegas\ Strip\ *                "$TV_SYM"/"Vegas Strip"/              2>/dev/null && echo -e "\n\n"
+mv -v Las\ Vegas\ Jailhouse\ *                "$TV_SYM"/"Las Vegas Jailhouse"/              2>/dev/null && echo -e "\n\n"
