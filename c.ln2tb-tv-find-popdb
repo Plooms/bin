@@ -6,8 +6,7 @@ PID=$$
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
-source /usr/local/bin/c.ln2tb-movie-find-popdb
-
+source /tmp/tmp.qfWKboY7fw
 
 # Run <script_name> -c to check if the script is running
 if [[ "$1" = "-c"* ]] ;then _LOCK_CHECK ; fi
@@ -26,7 +25,7 @@ echo "Searching for TV files"
 echo ""
 
 _CHECK_MOUNT1 && \
-find "$TV_SYM"/ -size +25M -exec tv_popdb {} \;
+find "$TV_SYM"/ -size +25M -exec  /tmp/tmp.qfWKboY7fw {} \;
 
 
 
