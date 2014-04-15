@@ -1,0 +1,16 @@
+#!/bin/bash
+# Populate my DB of TVs
+SCRIPT_NAME="c.ln2tb-tv-find-popdb-helper"
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+NAME="$(basename "$( echo $1 | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
+
+mysql -uroot -p"$DB_PASSWORD" tv << EOF
+INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date) 
+VALUES ("$NAME", "-", "-", "-", "-", "-", "-", "-")
+EOF
+
+echo "Adding Episode: $NAME"
