@@ -6,7 +6,7 @@ SCRIPT_NAME="c.ln2tb-tv-find-popdb-helper"
 source /usr/local/bin/VAR-SCRIPT
 
 
-NAME="$(basename "$( echo $1 | sed 's/(//g;s/)//g' )")"
+NAME="$(basename "$( echo $1 )")"
 
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
 INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date) 
