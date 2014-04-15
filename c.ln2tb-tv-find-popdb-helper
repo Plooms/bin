@@ -11,6 +11,8 @@ NAME="$(basename "$( echo $1 )")"
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
 INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date) 
 VALUES ("$NAME", "-", "-", "-", "-", "-", "-", "-")
+ON DUPLICATE KEY UPDATE 
+	Name="$NAME"
 EOF
 
 echo "Adding Episode: $NAME"
