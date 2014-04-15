@@ -105,6 +105,19 @@ done
 
 
 #########################################################
+tv_popdb() {
+	
+	NAME="$(basename "$( echo $1 | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
+mysql -uroot -p"$DB_PASSWORD" tv << EOF
+INSERT INTO tv (Episode_Name) VALUES ("$NAME")
+EOF
+
+echo "Adding Episode: $NAME"
+
+
+}
+
+#########################################################
 
 # Time Calculation
 _END_TIME
