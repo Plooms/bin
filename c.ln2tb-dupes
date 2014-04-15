@@ -21,13 +21,14 @@ echo "#############################################################"
 
 
 cd "$TV_SYM"/ \
-; sudo find . \
+; sudo find . -size +25M \
 | sort -bif \
 | sed 's/.mpeg//' \
 | sed 's/.mpg//' \
 | sed 's/.mkv//' \
 | sed 's/.avi//' \
 | sed 's/.mp4//' \
+| sed 's/.ts//' \
 | uniq -id > "$DUPES_BUFFER"
 
 cat "$DUPES_BUFFER" \
@@ -57,13 +58,14 @@ echo "#############################################################"
 
 
 cd "$MOVIE_SYM"/ \
-; sudo find . \
+; sudo find . -size +25M \
 | sort -bif \
 | sed 's/.mpeg//' \
 | sed 's/.mpg//' \
 | sed 's/.mkv//' \
 | sed 's/.avi//' \
 | sed 's/.mp4//' \
+| sed 's/.ts//' \
 | uniq -id > "$DUPES_BUFFER"
 
 cat "$DUPES_BUFFER" \
@@ -101,6 +103,7 @@ cd "$TV_SYM2"/ \
 | sed 's/.mkv//' \
 | sed 's/.avi//' \
 | sed 's/.mp4//' \
+| sed 's/.ts//' \
 | uniq -id > "$DUPES_BUFFER"
 
 cat "$DUPES_BUFFER" \
