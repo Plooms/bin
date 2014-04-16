@@ -158,6 +158,11 @@ Logfile:  $TMP_LOG
 #"
 
 
+
+echo "Finished searching for Duplicates"
+echo ""
+echo ""
+
 echo "Delete the TV database ?     y" 
 read confirmation
 
