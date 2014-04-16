@@ -21,8 +21,6 @@ echo "#############################################################"
 TMP="$(mktemp)"
 TMP_LOG="$(mktemp)"
 
-CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
-
 
 mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
 
@@ -34,6 +32,8 @@ for i in "${dupes_array[@]}"
 do
 DIR="$(echo $i | cut -d/ -f1)"
 NAME="$(echo $i | cut -d/ -f2)"
+
+CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
 RED
 find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a $TMP_LOG
