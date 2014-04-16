@@ -5,6 +5,10 @@ SCRIPT_NAME="c.ln2tb-tv-find-popdb-helper"
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+
+count="$(cat $count_file)"
+
+
 DIR="$(echo $( dirname "$( echo $1 )") | rev |cut -d/ -f1 |rev)"
 NAME="$(basename "$( echo $1 )")"
 
@@ -15,4 +19,5 @@ ON DUPLICATE KEY UPDATE
 	Name="$DIR/$NAME"
 EOF
 
-echo "Adding Episode: $DIR/$NAME"
+echo "$count) Adding Episode: $DIR/$NAME"
+echo $((count + 1)) > "$count_file"

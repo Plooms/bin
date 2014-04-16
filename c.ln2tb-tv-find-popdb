@@ -18,6 +18,9 @@ _LOCK_ON
 
 #########################################################
 
+export count_file="$(mktemp)"
+
+echo 1 > "$count_file"
 
 
 echo "Searching for TV files"
