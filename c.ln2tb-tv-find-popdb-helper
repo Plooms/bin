@@ -5,14 +5,14 @@ SCRIPT_NAME="c.ln2tb-tv-find-popdb-helper"
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
-
+DIR="$(echo $( dirname "$( echo $1 )") | rev |cut -d/ -f1 |rev)"
 NAME="$(basename "$( echo $1 )")"
 
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
 INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date) 
-VALUES ("$NAME", "-", "-", "-", "-", "-", "-", "-")
+VALUES ("$DIR/$NAME", "-", "-", "-", "-", "-", "-", "-")
 ON DUPLICATE KEY UPDATE 
-	Name="$NAME"
+	Name="$DIR/$NAME"
 EOF
 
-echo "Adding Episode: $NAME"
+echo "Adding Episode: $DIR/$NAME"
