@@ -156,3 +156,15 @@ Logfile:  $TMP_LOG
 #Logfile:  $TMP_LOG
 
 #"
+
+
+echo "Delete the TV database ?     y" 
+read confirmation
+
+if [ "$confirmation" = "y" ]
+then
+mysql -uroot -p"$DB_PASSWORD" tv -e "DELETE from tv" -ss ; echo "Deleted the TV database (Re-populate it using c.ln2tb-tv-find-popdb)"
+else
+echo exiting
+fi
+
