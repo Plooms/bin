@@ -36,27 +36,18 @@ DIR="$(echo $i | cut -d/ -f1)"
 NAME="$(echo $i | cut -d/ -f2)"
 
 RED
-find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; | tee -a $TMP_LOG
-echo ""
-done
-
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a $TMP_LOG
 
 echo "" | tee -a $TMP_LOG
-echo "" | tee -a $TMP_LOG
-
 CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
-
-for i in "${dupes_array[@]}"
-do
-DIR="$(echo $i | cut -d/ -f1)"
-NAME="$(echo $i | cut -d/ -f2)"
-
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -i {} \; | tee -a $TMP_LOG
 echo ""
-GREEN
-find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -vi {} \; -exec echo "" \; | tee -a $TMP_LOG
-COLOR_OFF
 done
+
+
+
+
 
 
 
@@ -66,15 +57,6 @@ echo "
 Logfile:  $TMP_LOG
 
 "
-#| sed 's/ /\\ /g' \
-#| sed "s/'\+/\\\'/g" \
-#| sed "s/(/\\\(/g" \
-#| sed "s/)/\\\)/g" \
-#| sed "s/\[/\\\[/g" \
-#| sed "s/\]/\\\]/g" \
-#| sed "s/;/\\\;/g" \
-#| sed "s/^./"$TV_SYM_ESCAPED"/g"
-
 
 ####################################################################
 ####################################################################
@@ -86,32 +68,43 @@ Logfile:  $TMP_LOG
 ####################################################################
 ####################################################################
 
+TMP="$(mktemp)"
+TMP_LOG="$(mktemp)"
 
-#cd "$MOVIE_SYM"/ \
-#; sudo find . -size +25M \
-#| sort -bif \
-#| sed 's/.mpeg//' \
-#| sed 's/.mpg//' \
-#| sed 's/.mkv//' \
-#| sed 's/.avi//' \
-#| sed 's/.mp4//' \
-#| sed 's/.ts//' \
-#| uniq -id > "$DUPES_BUFFER"
+CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
-#cat "$DUPES_BUFFER" \
-#| echo -e "\n\nThere are $(wc -l) duplicate files in ("$MOVIE_SYM")\n\n"
 
-#RED
-#cat $DUPES_BUFFER \
-#| sed 's/ /\\ /g' \
-#| sed "s/'\+/\\\'/g" \
-#| sed "s/(/\\\(/g" \
-#| sed "s/)/\\\)/g" \
-#| sed "s/\[/\\\[/g" \
-#| sed "s/\]/\\\]/g" \
-#| sed "s/;/\\\;/g" \
-#| sed "s/^./$MOVIE_SYM_ESCAPED/g"
+mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
 
+cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
+
+while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
+
+for i in "${dupes_array[@]}"
+do
+DIR="$(echo $i | cut -d/ -f1)"
+NAME="$(echo $i | cut -d/ -f2)"
+
+RED
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a $TMP_LOG
+
+echo "" | tee -a $TMP_LOG
+CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
+
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -i {} \; | tee -a $TMP_LOG
+echo ""
+done
+
+
+
+
+
+echo "
+
+
+Logfile:  $TMP_LOG
+
+"
 
 
 ####################################################################
@@ -125,27 +118,42 @@ Logfile:  $TMP_LOG
 ####################################################################
 
 
-#cd "$TV_SYM2"/ \
-#; sudo find . \
-#| sort -bif \
-#| sed 's/.mpeg//' \
-#| sed 's/.mpg//' \
-#| sed 's/.mkv//' \
-#| sed 's/.avi//' \
-#| sed 's/.mp4//' \
-#| sed 's/.ts//' \
-#| uniq -id > "$DUPES_BUFFER"
+TMP="$(mktemp)"
+TMP_LOG="$(mktemp)"
 
-#cat "$DUPES_BUFFER" \
-#| echo -e "\n\nThere are $(wc -l) duplicate files in ("$TV_SYM2")\n\n"
+CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
-#RED
-#cat $DUPES_BUFFER \
-#| sed 's/ /\\ /g' \
-#| sed "s/'\+/\\\'/g" \
-#| sed "s/(/\\\(/g" \
-#| sed "s/)/\\\)/g" \
-#| sed "s/\[/\\\[/g" \
-#| sed "s/\]/\\\]/g" \
-#| sed "s/;/\\\;/g" \
-#| sed "s/^./"$TV_SYM2_ESCAPED"/g"
+
+mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
+
+cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
+
+while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
+
+for i in "${dupes_array[@]}"
+do
+DIR="$(echo $i | cut -d/ -f1)"
+NAME="$(echo $i | cut -d/ -f2)"
+
+RED
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a $TMP_LOG
+
+echo "" | tee -a $TMP_LOG
+CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
+
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -i {} \; | tee -a $TMP_LOG
+echo ""
+done
+
+
+
+
+
+
+
+echo "
+
+
+Logfile:  $TMP_LOG
+
+"
