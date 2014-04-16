@@ -68,43 +68,43 @@ Logfile:  $TMP_LOG
 ####################################################################
 ####################################################################
 
-TMP="$(mktemp)"
-TMP_LOG="$(mktemp)"
+#TMP="$(mktemp)"
+#TMP_LOG="$(mktemp)"
 
-CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
-
-
-mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
-
-cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
-
-while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
-
-for i in "${dupes_array[@]}"
-do
-DIR="$(echo $i | cut -d/ -f1)"
-NAME="$(echo $i | cut -d/ -f2)"
-
-RED
-find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a $TMP_LOG
-
-echo "" | tee -a $TMP_LOG
-CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
-
-find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -i {} \; | tee -a $TMP_LOG
-echo ""
-done
+#CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
 
+#mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
+
+#cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
+
+#while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
+
+#for i in "${dupes_array[@]}"
+#do
+#DIR="$(echo $i | cut -d/ -f1)"
+#NAME="$(echo $i | cut -d/ -f2)"
+
+#RED
+#find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a $TMP_LOG
+
+#echo "" | tee -a $TMP_LOG
+#CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
+
+#find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -i {} \; | tee -a $TMP_LOG
+#echo ""
+#done
 
 
 
-echo "
 
 
-Logfile:  $TMP_LOG
+#echo "
 
-"
+
+#Logfile:  $TMP_LOG
+
+#"
 
 
 ####################################################################
@@ -117,43 +117,42 @@ Logfile:  $TMP_LOG
 ####################################################################
 ####################################################################
 
+#TMP="$(mktemp)"
+#TMP_LOG="$(mktemp)"
 
-TMP="$(mktemp)"
-TMP_LOG="$(mktemp)"
-
-CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
+#CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
 
-mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
+#mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
 
-cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
+#cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
 
-while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
+#while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
 
-for i in "${dupes_array[@]}"
-do
-DIR="$(echo $i | cut -d/ -f1)"
-NAME="$(echo $i | cut -d/ -f2)"
+#for i in "${dupes_array[@]}"
+#do
+#DIR="$(echo $i | cut -d/ -f1)"
+#NAME="$(echo $i | cut -d/ -f2)"
 
-RED
-find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a $TMP_LOG
+#RED
+#find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a $TMP_LOG
 
-echo "" | tee -a $TMP_LOG
-CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
+#echo "" | tee -a $TMP_LOG
+#CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
-find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -i {} \; | tee -a $TMP_LOG
-echo ""
-done
-
+#find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -i {} \; | tee -a $TMP_LOG
+#echo ""
+#done
 
 
 
 
 
 
-echo "
+
+#echo "
 
 
-Logfile:  $TMP_LOG
+#Logfile:  $TMP_LOG
 
-"
+#"
