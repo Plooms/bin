@@ -18,104 +18,100 @@ echo "#############################################################"
 ###################################################################
 ###################################################################
 
+TMP="$(mktemp)"
 
 
-cd "$TV_SYM"/ \
-; sudo find . -size +25M \
-| sort -bif \
-| sed 's/.mpeg//' \
-| sed 's/.mpg//' \
-| sed 's/.mkv//' \
-| sed 's/.avi//' \
-| sed 's/.mp4//' \
-| sed 's/.ts//' \
-| uniq -id > "$DUPES_BUFFER"
+mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
 
-cat "$DUPES_BUFFER" \
-| echo -e "\n\nThere are $(wc -l) duplicate files in ("$TV_SYM")\n\n"
+cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
 
-RED
-cat $DUPES_BUFFER \
-| sed 's/ /\\ /g' \
-| sed "s/'\+/\\\'/g" \
-| sed "s/(/\\\(/g" \
-| sed "s/)/\\\)/g" \
-| sed "s/\[/\\\[/g" \
-| sed "s/\]/\\\]/g" \
-| sed "s/;/\\\;/g" \
-| sed "s/^./"$TV_SYM_ESCAPED"/g"
+while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
+
+for i in "${dupes_array[@]}"
+do
+find  "$TV_SYM"/ -size +25M -type f -iname "$i*" -exec du -hs {} \; -exec sudo rm -i {} \;
+done
+
+#| sed 's/ /\\ /g' \
+#| sed "s/'\+/\\\'/g" \
+#| sed "s/(/\\\(/g" \
+#| sed "s/)/\\\)/g" \
+#| sed "s/\[/\\\[/g" \
+#| sed "s/\]/\\\]/g" \
+#| sed "s/;/\\\;/g" \
+#| sed "s/^./"$TV_SYM_ESCAPED"/g"
 
 
-###################################################################
-###################################################################
-WHITE
-echo ""
-echo "#############################################################"
-echo "		$MOVIE_SYM"
-echo "#############################################################"
-###################################################################
-###################################################################
+####################################################################
+####################################################################
+#WHITE
+#echo ""
+#echo "#############################################################"
+#echo "		$MOVIE_SYM"
+#echo "#############################################################"
+####################################################################
+####################################################################
 
 
-cd "$MOVIE_SYM"/ \
-; sudo find . -size +25M \
-| sort -bif \
-| sed 's/.mpeg//' \
-| sed 's/.mpg//' \
-| sed 's/.mkv//' \
-| sed 's/.avi//' \
-| sed 's/.mp4//' \
-| sed 's/.ts//' \
-| uniq -id > "$DUPES_BUFFER"
+#cd "$MOVIE_SYM"/ \
+#; sudo find . -size +25M \
+#| sort -bif \
+#| sed 's/.mpeg//' \
+#| sed 's/.mpg//' \
+#| sed 's/.mkv//' \
+#| sed 's/.avi//' \
+#| sed 's/.mp4//' \
+#| sed 's/.ts//' \
+#| uniq -id > "$DUPES_BUFFER"
 
-cat "$DUPES_BUFFER" \
-| echo -e "\n\nThere are $(wc -l) duplicate files in ("$MOVIE_SYM")\n\n"
+#cat "$DUPES_BUFFER" \
+#| echo -e "\n\nThere are $(wc -l) duplicate files in ("$MOVIE_SYM")\n\n"
 
-RED
-cat $DUPES_BUFFER \
-| sed 's/ /\\ /g' \
-| sed "s/'\+/\\\'/g" \
-| sed "s/(/\\\(/g" \
-| sed "s/)/\\\)/g" \
-| sed "s/\[/\\\[/g" \
-| sed "s/\]/\\\]/g" \
-| sed "s/;/\\\;/g" \
-| sed "s/^./$MOVIE_SYM_ESCAPED/g"
+#RED
+#cat $DUPES_BUFFER \
+#| sed 's/ /\\ /g' \
+#| sed "s/'\+/\\\'/g" \
+#| sed "s/(/\\\(/g" \
+#| sed "s/)/\\\)/g" \
+#| sed "s/\[/\\\[/g" \
+#| sed "s/\]/\\\]/g" \
+#| sed "s/;/\\\;/g" \
+#| sed "s/^./$MOVIE_SYM_ESCAPED/g"
 
 
 
-###################################################################
-###################################################################
-WHITE
-echo ""
-echo "#############################################################"
-echo "		$TV_SYM2"
-echo "#############################################################"
-###################################################################
-###################################################################
+####################################################################
+####################################################################
+#WHITE
+#echo ""
+#echo "#############################################################"
+#echo "		$TV_SYM2"
+#echo "#############################################################"
+####################################################################
+####################################################################
 
 
-cd "$TV_SYM2"/ \
-; sudo find . \
-| sort -bif \
-| sed 's/.mpeg//' \
-| sed 's/.mpg//' \
-| sed 's/.mkv//' \
-| sed 's/.avi//' \
-| sed 's/.mp4//' \
-| sed 's/.ts//' \
-| uniq -id > "$DUPES_BUFFER"
+#cd "$TV_SYM2"/ \
+#; sudo find . \
+#| sort -bif \
+#| sed 's/.mpeg//' \
+#| sed 's/.mpg//' \
+#| sed 's/.mkv//' \
+#| sed 's/.avi//' \
+#| sed 's/.mp4//' \
+#| sed 's/.ts//' \
+#| uniq -id > "$DUPES_BUFFER"
 
-cat "$DUPES_BUFFER" \
-| echo -e "\n\nThere are $(wc -l) duplicate files in ("$TV_SYM2")\n\n"
+#cat "$DUPES_BUFFER" \
+#| echo -e "\n\nThere are $(wc -l) duplicate files in ("$TV_SYM2")\n\n"
 
-RED
-cat $DUPES_BUFFER \
-| sed 's/ /\\ /g' \
-| sed "s/'\+/\\\'/g" \
-| sed "s/(/\\\(/g" \
-| sed "s/)/\\\)/g" \
-| sed "s/\[/\\\[/g" \
-| sed "s/\]/\\\]/g" \
-| sed "s/;/\\\;/g" \
-| sed "s/^./"$TV_SYM2_ESCAPED"/g"
+#RED
+#cat $DUPES_BUFFER \
+#| sed 's/ /\\ /g' \
+#| sed "s/'\+/\\\'/g" \
+#| sed "s/(/\\\(/g" \
+#| sed "s/)/\\\)/g" \
+#| sed "s/\[/\\\[/g" \
+#| sed "s/\]/\\\]/g" \
+#| sed "s/;/\\\;/g" \
+#| sed "s/^./"$TV_SYM2_ESCAPED"/g"
