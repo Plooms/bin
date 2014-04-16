@@ -35,10 +35,20 @@ do
 DIR="$(echo $i | cut -d/ -f1)"
 NAME="$(echo $i | cut -d/ -f2)"
 
-find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; | tee $TMP_LOG
+RED
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; | tee -a $TMP_LOG
 echo ""
+done
+
+for i in "${dupes_array[@]}"
+do
+DIR="$(echo $i | cut -d/ -f1)"
+NAME="$(echo $i | cut -d/ -f2)"
+
 echo ""
-find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -vi {} \; -exec echo "" \; | tee $TMP_LOG
+GREEN
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -vi {} \; -exec echo "" \; | tee -a $TMP_LOG
+COLOR_OFF
 done
 
 
