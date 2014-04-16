@@ -158,7 +158,8 @@ Logfile:  $TMP_LOG
 #"
 
 
-
+echo ""
+echo ""
 echo "Finished searching for Duplicates"
 echo ""
 echo ""
