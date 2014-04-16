@@ -19,6 +19,7 @@ echo "#############################################################"
 ###################################################################
 
 TMP="$(mktemp)"
+TMP_LOG="$(mktemp)"
 
 
 mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
@@ -29,9 +30,20 @@ while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
 
 for i in "${dupes_array[@]}"
 do
-find  "$TV_SYM"/ -size +25M -type f -iname "$i*" -exec du -hs {} \; -exec sudo rm -i {} \;
+DIR="$(echo $i | cut -d/ -f1)"
+NAME="$(echo $i | cut -d/ -f2)"
+
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -i {} \; | tee $TMP_LOG
 done
 
+
+
+echo "
+
+
+Logfile:  $TMP_LOG
+
+"
 #| sed 's/ /\\ /g' \
 #| sed "s/'\+/\\\'/g" \
 #| sed "s/(/\\\(/g" \
