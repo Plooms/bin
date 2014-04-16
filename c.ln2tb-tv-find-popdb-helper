@@ -13,11 +13,12 @@ DIR="$(echo $( dirname "$( echo $1 )") | rev |cut -d/ -f1 |rev)"
 NAME="$(basename "$( echo $1 )")"
 
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
-INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date) 
+INSERT IGNORE INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date) 
 VALUES ("$DIR/$NAME", "-", "-", "-", "-", "-", "-", "-")
-ON DUPLICATE KEY UPDATE 
-	Name="$DIR/$NAME"
-EOF
+#ON DUPLICATE KEY UPDATE 
+#	Name="$DIR/$NAME"
+EOF 
 
-echo "$count) Adding Episode: $DIR/$NAME"
+GREEN
+echo -e "$count)${COLOR_OFF} Adding Episode: $DIR/$NAME"
 echo $((count + 1)) > "$count_file"
