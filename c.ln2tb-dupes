@@ -21,6 +21,8 @@ echo "#############################################################"
 TMP="$(mktemp)"
 TMP_LOG="$(mktemp)"
 
+CYAN ; echo "Duplicates:" ; COLOR_OFF
+
 
 mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
 
@@ -34,6 +36,8 @@ DIR="$(echo $i | cut -d/ -f1)"
 NAME="$(echo $i | cut -d/ -f2)"
 
 find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; | tee $TMP_LOG
+echo ""
+echo ""
 find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -vi {} \; -exec echo "" \; | tee $TMP_LOG
 done
 
