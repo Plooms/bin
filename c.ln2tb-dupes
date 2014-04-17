@@ -43,6 +43,15 @@ CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
 find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec sudo rm -i {} \; | tee -a $TMP_LOG
 echo ""
+echo "Delete the Database Entry ($i) ?"
+read confirmation
+if [ "$confirmation" = "y" ]
+then
+mysql -uroot -p"$DB_PASSWORD" tv -e "DELETE from tv where name like '%$i%' " -ss ; echo "Deleted $i from the database"
+else
+echo "Not deleting the entry & continuing the search"
+fi
+
 done
 
 
