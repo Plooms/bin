@@ -31,7 +31,7 @@ while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
 for i in "${dupes_array[@]}"
 do
 DIR="$(echo $i | cut -d/ -f1)"
-NAME="$(echo $i | cut -d/ -f2)"
+NAME="$(echo $i | cut -d/ -f2 | sed s/'/\\\\\\'/)"
 
 CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
