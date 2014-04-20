@@ -44,7 +44,7 @@ CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec echo -e "${GREEN}" \; -exec du -hs {} \; -exec echo -e "${COLOR_OFF}" \; -exec sudo rm -i {} \; -exec echo "" \; | tee -a $TMP_LOG
 echo ""
 
-echo "Delete the Database Entry ($i) ?"
+echo "Delete the Database Entry ($i) ?   y"
 read confirmation
 if [ "$confirmation" = "y" ]
 then
