@@ -12,14 +12,14 @@ source /usr/local/bin/VAR-SCRIPT
 STATE=$(sudo route -n |grep G )
 
 
-answer=$(dialog --stdout --backtitle "Choose the Gateway you Desire" --menu "$STATE" 14 70 20 "LAN" "" "4G" "" "WLAN" "" "LAN + 4G" "" )
+answer=$(dialog --stdout --backtitle "Choose the Gateway you Desire" --menu "$STATE" 14 70 20 "DSL" "" "4G" "" "WLAN" "" "LAN + 4G" "" )
 
 case $? in
 0)
-if [ "$answer" = "LAN" ]
+if [ "$answer" = "DSL" ]
 then
 sudo route del default
-sudo route add default gw 10.0.0.138
+sudo route add default gw 10.0.0.137
 sudo route -n
 fi
 
@@ -33,7 +33,7 @@ fi
 if [ "$answer" = "WLAN" ]
 then
 sudo route del default
-sudo route add default gw 192.168.1.1
+sudo route add default gw 10.0.0.136
 sudo route -n
 fi
 
