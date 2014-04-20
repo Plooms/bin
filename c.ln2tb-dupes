@@ -31,7 +31,8 @@ while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
 for i in "${dupes_array[@]}"
 do
 DIR="$(echo $i | cut -d/ -f1)"
-NAME="$(echo $i | cut -d/ -f2 | sed s/'/\\\\\\'/)"
+NAME="$(echo $i | cut -d/ -f2)"
+NAME2="$(echo $i | cut -d/ -f2 | sed s/'/\\\\\\'/ )"
 
 CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
 
@@ -48,7 +49,7 @@ echo "Delete the Database Entry ($i) ?   y"
 read confirmation
 if [ "$confirmation" = "y" ]
 then
-mysql -uroot -p"$DB_PASSWORD" tv -e "DELETE from tv where name like '%$i%' " -ss ; echo "Deleted $i from the database"
+mysql -uroot -p"$DB_PASSWORD" tv -e "DELETE from tv where name like '%$NAME2%' " -ss ; echo "Deleted $i from the database"
 else
 GREEN
 echo "		Not deleting the entry & continuing the search"
