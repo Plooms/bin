@@ -74,7 +74,6 @@ mv -v Blue\ Bloods*                 "$TV_SYM"/"Blue Bloods"/              	 && e
 mv -v Bob*s\ Burgers*	            "$TV_SYM"/"Bob's Burgers"/              			       && echo -e "\n\n"
 mv -v Body*Proof*                   "$TV_SYM"/"Body of Proof"/                                             && echo -e "\n\n"
 mv -v Border\ Security*             "$TV_SYM"/"Border Security"/               && echo -e "\n\n"
-mv -v Border\ Security\ Canada*     "$TV_SYM"/"Border Security: Canada's Front Line"/               && echo -e "\n\n"
 mv -v Bored\ to\ Death*             "$TV_SYM"/"Bored to Death"/				               && echo -e "\n\n"
 mv -v Boston*Legal*                 "$TV_SYM"/"Boston Legal"/                                              && echo -e "\n\n"
 mv -v Boston\ Public*               "$TV_SYM"/"Boston Public"/				               && echo -e "\n\n"
