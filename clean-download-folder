@@ -22,7 +22,28 @@ sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.nfo" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.url" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.htm" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.html" -exec sudo rm {} \; 2>/dev/null
+
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ara.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*chi.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*dan.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*dut.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*fre.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*gre.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*hrv.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*hun.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ita.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*per.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*por-BR.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*por.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*rum.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*slv.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*spa.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*srp.srt" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*swe.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*tur.srt" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*vie.srt" -exec sudo rm {} \; 2>/dev/null
+
+
 sudo find "$TV_DOWNLOAD_DIR"/ -type d -iname "sample" -exec sudo rm -r {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "*sample*" -size -200M -exec sudo rm -r {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "zNew Folder" -exec sudo rmdir {} \; 2>/dev/null
