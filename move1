@@ -281,3 +281,4 @@ mv -v Hogans\ Heroes\ *                "$TV_SYM"/"Hogans Heroes"/             &&
 mv -v Dragons\ Den\ \(Canada\)\ *                "$TV_SYM"/"Dragons' Den (Canada)"/             && echo -e "\n\n" 
 mv -v Vegas\ Strip\ *                "$TV_SYM"/"Vegas Strip"/             && echo -e "\n\n" 
 mv -v Las\ Vegas\ Jailhouse\ *                "$TV_SYM"/"Las Vegas Jailhouse"/             && echo -e "\n\n" 
+mv -v Home\ Improvement\ *                "$TV_SYM"/"Home Improvement"/             && echo -e "\n\n" 
