@@ -269,3 +269,4 @@ mv -v Dragons\ Den\ \(Canada\)\ *                "$TV_SYM"/"Dragons' Den (Canada
 mv -v Vegas\ Strip\ *                "$TV_SYM"/"Vegas Strip"/              2>/dev/null && echo -e "\n\n"
 mv -v Las\ Vegas\ Jailhouse\ *                "$TV_SYM"/"Las Vegas Jailhouse"/              2>/dev/null && echo -e "\n\n"
 mv -v Home\ Improvement\ *                "$TV_SYM"/"Home Improvement"/              2>/dev/null && echo -e "\n\n"
+mv -v The\ King\ of\ Queens\ *                "$TV_SYM"/"The King of Queens"/              2>/dev/null && echo -e "\n\n"
