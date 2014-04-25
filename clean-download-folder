@@ -10,8 +10,7 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.directory" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/"znew Folder" -iname ".*.log" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/"zNew Folder" -iname ".*.log" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname ".*.log" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.jp*g" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.png" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.txt" -exec sudo rm {} \; 2>/dev/null
