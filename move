@@ -272,3 +272,4 @@ mv -v Home\ Improvement\ *                "$TV_SYM"/"Home Improvement"/         
 mv -v The\ King\ of\ Queens\ *                "$TV_SYM"/"The King of Queens"/              2>/dev/null && echo -e "\n\n"
 mv -v My\ Five\ Wives\ *                "$TV_SYM"/"My Five Wives"/              2>/dev/null && echo -e "\n\n"
 mv -v How\ to\ Make\ It\ in\ America\ *                "$TV_SYM"/"How to Make It in America"/              2>/dev/null && echo -e "\n\n"
+mv -v Ice\ Cold\ Gold\ *                "$TV_SYM"/"Ice Cold Gold"/              2>/dev/null && echo -e "\n\n"
