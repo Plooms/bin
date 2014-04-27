@@ -291,7 +291,6 @@ mv -v Fast\ N\ Loud\ *                "$TV_SYM"/"Fast N' Loud"/              && 
 mv -v Impractical\ Jokers\ *                "$TV_SYM"/"Impractical Jokers"/              && echo -e "\n\n" 
 mv -v Counting\ Cars\ *                "$TV_SYM"/"Counting Cars"/              && echo -e "\n\n" 
 mv -v Shipping\ Wars\ *                "$TV_SYM"/"Shipping Wars"/              && echo -e "\n\n" 
-mv -v No\ Ordinary\ Family\ *                "$TV_SYM"/"No Ordinary Family"/              && echo -e "\n\n" 
 mv -v Jungle\ Gold\ *                "$TV_SYM"/"Jungle Gold"/              && echo -e "\n\n" 
 mv -v Review\ *                "$TV_SYM"/"Review"/              && echo -e "\n\n" 
 mv -v The\ Inbetweeners\ \(US\)\ *                "$TV_SYM"/"The Inbetweeners (US)"/              && echo -e "\n\n" 
