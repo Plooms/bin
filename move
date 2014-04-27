@@ -289,7 +289,6 @@ mv -v Fargo\ *                "$TV_SYM"/"Fargo"/              2>/dev/null && ech
 mv -v Crisis\ *                "$TV_SYM"/"Crisis"/              2>/dev/null && echo -e "\n\n"
 mv -v Friends\ With\ Better\ Lives\ *                "$TV_SYM"/"Friends With Better Lives"/              2>/dev/null && echo -e "\n\n"
 mv -v About\ a\ Boy\ *                "$TV_SYM"/"About a Boy"/              2>/dev/null && echo -e "\n\n"
-mv -v Sirens\ *                "$TV_SYM"/"Sirens"/              2>/dev/null && echo -e "\n\n"
 mv -v Growing\ Up\ Fisher\ *                "$TV_SYM"/"Growing Up Fisher"/              2>/dev/null && echo -e "\n\n"
 mv -v Surviving\ Jack\ *                "$TV_SYM"/"Surviving Jack"/              2>/dev/null && echo -e "\n\n"
 mv -v Bad\ Teacher\ *                "$TV_SYM"/"Bad Teacher"/              2>/dev/null && echo -e "\n\n"
