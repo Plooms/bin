@@ -270,3 +270,4 @@ mv -v Vegas\ Strip\ *                "$TV_SYM"/"Vegas Strip"/              2>/de
 mv -v Las\ Vegas\ Jailhouse\ *                "$TV_SYM"/"Las Vegas Jailhouse"/              2>/dev/null && echo -e "\n\n"
 mv -v Home\ Improvement\ *                "$TV_SYM"/"Home Improvement"/              2>/dev/null && echo -e "\n\n"
 mv -v The\ King\ of\ Queens\ *                "$TV_SYM"/"The King of Queens"/              2>/dev/null && echo -e "\n\n"
+mv -v My\ Five\ Wives\ *                "$TV_SYM"/"My Five Wives"/              2>/dev/null && echo -e "\n\n"
