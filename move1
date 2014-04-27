@@ -284,3 +284,4 @@ mv -v Las\ Vegas\ Jailhouse\ *                "$TV_SYM"/"Las Vegas Jailhouse"/  
 mv -v Home\ Improvement\ *                "$TV_SYM"/"Home Improvement"/             && echo -e "\n\n" 
 mv -v The\ King\ of\ Queens\ *                "$TV_SYM"/"The King of Queens"/             && echo -e "\n\n" 
 mv -v My\ Five\ Wives\ *                "$TV_SYM"/"My Five Wives"/             && echo -e "\n\n" 
+mv -v How\ to\ Make\ It\ in\ America\ *                "$TV_SYM"/"How to Make It in America"/             && echo -e "\n\n" 
