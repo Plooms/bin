@@ -21,6 +21,7 @@ sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.nfo" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.url" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.htm" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.html" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.smi" -exec sudo rm {} \; 2>/dev/null
 
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ara.srt" -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*chi.srt" -exec sudo rm {} \; 2>/dev/null
