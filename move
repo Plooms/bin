@@ -292,4 +292,3 @@ mv -v Growing\ Up\ Fisher\ *                "$TV_SYM"/"Growing Up Fisher"/      
 mv -v Surviving\ Jack\ *                "$TV_SYM"/"Surviving Jack"/              2>/dev/null && echo -e "\n\n"
 mv -v Bad\ Teacher\ *                "$TV_SYM"/"Bad Teacher"/              2>/dev/null && echo -e "\n\n"
 mv -v The\ After\ *                "$TV_SYM"/"The After"/              2>/dev/null && echo -e "\n\n"
-mv -v Worlds\ Most\ Amazing\ Videos\ *                "$TV_SYM"/"World's Most Amazing Videos"/              2>/dev/null && echo -e "\n\n"
