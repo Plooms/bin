@@ -56,17 +56,3 @@ EOF
 
 echo -e "$count)${COLOR_OFF} Adding File: $NAME"
 echo $((count + 1)) > "$count_file"
-done
-
-
-
-
-
-
-
-
-# Time Calculation
-_END_TIME
-
-# End Lock
-_LOCK_OFF
