@@ -28,8 +28,8 @@ NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
 
 
 SUBTITILE="NO"
-if find "$SUB"*.srt 2>/dev/null &; then SUBTITILE="YES" ; fi
-if find "$SUB"*.sub 2>/dev/null &; then SUBTITILE="YES" ; fi
+if find "$SUB"*.srt -exec echo "Subtitle: " {} \;  ; then SUBTITILE="YES" ; fi
+if find "$SUB"*.sub -exec echo "Subtitle: " {} \; ; then SUBTITILE="YES" ; fi
 
 
 if [ -f "$NFO" ]
