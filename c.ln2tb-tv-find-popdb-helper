@@ -11,13 +11,11 @@ count="$(cat $count_file)"
 
 DIR="$(echo $( dirname "$( echo $1 )") | rev |cut -d/ -f1 |rev)"
 NAME="$(basename "$( echo $1 )")"
-SUB1="$( echo $1 | rev |cut -b 5- | rev )".srt 2>/dev/null
-SUB2="$( echo $1 | rev |cut -b 5- | rev )".sub 2>/dev/null
+SUB="$( echo $1 | rev |cut -b 5- | rev )"
 
-if [ -f "$SUB1" -o -f "$SUB2"  ]
-then SUBTITILE="YES"
-else SUBTITILE="NO"
-fi
+SUBTITILE="NO"
+if find "$SUB"*.srt -exec echo -e "$YELLOW Found Subtitle: $COLOR_OFF" {} \; 2>/dev/null ; then SUBTITILE="YES" ; fi
+if find "$SUB"*.sub -exec echo -e "$YELLOW Found Subtitle: $COLOR_OFF" {} \; 2>/dev/null ; then SUBTITILE="YES" ; fi
 
 
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
@@ -29,5 +27,5 @@ ON DUPLICATE KEY UPDATE
 EOF
 
 GREEN
-echo -e "$count)${COLOR_OFF} Adding Episode: $DIR/$NAME"
+echo -e "$count)${CYAN} Adding Episode: ${COLOR_OFF}$DIR/$NAME"
 echo $((count + 1)) > "$count_file"
