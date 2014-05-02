@@ -11,12 +11,21 @@ count="$(cat $count_file)"
 
 DIR="$(echo $( dirname "$( echo $1 )") | rev |cut -d/ -f1 |rev)"
 NAME="$(basename "$( echo $1 )")"
+SUB1="$( echo $1 | rev |cut -b 5- | rev )".srt 2>/dev/null
+SUB2="$( echo $1 | rev |cut -b 5- | rev )".sub 2>/dev/null
+
+if [ -f "$SUB1" -o -f "$SUB2"  ]
+then SUBTITILE="YES"
+else SUBTITILE="NO"
+fi
+
 
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
-INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date) 
-VALUES ("$DIR/$NAME", "-", "-", "-", "-", "-", "-", "-")
+INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date,Subtitle) 
+VALUES ("$DIR/$NAME", "-", "-", "-", "-", "-", "-", "-", "$SUBTITILE")
 ON DUPLICATE KEY UPDATE 
-	Name="$DIR/$NAME"
+	Name = "$DIR/$NAME",
+	Subtitle = "$SUBTITILE";	
 EOF
 
 GREEN

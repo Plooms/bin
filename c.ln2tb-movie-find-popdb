@@ -46,8 +46,16 @@ NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
 NOTES="$(cat "$(echo $i | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
 DATE="$(stat "$i" | grep Modify | awk '{print $2}')"
 SIZE="$(du -m "$i" | awk '{print $1}')"
+SUB1="$( echo $1 | rev |cut -b 5- | rev )".srt 2>/dev/null
+SUB2="$( echo $1 | rev |cut -b 5- | rev )".sub 2>/dev/null
 NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
+
+if [ -f "$SUB1" -o -f "$SUB2"  ]
+then SUBTITILE="YES"
+else SUBTITILE="NO"
+fi
+
 if [ -f "$NFO" ]
 then
 	if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
@@ -56,8 +64,8 @@ else
 fi
 
 mysql -uroot -p"$DB_PASSWORD" movies << EOF
-INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date) 
-VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF", "$DATE")
+INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date,Subtitle) 
+VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF", "$DATE", "$SUBTITLE")
 ON DUPLICATE KEY UPDATE 
     Size_MB = "$SIZE",
     ResWidth = "$RES1",
@@ -65,7 +73,8 @@ ON DUPLICATE KEY UPDATE
     Watched = "$WATCHED",
     Notes = "$NOTES",
     Definition = "$DEF",
-    Date = "$DATE";
+    Date = "$DATE"
+   	Subtitle = "$SUBTITILE";
 EOF
 
 
