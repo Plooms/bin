@@ -28,8 +28,8 @@ NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
 
 
 SUBTITILE="NO"
-if find "$SUB"*.srt -exec SUB_FILE={} \; 2>/dev/null ; then SUBTITILE="YES" ; fi
-if find "$SUB"*.sub -exec SUB_FILE={} \; 2>/dev/null ; then SUBTITILE="YES" ; fi
+if find "$SUB"*.srt -exec echo -n 2>/dev/null ; then SUBTITILE="YES" ; fi
+if find "$SUB"*.sub -exec echo -n 2>/dev/null ; then SUBTITILE="YES" ; fi
 
 
 if [ -f "$NFO" ]
@@ -53,7 +53,6 @@ ON DUPLICATE KEY UPDATE
     Subtitle = "$SUBTITILE";
 EOF
 
-
-echo -e "$count) ${CYAN}Adding File: ${COLOR_OFF}$NAME"
-echo -e "${YELLOW} Found Subtitle : $SUB_FILE"
+GREEN
+echo -ne "$count) ${CYAN}Adding File: ${COLOR_OFF}$NAME"
 echo $((count + 1)) > "$count_file"
