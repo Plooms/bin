@@ -23,14 +23,14 @@ NOTES="$(cat "$(echo $1 | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev
 DATE="$(stat "$1" | grep Modify | awk '{print $2}')"
 SIZE="$(du -m "$1" | awk '{print $1}')"
 SUB="$( echo $1 | rev |cut -b 5- | rev )"
-
 NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
 
-if [ -f "$SUB"*.srt -o -f "$SUB2"*.sub  ]
-then SUBTITILE="YES"
-else SUBTITILE="NO"
-fi
+
+SUBTITILE="NO"
+if find "$SUB"*.srt 2>/dev/null &; then SUBTITILE="YES" ; fi
+if find "$SUB"*.sub 2>/dev/null &; then SUBTITILE="YES" ; fi
+
 
 if [ -f "$NFO" ]
 then
