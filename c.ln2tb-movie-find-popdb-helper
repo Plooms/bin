@@ -28,8 +28,8 @@ NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
 
 
 SUBTITILE="NO"
-if find "$SUB"*.srt -exec echo -e "$YELLOW Found Subtitle: $COLOR_OFF" {} \; 2>/dev/null ; then SUBTITILE="YES" ; fi
-if find "$SUB"*.sub -exec echo -e "$YELLOW Found Subtitle: $COLOR_OFF" {} \; 2>/dev/null ; then SUBTITILE="YES" ; fi
+if find "$SUB"*.srt -exec SUB_FILE={} \; 2>/dev/null ; then SUBTITILE="YES" ; fi
+if find "$SUB"*.sub -exec SUB_FILE={} \; 2>/dev/null ; then SUBTITILE="YES" ; fi
 
 
 if [ -f "$NFO" ]
@@ -55,4 +55,5 @@ EOF
 
 
 echo -e "$count) ${CYAN}Adding File: ${COLOR_OFF}$NAME"
+echo -e "${YELLOW} Found Subtitle : $SUB_FILE"
 echo $((count + 1)) > "$count_file"
