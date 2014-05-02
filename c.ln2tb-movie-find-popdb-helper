@@ -1,54 +1,30 @@
 #!/bin/bash
 # Populate my DB of Movies
 SCRIPT_NAME="c.ln2tb-movie-find-popdb"
-PID=$$
-
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
 
-# Run <script_name> -c to check if the script is running
-if [[ "$1" = "-c"* ]] ;then _LOCK_CHECK ; fi
-
-# Time Calculation
-_START_TIME
-
-# Start Lock
-_LOCK_ON
-
-#########################################################
-
+count="$(cat $count_file)"
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
 TMP_LOG1="$(mktemp)"
 
-echo "Searching for Movie files"
-echo ""
-
-_CHECK_MOUNT1 && \
-find "$MOVIE_SYM"/ -size +25M |sort -bf > $TMP
-#find "$MOVIE_SYM"/ -iname "*.nfo" -size -25M |sort -bf > $TMP2
-while read FILE  ; do movie_array+=("$FILE") ;done < $TMP
-#while read FILE2 ; do movie_nfo_array+=("$FILE2") ;done < $TMP2
-
-
-for i in "${movie_array[@]}"
-do
-RES1=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
-RES2=$(ffprobe -v quiet -show_streams "$i" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
+RES1=$(ffprobe -v quiet -show_streams "$1" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
+RES2=$(ffprobe -v quiet -show_streams "$1" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
 
 if [ -z "$RES1" -o -z "$RES2"  ]; then RES1="0" && RES2="0" ; fi
 
 DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
-NAME="$(basename "$( echo $i | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
-NOTES="$(cat "$(echo $i | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
-DATE="$(stat "$i" | grep Modify | awk '{print $2}')"
-SIZE="$(du -m "$i" | awk '{print $1}')"
+NAME="$(basename "$( echo $1 | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
+NOTES="$(cat "$(echo $1 | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
+DATE="$(stat "$1" | grep Modify | awk '{print $2}')"
+SIZE="$(du -m "$1" | awk '{print $1}')"
 SUB1="$( echo $1 | rev |cut -b 5- | rev )".srt
 SUB2="$( echo $1 | rev |cut -b 5- | rev )".sub
-NFO="$( echo $i | rev |cut -b 5- | rev )".nfo
+NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
 
 if [ -f "$SUB1" -o -f "$SUB2"  ]
@@ -78,7 +54,8 @@ ON DUPLICATE KEY UPDATE
 EOF
 
 
-echo "Adding File: $NAME"
+echo -e "$count)${COLOR_OFF} Adding File: $NAME"
+echo $((count + 1)) > "$count_file"
 done
 
 
@@ -87,46 +64,6 @@ done
 
 
 
-####################################################
-# Movie folders
-####################################################
-TMP="$(mktemp)"
-TMP2="$(mktemp)"
-TMP_LOG1="$(mktemp)"
-
-
-_CHECK_MOUNT1 && \
-cd "$MOVIE_SYM" && find . -maxdepth 1 | sort -bf | tail -n +2 |cut -b3- > $TMP
-
-while read FILE  ; do movie_folder_array+=("$FILE") ;done < $TMP
-
-for i in "${movie_folder_array[@]}"
-do
-NAME="$i"
-
-mysql -uroot -p"$DB_PASSWORD" movie_folders << EOF
-INSERT INTO folders (Movie_Folder) 
-VALUES ("$NAME")
-EOF
-
-echo "Adding Folder: $NAME"
-done
-
-
-#########################################################
-tv_popdb() {
-	
-	NAME="$(basename "$( echo $1 | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
-mysql -uroot -p"$DB_PASSWORD" tv << EOF
-INSERT INTO tv (Episode_Name) VALUES ("$NAME")
-EOF
-
-echo "Adding Episode: $NAME"
-
-
-}
-
-#########################################################
 
 # Time Calculation
 _END_TIME
