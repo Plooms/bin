@@ -22,12 +22,12 @@ NAME="$(basename "$( echo $1 | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
 NOTES="$(cat "$(echo $1 | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
 DATE="$(stat "$1" | grep Modify | awk '{print $2}')"
 SIZE="$(du -m "$1" | awk '{print $1}')"
-SUB1="$( echo $1 | rev |cut -b 5- | rev )*".srt
-SUB2="$( echo $1 | rev |cut -b 5- | rev )*".sub
+SUB="$( echo $1 | rev |cut -b 5- | rev )"
+
 NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
 
-if [ -f "$SUB1" -o -f "$SUB2"  ]
+if [ -f "$SUB"*.srt -o -f "$SUB2"*.sub  ]
 then SUBTITILE="YES"
 else SUBTITILE="NO"
 fi
