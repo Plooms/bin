@@ -305,3 +305,4 @@ mv -v Growing\ Up\ Fisher\ *                "$TV_SYM"/"Growing Up Fisher"/      
 mv -v Surviving\ Jack\ *                "$TV_SYM"/"Surviving Jack"/              && echo -e "\n\n" 
 mv -v Bad\ Teacher\ *                "$TV_SYM"/"Bad Teacher"/              && echo -e "\n\n" 
 mv -v The\ After\ *                "$TV_SYM"/"The After"/              && echo -e "\n\n" 
+mv -v Vice\ *                "$TV_SYM"/"Vice"/             && echo -e "\n\n" 
