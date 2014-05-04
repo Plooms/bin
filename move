@@ -294,3 +294,8 @@ mv -v Bad\ Teacher\ *                "$TV_SYM"/"Bad Teacher"/              2>/de
 mv -v The\ After\ *                "$TV_SYM"/"The After"/              2>/dev/null && echo -e "\n\n"
 mv -v Vice\ *                "$TV_SYM"/"Vice"/              2>/dev/null && echo -e "\n\n"
 mv -v Just\ Shoot\ Me\ *                "$TV_SYM"/"Just Shoot Me"/              2>/dev/null && echo -e "\n\n"
+mv -v aaa - [*                "$TV_SYM"/"aaa"/              2>/dev/null && echo -e "\n\n"
+mv -v bbb - [*                "$TV_SYM"/"bbb"/              2>/dev/null && echo -e "\n\n"
+mv -v ccc - [*                "$TV_SYM"/"c'cc"/              2>/dev/null && echo -e "\n\n"
+mv -v d\;dd - [*                "$TV_SYM"/"d;dd"/              2>/dev/null && echo -e "\n\n"
+mv -v eee\ \(2000\) - [*                "$TV_SYM"/"eee (2000)"/              2>/dev/null && echo -e "\n\n"

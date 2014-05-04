@@ -15,7 +15,7 @@ name=$(dialog --extra-button --extra-label "Back" --clear --stdout --inputbox \
 case $? in
 0)
 
-echo $name | sed 's/ /\\ /g' | sed "s/'\+//g" | sed "s/(/\\\(/g" | sed "s/)/\\\)/g" | sed 's/&/\\&/g' | sed 's/;/\\;/g'  | sed 's/://g' | awk '{print $1 "\\ -\\ \\[*"}'  > /tmp/pipe
+echo $name | sed 's/ /\\ /g' | sed "s/'\+//g" | sed "s/(/\\\(/g" | sed "s/)/\\\)/g" | sed 's/&/\\&/g' | sed 's/;/\\;/g'  | sed 's/://g' | awk '{print $0 "\\ -\\ \\[*"}'  > /tmp/pipe
 name2=$(tail /tmp/pipe)
 
 
