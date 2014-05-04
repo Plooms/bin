@@ -44,6 +44,8 @@ mv -v Storage*Wars*                 "$TV_SYM"/"Storage Wars"/                   
 mv -v House\ of\ Cards\ \(US\)*     "$TV_SYM"/"House of Cards (US)"/           			      2>/dev/null && echo -e "\n\n"
 mv -v House\ of\ Lies*              "$TV_SYM"/"House of Lies"/           				      2>/dev/null && echo -e "\n\n"
 mv -v House\ *               	    "$TV_SYM"/"House"/              2>/dev/null && echo -e "\n\n"
+mv -v Friends\ With\ Better\ Lives\ *                "$TV_SYM"/"Friends With Better Lives"/              2>/dev/null && echo -e "\n\n"
+mv -v Friends*                      "$TV_SYM"/"Friends"/					              2>/dev/null && echo -e "\n\n"
 
 # Can sort
 mv -v 24*                           "$TV_SYM"/"24"/						              2>/dev/null && echo -e "\n\n"
@@ -117,7 +119,6 @@ mv -v Falling*Skies*                "$TV_SYM"/"Falling Skies"/                  
 mv -v Family*Guy*                   "$TV_SYM"/"Family Guy"/                                               2>/dev/null && echo -e "\n\n"
 mv -v Flashpoint**                  "$TV_SYM"/"Flashpoint"/                                               2>/dev/null && echo -e "\n\n"
 mv -v Franklin*Bash*                "$TV_SYM"/"Franklin & Bash"/                                          2>/dev/null && echo -e "\n\n"
-mv -v Friends*                      "$TV_SYM"/"Friends"/					              2>/dev/null && echo -e "\n\n"
 mv -v Fringe*                       "$TV_SYM"/"Fringe"/                                                   2>/dev/null && echo -e "\n\n"
 mv -v Futurama*                     "$TV_SYM"/"Futurama"/                                                 2>/dev/null && echo -e "\n\n"
 mv -v Game*Thrones*                 "$TV_SYM"/"Game of Thrones"/                                          2>/dev/null && echo -e "\n\n"
@@ -286,7 +287,6 @@ mv -v The\ Rebels\ *                "$TV_SYM"/"The Rebels"/              2>/dev/
 mv -v Silicon\ Valley\ *                "$TV_SYM"/"Silicon Valley"/              2>/dev/null && echo -e "\n\n"
 mv -v Fargo\ *                "$TV_SYM"/"Fargo"/              2>/dev/null && echo -e "\n\n"
 mv -v Crisis\ *                "$TV_SYM"/"Crisis"/              2>/dev/null && echo -e "\n\n"
-mv -v Friends\ With\ Better\ Lives\ *                "$TV_SYM"/"Friends With Better Lives"/              2>/dev/null && echo -e "\n\n"
 mv -v About\ a\ Boy\ *                "$TV_SYM"/"About a Boy"/              2>/dev/null && echo -e "\n\n"
 mv -v Growing\ Up\ Fisher\ *                "$TV_SYM"/"Growing Up Fisher"/              2>/dev/null && echo -e "\n\n"
 mv -v Surviving\ Jack\ *                "$TV_SYM"/"Surviving Jack"/              2>/dev/null && echo -e "\n\n"
