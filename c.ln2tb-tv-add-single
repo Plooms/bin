@@ -15,11 +15,11 @@ name=$(dialog --extra-button --extra-label "Back" --clear --stdout --inputbox \
 case $? in
 0)
 
-echo $name | sed 's/ /\\ /g' | sed "s/'\+//g" | sed "s/(/\\\(/g" | sed "s/)/\\\)/g" | sed 's/&/\\&/g' | sed 's/;/\\;/g'  | sed 's/://g' | awk '{print $1 "\\ -\\ \\["}'  > /tmp/pipe
+echo $name | sed 's/ /\\ /g' | sed "s/'\+//g" | sed "s/(/\\\(/g" | sed "s/)/\\\)/g" | sed 's/&/\\&/g' | sed 's/;/\\;/g'  | sed 's/://g' | awk '{print $1 "\\ -\\ \\[*"}'  > /tmp/pipe
 name2=$(tail /tmp/pipe)
 
 
-name3=$(dialog --extra-button --extra-label "Back" --stdout --clear --inputbox "Is this Correct ?" 10 50 "$name2"* )
+name3=$(dialog --extra-button --extra-label "Back" --stdout --clear --inputbox "Is this Correct ?" 10 50 "$name2" )
 
 case $? in
 0)
@@ -38,9 +38,9 @@ sudo chmod 777 "$TV_SYM"/"$name"
 if [ "$?" = 0 ]
 then
 
-sudo echo "mv -v "$name3"*                \""\$TV_SYM"\"/\""$name"\"/              2>/dev/null && echo -e \"\\n\\n\"" >> /usr/local/bin/move
+sudo echo "mv -v "$name3"                \""\$TV_SYM"\"/\""$name"\"/              2>/dev/null && echo -e \"\\n\\n\"" >> /usr/local/bin/move
 
-sudo echo "mv -v "$name3"*                \""\$TV_SYM"\"/\""$name"\"/             && echo -e \"\\n\\n\" " >> /usr/local/bin/move1
+sudo echo "mv -v "$name3"                \""\$TV_SYM"\"/\""$name"\"/             && echo -e \"\\n\\n\" " >> /usr/local/bin/move1
 
 fi
 ;;
