@@ -307,4 +307,3 @@ mv -v Bad\ Teacher\ *                "$TV_SYM"/"Bad Teacher"/              && ec
 mv -v The\ After\ *                "$TV_SYM"/"The After"/              && echo -e "\n\n" 
 mv -v Vice\ *                "$TV_SYM"/"Vice"/             && echo -e "\n\n" 
 mv -v Just\ Shoot\ Me\ *                "$TV_SYM"/"Just Shoot Me"/             && echo -e "\n\n" 
-mv -v ass\ -\ \[*                "$TV_SYM"/"ass"/             && echo -e "\n\n" 

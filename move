@@ -294,4 +294,3 @@ mv -v Bad\ Teacher\ *                "$TV_SYM"/"Bad Teacher"/              2>/de
 mv -v The\ After\ *                "$TV_SYM"/"The After"/              2>/dev/null && echo -e "\n\n"
 mv -v Vice\ *                "$TV_SYM"/"Vice"/              2>/dev/null && echo -e "\n\n"
 mv -v Just\ Shoot\ Me\ *                "$TV_SYM"/"Just Shoot Me"/              2>/dev/null && echo -e "\n\n"
-mv -v ass\ -\ \[*                "$TV_SYM"/"ass"/              2>/dev/null && echo -e "\n\n"
