@@ -483,6 +483,7 @@ mv -v Roc\ -\ \[*					"$TV_SYM"/"Roc"/              2>/dev/null && echo -e "\n\n
 mv -v Rookie\ Blue\ -\ \[*					"$TV_SYM"/"Rookie Blue"/              2>/dev/null && echo -e "\n\n"
 mv -v Royal\ Pains\ -\ \[*					"$TV_SYM"/"Royal Pains"/              2>/dev/null && echo -e "\n\n"
 mv -v Sabrina\ The\ Teenage\ Witch\ -\ \[*					"$TV_SYM"/"Sabrina The Teenage Witch"/              2>/dev/null && echo -e "\n\n"
+mv -v Saved\ by\ the\ Bell\ -\ \[*					"$TV_SYM"/"Saved by the Bell"/              2>/dev/null && echo -e "\n\n"
 mv -v Scrubs\ -\ \[*					"$TV_SYM"/"Scrubs"/              2>/dev/null && echo -e "\n\n"
 mv -v Seinfeld\ -\ \[*					"$TV_SYM"/"Seinfeld"/              2>/dev/null && echo -e "\n\n"
 mv -v Shark\ Tank\ -\ \[*					"$TV_SYM"/"Shark Tank"/              2>/dev/null && echo -e "\n\n"
