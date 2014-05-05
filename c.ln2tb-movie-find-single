@@ -100,16 +100,20 @@ done
 #---#
 echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
 #################################
+if [ -n "$SCRIPT_LAUNCH" ]
+then export movie_array_batch+="${movie_array}"
+else
+
 for i in "${movie_array[@]}"
 do
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
-
 echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
-
 done
+
+fi
 #################################
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 

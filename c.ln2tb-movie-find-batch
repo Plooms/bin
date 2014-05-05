@@ -25,6 +25,22 @@ do
 export SCRIPT_LAUNCH="Y" && /usr/local/bin/c.ln2tb-movie-find-single "$FILE_NAME"
 done < "$BATCH_FILE_MOVIE_FIND"
 
+echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
+#################################
+
+for i in "${movie_array_batch[@]}"
+do
+MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
+echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
+done
+
+
+#################################
+echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
+
 
 #while read FILE_NAME ; do 
 #find "$MOVIE_SYM" -maxdepth 2 -type d -iname "*$FILE_NAME*" \
