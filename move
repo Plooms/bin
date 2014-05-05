@@ -560,3 +560,4 @@ mv -v Wilfred\ \(US\)\ -\ \[*					"$TV_SYM"/"Wilfred (US)"/              2>/dev/
 mv -v Wipeout\ \(US\)\ -\ \[*					"$TV_SYM"/"Wipeout (US)"/              2>/dev/null && echo -e "\n\n"
 mv -v Without\ a\ Trace\ -\ \[*					"$TV_SYM"/"Without a Trace"/              2>/dev/null && echo -e "\n\n"
 mv -v Workaholics\ -\ \[*					"$TV_SYM"/"Workaholics"/              2>/dev/null && echo -e "\n\n"
+mv -v Saved\ by\ the\ Bell\ The\ College\ Years\ -\ \[*                "$TV_SYM"/"Saved by the Bell The College Years"/              2>/dev/null && echo -e "\n\n"

@@ -3994,3 +3994,4 @@ mv -v Wilfred\ \(US\)\ -\ \[*					"$TV_SYM"/"Wilfred (US)"/              && echo
 mv -v Wipeout\ \(US\)\ -\ \[*					"$TV_SYM"/"Wipeout (US)"/              && echo -e "\n\n" 
 mv -v Without\ a\ Trace\ -\ \[*					"$TV_SYM"/"Without a Trace"/              && echo -e "\n\n" 
 mv -v Workaholics\ -\ \[*					"$TV_SYM"/"Workaholics"/              && echo -e "\n\n" 
+mv -v Saved\ by\ the\ Bell\ The\ College\ Years\ -\ \[*                "$TV_SYM"/"Saved by the Bell The College Years"/             && echo -e "\n\n" 
