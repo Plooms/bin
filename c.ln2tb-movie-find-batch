@@ -7,6 +7,10 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+
+# Time Calculation
+_START_TIME
+
 TMP1="$(mktemp)"
 TMP2="$(mktemp)"
 TMP3="$(mktemp)"
@@ -79,6 +83,11 @@ Watched: $WATCHED
 
 
 echo "Log File:   sudo geany $TMP_LOG1"
+
+
+# Time Calculation
+_END_TIME
+
 
 else
 sudo nano $BATCH_FILE_MOVIE_FIND ; c.ln2tb-movie-find-batch
