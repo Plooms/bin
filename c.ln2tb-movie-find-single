@@ -101,7 +101,7 @@ done
 echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
 #################################
 if [ -n "$SCRIPT_LAUNCH" ]
-then export movie_array_batch+="${movie_array}"
+then export movie_array_batch="${movie_array}"
 else
 
 for i in "${movie_array[@]}"

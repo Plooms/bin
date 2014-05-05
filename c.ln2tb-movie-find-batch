@@ -22,13 +22,16 @@ then
 
 while read FILE_NAME
 do
-export SCRIPT_LAUNCH="Y" && /usr/local/bin/c.ln2tb-movie-find-single "$FILE_NAME"
+export SCRIPT_LAUNCH="Y"
+/usr/local/bin/c.ln2tb-movie-find-single "$FILE_NAME"
+movie_array_batch2+="${movie_array_batch[@]}"
+
 done < "$BATCH_FILE_MOVIE_FIND"
 
 echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
 #################################
 
-for i in "${movie_array_batch[@]}"
+for i in "${movie_array_batch2[@]}"
 do
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
