@@ -64,15 +64,15 @@ DATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Date from movies where N
 #################################
 
 GREEN
-echo -e "Name:	 ${WHITE}$NAME${COLOR_OFF}"
+echo -ne "Name:	 ${WHITE}$NAME${COLOR_OFF}"
 GREEN
-echo -e "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
+echo -ne "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
 GREEN
-echo -e "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
+echo -ne "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
 GREEN
-echo -e "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
+echo -ne "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
 GREEN
-echo -e "Watched: ${WHITE}$WATCHED"
+echo -ne "Watched: ${WHITE}$WATCHED"
 GREEN
 [ -n "$NOTES" ] && echo -e "Notes:	 ${CYAN}$NOTES"
 YELLOW
@@ -118,13 +118,20 @@ done
 #################################
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
-fi
 
 
-echo "Log File:   sudo geany $TMP_LOG1"
+
+#echo "Log File:   sudo geany $TMP_LOG1"
+
+COLOR_OFF
+
 
 # Time Calculation
 _END_TIME
+
+fi
+
+
 
 if [ -n "$TERM_LAUNCH" ]
 then sleep 1000
