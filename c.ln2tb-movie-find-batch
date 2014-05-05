@@ -30,7 +30,7 @@ done < "$BATCH_FILE_MOVIE_FIND"
 #################################
 
 
-while read FILE2 ;do 
+while read MOVIE_NAME ;do 
 mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss >> "$TMP1" ; done < "$BATCH_FILE_MOVIE_FIND"
 
 while read FILE2 ; do movie_array+=("$FILE2") ; done < "$TMP1"
