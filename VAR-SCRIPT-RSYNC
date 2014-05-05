@@ -302,7 +302,7 @@ export LOG_12="$HOME_BACKUP_FOLDER/$RSYNC_LOG"
 #The rsync options:
 OPT_12=("-iavhHP" "--link-dest=$LNK_12" "--exclude-from=$RSYNC_EXCLUDE_22" "--log-file=$LOG_12")
 OPT_12_2=("-iavhHP"  "--exclude-from=$RSYNC_EXCLUDE_22")
-OPT_12_TAR=(--exclude='Private/*' --exclude='.xbmc' --exclude='.thumbnails/*' --exclude='.cache/*')
+OPT_12_TAR=(--exclude='Private/*' --exclude='.xbmc' --exclude='.thumbnails/*' --exclude='.cache/*' --exclude='TMP/full-temp/*')
 
 
 ###############################################################
