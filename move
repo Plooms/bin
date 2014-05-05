@@ -553,7 +553,7 @@ mv -v Under\ the\ Dome\ -\ \[*					"$TV_SYM"/"Under the Dome"/              2>/d
 mv -v Unforgettable\ -\ \[*					"$TV_SYM"/"Unforgettable"/              2>/dev/null && echo -e "\n\n"
 mv -v Veep\ -\ \[*					"$TV_SYM"/"Veep"/              2>/dev/null && echo -e "\n\n"
 mv -v Vegas\ Strip\ -\ \[*					"$TV_SYM"/"Vegas Strip"/              2>/dev/null && echo -e "\n\n"
-mv -v Vice\ -\ \[*					"$TV_SYM"/"Vice"/              2>/dev/null && echo -e "\n\n"
+mv -v VICE\ -\ \[*					"$TV_SYM"/"VICE"/              2>/dev/null && echo -e "\n\n"
 mv -v Weeds\ -\ \[*					"$TV_SYM"/"Weeds"/              2>/dev/null && echo -e "\n\n"
 mv -v White\ Collar\ -\ \[*					"$TV_SYM"/"White Collar"/              2>/dev/null && echo -e "\n\n"
 mv -v Wilfred\ \(US\)\ -\ \[*					"$TV_SYM"/"Wilfred (US)"/              2>/dev/null && echo -e "\n\n"
