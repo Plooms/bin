@@ -43,7 +43,6 @@ while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
 
 
 
-echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 
 
@@ -79,7 +78,6 @@ YELLOW
 
 
 
-#echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
 ####### For the log file#########
 if [[ "$WATCHED" = *"YES" ]] ; then WATCHED="(YES)";else WATCHED="(NO)";fi
@@ -104,7 +102,6 @@ if [ -n "$SCRIPT_LAUNCH" ]
 then echo -n
 else
 
-echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
 #################################
 for i in "${movie_array[@]}"
 do
@@ -116,7 +113,6 @@ echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
 done
 
 #################################
-echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
 
 
