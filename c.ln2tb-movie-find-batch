@@ -27,20 +27,13 @@ done < "$BATCH_FILE_MOVIE_FIND"
 
 
 #################################
-echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
-
-MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
-NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
-echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
-
-
-echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 #################################
 
 
-while read FILE2 ; do movie_array+=("$FILE2") ; done < "$BATCH_FILE_MOVIE_FIND"
+while read FILE2 ;do 
+mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss >> "$TMP1" ; done < "$BATCH_FILE_MOVIE_FIND"
+
+while read FILE2 ; do movie_array+=("$FILE2") ; done < "$TMP1"
 
 
 
@@ -50,6 +43,8 @@ while read FILE2 ; do movie_array+=("$FILE2") ; done < "$BATCH_FILE_MOVIE_FIND"
 
 		
 #################################
+echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}" 
+
 for i in "${movie_array[@]}"
 do
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
@@ -59,29 +54,9 @@ if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(N
 echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
 done
 
+echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}" 
+
 #################################
-
-if [ ! -z "$NAME" ]
-then
-
-GREEN
-echo -e "Name:	 ${WHITE}$NAME${COLOR_OFF}"
-GREEN
-echo -e "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
-GREEN
-echo -e "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
-GREEN
-echo -e "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
-GREEN
-echo -e "Watched: ${WHITE}$WATCHED"
-GREEN
-[ -n "$NOTES" ] && echo -e "Notes:	 ${CYAN}$NOTES"
-YELLOW
-
-
-echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
-
-fi
 
 
 ####### For the log file#########
@@ -101,15 +76,8 @@ Watched: $WATCHED
 
 #---#
 
-#echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}" 
+echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}" 
 
-#while read name
-#do
-#find "$MOVIE_SYM"/ -maxdepth 2 -type d -iname "*$name*" | sort -bf >> "$TMP3"
-#done < "$BATCH_FILE_MOVIE_FIND"
-
-#WHITE 
-#sort -bf "$TMP3" 
 
 #echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 
