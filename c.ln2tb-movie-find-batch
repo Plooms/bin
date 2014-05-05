@@ -22,27 +22,22 @@ then
 
 while read FILE_NAME
 do
-export SCRIPT_LAUNCH="Y"
-/usr/local/bin/c.ln2tb-movie-find-single "$FILE_NAME"
-movie_array_batch2+="${movie_array_batch[@]}"
-
+export SCRIPT_LAUNCH="Y" ;/usr/local/bin/c.ln2tb-movie-find-single "$FILE_NAME"
 done < "$BATCH_FILE_MOVIE_FIND"
 
-echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
-#################################
 
-for i in "${movie_array_batch2[@]}"
-do
+#################################
+echo -e "${YELLOW}\n-----------################-------------${COLOR_OFF}\n"
+
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
 NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
-done
 
 
-#################################
 echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
+#################################
 
 
 #while read FILE_NAME ; do 
@@ -50,7 +45,7 @@ echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 #| sort | while read -r FILE1 ; do basename "$FILE1" ;done
 #done < "$BATCH_FILE_MOVIE_FIND" > $TMP1
 
-#while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP1
+while read FILE2 ; do movie_array+=("$FILE2") ; done < "$BATCH_FILE_MOVIE_FIND"
 
 
 
@@ -58,63 +53,63 @@ echo -e "${YELLOW}\n-----------################-------------\n\n${COLOR_OFF}"
 
 
 
-#for i in "${movie_array[@]}"
-#do
+for i in "${movie_array[@]}"
+do
 
 		
-##################################
-#MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
-#NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-#SIZE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
-#RES1="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-#RES2="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-#DEF="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-#WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-#if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
-#NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-#DATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Date from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-##################################
+#################################
+MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g")"
+NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+SIZE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select size_mb from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
+RES1="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+RES2="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+DEF="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select definition from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
+NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select notes from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+DATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Date from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+#################################
 
-#if [ ! -z "$NAME" ]
-#then
+if [ ! -z "$NAME" ]
+then
 
-#GREEN
-#echo -e "Name:	 ${WHITE}$NAME${COLOR_OFF}"
-#GREEN
-#echo -e "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
-#GREEN
-#echo -e "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
-#GREEN
-#echo -e "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
-#GREEN
-#echo -e "Watched: ${WHITE}$WATCHED"
-#GREEN
-#[ -n "$NOTES" ] && echo -e "Notes:	 ${CYAN}$NOTES"
-#YELLOW
-
-
-#echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
-
-#fi
+GREEN
+echo -e "Name:	 ${WHITE}$NAME${COLOR_OFF}"
+GREEN
+echo -e "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
+GREEN
+echo -e "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
+GREEN
+echo -e "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
+GREEN
+echo -e "Watched: ${WHITE}$WATCHED"
+GREEN
+[ -n "$NOTES" ] && echo -e "Notes:	 ${CYAN}$NOTES"
+YELLOW
 
 
-######## For the log file#########
-#if [[ "$WATCHED" = *"YES" ]] ; then WATCHED="(YES)";else WATCHED="(NO)";fi
-#echo -e "
-#Path: $i
-#Name:  $NAME
-#Size:  $SIZE
-#Res: $RES1 x "$RES2"p  $DEF
-#Watched: $WATCHED
-#-----------################-------------
-#" >> "$TMP_LOG1"
-######## For the log file#########
+echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 
-#done
+fi
 
 
+####### For the log file#########
+if [[ "$WATCHED" = *"YES" ]] ; then WATCHED="(YES)";else WATCHED="(NO)";fi
+echo -e "
+Path: $i
+Name:  $NAME
+Size:  $SIZE
+Res: $RES1 x "$RES2"p  $DEF
+Watched: $WATCHED
+-----------################-------------
+" >> "$TMP_LOG1"
+####### For the log file#########
 
-##---#
+done
+
+
+
+#---#
 
 #echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}" 
 
