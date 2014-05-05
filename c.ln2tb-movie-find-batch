@@ -77,7 +77,7 @@ Watched: $WATCHED
 
 
 
-#echo "Log File:   sudo geany $TMP_LOG1"
+echo "Log File:   sudo geany $TMP_LOG1"
 
 else
 sudo nano $BATCH_FILE_MOVIE_FIND ; c.ln2tb-movie-find-batch
