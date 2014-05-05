@@ -96,6 +96,11 @@ done
 
 
 #---#
+if [ -n "$TERM_LAUNCH" ]
+then 
+echo "------------------------------------------------"
+echo ""
+fi
 
 
 if [ -n "$SCRIPT_LAUNCH" ]
@@ -114,7 +119,11 @@ done
 
 #################################
 
-
+if [ -n "$TERM_LAUNCH" ]
+then 
+echo "------------------------------------------------"
+echo ""
+fi
 
 
 #echo "Log File:   sudo geany $TMP_LOG1"
