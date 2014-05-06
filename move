@@ -561,3 +561,4 @@ mv -v Wipeout\ \(US\)\ -\ \[*					"$TV_SYM"/"Wipeout (US)"/              2>/dev/
 mv -v Without\ a\ Trace\ -\ \[*					"$TV_SYM"/"Without a Trace"/              2>/dev/null && echo -e "\n\n"
 mv -v Workaholics\ -\ \[*					"$TV_SYM"/"Workaholics"/              2>/dev/null && echo -e "\n\n"
 mv -v Saved\ by\ the\ Bell\ The\ College\ Years\ -\ \[*                "$TV_SYM"/"Saved by the Bell The College Years"/              2>/dev/null && echo -e "\n\n"
+mv -v Sex\ and\ the\ City\ -\ \[*                "$TV_SYM"/"Sex and the City"/              2>/dev/null && echo -e "\n\n"
