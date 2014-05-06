@@ -294,7 +294,6 @@ fi
 #mv -v Vice\ *                "$TV_SYM"/"Vice"/              2>/dev/null && echo -e "\n\n"
 #mv -v Just\ Shoot\ Me\ *                "$TV_SYM"/"Just Shoot Me"/              2>/dev/null && echo -e "\n\n"
 
-
 mv -v 24\ -\ \[*					"$TV_SYM"/"24"/              2>/dev/null && echo -e "\n\n"
 mv -v 30\ Rock\ -\ \[*					"$TV_SYM"/"30 Rock"/              2>/dev/null && echo -e "\n\n"
 mv -v 3rd\ Rock\ from\ the\ Sun\ -\ \[*					"$TV_SYM"/"3rd Rock from the Sun"/              2>/dev/null && echo -e "\n\n"
@@ -353,8 +352,8 @@ mv -v Covert\ Affairs\ -\ \[*					"$TV_SYM"/"Covert Affairs"/              2>/de
 mv -v Criminal\ Minds\ -\ \[*					"$TV_SYM"/"Criminal Minds"/              2>/dev/null && echo -e "\n\n"
 mv -v Crisis\ -\ \[*					"$TV_SYM"/"Crisis"/              2>/dev/null && echo -e "\n\n"
 mv -v Crossing\ Lines\ -\ \[*					"$TV_SYM"/"Crossing Lines"/              2>/dev/null && echo -e "\n\n"
-mv -v CSI\ Crime\ Scene\ Investigation\ -\ \[*					"$TV_SYM"/"CSI: Crime Scene Investigation"/              2>/dev/null && echo -e "\n\n"
-mv -v CSI\ Miami\ -\ \[*					"$TV_SYM"/"CSI: Miami"/              2>/dev/null && echo -e "\n\n"
+mv -v CSI\ Crime\ Scene\ Investigation\ -\ \[*					"$TV_SYM"/"CSI Crime Scene Investigation"/              2>/dev/null && echo -e "\n\n"
+mv -v CSI\ Miami\ -\ \[*					"$TV_SYM"/"CSI Miami"/              2>/dev/null && echo -e "\n\n"
 mv -v CSINY\ -\ \[*					"$TV_SYM"/"CSINY"/              2>/dev/null && echo -e "\n\n"
 mv -v Curb\ Your\ Enthusiasm\ -\ \[*					"$TV_SYM"/"Curb Your Enthusiasm"/              2>/dev/null && echo -e "\n\n"
 mv -v Dads\ \(2013\)\ -\ \[*					"$TV_SYM"/"Dads (2013)"/              2>/dev/null && echo -e "\n\n"
@@ -416,7 +415,7 @@ mv -v Human\ Target\ \(2010\)\ -\ \[*					"$TV_SYM"/"Human Target (2010)"/      
 mv -v Ice\ Cold\ Gold\ -\ \[*					"$TV_SYM"/"Ice Cold Gold"/              2>/dev/null && echo -e "\n\n"
 mv -v Impractical\ Jokers\ -\ \[*					"$TV_SYM"/"Impractical Jokers"/              2>/dev/null && echo -e "\n\n"
 mv -v Intelligence\ \(2014\)\ -\ \[*					"$TV_SYM"/"Intelligence (2014)"/              2>/dev/null && echo -e "\n\n"
-mv -v IRT\ Deadliest\ Roads\ -\ \[*					"$TV_SYM"/"IRT: Deadliest Roads"/              2>/dev/null && echo -e "\n\n"
+mv -v IRT\ Deadliest\ Roads\ -\ \[*					"$TV_SYM"/"IRT Deadliest Roads"/              2>/dev/null && echo -e "\n\n"
 mv -v Its\ Always\ Sunny\ in\ Philadelphia\ -\ \[*					"$TV_SYM"/"Its Always Sunny in Philadelphia"/              2>/dev/null && echo -e "\n\n"
 mv -v Jackass\ -\ \[*					"$TV_SYM"/"Jackass"/              2>/dev/null && echo -e "\n\n"
 mv -v JAG\ -\ \[*					"$TV_SYM"/"JAG"/              2>/dev/null && echo -e "\n\n"
@@ -460,7 +459,7 @@ mv -v Northern\ Exposure\ -\ \[*					"$TV_SYM"/"Northern Exposure"/             
 mv -v Nurse\ Jackie\ -\ \[*					"$TV_SYM"/"Nurse Jackie"/              2>/dev/null && echo -e "\n\n"
 mv -v NYPD\ Blue\ -\ \[*					"$TV_SYM"/"NYPD Blue"/              2>/dev/null && echo -e "\n\n"
 mv -v Only\ in\ America\ with\ Larry\ the\ Cable\ Guy\ -\ \[*					"$TV_SYM"/"Only in America with Larry the Cable Guy"/              2>/dev/null && echo -e "\n\n"
-mv -v Orange\ Is\ The\ New\ Black\ -\ \[*					"$TV_SYM"/"Orange Is The New Black"/              2>/dev/null && echo -e "\n\n"
+mv -v Orange\ Is\ the\ New\ Black\ -\ \[*					"$TV_SYM"/"Orange Is the New Black"/              2>/dev/null && echo -e "\n\n"
 mv -v Oz\ -\ \[*					"$TV_SYM"/"Oz"/              2>/dev/null && echo -e "\n\n"
 mv -v Parenthood\ \(2010\)\ -\ \[*					"$TV_SYM"/"Parenthood (2010)"/              2>/dev/null && echo -e "\n\n"
 mv -v Parking\ Wars\ -\ \[*					"$TV_SYM"/"Parking Wars"/              2>/dev/null && echo -e "\n\n"
@@ -484,8 +483,10 @@ mv -v Rookie\ Blue\ -\ \[*					"$TV_SYM"/"Rookie Blue"/              2>/dev/null
 mv -v Royal\ Pains\ -\ \[*					"$TV_SYM"/"Royal Pains"/              2>/dev/null && echo -e "\n\n"
 mv -v Sabrina\ The\ Teenage\ Witch\ -\ \[*					"$TV_SYM"/"Sabrina The Teenage Witch"/              2>/dev/null && echo -e "\n\n"
 mv -v Saved\ by\ the\ Bell\ -\ \[*					"$TV_SYM"/"Saved by the Bell"/              2>/dev/null && echo -e "\n\n"
+mv -v Saved\ by\ the\ Bell\ The\ College\ Years\ -\ \[*					"$TV_SYM"/"Saved by the Bell The College Years"/              2>/dev/null && echo -e "\n\n"
 mv -v Scrubs\ -\ \[*					"$TV_SYM"/"Scrubs"/              2>/dev/null && echo -e "\n\n"
 mv -v Seinfeld\ -\ \[*					"$TV_SYM"/"Seinfeld"/              2>/dev/null && echo -e "\n\n"
+mv -v Sex\ and\ the\ City\ -\ \[*					"$TV_SYM"/"Sex and the City"/              2>/dev/null && echo -e "\n\n"
 mv -v Shark\ Tank\ -\ \[*					"$TV_SYM"/"Shark Tank"/              2>/dev/null && echo -e "\n\n"
 mv -v Shipping\ Wars\ -\ \[*					"$TV_SYM"/"Shipping Wars"/              2>/dev/null && echo -e "\n\n"
 mv -v Silicon\ Valley\ -\ \[*					"$TV_SYM"/"Silicon Valley"/              2>/dev/null && echo -e "\n\n"
@@ -560,5 +561,6 @@ mv -v Wilfred\ \(US\)\ -\ \[*					"$TV_SYM"/"Wilfred (US)"/              2>/dev/
 mv -v Wipeout\ \(US\)\ -\ \[*					"$TV_SYM"/"Wipeout (US)"/              2>/dev/null && echo -e "\n\n"
 mv -v Without\ a\ Trace\ -\ \[*					"$TV_SYM"/"Without a Trace"/              2>/dev/null && echo -e "\n\n"
 mv -v Workaholics\ -\ \[*					"$TV_SYM"/"Workaholics"/              2>/dev/null && echo -e "\n\n"
-mv -v Saved\ by\ the\ Bell\ The\ College\ Years\ -\ \[*                "$TV_SYM"/"Saved by the Bell The College Years"/              2>/dev/null && echo -e "\n\n"
-mv -v Sex\ and\ the\ City\ -\ \[*                "$TV_SYM"/"Sex and the City"/              2>/dev/null && echo -e "\n\n"
+
+
+
