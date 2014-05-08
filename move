@@ -564,3 +564,4 @@ mv -v Workaholics\ -\ \[*					"$TV_SYM"/"Workaholics"/              2>/dev/null 
 
 
 
+mv -v Bostons\ Finest\ -\ \[*                "$TV_SYM"/"Boston's Finest"/              2>/dev/null && echo -e "\n\n"

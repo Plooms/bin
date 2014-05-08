@@ -11,7 +11,7 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 answer=$(dialog --extra-button --extra-label "Back" --stdout  --menu \
-"Choose the command You Wish to Execute (ADD)" 14 50 50 \
+"Choose the command You Wish to Execute (ADD)" 15 50 50 \
 "1- Single Show" "" \
 "2- Multiple Shows" ""  )
 
