@@ -10,7 +10,7 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 name=$(dialog --extra-button --extra-label "Back" --clear --stdout --inputbox \
-"Please Enter the name of the Show" 10 50 )
+"Please Enter the name of the Show" 14 50 )
 
 case $? in
 0)

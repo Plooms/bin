@@ -9,8 +9,8 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
-answer=$(dialog --stdout  --menu \
-"Choose the command You Wish to Execute" 15 50 50 \
+answer=$(dialog --stdout  --extra-button --extra-label "Back" --menu \
+"Choose the command You Wish to Execute" 14 50 50 \
 "1- Add" "" \
 "2- Delete" "" \
 "3- Find & Check Resolution" "" \
@@ -53,5 +53,9 @@ fi
 
 ;;
 1)
-_CANCEL_MSG ;; 
+_CANCEL_MSG 
+
+;; 
+3)
+exit 1 ;;
 esac

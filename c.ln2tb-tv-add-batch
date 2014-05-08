@@ -11,7 +11,7 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 start=$(dialog --stdout  --help-button --help-label "Cancel" --yesno \
-"Did you add the Show names to $BATCH_FILE_TV_ADD_DELETE " 10 50 )
+"Did you add the Show names to $BATCH_FILE_TV_ADD_DELETE " 14 50 )
 
 case $? in
 0)
