@@ -1,0 +1,28 @@
+#!/bin/bash
+
+################ Script Variables ###############################
+IPPATH=/var/log/IP                    # IP address storage file
+TMPIP=/tmp/tmpIP                      # Temp IP storage file
+TEMP=/tmp/temp                        # Temp storage file
+CIPUSER=abz	                      # ChangeIP.com Username
+CIPPASS=abz12345                      # ChangeIP.com Password
+CIPSET=3                              # ChangeIP.com recordset
+IP="$(cat $IPPATH)"
+#################################################################
+# get current IP from ip.changeip.com, and store in $TEMP
+wget -q -O $TEMP ip.changeip.com
+
+# parse $TEMP for the ip, and store in $TMPIP
+grep IPADDR < $TEMP | cut -d= -s -f2 | cut -d- -s -f1 > $TMPIP
+
+# compare $IPPATH with $TMPIP, and if different, execute update
+if diff $IPPATH $TMPIP > /dev/null
+  then                                # same IP, no update
+          echo "No Change"
+  else                                # different IP, execute update
+      wget -q -O $TEMP --http-user=$CIPUSER --http-password=$CIPPASS "https://nic.changeip.com/nic/update"
+#?cmd=update&ip=$IP"
+      cp $TMPIP $IPPATH               # Store new IP
+      echo "Setting new IP to $(cat $IPPATH)"
+fi
+
