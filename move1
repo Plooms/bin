@@ -4265,3 +4265,4 @@ mv -v Without\ a\ Trace\ -\ \[*					"$TV_SYM"/"Without a Trace"/              &&
 mv -v Workaholics\ -\ \[*					"$TV_SYM"/"Workaholics"/              && echo -e "\n\n" 
 mv -v Bostons\ Finest\ -\ \[*                "$TV_SYM"/"Boston's Finest"/             && echo -e "\n\n" 
 mv -v Chip\ n\ Dale\ Rescue\ Rangers\ -\ \[*                "$TV_SYM"/"Chip n Dale Rescue Rangers"/             && echo -e "\n\n" 
+mv -v Black\ Box\ -\ \[*                "$TV_SYM"/"Black Box"/             && echo -e "\n\n" 
