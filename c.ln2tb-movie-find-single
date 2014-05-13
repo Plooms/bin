@@ -39,7 +39,7 @@ MOVIE_NAME="$(echo $FILE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[
 
 mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss > $TMP
 
-while read FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
+while read -r FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
 
 
 

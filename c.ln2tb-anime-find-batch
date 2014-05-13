@@ -19,7 +19,7 @@ then
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}" 
 
-cat $BATCH_FILE_TV_FIND | while read LINE ; do ls -1d "$TV_SYM2"/* | grep -i "$LINE" ; done |sort -bf
+cat $BATCH_FILE_TV_FIND | while read -r LINE ; do ls -1d "$TV_SYM2"/* | grep -i "$LINE" ; done |sort -bf
 
 echo -e "${RED}\n-----------################-------------\n${COLOR_OFF}"
 

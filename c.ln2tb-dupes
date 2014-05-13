@@ -26,7 +26,7 @@ mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
 
 cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
 
-while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
+while read -r FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
 
 for i in "${dupes_array[@]}"
 do
@@ -91,7 +91,7 @@ Logfile:  $TMP_LOG
 
 #cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
 
-#while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
+#while read -r FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
 
 #for i in "${dupes_array[@]}"
 #do
@@ -140,7 +140,7 @@ Logfile:  $TMP_LOG
 
 #cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
 
-#while read FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
+#while read -r FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
 
 #for i in "${dupes_array[@]}"
 #do

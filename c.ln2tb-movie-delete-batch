@@ -18,7 +18,7 @@ then
 
 
 
-while read line ; do du -hs $MOVIE_SYM/"$line" ; done < $BATCH_FILE_MOVIE_ADD_DELETE
+while read -r line ; do du -hs $MOVIE_SYM/"$line" ; done < $BATCH_FILE_MOVIE_ADD_DELETE
 
 
 echo -e "${RED}Do you want to remove these Folders?		y ${WHITE}"
@@ -28,7 +28,7 @@ read confirmation
 if [ "$confirmation" = "y" ]
 then 
 
-while read line ; do sudo rm -rv $MOVIE_SYM/"$line" ; done < $BATCH_FILE_MOVIE_ADD_DELETE
+while read -r line ; do sudo rm -rv $MOVIE_SYM/"$line" ; done < $BATCH_FILE_MOVIE_ADD_DELETE
 
 
 else _CANCEL_MSG

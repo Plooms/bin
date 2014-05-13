@@ -18,7 +18,7 @@ case $? in
 if [ -f $BATCH_FILE_TV_ADD_DELETE ]
 then
 
-cat $BATCH_FILE_TV_ADD_DELETE | while read LINE ; \
+cat $BATCH_FILE_TV_ADD_DELETE | while read -r LINE ; \
 
 do 
 
@@ -33,11 +33,11 @@ sudo chmod 777 "$TV_SYM"/"$LINE"
 done
 
 # The sed expressions here are special to this file only, for general use sed's , go to c.ln2tb-tv-add
-cat $BATCH_FILE_TV_ADD_DELETE | while read name ; do echo $name | sed 's/ /\\\\\\ /g' | sed "s/'//g" | sed "s/(/\\\\\\\(/g" | sed "s/)/\\\\\\\)/g" | sed 's/&/\\\\\\&/g' | sed 's/;/\\\\\\;/g' | sed 's/://g' | awk '{print $0 "\\\\\\ -\\\\\\ \\\\\\[*"}' ; done > $BATCH_FILE_TV_ADD_DELETE2
+cat $BATCH_FILE_TV_ADD_DELETE | while read -r name ; do echo $name | sed 's/ /\\\\\\ /g' | sed "s/'//g" | sed "s/(/\\\\\\\(/g" | sed "s/)/\\\\\\\)/g" | sed 's/&/\\\\\\&/g' | sed 's/;/\\\\\\;/g' | sed 's/://g' | awk '{print $0 "\\\\\\ -\\\\\\ \\\\\\[*"}' ; done > $BATCH_FILE_TV_ADD_DELETE2
 
-while read name3 name2 ; do sudo echo "mv -v "$name3"					\""\$TV_SYM"\"/\""$name2"\"/              2>/dev/null && echo -e \"\\n\\n\"" >> /usr/local/bin/move; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
+while read -r name3 name2 ; do sudo echo "mv -v "$name3"					\""\$TV_SYM"\"/\""$name2"\"/              2>/dev/null && echo -e \"\\n\\n\"" >> /usr/local/bin/move; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
 
-while read name3 name2 ; do sudo echo "mv -v "$name3"					\""\$TV_SYM"\"/\""$name2"\"/              && echo -e \"\\n\\n\" " >> /usr/local/bin/move1; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
+while read -r name3 name2 ; do sudo echo "mv -v "$name3"					\""\$TV_SYM"\"/\""$name2"\"/              && echo -e \"\\n\\n\" " >> /usr/local/bin/move1; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
 
 
 

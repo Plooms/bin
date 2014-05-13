@@ -17,7 +17,7 @@ if [ -f $BATCH_FILE_TV_ADD_DELETE ]
 then
 
 
-while read line ; do du -hs "$TV_SYM2"/"$line" ; done < $BATCH_FILE_TV_ADD_DELETE
+while read -r line ; do du -hs "$TV_SYM2"/"$line" ; done < $BATCH_FILE_TV_ADD_DELETE
 
 
 echo -e "${RED}Do you want to remove these Folders?		y ${WHITE}"
@@ -27,7 +27,7 @@ read confirmation
 if [ "$confirmation" = "y" ]
 then 
 
-while read line ; do \
+while read -r line ; do \
 sudo rm -rv "$TV_SYM2"/"$line" ; \
 echo -e "${YELLOW}" ; \
 sed -n "/\"$line\"/p" /usr/local/bin/move ; \

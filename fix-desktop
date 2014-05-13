@@ -12,7 +12,7 @@ source /usr/local/bin/VAR-SCRIPT
 wmctrl -lx > /tmp/window_list.txt
 
 #read the window information from the file
-while read id sticky real_name host win_title; do
+while read -r id sticky real_name host win_title; do
 
     # move the desktop
     if [ "$real_name" == "xfdesktop.Xfdesktop" ]

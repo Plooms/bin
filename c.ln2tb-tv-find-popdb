@@ -44,7 +44,7 @@ find "$TV_SYM"/ -size +25M -exec /usr/local/bin/c.ln2tb-tv-find-popdb-helper {} 
 #_CHECK_MOUNT1 && \
 #cd "$TV_SYM" && find . -maxdepth 1 | sort -bf | tail -n +2 |cut -b3- > $TMP
 
-#while read FILE  ; do TV_folder_array+=("$FILE") ;done < $TMP
+#while read -r FILE  ; do TV_folder_array+=("$FILE") ;done < $TMP
 
 #for i in "${TV_folder_array[@]}"
 #do
