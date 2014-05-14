@@ -1,0 +1,15 @@
+#!/bin/bash
+# Remove the Hardlink connection from files
+SCRIPT_NAME="delink"
+PID=$$
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+tmpfile="$1-$(date)"
+sudo cp -a "$1" "$tmpfile"
+sudo mv "$tmpfile" "$1"        
+echo "(De-linked) $1"
+
