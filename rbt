@@ -9,7 +9,8 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 echo -e " Do you want to Reboot?
-y "
+	y	 "
+
 read confirmation
 if [ "$confirmation" = "y" ]
 then
