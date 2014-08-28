@@ -50,6 +50,7 @@ echo "
 Dropbox/.dropbox*
 Private
 TMP/full-temp/*
+VMs/*
 
 
 " >| "$RSYNC_EXCLUDE_22"
