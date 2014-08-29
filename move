@@ -565,3 +565,4 @@ mv -v Workaholics\ -\ \[*					"$TV_SYM"/"Workaholics"/              2>/dev/null 
 mv -v Bostons\ Finest\ -\ \[*                "$TV_SYM"/"Boston's Finest"/              2>/dev/null && echo -e "\n\n"
 mv -v Chip\ n\ Dale\ Rescue\ Rangers\ -\ \[*                "$TV_SYM"/"Chip n Dale Rescue Rangers"/              2>/dev/null && echo -e "\n\n"
 mv -v Black\ Box\ -\ \[*                "$TV_SYM"/"Black Box"/              2>/dev/null && echo -e "\n\n"
+mv -v The\ Flash\ \(2014\)\ -\ \[*                "$TV_SYM"/"The Flash (2014)"/              2>/dev/null && echo -e "\n\n"
