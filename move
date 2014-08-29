@@ -394,7 +394,7 @@ mv -v Hannibal\ -\ \[*					"$TV_SYM"/"Hannibal"/              2>/dev/null && ech
 mv -v Happy\ Endings\ -\ \[*					"$TV_SYM"/"Happy Endings"/              2>/dev/null && echo -e "\n\n"
 mv -v Hard\ Time\ -\ \[*					"$TV_SYM"/"Hard Time"/              2>/dev/null && echo -e "\n\n"
 mv -v Hawaii\ Five-0\ -\ \[*					"$TV_SYM"/"Hawaii Five-0"/              2>/dev/null && echo -e "\n\n"
-mv -v Hell\ On\ Wheels\ -\ \[*					"$TV_SYM"/"Hell On Wheels"/              2>/dev/null && echo -e "\n\n"
+mv -v Hell\ on\ Wheels\ -\ \[*					"$TV_SYM"/"Hell on Wheels"/              2>/dev/null && echo -e "\n\n"
 mv -v Heroes\ -\ \[*					"$TV_SYM"/"Heroes"/              2>/dev/null && echo -e "\n\n"
 mv -v Hogans\ Heroes\ -\ \[*					"$TV_SYM"/"Hogans Heroes"/              2>/dev/null && echo -e "\n\n"
 mv -v Home\ Improvement\ -\ \[*					"$TV_SYM"/"Home Improvement"/              2>/dev/null && echo -e "\n\n"
