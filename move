@@ -566,3 +566,4 @@ mv -v Bostons\ Finest\ -\ \[*                "$TV_SYM"/"Boston's Finest"/       
 mv -v Chip\ n\ Dale\ Rescue\ Rangers\ -\ \[*                "$TV_SYM"/"Chip n Dale Rescue Rangers"/              2>/dev/null && echo -e "\n\n"
 mv -v Black\ Box\ -\ \[*                "$TV_SYM"/"Black Box"/              2>/dev/null && echo -e "\n\n"
 mv -v The\ Flash\ \(2014\)\ -\ \[*                "$TV_SYM"/"The Flash (2014)"/              2>/dev/null && echo -e "\n\n"
+mv -v Last\ Man\ Standing\ \(2011\)\ -\ \[*                "$TV_SYM"/"Last Man Standing (2011)"/              2>/dev/null && echo -e "\n\n"
