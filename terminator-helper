@@ -1,5 +1,7 @@
 #!/bin/zsh
 # This helps with "unable to find shell" command launch with terminator
 
+
+#USE=  terminator -x /usr/local/bin/terminator-helper <command>
 "$@"
 exec "$SHELL"
