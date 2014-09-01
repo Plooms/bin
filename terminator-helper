@@ -1,0 +1,5 @@
+#!/bin/zsh
+# This helps with "unable to find shell" command launch with terminator
+
+"$@"
+exec "$SHELL"
