@@ -572,3 +572,4 @@ mv -v Partners\\\					"$TV_SYM"/"\\(2014\\)\\\ -\\\ \\\[* Partners (2014)"/     
 mv -v Jennifer\\\					"$TV_SYM"/"Falls\\\ -\\\ \\\[* Jennifer Falls"/              2>/dev/null && echo -e "\n\n"
 mv -v The\\\					"$TV_SYM"/"Beverly\\\ Hillbillies\\\ -\\\ \\\[* The Beverly Hillbillies"/              2>/dev/null && echo -e "\n\n"
 mv -v Walker,\\\					"$TV_SYM"/"Texas\\\ Ranger\\\ -\\\ \\\[* Walker, Texas Ranger"/              2>/dev/null && echo -e "\n\n"
+mv -v Still\ Standing\ -\ \[*                "$TV_SYM"/"Still Standing"/              2>/dev/null && echo -e "\n\n"
