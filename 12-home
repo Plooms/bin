@@ -39,7 +39,7 @@ then
 	GREEN
 	sudo rsync "${OPT_12_2[@]}" "$SRC_12_2" "$TRG_12_2"
 else
- 	echo "Not using Rsync, or maybe no Backup Method was selected,  export <RSYNC|TAR>=ON"
+ 	echo "Not using Rsync, or maybe no Backup Method was selected,  export (RSYNC=ON) or (TAR=ON)"
 	echo ""
 fi
 
