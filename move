@@ -584,3 +584,7 @@ mv -v Undateable\ \(2014\)\ -\ \[*					"$TV_SYM"/"Undateable (2014)"/           
 mv -v The\ Lottery\ -\ \[*					"$TV_SYM"/"The Lottery"/              2>/dev/null && echo -e "\n\n"
 mv -v Married\ -\ \[*					"$TV_SYM"/"Married"/              2>/dev/null && echo -e "\n\n"
 mv -v BoJack\ Horseman\ -\ \[*					"$TV_SYM"/"BoJack Horseman"/              2>/dev/null && echo -e "\n\n"
+mv -v Gotham\ -\ \[*					"$TV_SYM"/"Gotham"/              2>/dev/null && echo -e "\n\n"
+mv -v Playing\ House\ -\ \[*					"$TV_SYM"/"Playing House"/              2>/dev/null && echo -e "\n\n"
+mv -v Forever\ \(2014\)\ -\ \[*					"$TV_SYM"/"Forever (2014)"/              2>/dev/null && echo -e "\n\n"
+mv -v Utopia\ \(US\)\ \(2014\)\ -\ \[*					"$TV_SYM"/"Utopia (US) (2014)"/              2>/dev/null && echo -e "\n\n"
