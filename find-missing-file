@@ -34,13 +34,13 @@ sudo rmdir "$TMP_D"/* 2>/dev/null
 
 
 ####To move 250 file sections into folders###
-while [ "$(find "$TMP_D" -maxdepth 1 -type f)" ]
-do
-       find "$TMP_D" -maxdepth 1 -type f | sort | head -n 250 >| "$TMP2"
-       while read -r i ; do mv "$i" "$TMP_D_SUB" ; done < "$TMP2"
-       TMP_D_SUB="$(mktemp -d -p $TMP_D)"
-done
-rmdir "$TMP_D"/* 2>/dev/null
+#while [ "$(find "$TMP_D" -maxdepth 1 -type f)" ]
+#do
+#       find "$TMP_D" -maxdepth 1 -type f | sort | head -n 250 >| "$TMP2"
+#       while read -r i ; do mv "$i" "$TMP_D_SUB" ; done < "$TMP2"
+#       TMP_D_SUB="$(mktemp -d -p $TMP_D)"
+#done
+#rmdir "$TMP_D"/* 2>/dev/null
 
 
 
