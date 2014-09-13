@@ -100,7 +100,7 @@ export OPEN_DIR_ECRYPT="$MYHOME/Private"
 export ENCRYPTED_DIR_ECRYPT="$MYHOME/NAS/Other/Encrypted/Private"
 
 # EncFS
-export OPEN_DIR_ENCFS="$MYHOME/Private"
+export OPEN_DIR_ENCFS="$MYHOME/Private2"
 export ENCRYPTED_DIR_ENCFS="/media/R1/Other/Encrypted/Private2"
 ########################################################################################################
 
