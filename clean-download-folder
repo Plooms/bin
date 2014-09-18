@@ -69,7 +69,11 @@ sudo find "$TV_DOWNLOAD_DIR"/ -iname "*vietnamese.srt" -exec sudo rm {} \; 2>/de
 sudo find "$TV_DOWNLOAD_DIR"/ -type d -iname "sample" -exec sudo rm -r {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "*sample.*" -size -200M -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "RARBG.com.mp4" -size -200M -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "RARBG.com.mkv" -size -200M -exec sudo rm {} \; 2>/dev/null
 sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "RARBG.com.avi" -size -200M -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "ETRG.mp4" -size -200M -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "ETRG.mkv" -size -200M -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "ETRG.avi" -size -200M -exec sudo rm {} \; 2>/dev/null
 
 # My folders
 sudo find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "zNew Folder" -exec sudo rmdir {} \; 2>/dev/null
