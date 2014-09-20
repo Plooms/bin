@@ -36,10 +36,10 @@ done
 cat $BATCH_FILE_TV_ADD_DELETE | while read -r name ; do echo $name | sed 's/ /\\\\\\ /g' | sed "s/'//g" | sed "s/(/\\\\\\\(/g" | sed "s/)/\\\\\\\)/g" | sed 's/&/\\\\\\&/g' | sed 's/;/\\\\\\;/g' | sed 's/://g' | awk '{print $0 "\\\\\\ -\\\\\\ \\\\\\[*"}' ; done > $BATCH_FILE_TV_ADD_DELETE2
 
 while read name3 name2 ; do 
-sudo echo "if [ -f "$name3" ] ; then mv -v "$name3" \""\$TV_SYM"\"/\""$name2"\"/              2>/dev/null ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
+sudo echo "if [ -f "$name3" ] ; then mv -v "$name3" \""\$TV_SYM"\"/\""$name2"\"/              2>/dev/null ; else false ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
 
 while read name3 name2 ; do 
-sudo echo "if [ -f "$name3" ] ; then mv -v "$name3" \""\$TV_SYM"\"/\""$name2"\"/ ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move1; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
+sudo echo "if [ -f "$name3" ] ; then mv -v "$name3" \""\$TV_SYM"\"/\""$name2"\"/ ; else flase ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move1; done < <(paste $BATCH_FILE_TV_ADD_DELETE2 $BATCH_FILE_TV_ADD_DELETE)
 
 
 

@@ -31,7 +31,6 @@ else TV_SYM="$TV_SYM"
 fi
 
 
-
 if [ -f 24\ -\ \[* ] ; then mv -v 24\ -\ \[* "$TV_SYM"/"24"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f 30\ Rock\ -\ \[* ] ; then mv -v 30\ Rock\ -\ \[* "$TV_SYM"/"30 Rock"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f 3rd\ Rock\ from\ the\ Sun\ -\ \[* ] ; then mv -v 3rd\ Rock\ from\ the\ Sun\ -\ \[* "$TV_SYM"/"3rd Rock from the Sun"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
@@ -168,7 +167,7 @@ if [ -f JAG\ -\ \[* ] ; then mv -v JAG\ -\ \[* "$TV_SYM"/"JAG"/              2>/
 if [ -f Jail\ -\ \[* ] ; then mv -v Jail\ -\ \[* "$TV_SYM"/"Jail"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f Jennifer\ Falls\ -\ \[* ] ; then mv -v Jennifer\ Falls\ -\ \[* "$TV_SYM"/"Jennifer Falls"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f Jungle\ Gold\ -\ \[* ] ; then mv -v Jungle\ Gold\ -\ \[* "$TV_SYM"/"Jungle Gold"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if [ -f Justielse false ; fi && echo -e "\n\n"ed\ -\ \[* ] ; then mv -v Justielse false ; fi && echo -e "\n\n"ed\ -\ \[* "$TV_SYM"/"Justielse false ; fi && echo -e "\n\n"ed"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if [ -f Justified\ -\ \[* ] ; then mv -v Justified\ -\ \[* "$TV_SYM"/"Justified"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f Just\ Shoot\ Me\ -\ \[* ] ; then mv -v Just\ Shoot\ Me\ -\ \[* "$TV_SYM"/"Just Shoot Me"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f Key\ \&\ Peele\ -\ \[* ] ; then mv -v Key\ \&\ Peele\ -\ \[* "$TV_SYM"/"Key & Peele"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f King\ of\ the\ Hill\ -\ \[* ] ; then mv -v King\ of\ the\ Hill\ -\ \[* "$TV_SYM"/"King of the Hill"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
@@ -294,7 +293,7 @@ if [ -f The\ Middle\ -\ \[* ] ; then mv -v The\ Middle\ -\ \[* "$TV_SYM"/"The Mi
 if [ -f The\ Millers\ -\ \[* ] ; then mv -v The\ Millers\ -\ \[* "$TV_SYM"/"The Millers"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f The\ Neighbors\ -\ \[* ] ; then mv -v The\ Neighbors\ -\ \[* "$TV_SYM"/"The Neighbors"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f The\ Night\ Shift\ -\ \[* ] ; then mv -v The\ Night\ Shift\ -\ \[* "$TV_SYM"/"The Night Shift"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if [ -f The\ Ofelse false ; fi && echo -e "\n\n"ce\ \(US\)\ -\ \[* ] ; then mv -v The\ Ofelse false ; fi && echo -e "\n\n"ce\ \(US\)\ -\ \[* "$TV_SYM"/"The Ofelse false ; fi && echo -e "\n\n"ce (US)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if [ -f The\ Office\ \(US\)\ -\ \[* ] ; then mv -v The\ Office\ \(US\)\ -\ \[* "$TV_SYM"/"The Office (US)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f The\ Rebels\ -\ \[* ] ; then mv -v The\ Rebels\ -\ \[* "$TV_SYM"/"The Rebels"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f The\ Shield\ -\ \[* ] ; then mv -v The\ Shield\ -\ \[* "$TV_SYM"/"The Shield"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if [ -f The\ Simpsons\ -\ \[* ] ; then mv -v The\ Simpsons\ -\ \[* "$TV_SYM"/"The Simpsons"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
