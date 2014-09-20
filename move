@@ -1512,3 +1512,8 @@ if [ -f Young\ \&\ Hungry\ -\ \[* ]
 then mv -v Young\ \&\ Hungry\ -\ \[* \
 "$TV_SYM"/"Young & Hungry"/              2>/dev/null 
 fi && echo -e "\n\n"
+
+if [ -f assss\ -\ \[* ]
+then mv -v assss\ -\ \[* \
+"$TV_SYM"/"assss"/              2>/dev/null 
+fi && echo -e "\n\n"

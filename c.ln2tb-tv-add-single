@@ -38,9 +38,17 @@ sudo chmod 777 "$TV_SYM"/"$name"
 if [ "$?" = 0 ]
 then
 
-sudo echo "mv -v "$name3"                \""\$TV_SYM"\"/\""$name"\"/              2>/dev/null && echo -e \"\\n\\n\"" >> /usr/local/bin/move
+sudo echo "
+if [ -f "$name3" ]
+then mv -v "$name3" \\
+\""\$TV_SYM"\"/\""$name"\"/              2>/dev/null 
+fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move
 
-sudo echo "mv -v "$name3"                \""\$TV_SYM"\"/\""$name"\"/             && echo -e \"\\n\\n\" " >> /usr/local/bin/move1
+sudo echo "
+if [ -f "$name3" ]
+then mv -v "$name3" \\
+\""\$TV_SYM"\"/\""$name"\"/              
+fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move1
 
 fi
 ;;
