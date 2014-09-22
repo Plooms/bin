@@ -38,9 +38,10 @@ sudo chmod 777 "$TV_SYM"/"$name"
 if [ "$?" = 0 ]
 then
 
-sudo echo "if [ -f "$name3" ] ; then mv -v "$name3" \""\$TV_SYM"\"/\""$name"\"/              2>/dev/null ; else false ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move
+sudo echo "if ls -U | grep "$name3*" >/dev/null 2>&1 ; then mv -v "$name3" \""\$TV_SYM"\"/\""$name"\"/              2>/dev/null ; else false ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move
 
-sudo echo "if [ -f "$name3" ] ; then mv -v "$name3" \""\$TV_SYM"\"/\""$name"\"/ ; else false ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move1
+sudo echo "if ls -U | grep "$name3*" >/dev/null 2>&1 ; then mv -v "$name3" \""\$TV_SYM"\"/\""$name"\"/              ; else false ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move1
+
 
 fi
 ;;
