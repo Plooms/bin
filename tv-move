@@ -18,7 +18,9 @@ else
 fi
 
 
+# Clean the download folder
 /usr/local/bin/clean-download-folder
+
 
 cd "$TV_DOWNLOAD_DIR" && tv 2>&1 | tee -a .Rename.log ; date >> .Rename.log
 
