@@ -14,7 +14,7 @@ echo "
 lost*found
 Home-Backup/*/*
 Backups/*/*
-Other/Android*/*
+Other/Android/.*
 Other/Apps/NO-SYNC/*/*
 Other/Downloads/Download-folder/*
 Other/Downloads/temp*/*
