@@ -12,7 +12,7 @@ tmpfile="$1-$(date)"
 sudo cp -a "$1" "$tmpfile"
 sudo mv "$tmpfile" "$1"        
 RED
-echo "(De-linked)"
+echo -n "(De-linked)"
 COLOR_OFF
-echo "$1"
+echo -n "$1"
 
