@@ -11,5 +11,8 @@ source /usr/local/bin/VAR-SCRIPT
 tmpfile="$1-$(date)"
 sudo cp -a "$1" "$tmpfile"
 sudo mv "$tmpfile" "$1"        
-echo "(De-linked) $1"
+RED
+echo "(De-linked)"
+COLOR_OFF
+echo "$1"
 
