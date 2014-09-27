@@ -23,7 +23,7 @@ if find "$SUB"*.sub -exec echo -n \; ; then SUBTITILE="YES" ; fi 2>/dev/null
 
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
 INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date,Subtitle) 
-VALUES ("$DIR/$NAME", "-", "-", "-", "-", "-", "-", "-", "$SUBTITILE")
+VALUES ("$DIR/$NAME", "-", "-", "-", "$WATCHED", "-", "-", "-", "$SUBTITILE")
 ON DUPLICATE KEY UPDATE 
 	Name = "$DIR/$NAME",
 	Watched = "$WATCHED",
