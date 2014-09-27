@@ -22,7 +22,12 @@ if find "$SUB"*.sub -exec echo -n \; ; then SUBTITILE="YES" ; fi 2>/dev/null
 
 if [ -f "$NFO" ]
 then
-	if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
+	if [ ! -z "$PLAY_COUNT" ]
+	then 
+		if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
+	else
+		WATCHED="(N/A): Incomplete NFO file"
+	fi
 else
 	WATCHED="(N/A): No NFO file"
 fi
