@@ -26,7 +26,7 @@ echo "Searching for TV files"
 echo ""
 
 _CHECK_MOUNT1 && \
-find "$TV_SYM"/ -size +25M -exec /usr/local/bin/c.ln2tb-tv-find-popdb-helper {} \;
+find "$TV_SYM"/ -size +25M | sort | parallel --no-notice /usr/local/bin/c.ln2tb-tv-find-popdb-helper {} \;
 
 
 
