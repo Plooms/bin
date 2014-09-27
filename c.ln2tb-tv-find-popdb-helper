@@ -15,10 +15,17 @@ SUB="$( echo $1 | rev |cut -b 5- | rev )"
 NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
 
-
 SUBTITILE="NO"
 if find "$SUB"*.srt -exec echo -n \; ; then SUBTITILE="YES" ; fi 2>/dev/null
 if find "$SUB"*.sub -exec echo -n \; ; then SUBTITILE="YES" ; fi 2>/dev/null
+
+
+if [ -f "$NFO" ]
+then
+	if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
+else
+	WATCHED="(N/A): No NFO file"
+fi
 
 
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
