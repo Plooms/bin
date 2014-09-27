@@ -1,5 +1,6 @@
 #!/bin/bash
 # Populate my DB of TVs
+set -x
 SCRIPT_NAME="c.ln2tb-tv-find-popdb-helper"
 
 # Source the VAR MOAS
