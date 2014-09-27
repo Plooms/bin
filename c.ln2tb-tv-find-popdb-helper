@@ -12,6 +12,9 @@ count="$(cat $count_file)"
 DIR="$(echo $( dirname "$( echo $1 )") | rev |cut -d/ -f1 |rev)"
 NAME="$(basename "$( echo $1 )")"
 SUB="$( echo $1 | rev |cut -b 5- | rev )"
+NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
+[ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g')" 2>/dev/null
+
 
 SUBTITILE="NO"
 if find "$SUB"*.srt -exec echo -n \; ; then SUBTITILE="YES" ; fi 2>/dev/null
@@ -23,6 +26,7 @@ INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date,Su
 VALUES ("$DIR/$NAME", "-", "-", "-", "-", "-", "-", "-", "$SUBTITILE")
 ON DUPLICATE KEY UPDATE 
 	Name = "$DIR/$NAME",
+	Watched = "$WATCHED",
 	Subtitle = "$SUBTITILE";	
 EOF
 
