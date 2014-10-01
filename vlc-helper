@@ -24,7 +24,7 @@ echo "Searching for TV files without VLC XSFP files"
 echo ""
 
 _CHECK_MOUNT1 && \
-find "$TV_SYM"/ -size +25M -iname  "Hogans heroes - *1x01*" > $TMP
+find "$TV_SYM"/ -size +25M  > $TMP
 
 while read file
 do
