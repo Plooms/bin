@@ -1,0 +1,15 @@
+#!/bin/bash
+# Wrapper for vlc that checks for xspf files
+SCRIPT_NAME="vlc-alternate-player"
+PID=$$
+
+#########################################################
+
+
+# To get the filename without extensions
+FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
+
+if [ -f "$FILENAME"*.xspf ]
+then vlc "$FILENAME"*.xspf --play-and-exit
+else vlc "$1" --play-and-exit
+fi
