@@ -1,0 +1,15 @@
+#!/bin/bash
+# Create "xspf" files for vlc to read from
+SCRIPT_NAME="vlc-helper-1"
+PID=$$
+
+#########################################################
+
+
+# To get the filename without extensions
+FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
+
+if [ ! -f "$FILENAME"*.xspf ]
+then vlc "$1" --play-and-exit
+else vlc "$FILENAME"*.xspf --play-and-exit
+fi

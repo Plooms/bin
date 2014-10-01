@@ -83,7 +83,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 	</extension>
 </playlist>
 
-" >> "$file".xspf
+" >> "$FILENAME".xspf
 
 echo "$file".xspf
 
