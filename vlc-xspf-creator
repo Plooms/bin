@@ -1,6 +1,6 @@
 #!/bin/bash
 # Create "xspf" files for vlc to read from
-SCRIPT_NAME="vlc-helper"
+SCRIPT_NAME="vlc-xspf-creator"
 PID=$$
 
 # Source the VAR MOAS
@@ -92,7 +92,8 @@ fi
 
 done < $TMP
 
-	
+GREEN
+echo "Done"	
 
 #########################################################
 
