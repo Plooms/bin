@@ -43,7 +43,6 @@ FILE="$(echo "$file" | sed -e 's| |%20|g' \
 -e 's|*|%2A|g' \
 -e 's|+|%2B|g' \
 -e 's|,|%2C|g' \
--e 's|/|%2F|g' \
 -e 's|:|%3A|g' \
 -e 's|;|%3B|g' \
 -e 's|=|%3D|g' \
@@ -57,8 +56,13 @@ FILE="$(echo "$file" | sed -e 's| |%20|g' \
 -e 's|}|%7D|g' \
 -e 's|_|%5F|g' \
 -e 's|\^|%5E|g' \
--e 's|\||%7C|g' \
--e 's|\.|%2E|g')"
+-e 's|\||%7C|g')"
+
+# Not needed for vlc but good for url encoding
+#-e 's|-|%2D|g'
+#-e 's|/|%2F|g'
+#-e 's|\.|%2E|g'
+
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <playlist xmlns=\"http://xspf.org/ns/0/\" xmlns:vlc=\"http://www.videolan.org/vlc/playlist/ns/0/\" version=\"1\">
