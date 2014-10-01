@@ -16,7 +16,6 @@ _START_TIME
 _LOCK_ON
 
 #########################################################
-set -x
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
@@ -26,7 +25,7 @@ echo ""
 
 _CHECK_MOUNT1 && \
 find "$TV_SYM"/ -size +25M -iname  "Hogans heroes - *1x01*" > $TMP
-
+set -x
 while read file
 do
 
@@ -62,8 +61,7 @@ FILE="$(echo "$file" | sed -e 's| |%20|g' \
 -e 's|\||%7C|g' \
 -e 's|\.|%2E|g')"
 
-echo "
-<?xml version="1.0" encoding="UTF-8"?>
+echo "<?xml version="1.0" encoding="UTF-8"?>
 <playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
 	<title>"$(basename $file)"</title>
 	<trackList>
