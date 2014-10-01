@@ -61,19 +61,19 @@ FILE="$(echo "$file" | sed -e 's| |%20|g' \
 -e 's|\||%7C|g' \
 -e 's|\.|%2E|g')"
 
-echo "<?xml version="1.0" encoding="UTF-8"?>
-<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<playlist xmlns=\"http://xspf.org/ns/0/\" xmlns:vlc=\"http://www.videolan.org/vlc/playlist/ns/0/\" version=\"1\">
 	<title>"$(basename "$file")"</title>
 	<trackList>
 		<track>
 			<location>file://"$FILE"</location>
-			<extension application="http://www.videolan.org/vlc/playlist/0">
+			<extension application=\"http://www.videolan.org/vlc/playlist/0\">
 				<vlc:id>0</vlc:id>
 				<vlc:option>start-time=0</vlc:option>
 			</extension>
 		</track>
 	</trackList>
-	<extension application="http://www.videolan.org/vlc/playlist/0">
+	<extension application=\"http://www.videolan.org/vlc/playlist/0\">
 			<vlc:item tid="0"/>
 	</extension>
 </playlist>
