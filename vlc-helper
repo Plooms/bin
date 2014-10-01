@@ -16,11 +16,12 @@ _START_TIME
 _LOCK_ON
 
 #########################################################
+set -x
 
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
 
-echo "Searching for TV files"
+echo "Searching for TV files without VLC XSFP files"
 echo ""
 
 _CHECK_MOUNT1 && \
@@ -32,7 +33,7 @@ do
 if [ ! -f "$file".xsfp ]
 then
 
-FILE="$(echo $file | sed -e 's| |%20|g' \ 
+FILE="$(echo "$file" | sed -e 's| |%20|g' \ 
 -e 's|!|%21|g' \
 -e 's|#|%23|g' \
 -e 's|\$|%24|g' \
@@ -67,7 +68,7 @@ echo "
 	<title>"$(basename $file)"</title>
 	<trackList>
 		<track>
-			<location>file://$FILE</location>
+			<location>file://"$FILE"</location>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
 				<vlc:id>0</vlc:id>
 				<vlc:option>start-time=0</vlc:option>
@@ -81,9 +82,12 @@ echo "
 
 " >> "$file".xsfp
 
-	
 fi
 
+
+done < $TMP
+
+	
 
 #########################################################
 
