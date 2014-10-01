@@ -20,7 +20,7 @@ _LOCK_ON
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
 
-echo "Searching for TV files without VLC XSFP files"
+echo "Searching for TV files without VLC XSPF files"
 echo ""
 
 _CHECK_MOUNT1 && \
@@ -29,7 +29,7 @@ find "$TV_SYM"/ -size +25M  > $TMP
 while read file
 do
 
-if [ ! -f "$file".xsfp ]
+if [ ! -f "$file".xspf ]
 then
 
 FILE="$(echo "$file" | sed -e 's| |%20|g' \
