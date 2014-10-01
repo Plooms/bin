@@ -24,12 +24,15 @@ echo "Searching for TV files without VLC XSPF files"
 echo ""
 
 _CHECK_MOUNT1 && \
-find "$TV_SYM"/ -size +25M  > $TMP
+find "$TV_SYM"/ -size +25M  -iname "hogans heroes*1x01*" > $TMP
 
 while read file
 do
 
-if [ ! -f "$file".xspf ]
+# To get the filename without extensions
+FILENAME="$(echo "$file" | rev | cut -d"." -f2- | rev)"
+
+if [ ! -f "$FILENAME"*.xspf ]
 then
 
 FILE="$(echo "$file" | sed -e 's| |%20|g' \
