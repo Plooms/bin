@@ -1,6 +1,6 @@
 #!/bin/bash
 # Find Files without a certain file extension beside them
-SCRIPT_NAME="find-missing-file"
+SCRIPT_NAME="find-missing-subtitle"
 PID=$$
 
 
@@ -36,7 +36,7 @@ sudo rm -r "$TMP_D"/"Auction Hunters"
 sudo rm -r "$TMP_D"/"Auction Kings"
 sudo rm -r "$TMP_D"/"Bait Car"
 sudo rm -r "$TMP_D"/"Bering Sea Gold"
-sudo rm -r "$TMP_D"/"Bering Sea Gold: Under the Ice"
+sudo rm -r "$TMP_D"/"Bering Sea Gold Under the Ice"
 sudo rm -r "$TMP_D"/"Beyond Scared Straight"
 sudo rm -r "$TMP_D"/"Black Gold"
 sudo rm -r "$TMP_D"/"Border Security"
@@ -48,7 +48,7 @@ sudo rm -r "$TMP_D"/"Deadliest Catch"
 sudo rm -r "$TMP_D"/"Dirty Money (2011)"
 sudo rm -r "$TMP_D"/"Dragons' Den (Canada)"
 sudo rm -r "$TMP_D"/"Dual Survival"
-sudo rm -r "$TMP_D"/"Extreme Makeover: Home Edition"
+sudo rm -r "$TMP_D"/"Extreme Makeover Home Edition"
 sudo rm -r "$TMP_D"/"Face Off"
 sudo rm -r "$TMP_D"/"Fast N' Loud"
 sudo rm -r "$TMP_D"/"Gold Rush"
