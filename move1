@@ -216,7 +216,6 @@ if ls -U | grep -E 'Parenthood\ \(2010\)\ -\ \[*' ; then mv -v Parenthood\ \(201
 if ls -U | grep -E 'Parking\ Wars\ -\ \[*' ; then mv -v Parking\ Wars\ -\ \[* "$TV_SYM"/"Parking Wars"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Parks\ and\ Recreation\ -\ \[*' ; then mv -v Parks\ and\ Recreation\ -\ \[* "$TV_SYM"/"Parks and Recreation"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Partners\ \(2014\)\ -\ \[*' ; then mv -v Partners\ \(2014\)\ -\ \[* "$TV_SYM"/"Partners (2014)"/ ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Pawn\ Stars\ -\ \[*' ; then mv -v Pawn\ Stars\ -\ \[* "$TV_SYM"/"Pawn Stars"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Person\ of\ Interest\ -\ \[*' ; then mv -v Person\ of\ Interest\ -\ \[* "$TV_SYM"/"Person of Interest"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Pimp\ My\ Ride\ -\ \[*' ; then mv -v Pimp\ My\ Ride\ -\ \[* "$TV_SYM"/"Pimp My Ride"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Playing\ House\ -\ \[*' ; then mv -v Playing\ House\ -\ \[* "$TV_SYM"/"Playing House"/ ; else false ; fi && echo -e "\n\n"

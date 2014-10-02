@@ -216,7 +216,6 @@ if ls -U | grep -E 'Parenthood\ \(2010\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v P
 if ls -U | grep -E 'Parking\ Wars\ -\ \[*' >/dev/null 2>&1 ; then mv -v Parking\ Wars\ -\ \[* "$TV_SYM"/"Parking Wars"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Parks\ and\ Recreation\ -\ \[*' >/dev/null 2>&1 ; then mv -v Parks\ and\ Recreation\ -\ \[* "$TV_SYM"/"Parks and Recreation"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Partners\ \(2014\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Partners\ \(2014\)\ -\ \[* "$TV_SYM"/"Partners (2014)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Pawn\ Stars\ -\ \[*' >/dev/null 2>&1 ; then mv -v Pawn\ Stars\ -\ \[* "$TV_SYM"/"Pawn Stars"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Person\ of\ Interest\ -\ \[*' >/dev/null 2>&1 ; then mv -v Person\ of\ Interest\ -\ \[* "$TV_SYM"/"Person of Interest"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Pimp\ My\ Ride\ -\ \[*' >/dev/null 2>&1 ; then mv -v Pimp\ My\ Ride\ -\ \[* "$TV_SYM"/"Pimp My Ride"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Playing\ House\ -\ \[*' >/dev/null 2>&1 ; then mv -v Playing\ House\ -\ \[* "$TV_SYM"/"Playing House"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
