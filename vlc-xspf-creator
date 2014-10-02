@@ -85,7 +85,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 
 " >> "$FILENAME".xspf
 
-echo "$file".xspf
+echo "$FILENAME".xspf
 
 fi
 
