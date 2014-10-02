@@ -20,8 +20,8 @@ echo ""
 
 # Shows
 find "$DIR" -type f -size +10M | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev  ;done >| "$TMP" 2>/dev/null
-find "$DIR" -type f -iname "*.srt" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
-find "$DIR" -type f -iname "*.sub" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
+find "$DIR" -type f -size -10M -iname "*.srt" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
+find "$DIR" -type f -size -10M -iname "*.sub" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
 sort "$TMP" | uniq -u >| "$TMP1"
 while read -r i ;do sudo touch "$TMP_D"/"$i".avi ; done < "$TMP1"
 find "$DIR" -maxdepth 1 |cut -d/ -f6 | while read -r i ; do mkdir -p "$TMP_D"/Shows/"$i" ; done
