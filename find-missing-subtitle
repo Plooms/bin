@@ -32,51 +32,51 @@ sudo rm -r "$TMP_D"/Shows 2>/dev/null
 sudo rmdir "$TMP_D"/* 2>/dev/null
 
 # Clean out the Reality shows which tend to not have subs anyway
-sudo rm -r "$TMP_D"/"Auction Hunters"
-sudo rm -r "$TMP_D"/"Auction Kings"
-sudo rm -r "$TMP_D"/"Bait Car"
-sudo rm -r "$TMP_D"/"Bering Sea Gold"
-sudo rm -r "$TMP_D"/"Bering Sea Gold Under the Ice"
-sudo rm -r "$TMP_D"/"Beyond Scared Straight"
-sudo rm -r "$TMP_D"/"Black Gold"
-sudo rm -r "$TMP_D"/"Border Security"
-sudo rm -r "$TMP_D"/"Boston's Finest"
-sudo rm -r "$TMP_D"/"Cajun Pawn Stars"
-sudo rm -r "$TMP_D"/"Cops"
-sudo rm -r "$TMP_D"/"Counting Cars"
-sudo rm -r "$TMP_D"/"Deadliest Catch"
-sudo rm -r "$TMP_D"/"Dirty Money (2011)"
-sudo rm -r "$TMP_D"/"Dragons' Den (Canada)"
-sudo rm -r "$TMP_D"/"Dual Survival"
-sudo rm -r "$TMP_D"/"Extreme Makeover Home Edition"
-sudo rm -r "$TMP_D"/"Face Off"
-sudo rm -r "$TMP_D"/"Fast N' Loud"
-sudo rm -r "$TMP_D"/"Gold Rush"
-sudo rm -r "$TMP_D"/"Ice Cold Gold"
-sudo rm -r "$TMP_D"/"Impractical Jokers"
-sudo rm -r "$TMP_D"/"IRT Deadliest Roads"
-sudo rm -r "$TMP_D"/"Jackass"
-sudo rm -r "$TMP_D"/"Jail"
-sudo rm -r "$TMP_D"/"Las Vegas Jailhouse"
-sudo rm -r "$TMP_D"/"Most Daring"
-sudo rm -r "$TMP_D"/"My Five Wives"
-sudo rm -r "$TMP_D"/"MythBusters"
-sudo rm -r "$TMP_D"/"Only in America with Larry the Cable Guy"
-sudo rm -r "$TMP_D"/"Parking Wars"
-sudo rm -r "$TMP_D"/"Pimp My Ride"
-sudo rm -r "$TMP_D"/"Shark Tank"
-sudo rm -r "$TMP_D"/"Shipping Wars"
-sudo rm -r "$TMP_D"/"Sons of Guns"
-sudo rm -r "$TMP_D"/"South Beach Tow"
-sudo rm -r "$TMP_D"/"Storage Wars Texas"
-sudo rm -r "$TMP_D"/"Storage Wars"
-sudo rm -r "$TMP_D"/"Tanked"
-sudo rm -r "$TMP_D"/"The Amazing Race"
-sudo rm -r "$TMP_D"/"The Colony"
-sudo rm -r "$TMP_D"/"Top 20 Most Shocking"
-sudo rm -r "$TMP_D"/"Top Shot"
-sudo rm -r "$TMP_D"/"Utopia (US) (2014)"
-sudo rm -r "$TMP_D"/"Vegas Strip"
+sudo rm -r "$TMP_D"/"Auction Hunters" 2>/dev/null
+sudo rm -r "$TMP_D"/"Auction Kings" 2>/dev/null
+sudo rm -r "$TMP_D"/"Bait Car" 2>/dev/null
+sudo rm -r "$TMP_D"/"Bering Sea Gold" 2>/dev/null
+sudo rm -r "$TMP_D"/"Bering Sea Gold Under the Ice" 2>/dev/null
+sudo rm -r "$TMP_D"/"Beyond Scared Straight" 2>/dev/null
+sudo rm -r "$TMP_D"/"Black Gold" 2>/dev/null
+sudo rm -r "$TMP_D"/"Border Security" 2>/dev/null
+sudo rm -r "$TMP_D"/"Boston's Finest" 2>/dev/null
+sudo rm -r "$TMP_D"/"Cajun Pawn Stars" 2>/dev/null
+sudo rm -r "$TMP_D"/"Cops" 2>/dev/null
+sudo rm -r "$TMP_D"/"Counting Cars" 2>/dev/null
+sudo rm -r "$TMP_D"/"Deadliest Catch" 2>/dev/null
+sudo rm -r "$TMP_D"/"Dirty Money (2011)" 2>/dev/null
+sudo rm -r "$TMP_D"/"Dragons' Den (Canada)" 2>/dev/null
+sudo rm -r "$TMP_D"/"Dual Survival" 2>/dev/null
+sudo rm -r "$TMP_D"/"Extreme Makeover Home Edition" 2>/dev/null
+sudo rm -r "$TMP_D"/"Face Off" 2>/dev/null
+sudo rm -r "$TMP_D"/"Fast N' Loud" 2>/dev/null
+sudo rm -r "$TMP_D"/"Gold Rush" 2>/dev/null
+sudo rm -r "$TMP_D"/"Ice Cold Gold" 2>/dev/null
+sudo rm -r "$TMP_D"/"Impractical Jokers" 2>/dev/null
+sudo rm -r "$TMP_D"/"IRT Deadliest Roads" 2>/dev/null
+sudo rm -r "$TMP_D"/"Jackass" 2>/dev/null
+sudo rm -r "$TMP_D"/"Jail" 2>/dev/null
+sudo rm -r "$TMP_D"/"Las Vegas Jailhouse" 2>/dev/null
+sudo rm -r "$TMP_D"/"Most Daring" 2>/dev/null
+sudo rm -r "$TMP_D"/"My Five Wives" 2>/dev/null
+sudo rm -r "$TMP_D"/"MythBusters" 2>/dev/null
+sudo rm -r "$TMP_D"/"Only in America with Larry the Cable Guy" 2>/dev/null
+sudo rm -r "$TMP_D"/"Parking Wars" 2>/dev/null
+sudo rm -r "$TMP_D"/"Pimp My Ride" 2>/dev/null
+sudo rm -r "$TMP_D"/"Shark Tank" 2>/dev/null
+sudo rm -r "$TMP_D"/"Shipping Wars" 2>/dev/null
+sudo rm -r "$TMP_D"/"Sons of Guns" 2>/dev/null
+sudo rm -r "$TMP_D"/"South Beach Tow" 2>/dev/null
+sudo rm -r "$TMP_D"/"Storage Wars Texas" 2>/dev/null
+sudo rm -r "$TMP_D"/"Storage Wars" 2>/dev/null
+sudo rm -r "$TMP_D"/"Tanked" 2>/dev/null
+sudo rm -r "$TMP_D"/"The Amazing Race" 2>/dev/null
+sudo rm -r "$TMP_D"/"The Colony" 2>/dev/null
+sudo rm -r "$TMP_D"/"Top 20 Most Shocking" 2>/dev/null
+sudo rm -r "$TMP_D"/"Top Shot" 2>/dev/null
+sudo rm -r "$TMP_D"/"Utopia (US) (2014)" 2>/dev/null
+sudo rm -r "$TMP_D"/"Vegas Strip" 2>/dev/null
 
 
 ####To move 250 file sections into folders###
