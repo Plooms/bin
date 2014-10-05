@@ -15,6 +15,7 @@ cd ~/Downloads/http_/www.imdb.com/title/
 
 
 echo "Downloading Movie Data for $(ls | wc -l) movies in (~/Downloads/http_/www.imdb.com)"
+echo ""
 
 for MOVIE in *
 do
@@ -31,5 +32,7 @@ firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 # KAT
 firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 
-echo "Opening tabs for ($TITLE)"
+echo -en "Opening tabs for ${YELLOW}$TITLE"
+COLOR_OFF
+
 done
