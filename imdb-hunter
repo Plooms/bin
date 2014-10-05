@@ -1,6 +1,6 @@
 #!/bin/bash
-# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
-SCRIPT_NAME="ln2tb"
+# Search IMDB & KAT for movies gotten through DownThemAll
+SCRIPT_NAME="imdb-hunter"
 PID=$$
 
 
@@ -8,54 +8,32 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
+TMP="$(mktemp)"
 
-answer=$(dialog --stdout  --extra-button --extra-label "Back" --menu \
-"Choose the command You Wish to Execute" 14 50 50 \
-"1- Add" "" \
-"2- Delete" "" \
-"3- Find & Check Resolution" "" \
-"4- Edit Videos" "" \
-"5- Check for Duplicates" "" \
-"6- Check Mounts" "" )
+
+cd ~/Downloads/http_/www.imdb.com/title/
 
 
 
-case $? in
-0)
+for i in *
+do
 
-if [ "$answer" = "1- Add" ]
-then c.ln2tb-add
+curl -s http://www.imdb.com/title/"$i"/|grep "<title>" |sed 's/<title>//g ; s/<\/title>//g' >>| $TMP
 
-
-elif [ "$answer" = "2- Delete" ]
-then c.ln2tb-delete
-
-
-elif [ "$answer" = "3- Find & Check Resolution" ]
-then c.ln2tb-find
-
-
-elif [ "$answer" = "4- Edit Videos" ]
-then c.ln2tb-video
-
-
-elif [ "$answer" = "5- Check for Duplicates" ]
-then c.ln2tb-dupes
-
-
-elif [ "$answer" = "6- Check Mounts" ]
-then c.ln2tb-mount-check
+done
 
 
 
+while read moviename
+do
+IMDB_NAME="$( cat "$moviename" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+YT_NAME="$(   cat "$moviename" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+KAT_NAME="$(  cat "$moviename" | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 
-fi
-
-;;
-1)
-_CANCEL_MSG 
-
-;; 
-3)
-exit 1 ;;
-esac
+# IMDB
+firefox "http://www.imdb.com/find?ref_=nv_sr_fn&q=$IMDB_NAME&s=all"
+# YT
+firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3"
+# KAT
+firefox "http://kickass.to/usearch/$KAT_NAME"
+done < $TMP
