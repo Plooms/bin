@@ -14,7 +14,7 @@ TMP="$(mktemp)"
 cd ~/Downloads/http_/www.imdb.com/title/
 
 
-echo "Downloading Movie Data"
+echo "Downloading Movie Data for $(ls | wc -l) movies in this dir (~/Downloads/http_/www.imdb.com/title/)"
 
 for i in *
 do
