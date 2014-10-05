@@ -14,26 +14,25 @@ TMP="$(mktemp)"
 cd ~/Downloads/http_/www.imdb.com/title/
 
 
+echo "Downloading Movie Data"
 
 for i in *
 do
-
-curl -s http://www.imdb.com/title/"$i"/|grep "<title>" |sed 's/<title>//g ; s/<\/title>//g' >>| $TMP
-
+curl -s http://www.imdb.com/title/"$i"/ |grep "<title>" |sed 's/<title>//g ; s/<\/title>//g' >> $TMP
 done
 
-
+echo "Opening tabs for all movies found"
 
 while read moviename
 do
-IMDB_NAME="$( cat "$moviename" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
-YT_NAME="$(   cat "$moviename" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
-KAT_NAME="$(  cat "$moviename" | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
+IMDB_NAME="$( echo "$moviename" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+YT_NAME="$(   echo "$moviename" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+KAT_NAME="$(  echo "$moviename" | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 
 # IMDB
-firefox "http://www.imdb.com/find?ref_=nv_sr_fn&q=$IMDB_NAME&s=all"
+firefox "http://www.imdb.com/find?ref_=nv_sr_fn&q=$IMDB_NAME&s=all" 2>&1 >/dev/null
 # YT
-firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3"
+firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>&1 >/dev/null
 # KAT
-firefox "http://kickass.to/usearch/$KAT_NAME"
+firefox "http://kickass.to/usearch/$KAT_NAME" 2>&1 >/dev/null
 done < $TMP
