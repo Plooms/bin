@@ -19,7 +19,7 @@ echo ""
 
 for MOVIE in *
 do
-(
+
 TITLE="$(curl -s http://www.imdb.com/title/"$MOVIE"/ |grep "<title>" |sed 's/<title>//g ; s/\ -\ IMDb<\/title>//g')" 
 
 IMDB_NAME="$(echo "$TITLE" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
@@ -35,5 +35,5 @@ firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 
 echo -en "Opening tabs for ${YELLOW}$TITLE"
 COLOR_OFF
-) &
+
 done
