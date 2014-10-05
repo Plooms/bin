@@ -14,25 +14,21 @@ TMP="$(mktemp)"
 cd ~/Downloads/http_/www.imdb.com/title/
 
 
-echo "Downloading Movie Data for $(ls | wc -l) movies in this dir (~/Downloads/http_/www.imdb.com/title/)"
+echo "Downloading Movie Data for $(ls | wc -l) movies in (~/Downloads/http_/www.imdb.com)"
 
-for i in *
+for MOVIE in *
 do
-curl -s http://www.imdb.com/title/"$i"/ |grep "<title>" |sed 's/<title>//g ; s/<\/title>//g' >> $TMP
-done
+TITLE="$(curl -s http://www.imdb.com/title/"$MOVIE"/ |grep "<title>" |sed 's/<title>//g ; s/<\/title>//g')"
 
-echo "Opening tabs for all movies found"
-
-while read moviename
-do
-IMDB_NAME="$( echo "$moviename" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
-YT_NAME="$(   echo "$moviename" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
-KAT_NAME="$(  echo "$moviename" | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
+IMDB_NAME="$( echo "$TITLE" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+YT_NAME="$(   echo "$TITLE" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+KAT_NAME="$(  echo "$TITLE" | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 
 # IMDB
-firefox "http://www.imdb.com/find?ref_=nv_sr_fn&q=$IMDB_NAME&s=all" 2>&1 >/dev/null
+firefox "http://www.imdb.com/title/$MOVIE" 2>&1 >/dev/null
 # YT
 firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>&1 >/dev/null
 # KAT
 firefox "http://kickass.to/usearch/$KAT_NAME" 2>&1 >/dev/null
-done < $TMP
+
+done
