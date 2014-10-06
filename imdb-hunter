@@ -26,6 +26,8 @@ IMDB_NAME="$(echo "$TITLE" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
 YT_NAME="$(echo "$TITLE" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
 KAT_NAME="$(echo "$TITLE" | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 
+echo "$TITLE" > "$BATCH_FILE_MOVIE_FIND"
+
 # IMDB
 firefox "http://www.imdb.com/title/$MOVIE" 2>/dev/null
 # YT
@@ -35,5 +37,8 @@ firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 
 echo -en "Opening tabs for ${YELLOW}$TITLE"
 COLOR_OFF
+
+# Find if we already have it
+/usr/local/bin/c.ln2tb-movie-find-batch
 
 done
