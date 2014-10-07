@@ -340,3 +340,4 @@ if ls -U | grep -E 'Hand\ of\ God\ -\ \[*' ; then mv -v Hand\ of\ God\ -\ \[* "$
 if ls -U | grep -E 'The\ Awesomes\ -\ \[*' ; then mv -v The\ Awesomes\ -\ \[* "$TV_SYM"/"The Awesomes"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Mountain\ Men\ -\ \[*' ; then mv -v Mountain\ Men\ -\ \[* "$TV_SYM"/"Mountain Men"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Saint\ George\ -\ \[*' ; then mv -v Saint\ George\ -\ \[* "$TV_SYM"/"Saint George"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Hill\ Street\ Blues\ -\ \[*' ; then mv -v Hill\ Street\ Blues\ -\ \[* "$TV_SYM"/"Hill Street Blues"/              ; else false ; fi && echo -e "\n\n"
