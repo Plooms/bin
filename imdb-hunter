@@ -20,6 +20,9 @@ echo ""
 
 COUNT=0
 
+# Clear the batch file for a fresh start
+echo "" >| "$BATCH_FILE_MOVIE_FIND"
+
 for MOVIE in *
 do
 
