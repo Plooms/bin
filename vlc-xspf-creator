@@ -68,7 +68,7 @@ FILE="$(echo "$file" | sed -e 's| |%20|g' \
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <playlist xmlns=\"http://xspf.org/ns/0/\" xmlns:vlc=\"http://www.videolan.org/vlc/playlist/ns/0/\" version=\"1\">
-	<title>"$(basename "$file")"</title>
+	<title></title>
 	<trackList>
 		<track>
 			<location>file://"$FILE"</location>

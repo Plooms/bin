@@ -9,13 +9,11 @@ PID=$$
 # To get the filename without extensions
 FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
 
-if [ -f "$FILENAME"*.xspf ]
-then 
 
-	if echo "$FILENAME" | grep "&" >/dev/null
-	then vlc "$1" --play-and-exit
-	else vlc "$FILENAME"*.xspf --play-and-exit
-	fi
+if [ -f "$FILENAME"*.xspf ]
+
+then vlc "$FILENAME"*.xspf --play-and-exit
 
 else vlc "$1" --play-and-exit
+
 fi
