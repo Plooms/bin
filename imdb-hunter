@@ -20,7 +20,7 @@ echo ""
 for MOVIE in *
 do
 
-TITLE="$(curl -s http://www.imdb.com/title/"$MOVIE"/ |grep "<title>" |sed 's/<title>//g ; s/\ -\ IMDb<\/title>//g')" 
+TITLE="$(curl -s http://www.imdb.com/title/"$MOVIE"/ |grep "<title>" |sed 's/<title>//g ; s/\ -\ IMDb<\/title>//g' | sed 's/^[ \t]*//' | sed 's/&amp;/and/g' )" 
 
 IMDB_NAME="$(echo "$TITLE" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
 YT_NAME="$(echo "$TITLE" | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
@@ -29,11 +29,11 @@ KAT_NAME="$(echo "$TITLE" | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'/
 echo "$TITLE" >> "$BATCH_FILE_MOVIE_FIND"
 
 # IMDB
-firefox "http://www.imdb.com/title/$MOVIE" 2>/dev/null
+#firefox "http://www.imdb.com/title/$MOVIE" 2>/dev/null
 # YT
-firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
+#firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 # KAT
-firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
+#firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 
 echo -en "Opening tabs for ${YELLOW}$TITLE"
 COLOR_OFF
