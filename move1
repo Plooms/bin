@@ -341,3 +341,6 @@ if ls -U | grep -E 'The\ Awesomes\ -\ \[*' ; then mv -v The\ Awesomes\ -\ \[* "$
 if ls -U | grep -E 'Mountain\ Men\ -\ \[*' ; then mv -v Mountain\ Men\ -\ \[* "$TV_SYM"/"Mountain Men"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Saint\ George\ -\ \[*' ; then mv -v Saint\ George\ -\ \[* "$TV_SYM"/"Saint George"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Hill\ Street\ Blues\ -\ \[*' ; then mv -v Hill\ Street\ Blues\ -\ \[* "$TV_SYM"/"Hill Street Blues"/              ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Bad\ Judge\ -\ \[*' ; then mv -v Bad\ Judge\ -\ \[* "$TV_SYM"/"Bad Judge"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Mulaney\ -\ \[*' ; then mv -v Mulaney\ -\ \[* "$TV_SYM"/"Mulaney"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Affair\ -\ \[*' ; then mv -v The\ Affair\ -\ \[* "$TV_SYM"/"The Affair"/ ; else false ; fi && echo -e "\n\n"

@@ -341,3 +341,6 @@ if ls -U | grep -E 'The\ Awesomes\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Awe
 if ls -U | grep -E 'Mountain\ Men\ -\ \[*' >/dev/null 2>&1 ; then mv -v Mountain\ Men\ -\ \[* "$TV_SYM"/"Mountain Men"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Saint\ George\ -\ \[*' >/dev/null 2>&1 ; then mv -v Saint\ George\ -\ \[* "$TV_SYM"/"Saint George"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Hill\ Street\ Blues\ -\ \[*' >/dev/null 2>&1 ; then mv -v Hill\ Street\ Blues\ -\ \[* "$TV_SYM"/"Hill Street Blues"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Bad\ Judge\ -\ \[*' >/dev/null 2>&1 ; then mv -v Bad\ Judge\ -\ \[* "$TV_SYM"/"Bad Judge"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Mulaney\ -\ \[*' >/dev/null 2>&1 ; then mv -v Mulaney\ -\ \[* "$TV_SYM"/"Mulaney"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Affair\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Affair\ -\ \[* "$TV_SYM"/"The Affair"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
