@@ -20,7 +20,7 @@ grep IPADDR < $TEMP | cut -d= -s -f2 | cut -d- -s -f1 > $TMPIP
 # compare $IPPATH with $TMPIP, and if different, execute update
 if diff $IPPATH $TMPIP > /dev/null
   then                                # same IP, no update
-          echo "No Change"
+          echo "No Change in IP Address"
   else                                # different IP, execute update
       wget -q -O $TEMP --http-user=$CIPUSER --http-password=$CIPPASS "https://nic.changeip.com/nic/update"
 #?cmd=update&ip=$IP"
