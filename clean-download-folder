@@ -9,7 +9,7 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 # Fix Permissions
-sudo find "$TV_DOWNLOAD_DIR"/ -exec sudo chmod 777 {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -exec sudo chmod 777 {} \; -exec sudo chown abz {} \; 2>/dev/null
 
 # Junk
 sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.directory" -exec sudo rm {} \; 2>/dev/null
