@@ -1,3 +1,4 @@
+
 #!/bin/bash
 # Adjust brightness of the screen
 SCRIPT_NAME="br"
@@ -28,7 +29,7 @@ then
 elif [ "$COUNTER" = low-m-1 ]
 then
 	echo "Brightness = Low-M-2" && echo low-m-2 >| "$TEMP" && \
-xrandr --output VGA-1 --brightness 0.3 ; xrandr --output HDMI-1 --brightness 0.3 ; xrandr --output DVI-I-1 --brightness 1.0 > /dev/null
+xrandr --output VGA-0 --brightness 0.3 ; xrandr --output HDMI-0 --brightness 0.3 ; xrandr --output DVI-I-1 --brightness 1.0 > /dev/null
 	echo -e "\n\n\n OFF LOW-M-1 [LOW-M-2] HIGH LOW "
 	notify-send Brightness LOW-M-2
 
@@ -47,7 +48,7 @@ then
 elif [ "$COUNTER" = high ]
 then
         echo "Brightness = LOW" && echo low >| "$TEMP" && \
-xrandr --output DVI-I-1 --brightness 0.1 ; xrandr --output VGA-1 --brightness 0.2 ; xrandr --output HDMI-1 --brightness 0.3 > /dev/null
+xrandr --output DVI-I-1 --brightness 0.1 ; xrandr --output VGA-0 --brightness 0.2 ; xrandr --output HDMI-0 --brightness 0.3 > /dev/null
 	echo -e "\n\n\n OFF LOW-M-1 LOW-M-2 HIGH [LOW] "
 	notify-send Brightness LOW
 fi
