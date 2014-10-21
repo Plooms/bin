@@ -344,3 +344,4 @@ if ls -U | grep -E 'Hill\ Street\ Blues\ -\ \[*' ; then mv -v Hill\ Street\ Blue
 if ls -U | grep -E 'Bad\ Judge\ -\ \[*' ; then mv -v Bad\ Judge\ -\ \[* "$TV_SYM"/"Bad Judge"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Mulaney\ -\ \[*' ; then mv -v Mulaney\ -\ \[* "$TV_SYM"/"Mulaney"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Affair\ -\ \[*' ; then mv -v The\ Affair\ -\ \[* "$TV_SYM"/"The Affair"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Californication\ -\ \[*' ; then mv -v Californication\ -\ \[* "$TV_SYM"/"Californication"/              ; else false ; fi && echo -e "\n\n"
