@@ -21,7 +21,7 @@ COUNTER=$(cat "$TEMP")
 
 if [ "$COUNTER" = off ]
 then
-	echo "Brightness = Low-M-1" && echo low-m-1 >| "$TEMP" && xrandr --output DVI-I-1 --brightness 0.3 > /dev/null
+	echo "Brightness = Low-M-1" && echo low-m-1 >| "$TEMP" && xrandr --output DVI-I-1 --brightness 0.3 && xrandr --output VGA-1 --brightness 1.0 > /dev/null
 	echo -e "\n\n\n OFF [LOW-M-1] LOW-M-2 HIGH LOW "
 	notify-send Brightness LOW-M-1
 
