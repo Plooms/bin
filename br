@@ -40,7 +40,8 @@ then
 
 elif [ "$COUNTER" = low ]
 then
-        xbrightness 63000 && echo "Brightness = OFF" && echo off >| "$TEMP"
+	xrandr --output DVI-I-1 --brightness 1.0 && xrandr --output VGA-1 --brightness 1.0 && echo "Brightness = OFF" && echo off >| "$TEMP"
+	xbrightness 63000
 	echo -e "\n\n\n [OFF] LOW-M-1 LOW-M-2 HIGH LOW "
 	notify-send Brightness OFF
 
