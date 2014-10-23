@@ -345,3 +345,7 @@ if ls -U | grep -E 'Bad\ Judge\ -\ \[*' ; then mv -v Bad\ Judge\ -\ \[* "$TV_SYM
 if ls -U | grep -E 'Mulaney\ -\ \[*' ; then mv -v Mulaney\ -\ \[* "$TV_SYM"/"Mulaney"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Affair\ -\ \[*' ; then mv -v The\ Affair\ -\ \[* "$TV_SYM"/"The Affair"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Californication\ -\ \[*' ; then mv -v Californication\ -\ \[* "$TV_SYM"/"Californication"/              ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Married\ ...\ with\ Children\ -\ \[*' ; then mv -v Married\ ...\ with\ Children\ -\ \[* "$TV_SYM"/"Married ... with Children"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Spin\ City\ -\ \[*' ; then mv -v Spin\ City\ -\ \[* "$TV_SYM"/"Spin City"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Deadwood\ -\ \[*' ; then mv -v Deadwood\ -\ \[* "$TV_SYM"/"Deadwood"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Six\ Feet\ Under\ -\ \[*' ; then mv -v Six\ Feet\ Under\ -\ \[* "$TV_SYM"/"Six Feet Under"/ ; else false ; fi && echo -e "\n\n"

@@ -345,3 +345,7 @@ if ls -U | grep -E 'Bad\ Judge\ -\ \[*' >/dev/null 2>&1 ; then mv -v Bad\ Judge\
 if ls -U | grep -E 'Mulaney\ -\ \[*' >/dev/null 2>&1 ; then mv -v Mulaney\ -\ \[* "$TV_SYM"/"Mulaney"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Affair\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Affair\ -\ \[* "$TV_SYM"/"The Affair"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Californication\ -\ \[*' >/dev/null 2>&1 ; then mv -v Californication\ -\ \[* "$TV_SYM"/"Californication"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Married\ ...\ with\ Children\ -\ \[*' >/dev/null 2>&1 ; then mv -v Married\ ...\ with\ Children\ -\ \[* "$TV_SYM"/"Married ... with Children"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Spin\ City\ -\ \[*' >/dev/null 2>&1 ; then mv -v Spin\ City\ -\ \[* "$TV_SYM"/"Spin City"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Deadwood\ -\ \[*' >/dev/null 2>&1 ; then mv -v Deadwood\ -\ \[* "$TV_SYM"/"Deadwood"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Six\ Feet\ Under\ -\ \[*' >/dev/null 2>&1 ; then mv -v Six\ Feet\ Under\ -\ \[* "$TV_SYM"/"Six Feet Under"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
