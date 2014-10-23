@@ -177,7 +177,7 @@ if ls -U | grep -E 'Las\ Vegas\ -\ \[*' >/dev/null 2>&1 ; then mv -v Las\ Vegas\
 if ls -U | grep -E 'Las\ Vegas\ Jailhouse\ -\ \[*' >/dev/null 2>&1 ; then mv -v Las\ Vegas\ Jailhouse\ -\ \[* "$TV_SYM"/"Las Vegas Jailhouse"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Legit\ \(2013\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Legit\ \(2013\)\ -\ \[* "$TV_SYM"/"Legit (2013)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Leverage\ -\ \[*' >/dev/null 2>&1 ; then mv -v Leverage\ -\ \[* "$TV_SYM"/"Leverage"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Lie\ to\ Me\ -\ \[*' >/dev/null 2>&1 ; then mv -v Lie\ to\ Me\ -\ \[* "$TV_SYM"/"Lie to Me"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Lie\ to\ me\ -\ \[*' >/dev/null 2>&1 ; then mv -v Lie\ to\ me\ -\ \[* "$TV_SYM"/"Lie to me"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Life\ \(2007\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Life\ \(2007\)\ -\ \[* "$TV_SYM"/"Life (2007)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Lilyhammer\ -\ \[*' >/dev/null 2>&1 ; then mv -v Lilyhammer\ -\ \[* "$TV_SYM"/"Lilyhammer"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Lockup\ -\ \[*' >/dev/null 2>&1 ; then mv -v Lockup\ -\ \[* "$TV_SYM"/"Lockup"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
