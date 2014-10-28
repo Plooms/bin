@@ -361,3 +361,7 @@ if ls -U | grep -E 'Mad\ About\ You\ -\ \[*' >/dev/null 2>&1 ; then mv -v Mad\ A
 if ls -U | grep -E 'Picket\ Fences\ -\ \[*' >/dev/null 2>&1 ; then mv -v Picket\ Fences\ -\ \[* "$TV_SYM"/"Picket Fences"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Chicago\ Hope\ -\ \[*' >/dev/null 2>&1 ; then mv -v Chicago\ Hope\ -\ \[* "$TV_SYM"/"Chicago Hope"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Ellen\ -\ \[*' >/dev/null 2>&1 ; then mv -v Ellen\ -\ \[* "$TV_SYM"/"Ellen"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'In\ Living\ Color\ -\ \[*' >/dev/null 2>&1 ; then mv -v In\ Living\ Color\ -\ \[* "$TV_SYM"/"In Living Color"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Grace\ Under\ Fire\ -\ \[*' >/dev/null 2>&1 ; then mv -v Grace\ Under\ Fire\ -\ \[* "$TV_SYM"/"Grace Under Fire"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Roseanne\ -\ \[*' >/dev/null 2>&1 ; then mv -v Roseanne\ -\ \[* "$TV_SYM"/"Roseanne"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ X-Files\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ X-Files\ -\ \[* "$TV_SYM"/"The X-Files"/              2>/dev/null ; else false ; fi && echo -e "\n\n"

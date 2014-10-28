@@ -679,3 +679,7 @@ if ls -U | grep -E 'Mad\ About\ You\ -\ \[*' ; then mv -v Mad\ About\ You\ -\ \[
 if ls -U | grep -E 'Picket\ Fences\ -\ \[*' ; then mv -v Picket\ Fences\ -\ \[* "$TV_SYM"/"Picket Fences"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Chicago\ Hope\ -\ \[*' ; then mv -v Chicago\ Hope\ -\ \[* "$TV_SYM"/"Chicago Hope"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Ellen\ -\ \[*' ; then mv -v Ellen\ -\ \[* "$TV_SYM"/"Ellen"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'In\ Living\ Color\ -\ \[*' ; then mv -v In\ Living\ Color\ -\ \[* "$TV_SYM"/"In Living Color"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Grace\ Under\ Fire\ -\ \[*' ; then mv -v Grace\ Under\ Fire\ -\ \[* "$TV_SYM"/"Grace Under Fire"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Roseanne\ -\ \[*' ; then mv -v Roseanne\ -\ \[* "$TV_SYM"/"Roseanne"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ X-Files\ -\ \[*' ; then mv -v The\ X-Files\ -\ \[* "$TV_SYM"/"The X-Files"/ ; else false ; fi && echo -e "\n\n"
