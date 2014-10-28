@@ -365,3 +365,4 @@ if ls -U | grep -E 'In\ Living\ Color\ -\ \[*' >/dev/null 2>&1 ; then mv -v In\ 
 if ls -U | grep -E 'Grace\ Under\ Fire\ -\ \[*' >/dev/null 2>&1 ; then mv -v Grace\ Under\ Fire\ -\ \[* "$TV_SYM"/"Grace Under Fire"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Roseanne\ -\ \[*' >/dev/null 2>&1 ; then mv -v Roseanne\ -\ \[* "$TV_SYM"/"Roseanne"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ X-Files\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ X-Files\ -\ \[* "$TV_SYM"/"The X-Files"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Ally\ McBeal\ -\ \[*' >/dev/null 2>&1 ; then mv -v Ally\ McBeal\ -\ \[* "$TV_SYM"/"Ally McBeal"/              2>/dev/null ; else false ; fi && echo -e "\n\n"

@@ -683,3 +683,4 @@ if ls -U | grep -E 'In\ Living\ Color\ -\ \[*' ; then mv -v In\ Living\ Color\ -
 if ls -U | grep -E 'Grace\ Under\ Fire\ -\ \[*' ; then mv -v Grace\ Under\ Fire\ -\ \[* "$TV_SYM"/"Grace Under Fire"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Roseanne\ -\ \[*' ; then mv -v Roseanne\ -\ \[* "$TV_SYM"/"Roseanne"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ X-Files\ -\ \[*' ; then mv -v The\ X-Files\ -\ \[* "$TV_SYM"/"The X-Files"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Ally\ McBeal\ -\ \[*' ; then mv -v Ally\ McBeal\ -\ \[* "$TV_SYM"/"Ally McBeal"/ ; else false ; fi && echo -e "\n\n"
