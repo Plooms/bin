@@ -706,3 +706,4 @@ if ls -U | grep -E 'The\ A-Team\ -\ \[*' ; then mv -v The\ A-Team\ -\ \[* "$TV_S
 if ls -U | grep -E 'Magnum,\ P.I.\ -\ \[*' ; then mv -v Magnum,\ P.I.\ -\ \[* "$TV_SYM"/"Magnum, P.I."/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Golden\ Girls\ -\ \[*' ; then mv -v The\ Golden\ Girls\ -\ \[* "$TV_SYM"/"The Golden Girls"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Brady\ Bunch\ -\ \[*' ; then mv -v The\ Brady\ Bunch\ -\ \[* "$TV_SYM"/"The Brady Bunch"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Bonanza\ -\ \[*' ; then mv -v Bonanza\ -\ \[* "$TV_SYM"/"Bonanza"/ ; else false ; fi && echo -e "\n\n"
