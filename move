@@ -379,3 +379,8 @@ if ls -U | grep -E 'L.A.\ Law\ -\ \[*' >/dev/null 2>&1 ; then mv -v L.A.\ Law\ -
 if ls -U | grep -E 'Knight\ Rider\ -\ \[*' >/dev/null 2>&1 ; then mv -v Knight\ Rider\ -\ \[* "$TV_SYM"/"Knight Rider"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Baywatch\ -\ \[*' >/dev/null 2>&1 ; then mv -v Baywatch\ -\ \[* "$TV_SYM"/"Baywatch"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Miami\ Vice\ -\ \[*' >/dev/null 2>&1 ; then mv -v Miami\ Vice\ -\ \[* "$TV_SYM"/"Miami Vice"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Facts\ of\ Life\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Facts\ of\ Life\ -\ \[* "$TV_SYM"/"The Facts of Life"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Family\ Ties\ -\ \[*' >/dev/null 2>&1 ; then mv -v Family\ Ties\ -\ \[* "$TV_SYM"/"Family Ties"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Matlock\ -\ \[*' >/dev/null 2>&1 ; then mv -v Matlock\ -\ \[* "$TV_SYM"/"Matlock"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Diffrent\ Strokes\ -\ \[*' >/dev/null 2>&1 ; then mv -v Diffrent\ Strokes\ -\ \[* "$TV_SYM"/"Diff'rent Strokes"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E '21\ Jump\ Street\ -\ \[*' >/dev/null 2>&1 ; then mv -v 21\ Jump\ Street\ -\ \[* "$TV_SYM"/"21 Jump Street"/              2>/dev/null ; else false ; fi && echo -e "\n\n"

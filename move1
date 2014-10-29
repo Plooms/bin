@@ -697,3 +697,8 @@ if ls -U | grep -E 'L.A.\ Law\ -\ \[*' ; then mv -v L.A.\ Law\ -\ \[* "$TV_SYM"/
 if ls -U | grep -E 'Knight\ Rider\ -\ \[*' ; then mv -v Knight\ Rider\ -\ \[* "$TV_SYM"/"Knight Rider"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Baywatch\ -\ \[*' ; then mv -v Baywatch\ -\ \[* "$TV_SYM"/"Baywatch"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Miami\ Vice\ -\ \[*' ; then mv -v Miami\ Vice\ -\ \[* "$TV_SYM"/"Miami Vice"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Facts\ of\ Life\ -\ \[*' ; then mv -v The\ Facts\ of\ Life\ -\ \[* "$TV_SYM"/"The Facts of Life"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Family\ Ties\ -\ \[*' ; then mv -v Family\ Ties\ -\ \[* "$TV_SYM"/"Family Ties"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Matlock\ -\ \[*' ; then mv -v Matlock\ -\ \[* "$TV_SYM"/"Matlock"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Diffrent\ Strokes\ -\ \[*' ; then mv -v Diffrent\ Strokes\ -\ \[* "$TV_SYM"/"Diff'rent Strokes"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E '21\ Jump\ Street\ -\ \[*' ; then mv -v 21\ Jump\ Street\ -\ \[* "$TV_SYM"/"21 Jump Street"/ ; else false ; fi && echo -e "\n\n"
