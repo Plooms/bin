@@ -693,3 +693,7 @@ if ls -U | grep -E 'Get\ Smart\ -\ \[*' ; then mv -v Get\ Smart\ -\ \[* "$TV_SYM
 if ls -U | grep -E 'T.J.\ Hooker\ -\ \[*' ; then mv -v T.J.\ Hooker\ -\ \[* "$TV_SYM"/"T.J. Hooker"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Odd\ Couple\ -\ \[*' ; then mv -v The\ Odd\ Couple\ -\ \[* "$TV_SYM"/"The Odd Couple"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Sanford\ and\ Son\ -\ \[*' ; then mv -v Sanford\ and\ Son\ -\ \[* "$TV_SYM"/"Sanford and Son"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'L.A.\ Law\ -\ \[*' ; then mv -v L.A.\ Law\ -\ \[* "$TV_SYM"/"L.A. Law"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Knight\ Rider\ -\ \[*' ; then mv -v Knight\ Rider\ -\ \[* "$TV_SYM"/"Knight Rider"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Baywatch\ -\ \[*' ; then mv -v Baywatch\ -\ \[* "$TV_SYM"/"Baywatch"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Miami\ Vice\ -\ \[*' ; then mv -v Miami\ Vice\ -\ \[* "$TV_SYM"/"Miami Vice"/ ; else false ; fi && echo -e "\n\n"

@@ -375,3 +375,7 @@ if ls -U | grep -E 'Get\ Smart\ -\ \[*' >/dev/null 2>&1 ; then mv -v Get\ Smart\
 if ls -U | grep -E 'T.J.\ Hooker\ -\ \[*' >/dev/null 2>&1 ; then mv -v T.J.\ Hooker\ -\ \[* "$TV_SYM"/"T.J. Hooker"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Odd\ Couple\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Odd\ Couple\ -\ \[* "$TV_SYM"/"The Odd Couple"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Sanford\ and\ Son\ -\ \[*' >/dev/null 2>&1 ; then mv -v Sanford\ and\ Son\ -\ \[* "$TV_SYM"/"Sanford and Son"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'L.A.\ Law\ -\ \[*' >/dev/null 2>&1 ; then mv -v L.A.\ Law\ -\ \[* "$TV_SYM"/"L.A. Law"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Knight\ Rider\ -\ \[*' >/dev/null 2>&1 ; then mv -v Knight\ Rider\ -\ \[* "$TV_SYM"/"Knight Rider"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Baywatch\ -\ \[*' >/dev/null 2>&1 ; then mv -v Baywatch\ -\ \[* "$TV_SYM"/"Baywatch"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Miami\ Vice\ -\ \[*' >/dev/null 2>&1 ; then mv -v Miami\ Vice\ -\ \[* "$TV_SYM"/"Miami Vice"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
