@@ -9,9 +9,8 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
-#sudo systemctl restart lvmetad
-#sudo vgscan
-#sudo vgchange -ay
-#sudo mount /dev/mapper/Original-Media /mnt/Original \
-#&& startup-programs
-
+sudo systemctl restart lvm2-lvmetad
+sudo vgscan
+sudo vgchange -an
+sudo vgchange -ay
+sudo mount -v /mnt/C1 && sudo mount -v /mnt/C1/Other/ISOs/VMs
