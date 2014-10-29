@@ -389,3 +389,4 @@ if ls -U | grep -E 'Magnum,\ P.I.\ -\ \[*' >/dev/null 2>&1 ; then mv -v Magnum,\
 if ls -U | grep -E 'The\ Golden\ Girls\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Golden\ Girls\ -\ \[* "$TV_SYM"/"The Golden Girls"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Brady\ Bunch\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Brady\ Bunch\ -\ \[* "$TV_SYM"/"The Brady Bunch"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Bonanza\ -\ \[*' >/dev/null 2>&1 ; then mv -v Bonanza\ -\ \[* "$TV_SYM"/"Bonanza"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Threes\ Company\ -\ \[*' >/dev/null 2>&1 ; then mv -v Threes\ Company\ -\ \[* "$TV_SYM"/"Three's Company"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
