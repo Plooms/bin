@@ -384,3 +384,7 @@ if ls -U | grep -E 'Family\ Ties\ -\ \[*' >/dev/null 2>&1 ; then mv -v Family\ T
 if ls -U | grep -E 'Matlock\ -\ \[*' >/dev/null 2>&1 ; then mv -v Matlock\ -\ \[* "$TV_SYM"/"Matlock"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Diffrent\ Strokes\ -\ \[*' >/dev/null 2>&1 ; then mv -v Diffrent\ Strokes\ -\ \[* "$TV_SYM"/"Diff'rent Strokes"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E '21\ Jump\ Street\ -\ \[*' >/dev/null 2>&1 ; then mv -v 21\ Jump\ Street\ -\ \[* "$TV_SYM"/"21 Jump Street"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ A-Team\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ A-Team\ -\ \[* "$TV_SYM"/"The A-Team"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Magnum,\ P.I.\ -\ \[*' >/dev/null 2>&1 ; then mv -v Magnum,\ P.I.\ -\ \[* "$TV_SYM"/"Magnum, P.I."/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Golden\ Girls\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Golden\ Girls\ -\ \[* "$TV_SYM"/"The Golden Girls"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Brady\ Bunch\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Brady\ Bunch\ -\ \[* "$TV_SYM"/"The Brady Bunch"/              2>/dev/null ; else false ; fi && echo -e "\n\n"

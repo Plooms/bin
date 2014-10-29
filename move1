@@ -702,3 +702,7 @@ if ls -U | grep -E 'Family\ Ties\ -\ \[*' ; then mv -v Family\ Ties\ -\ \[* "$TV
 if ls -U | grep -E 'Matlock\ -\ \[*' ; then mv -v Matlock\ -\ \[* "$TV_SYM"/"Matlock"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Diffrent\ Strokes\ -\ \[*' ; then mv -v Diffrent\ Strokes\ -\ \[* "$TV_SYM"/"Diff'rent Strokes"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E '21\ Jump\ Street\ -\ \[*' ; then mv -v 21\ Jump\ Street\ -\ \[* "$TV_SYM"/"21 Jump Street"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ A-Team\ -\ \[*' ; then mv -v The\ A-Team\ -\ \[* "$TV_SYM"/"The A-Team"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Magnum,\ P.I.\ -\ \[*' ; then mv -v Magnum,\ P.I.\ -\ \[* "$TV_SYM"/"Magnum, P.I."/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Golden\ Girls\ -\ \[*' ; then mv -v The\ Golden\ Girls\ -\ \[* "$TV_SYM"/"The Golden Girls"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Brady\ Bunch\ -\ \[*' ; then mv -v The\ Brady\ Bunch\ -\ \[* "$TV_SYM"/"The Brady Bunch"/ ; else false ; fi && echo -e "\n\n"
