@@ -708,3 +708,7 @@ if ls -U | grep -E 'The\ Golden\ Girls\ -\ \[*' ; then mv -v The\ Golden\ Girls\
 if ls -U | grep -E 'The\ Brady\ Bunch\ -\ \[*' ; then mv -v The\ Brady\ Bunch\ -\ \[* "$TV_SYM"/"The Brady Bunch"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Bonanza\ -\ \[*' ; then mv -v Bonanza\ -\ \[* "$TV_SYM"/"Bonanza"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Threes\ Company\ -\ \[*' ; then mv -v Threes\ Company\ -\ \[* "$TV_SYM"/"Three's Company"/              ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Hawaii\ Five-O\ -\ \[*' ; then mv -v Hawaii\ Five-O\ -\ \[* "$TV_SYM"/"Hawaii Five-O"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Cheers\ -\ \[*' ; then mv -v Cheers\ -\ \[* "$TV_SYM"/"Cheers"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Cosby\ Show\ -\ \[*' ; then mv -v The\ Cosby\ Show\ -\ \[* "$TV_SYM"/"The Cosby Show"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Dukes\ of\ Hazzard\ -\ \[*' ; then mv -v The\ Dukes\ of\ Hazzard\ -\ \[* "$TV_SYM"/"The Dukes of Hazzard"/ ; else false ; fi && echo -e "\n\n"

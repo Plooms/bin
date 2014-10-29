@@ -390,3 +390,7 @@ if ls -U | grep -E 'The\ Golden\ Girls\ -\ \[*' >/dev/null 2>&1 ; then mv -v The
 if ls -U | grep -E 'The\ Brady\ Bunch\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Brady\ Bunch\ -\ \[* "$TV_SYM"/"The Brady Bunch"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Bonanza\ -\ \[*' >/dev/null 2>&1 ; then mv -v Bonanza\ -\ \[* "$TV_SYM"/"Bonanza"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Threes\ Company\ -\ \[*' >/dev/null 2>&1 ; then mv -v Threes\ Company\ -\ \[* "$TV_SYM"/"Three's Company"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Hawaii\ Five-O\ -\ \[*' >/dev/null 2>&1 ; then mv -v Hawaii\ Five-O\ -\ \[* "$TV_SYM"/"Hawaii Five-O"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Cheers\ -\ \[*' >/dev/null 2>&1 ; then mv -v Cheers\ -\ \[* "$TV_SYM"/"Cheers"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Cosby\ Show\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Cosby\ Show\ -\ \[* "$TV_SYM"/"The Cosby Show"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Dukes\ of\ Hazzard\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Dukes\ of\ Hazzard\ -\ \[* "$TV_SYM"/"The Dukes of Hazzard"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
