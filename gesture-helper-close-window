@@ -1,61 +1,23 @@
 #!/bin/bash
-# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
-SCRIPT_NAME="ln2tb"
+# Easystroke complementary script for closing windows
+SCRIPT_NAME="gesture-helper-close-window"
 PID=$$
 
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" 
 
+if echo "$CURRENTWIN" | grep "Mozilla Firefox" >/dev/null 
+then
+notify-send "Close Window" "Not Closing Firefox By Gestures \n(Minimizing Instead)"
+wmctrl -a firefox ; xdotool windowminimize $(xdotool getactivewindow)
 
-answer=$(dialog --stdout  --extra-button --extra-label "Back" --menu \
-"Choose the command You Wish to Execute" 14 50 50 \
-"1- Add" "" \
-"2- Delete" "" \
-"3- Find & Check Resolution" "" \
-"4- Edit Videos" "" \
-"5- Check for Duplicates" "" \
-"6- Check Mounts" "" )
+elif echo "$CURRENTWIN" | grep "Friend - Salman"  >/dev/null
+then
+notify-send "Close Window" "Not Closing Pidgin Chat By Gestures \n(Minimizing Instead)"
+wmctrl -a salman ; xdotool windowminimize $(xdotool getactivewindow)
 
-
-
-case $? in
-0)
-
-if [ "$answer" = "1- Add" ]
-then c.ln2tb-add
-
-
-elif [ "$answer" = "2- Delete" ]
-then c.ln2tb-delete
-
-
-elif [ "$answer" = "3- Find & Check Resolution" ]
-then c.ln2tb-find
-
-
-elif [ "$answer" = "4- Edit Videos" ]
-then c.ln2tb-video
-
-
-elif [ "$answer" = "5- Check for Duplicates" ]
-then c.ln2tb-dupes
-
-
-elif [ "$answer" = "6- Check Mounts" ]
-then c.ln2tb-mount-check
-
-
-
-
-fi
-
-;;
-1)
-_CANCEL_MSG 
-
-;; 
-3)
-exit 1 ;;
-esac
+else
+xte "keydown Alt_L" "key F4" "keyup Alt_L"
