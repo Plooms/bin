@@ -21,3 +21,4 @@ wmctrl -a salman ; xdotool windowminimize $(xdotool getactivewindow)
 
 else
 xte "keydown Alt_L" "key F4" "keyup Alt_L"
+fi
