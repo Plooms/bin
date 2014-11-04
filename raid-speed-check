@@ -1,0 +1,25 @@
+#!/bin/bash
+for cache_size in 4096 8192; do
+for i in 4096 8192 16834 ; do
+
+echo "cache_size=($cache_size) / readahead=($i)"
+blockdev --setra $i /dev/sd[a-n]
+blockdev --setra $i /dev/md[23]
+
+echo ${cache_size} >| /sys/block/md2/md/stripe_cache_size
+echo ${cache_size} >| /sys/block/md3/md/stripe_cache_size
+sync
+echo 3 > /proc/sys/vm/drop_caches
+
+# for write
+dd if=/dev/zero of=/mnt/C1/Brick1/ass bs=3145728 count=5460
+# for read
+dd if=/mnt/C1/Brick1/ass of=/dev/null bs=3145728 count=5460
+
+rm /mnt/C1/Brick1/ass
+
+echo -e "\n"
+done
+echo -e "\n\n"
+done
+
