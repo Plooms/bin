@@ -19,6 +19,11 @@ then
 notify-send "Close Window" "Not Closing Pidgin Chat By Gestures \n(Minimizing Instead)"
 wmctrl -a salman ; xdotool windowminimize $(xdotool getactivewindow)
 
+elif echo "$CURRENTWIN" | grep "KRDC"  >/dev/null
+then
+notify-send "Close Window" "Not Closing KRDC By Gestures \n(Minimizing Instead)"
+wmctrl -a krdc ; xdotool windowminimize $(xdotool getactivewindow)
+
 else
 xte "keydown Alt_L" "key F4" "keyup Alt_L"
 fi
