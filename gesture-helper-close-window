@@ -1,5 +1,5 @@
 #!/bin/bash
-# Easystroke complementary script for closing windows
+# Easystroke helper script for closing windows
 SCRIPT_NAME="gesture-helper-close-window"
 PID=$$
 
@@ -7,21 +7,23 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+
+
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" 
 
 if echo "$CURRENTWIN" | grep "Mozilla Firefox" >/dev/null 
 then
-notify-send "Close Window" "Not Closing Firefox By Gestures \n(Minimizing Instead)"
+notify-send "Close Window" "Minimizied Firefox"
 wmctrl -a firefox ; xdotool windowminimize $(xdotool getactivewindow)
 
 elif echo "$CURRENTWIN" | grep "Friend - Salman"  >/dev/null
 then
-notify-send "Close Window" "Not Closing Pidgin Chat By Gestures \n(Minimizing Instead)"
+notify-send "Close Window" "Minimized Pidgin"
 wmctrl -a salman ; xdotool windowminimize $(xdotool getactivewindow)
 
 elif echo "$CURRENTWIN" | grep "KRDC"  >/dev/null
 then
-notify-send "Close Window" "Not Closing KRDC By Gestures \n(Minimizing Instead)"
+notify-send "Close Window" "Minimized KRDC"
 wmctrl -a krdc ; xdotool windowminimize $(xdotool getactivewindow)
 
 else
