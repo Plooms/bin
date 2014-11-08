@@ -1078,3 +1078,4 @@ if ls -U | grep -E 'Wipeout\ \(US\)\ -\ \[*' ; then mv -v Wipeout\ \(US\)\ -\ \[
 if ls -U | grep -E 'Without\ a\ Trace\ -\ \[*' ; then mv -v Without\ a\ Trace\ -\ \[* "$TV_SYM"/"Without a Trace"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Workaholics\ -\ \[*' ; then mv -v Workaholics\ -\ \[* "$TV_SYM"/"Workaholics"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Young\ \&\ Hungry\ -\ \[*' ; then mv -v Young\ \&\ Hungry\ -\ \[* "$TV_SYM"/"Young & Hungry"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Rick\ and\ Morty\ -\ \[*' ; then mv -v Rick\ and\ Morty\ -\ \[* "$TV_SYM"/"Rick and Morty"/              ; else false ; fi && echo -e "\n\n"

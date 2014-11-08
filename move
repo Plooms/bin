@@ -395,3 +395,4 @@ if ls -U | grep -E 'Wipeout\ \(US\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Wipeou
 if ls -U | grep -E 'Without\ a\ Trace\ -\ \[*' >/dev/null 2>&1 ; then mv -v Without\ a\ Trace\ -\ \[* "$TV_SYM"/"Without a Trace"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Workaholics\ -\ \[*' >/dev/null 2>&1 ; then mv -v Workaholics\ -\ \[* "$TV_SYM"/"Workaholics"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Young\ \&\ Hungry\ -\ \[*' >/dev/null 2>&1 ; then mv -v Young\ \&\ Hungry\ -\ \[* "$TV_SYM"/"Young & Hungry"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Rick\ and\ Morty\ -\ \[*' >/dev/null 2>&1 ; then mv -v Rick\ and\ Morty\ -\ \[* "$TV_SYM"/"Rick and Morty"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
