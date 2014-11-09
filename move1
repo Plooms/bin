@@ -1082,3 +1082,4 @@ if ls -U | grep -E 'Rick\ and\ Morty\ -\ \[*' ; then mv -v Rick\ and\ Morty\ -\ 
 if ls -U | grep -E 'Dead\ Like\ Me\ -\ \[*' ; then mv -v Dead\ Like\ Me\ -\ \[* "$TV_SYM"/"Dead Like Me"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Stargate\ SG-1\ -\ \[*' ; then mv -v Stargate\ SG-1\ -\ \[* "$TV_SYM"/"Stargate SG-1"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Buffy\ the\ Vampire\ Slayer\ -\ \[*' ; then mv -v Buffy\ the\ Vampire\ Slayer\ -\ \[* "$TV_SYM"/"Buffy the Vampire Slayer"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Laverne\ \&\ Shirley\ -\ \[*' ; then mv -v Laverne\ \&\ Shirley\ -\ \[* "$TV_SYM"/"Laverne & Shirley"/              ; else false ; fi && echo -e "\n\n"

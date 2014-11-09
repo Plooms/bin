@@ -399,3 +399,4 @@ if ls -U | grep -E 'Rick\ and\ Morty\ -\ \[*' >/dev/null 2>&1 ; then mv -v Rick\
 if ls -U | grep -E 'Dead\ Like\ Me\ -\ \[*' >/dev/null 2>&1 ; then mv -v Dead\ Like\ Me\ -\ \[* "$TV_SYM"/"Dead Like Me"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Stargate\ SG-1\ -\ \[*' >/dev/null 2>&1 ; then mv -v Stargate\ SG-1\ -\ \[* "$TV_SYM"/"Stargate SG-1"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Buffy\ the\ Vampire\ Slayer\ -\ \[*' >/dev/null 2>&1 ; then mv -v Buffy\ the\ Vampire\ Slayer\ -\ \[* "$TV_SYM"/"Buffy the Vampire Slayer"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Laverne\ \&\ Shirley\ -\ \[*' >/dev/null 2>&1 ; then mv -v Laverne\ \&\ Shirley\ -\ \[* "$TV_SYM"/"Laverne & Shirley"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
