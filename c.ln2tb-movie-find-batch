@@ -35,7 +35,7 @@ done < "$BATCH_FILE_MOVIE_FIND"
 
 
 while read -r i ;do 
-MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//;s/?//g")"
 mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss >> "$TMP1" ; done < "$BATCH_FILE_MOVIE_FIND"
 
 while read -r FILE2 ; do movie_array+=("$FILE2") ; done < "$TMP1"
