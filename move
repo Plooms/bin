@@ -401,3 +401,4 @@ if ls -U | grep -E 'Stargate\ SG-1\ -\ \[*' >/dev/null 2>&1 ; then mv -v Stargat
 if ls -U | grep -E 'Buffy\ the\ Vampire\ Slayer\ -\ \[*' >/dev/null 2>&1 ; then mv -v Buffy\ the\ Vampire\ Slayer\ -\ \[* "$TV_SYM"/"Buffy the Vampire Slayer"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Laverne\ \&\ Shirley\ -\ \[*' >/dev/null 2>&1 ; then mv -v Laverne\ \&\ Shirley\ -\ \[* "$TV_SYM"/"Laverne & Shirley"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Remington\ Steele\ -\ \[*' >/dev/null 2>&1 ; then mv -v Remington\ Steele\ -\ \[* "$TV_SYM"/"Remington Steele"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Gilligans\ Island\ -\ \[*' >/dev/null 2>&1 ; then mv -v Gilligans\ Island\ -\ \[* "$TV_SYM"/"Gilligan's Island"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
