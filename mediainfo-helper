@@ -11,5 +11,6 @@ source /usr/local/bin/VAR-SCRIPT
 
 mediainfo "$1" | grep -E 'Unique ID |Complete name |File size |Width |Height ' | sed 's/                  :/:/g' > "$1".mediainfo
 mediainfo "$1" | grep -m 1 'Duration' | sed 's/                  :/:/g' >> "$1".mediainfo
+echo -e "\n\n" >> "$1".mediainfo
 mediainfo "$1" | grep -E 'bit rate |Bitrate ' | sed 's/                  :/:/g' >> "$1".mediainfo
 
