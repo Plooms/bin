@@ -1,0 +1,2 @@
+#!/bin/bash
+SHELL=/usr/bin/zsh script -q /home/abz/.zsh.log
