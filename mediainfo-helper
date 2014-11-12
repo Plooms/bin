@@ -9,5 +9,5 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
-mediainfo "$1" | grep -E 'Unique ID |Complete name |File size |Duration |Bitrate |Width |Height |Display aspect ratio |Frame rate  |Stream size' > "$1".mediainfo
+mediainfo "$1" | grep -E 'Unique ID |Complete name |File size |Duration |Bitrate |Width |Height |Display aspect ratio |Frame rate  |Stream size' | sed 's/                  :/:/g' > "$1".mediainfo
 
