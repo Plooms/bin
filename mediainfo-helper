@@ -8,6 +8,7 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
+
 if [ ! -f "$1".mediainfo ] 
 then
 mediainfo "$1" | grep -E 'Unique ID |Complete name |File size |Width |Height ' | sed 's/                  :/:/g' > "$1".mediainfo
