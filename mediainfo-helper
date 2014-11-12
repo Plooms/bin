@@ -11,13 +11,4 @@ source /usr/local/bin/VAR-SCRIPT
 
 mediainfo "$1"
 
-grep -E \
-'Complete name 
-|File size
-|Duration
-|Bitrate
-|Width
-|Height
-|Display aspect ratio
-|Frame rate
-|Stream size'
+grep -E 'Complete name |File size |Duration |Bitrate |Width |Height |Display aspect ratio |Frame rate  |Stream size'
