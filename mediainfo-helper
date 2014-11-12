@@ -9,6 +9,5 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
-mediainfo "$1"
+mediainfo "$1" | grep -E 'Unique ID |Complete name |File size |Duration |Bitrate |Width |Height |Display aspect ratio |Frame rate  |Stream size' > "$i".mediainfo
 
-grep -E 'Complete name |File size |Duration |Bitrate |Width |Height |Display aspect ratio |Frame rate  |Stream size'
