@@ -1,0 +1,19 @@
+#!/bin/bash
+# Use medianfo to gather info about video files
+SCRIPT_NAME="mediainfo-helper2"
+PID=$$
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+if [ ! -f "$1".mediainfo ] 
+then
+mediainfo "$1" | grep -E 'Unique ID |Complete name |File size |Width |Height ' | sed 's/                  :/:/g' > "$1".mediainfo
+mediainfo "$1" | grep -m 1 'Duration' | sed 's/                  :/:/g' >> "$1".mediainfo
+echo -e "\n\n" >> "$1".mediainfo
+mediainfo "$1" | grep -E 'bit rate |Bitrate ' | sed 's/                  :/:/g' >> "$1".mediainfo
+echo "$1"
+fi
