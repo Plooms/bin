@@ -16,6 +16,11 @@ then
 notify-send "Close Window" "Minimizied Firefox"
 wmctrl -a firefox ; xdotool windowminimize $(xdotool getactivewindow)
 
+elif echo "$CURRENTWIN" | grep "DownThemAll" >/dev/null 
+then
+notify-send "Close Window" "Minimizied DownThemAll"
+wmctrl -a DownThemAll ; xdotool windowminimize $(xdotool getactivewindow)
+
 elif echo "$CURRENTWIN" | grep "Friend - Salman"  >/dev/null
 then
 notify-send "Close Window" "Minimized Pidgin"
