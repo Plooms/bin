@@ -7,13 +7,7 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+echo "Searching for Videos without mediainfo files"
 
+cd "$MOVIE_SYM" && find . -type f -size +100M -exec mediainfo-helper2 {} \;
 
-if [ ! -f "$1".mediainfo ] 
-then
-mediainfo "$1" | grep -E 'Unique ID |Complete name |File size |Width |Height ' | sed 's/                  :/:/g' > "$1".mediainfo
-mediainfo "$1" | grep -m 1 'Duration' | sed 's/                  :/:/g' >> "$1".mediainfo
-echo -e "\n\n" >> "$1".mediainfo
-mediainfo "$1" | grep -E 'bit rate |Bitrate ' | sed 's/                  :/:/g' >> "$1".mediainfo
-echo "$1"
-fi
