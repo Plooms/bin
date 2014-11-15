@@ -1085,3 +1085,5 @@ if ls -U | grep -E 'Buffy\ the\ Vampire\ Slayer\ -\ \[*' ; then mv -v Buffy\ the
 if ls -U | grep -E 'Laverne\ \&\ Shirley\ -\ \[*' ; then mv -v Laverne\ \&\ Shirley\ -\ \[* "$TV_SYM"/"Laverne & Shirley"/              ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Remington\ Steele\ -\ \[*' ; then mv -v Remington\ Steele\ -\ \[* "$TV_SYM"/"Remington Steele"/              ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Gilligans\ Island\ -\ \[*' ; then mv -v Gilligans\ Island\ -\ \[* "$TV_SYM"/"Gilligan's Island"/              ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Charmed' ; then mv -v Charmed "$TV_SYM"/" y"/              ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Charmed\ -\ \[*' ; then mv -v Charmed\ -\ \[* "$TV_SYM"/"Charmed"/              ; else false ; fi && echo -e "\n\n"
