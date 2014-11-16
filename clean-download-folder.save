@@ -1,0 +1,126 @@
+#!/bin/bash
+# Clean the download folder from junk
+SCRIPT_NAME="clean-download-folder"
+PID=$$
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+# Run <script_name> -c to check if the script is running
+if [[ "$1" = "-c"* ]] ;then _LOCK_CHECK ; fi
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+#########################################################
+# Fix Permissions in Download dir
+
+CYAN
+echo "Fixing Permissions"
+COLOR_OFF
+
+sudo find "$TV_DOWNLOAD_DIR"/ -maxdepth 2 -exec sudo chmod 777 {} \; -exec sudo chown abz {} \; 2>/dev/null
+GREEN
+echo "[*] Done"
+COLOR_OFF
+
+echo ""
+
+#-----------------------------------------------------------------------
+# Clean All Junk files from Download dir
+
+CYAN
+echo "Cleaning Junk"
+COLOR_OFF
+
+sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
+-o -iname "*.log"  \
+-o -iname "*.jp*g"  \
+-o -iname "*.png"  \
+-o -iname "*.txt"  \
+-o -iname "*.md5"  \
+-o -iname "*.bmp"  \
+-o -iname "*.gif"  \
+-o -iname "*.nfo"  \
+-o -iname "*.url"  \
+-o -iname "*.htm"  \
+-o -iname "*.html"  \
+-o -iname "*.smi"  \
+-o -iname "*.rtf"  \
+-o -iname "*ara.srt"  \
+-o -iname "*arabic.srt"  \
+-o -iname "*bulgarian.srt"  \
+-o -iname "*chi.srt"  \
+-o -iname "*croatian.srt"  \
+-o -iname "*chs.srt"  \
+-o -iname "*czech.srt"  \
+-o -iname "*dan.srt"  \
+-o -iname "*danish.srt"  \
+-o -iname "*dut.srt"  \
+-o -iname "*dutch.srt"  \
+-o -iname "*stonian.srt"  \
+-o -iname "*fin.srt"  \
+-o -iname "*finnish.srt"  \
+-o -iname "*fre.srt"  \
+-o -iname "*french.srt"  \
+-o -iname "*gre.srt"  \
+-o -iname "*greek.srt"  \
+-o -iname "*ger.srt"  \
+-o -iname "*german.srt"  \
+-o -iname "*hrv.srt"  \
+-o -iname "*hun.srt"  \
+-o -iname "*hungarian.srt"  \
+-o -iname "*ndonesian.srt"  \
+-o -iname "*ita.srt"  \
+-o -iname "*per.srt"  \
+-o -iname "*por-BR.srt"  \
+-o -iname "*portuguese.srt"  \
+-o -iname "*norwegian.srt"  \
+-o -iname "*nor.srt"  \
+-o -iname "*por.srt"  \
+-o -iname "*polish.srt"  \
+-o -iname "*rum.srt"  \
+-o -iname "*romanian.srt"  \
+-o -iname "*slv.srt"  \
+-o -iname "*spa.srt"  \
+-o -iname "*spanish.srt"  \
+-o -iname "*srp.srt"  \
+-o -iname "*swe.srt"  \
+-o -iname "*swedish.srt"  \
+-o -iname "*serbian.srt"  \
+-o -iname "*tur.srt"  \
+-o -iname "*turkish.srt"  \
+-o -iname "*vie.srt"  \
+-o -iname "*vietnamese.srt"  \
+-o -iname "*sample.*"  \
+-o -iname "RARBG.com.mp4"  \
+-o -iname "RARBG.com.mkv"  \
+-o -iname "RARBG.com.avi"  \
+-o -iname "ETRG.mp4"  \
+-o -iname "ETRG.mkv"  \
+-o -iname "ETRG.avi" \) -exec rm {} \; \
+-o -type d -iname "sample" -exec rm -r {} \; 2>/dev/null \
+-o -type d -not -iname "zNew Folder" -exec rmdir {} \; 2>/dev/null \
+-o -type f -name "*.srt" -exec sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d;/Support us and become VIP member/d;/to remove all ads from OpenSubtitles.org/d;/Advertise your product or brand here/d;/contact www.OpenSubtitles.org today/d' {} \; -exec echo {} \;
+
+GREEN
+echo "[*] Done"
+COLOR_OFF
+
+#-----------------------------------------------------------------------
+
+# Mediainfo
+ export DL_DIR=YES ; /usr/local/bin/mediainfo-helper
+
+
+#########################################################
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF
+
