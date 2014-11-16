@@ -21,78 +21,169 @@ _LOCK_ON
 # Fix Permissions
 sudo find "$TV_DOWNLOAD_DIR"/ -exec sudo chmod 777 {} \; -exec sudo chown abz {} \; 2>/dev/null
 
+
+
+
+
+
+
+
+
+
+
+
+
 # Junk
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.directory" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname ".*.log" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.jp*g" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.png" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.txt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.md5" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.bmp" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.gif" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.nfo" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.url" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.htm" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.html" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.smi" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.rtf" -exec sudo rm {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
+-o -iname "*.log" \
+-o -iname "*.jp*g"  \
+-o -iname "*.png"  \
+-o -iname "*.txt"  \
+-o -iname "*.md5"  \
+-o -iname "*.bmp"  \
+-o -iname "*.gif"  \
+-o -iname "*.nfo"  \
+-o -iname "*.url"  \
+-o -iname "*.htm"  \
+-o -iname "*.html"  \
+-o -iname "*.smi"  \
+-o -iname "*.rtf"  \
+-o -iname "*ara.srt"  \
+-o -iname "*arabic.srt"  \
+-o -iname "*bulgarian.srt"  \
+-o -iname "*chi.srt"  \
+-o -iname "*croatian.srt"  \
+-o -iname "*chs.srt"  \
+-o -iname "*czech.srt"  \
+-o -iname "*dan.srt"  \
+-o -iname "*danish.srt"  \
+-o -iname "*dut.srt"  \
+-o -iname "*dutch.srt"  \
+-o -iname "*stonian.srt"  \
+-o -iname "*fin.srt"  \
+-o -iname "*finnish.srt"  \
+-o -iname "*fre.srt"  \
+-o -iname "*french.srt"  \
+-o -iname "*gre.srt"  \
+-o -iname "*greek.srt"  \
+-o -iname "*ger.srt"  \
+-o -iname "*german.srt"  \
+-o -iname "*hrv.srt"  \
+-o -iname "*hun.srt"  \
+-o -iname "*hungarian.srt"  \
+-o -iname "*ndonesian.srt"  \
+-o -iname "*ita.srt"  \
+-o -iname "*per.srt"  \
+-o -iname "*por-BR.srt"  \
+-o -iname "*portuguese.srt"  \
+-o -iname "*norwegian.srt"  \
+-o -iname "*nor.srt"  \
+-o -iname "*por.srt"  \
+-o -iname "*polish.srt"  \
+-o -iname "*rum.srt"  \
+-o -iname "*romanian.srt"  \
+-o -iname "*slv.srt"  \
+-o -iname "*spa.srt"  \
+-o -iname "*spanish.srt"  \
+-o -iname "*srp.srt"  \
+-o -iname "*swe.srt"  \
+-o -iname "*swedish.srt"  \
+-o -iname "*serbian.srt"  \
+-o -iname "*tur.srt"  \
+-o -iname "*turkish.srt"  \
+-o -iname "*vie.srt"  \
+-o -iname "*vietnamese.srt"  \
+-o -iname "*sample.*"  \
+-o -iname "RARBG.com.mp4"  \
+-o -iname "RARBG.com.mkv"  \
+-o -iname "RARBG.com.avi"  \
+-o -iname "ETRG.mp4"  \
+-o -iname "ETRG.mkv"  \
+-o -iname "ETRG.avi" \) -exec rm -v {} \;
 
-# Subs
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ara.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*arabic.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*bulgarian.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*chi.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*croatian.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*chs.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*czech.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*dan.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*danish.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*dut.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*dutch.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*stonian.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*fin.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*finnish.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*fre.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*french.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*gre.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*greek.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ger.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*german.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*hrv.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*hun.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*hungarian.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ndonesian.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ita.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*per.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*por-BR.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*portuguese.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*norwegian.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*nor.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*por.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*polish.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*rum.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*romanian.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*slv.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*spa.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*spanish.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*srp.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*swe.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*swedish.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*serbian.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*tur.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*turkish.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*vie.srt" -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -iname "*vietnamese.srt" -exec sudo rm {} \; 2>/dev/null
 
-# Samples
-sudo find "$TV_DOWNLOAD_DIR"/ -type d -iname "sample" -exec sudo rm -r {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "*sample.*" -size -200M -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "RARBG.com.mp4" -size -200M -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "RARBG.com.mkv" -size -200M -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "RARBG.com.avi" -size -200M -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "ETRG.mp4" -size -200M -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "ETRG.mkv" -size -200M -exec sudo rm {} \; 2>/dev/null
-sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "ETRG.avi" -size -200M -exec sudo rm {} \; 2>/dev/null
+ -type d -iname "sample" -exec sudo rm -r {} \; 2>/dev/null
+
+
+
+
+
+
+
+
+
+### Junk
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.directory" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname ".*.log" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.jp*g" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.png" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.txt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.md5" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.bmp" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.gif" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.nfo" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.url" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.htm" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.html" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.smi" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*.rtf" -exec sudo rm {} \; 2>/dev/null
+
+### Subs
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ara.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*arabic.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*bulgarian.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*chi.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*croatian.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*chs.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*czech.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*dan.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*danish.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*dut.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*dutch.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*stonian.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*fin.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*finnish.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*fre.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*french.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*gre.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*greek.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ger.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*german.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*hrv.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*hun.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*hungarian.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ndonesian.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*ita.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*per.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*por-BR.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*portuguese.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*norwegian.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*nor.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*por.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*polish.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*rum.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*romanian.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*slv.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*spa.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*spanish.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*srp.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*swe.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*swedish.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*serbian.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*tur.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*turkish.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*vie.srt" -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -iname "*vietnamese.srt" -exec sudo rm {} \; 2>/dev/null
+
+### Samples
+##sudo find "$TV_DOWNLOAD_DIR"/ -type d -iname "sample" -exec sudo rm -r {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "*sample.*" -size -200M -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "RARBG.com.mp4" -size -200M -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "RARBG.com.mkv" -size -200M -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "RARBG.com.avi" -size -200M -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "ETRG.mp4" -size -200M -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "ETRG.mkv" -size -200M -exec sudo rm {} \; 2>/dev/null
+##sudo find "$TV_DOWNLOAD_DIR"/ -type f -iname "ETRG.avi" -size -200M -exec sudo rm {} \; 2>/dev/null
 
 # My folders
 sudo find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "zNew Folder" -exec sudo rmdir {} \; 2>/dev/null
