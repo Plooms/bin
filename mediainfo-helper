@@ -15,7 +15,10 @@ echo ""
 if [ "$DL_DIR"x = "YES"x ]
 then
 cd "$TV_DOWNLOAD_DIR" && find . -maxdepth 2 -type f -size +100M -exec mediainfo-helper2 {} \;
-echo "	[*] Finished searching in Download DIR"
+GREEN
+echo "[*] Finished searching in Download DIR"
+COLOR_OFF
+
 else
         echo ""
 	echo "Not Searching in Download DIR"
@@ -26,7 +29,9 @@ fi
 if [ "$MOVIE_DIR"x = "YES"x ]
 then
 cd "$MOVIE_SYM" && find . -type f -size +100M -exec mediainfo-helper2 {} \;
-echo "	[*] Finished searching in Movie DIR"
+GREEN
+echo "[*] Finished searching in Movie DIR"
+COLOR_OFF
 
 else
         echo ""
