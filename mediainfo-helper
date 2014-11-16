@@ -9,5 +9,6 @@ source /usr/local/bin/VAR-SCRIPT
 
 echo "Searching for Videos without mediainfo files"
 
-cd "$MOVIE_SYM" && find . -type f -size +100M -exec mediainfo-helper2 {} \;
+#cd "$MOVIE_SYM" && find . -type f -size +100M -exec mediainfo-helper2 {} \;
 
+cd "$TV_DOWNLOAD_DIR" && find . -maxdepth 2 -type f -size +100M -exec mediainfo-helper2 {} \;
