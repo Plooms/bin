@@ -22,7 +22,7 @@ COLOR_OFF
 else
         echo ""
 	echo "Not Searching in Download DIR"
-        echo "USAGE: export DL_DIR=YES"
+        echo "	USAGE: export DL_DIR=YES"
         echo ""
 fi
 
