@@ -23,6 +23,7 @@ else
         echo ""
 	echo "Not Searching in Download DIR"
         echo "USAGE: export DL_DIR=YES"
+        echo ""
 fi
 
 # Find Files in Movie dir and create mediainfo logs for them
@@ -37,6 +38,7 @@ else
         echo ""
 	echo "Not Searching in Movie DIR"
         echo "	USAGE: export MOVIE_DIR=YES"
-
+        echo ""
+	
 
 fi
