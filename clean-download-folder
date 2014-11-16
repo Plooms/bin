@@ -5,7 +5,6 @@ PID=$$
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
-set -x
 
 # Run <script_name> -c to check if the script is running
 if [[ "$1" = "-c"* ]] ;then _LOCK_CHECK ; fi
@@ -18,24 +17,12 @@ _LOCK_ON
 
 #########################################################
 
-# Fix Permissions
+# Fix Permissions in Download dir
 sudo find "$TV_DOWNLOAD_DIR"/ -maxdepth 2 -exec sudo chmod 777 {} \; -exec sudo chown abz {} \; 2>/dev/null
 
-
-
-
-
-
-
-
-
-
-
-
-
-# Junk
+# Clean All Junk files from Download dir
 sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
--o -iname "*.log" \
+-o -iname "*.log"  \
 -o -iname "*.jp*g"  \
 -o -iname "*.png"  \
 -o -iname "*.txt"  \
@@ -99,15 +86,14 @@ sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
 -o -iname "RARBG.com.avi"  \
 -o -iname "ETRG.mp4"  \
 -o -iname "ETRG.mkv"  \
--o -iname "ETRG.avi" \) -exec rm -v {} \; \
--o -type d -iname "sample" -exec sudo rm -r {} \; 2>/dev/null \
--o -type d -not -iname "zNew Folder" -exec sudo rmdir {} \; 2>/dev/null
+-o -iname "ETRG.avi" \) -exec rm {} \; \
+-o -type d -iname "sample" -exec rm -r {} \; 2>/dev/null \
+-o -type d -not -iname "zNew Folder" -exec rmdir {} \; 2>/dev/null \
+-o -type f -name "*.srt" -exec sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d;/Support us and become VIP member/d;/to remove all ads from OpenSubtitles.org/d;/Advertise your product or brand here/d;/contact www.OpenSubtitles.org today/d' {} \; -exec echo {} \;
 
 # Mediainfo
 export DL_DIR=YES ; /usr/local/bin/mediainfo-helper
 
-echo "Fixing Subtitles, If any!!!"
-sudo find "$TV_DOWNLOAD_DIR"/ -type f -name "*.srt" -exec sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d;/Support us and become VIP member/d;/to remove all ads from OpenSubtitles.org/d;/Advertise your product or brand here/d;/contact www.OpenSubtitles.org today/d' {} \; -exec echo {} \;
 
 
 #########################################################
