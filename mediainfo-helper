@@ -9,9 +9,25 @@ source /usr/local/bin/VAR-SCRIPT
 
 echo "Searching for Videos without mediainfo files"
 
-# Find Files in TV download dir and create mediainfo logs for them
+
+
+# Find Movie Files in Dwnload dir and create mediainfo logs for them
+if [ "$DL_DIR"x = "YES"x ]
+then
 cd "$TV_DOWNLOAD_DIR" && find . -maxdepth 2 -type f -size +100M -exec mediainfo-helper2 {} \;
 
+else
+        echo ""
+        echo "USAGE: export MOVIE_DIR=YES    |    export DL_DIR=YES"
+fi
+
 # Find Files in Movie dir and create mediainfo logs for them
+if [ "$MOVIE_DIR"x = "YES"x ]
+then
 cd "$MOVIE_SYM" && find . -type f -size +100M -exec mediainfo-helper2 {} \;
 
+else
+        echo ""
+        echo "USAGE: export MOVIE_DIR=YES    |    export DL_DIR=YES"
+
+fi
