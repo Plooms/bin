@@ -31,7 +31,7 @@ echo "	[*] Finished searching in Movie DIR"
 else
         echo ""
 	echo "Not Searching in Movie DIR"
-        echo "USAGE: export MOVIE_DIR=YES"
+        echo "	USAGE: export MOVIE_DIR=YES"
 
 
 fi
