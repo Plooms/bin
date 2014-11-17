@@ -14,7 +14,7 @@ echo ""
 # Find Movie Files in Dwnload dir and create mediainfo logs for them
 if [ "$DL_DIR"x = "YES"x ]
 then
-cd "$TV_DOWNLOAD_DIR" && find . -maxdepth 2 -type f -size +100M -exec /usr/local/bin/mediainfo-helper2 {} \;
+cd "$TV_DOWNLOAD_DIR" && find . -mindepth 2 -maxdepth 2 -type f -size +100M -exec /usr/local/bin/mediainfo-helper2 {} \;
 GREEN
 echo "[*] Finished searching in Download DIR"
 COLOR_OFF
