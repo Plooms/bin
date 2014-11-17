@@ -18,7 +18,6 @@ Other/Android/.*
 Other/Apps/NO-SYNC/*/*
 Other/Downloads/Download-folder/*
 Other/Downloads/temp*/*
-Other/FTP-Share/*
 Other/Shows-clean/*
 .Trash*
 .directory
