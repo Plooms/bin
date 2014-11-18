@@ -109,7 +109,7 @@ clear
 	    sudo wget --output-document=/etc/pacman.d/mirrorlist.all https://www.archlinux.org/mirrorlist/all/ && \
 	    sudo mv /etc/pacman.d/mirrorlist.all /etc/pacman.d/mirrorlist && \
 	    sudo sed '/^#\S/ s|#||' -i /etc/pacman.d/mirrorlist && \
-	    sudo reflector -l 10 --sort rate --save /etc/pacman.d/mirrorlist && \
+	    sudo reflector -l 3 --sort rate --save /etc/pacman.d/mirrorlist && \
 	    cat /etc/pacman.d/mirrorlist
 fi
 
