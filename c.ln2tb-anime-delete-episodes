@@ -27,7 +27,7 @@ if [ "$confirmation" = "y" ]
 then 
 
 sudo rm -rv $TV_SYM2/"$name2"/"$name2"* ; \
-sudo rm -rv $TV_SYM2/"$name2"/*.{avi,mkv,mp4,ts,AVI,MKV,MP4,TS} ; \
+sudo rm -rv $TV_SYM2/"$name2"/*.{avi,mkv,mp4,ts,vob,AVI,MKV,MP4,TS,VOB} ; \
 
 else _CANCEL_MSG
 fi
