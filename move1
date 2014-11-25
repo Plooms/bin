@@ -1087,3 +1087,4 @@ if ls -U | grep -E 'Remington\ Steele\ -\ \[*' ; then mv -v Remington\ Steele\ -
 if ls -U | grep -E 'Gilligans\ Island\ -\ \[*' ; then mv -v Gilligans\ Island\ -\ \[* "$TV_SYM"/"Gilligan's Island"/              ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Charmed' ; then mv -v Charmed "$TV_SYM"/" y"/              ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Charmed\ -\ \[*' ; then mv -v Charmed\ -\ \[* "$TV_SYM"/"Charmed"/              ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Dallas\ -\ \[*' ; then mv -v Dallas\ -\ \[* "$TV_SYM"/"Dallas"/              ; else false ; fi && echo -e "\n\n"
