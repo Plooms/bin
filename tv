@@ -8,6 +8,8 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
+sudo chmod 777 * ; sudo chown abz:abz *
+
 PURPLE
 
 tvnamer -c ~/.tvnamer.json *
