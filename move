@@ -405,3 +405,4 @@ if ls -U | grep -E 'Gilligans\ Island\ -\ \[*' >/dev/null 2>&1 ; then mv -v Gill
 if ls -U | grep -E 'Charmed\ -\ \[*' >/dev/null 2>&1 ; then mv -v Charmed\ -\ \[* "$TV_SYM"/"Charmed"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Dallas\ -\ \[*' >/dev/null 2>&1 ; then mv -v Dallas\ -\ \[* "$TV_SYM"/"Dallas"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Comedy\ Central\ Presents\ -\ \[*' >/dev/null 2>&1 ; then mv -v Comedy\ Central\ Presents\ -\ \[* "$TV_SYM"/"Comedy Central Presents"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[*' >/dev/null 2>&1 ; then mv -v Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[* "$TV_SYM"/"Law & Order: Special Victims Unit"/              2>/dev/null ; else false ; fi && echo -e "\n\n"

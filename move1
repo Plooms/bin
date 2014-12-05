@@ -1089,3 +1089,4 @@ if ls -U | grep -E 'Charmed' ; then mv -v Charmed "$TV_SYM"/" y"/              ;
 if ls -U | grep -E 'Charmed\ -\ \[*' ; then mv -v Charmed\ -\ \[* "$TV_SYM"/"Charmed"/              ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Dallas\ -\ \[*' ; then mv -v Dallas\ -\ \[* "$TV_SYM"/"Dallas"/              ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Comedy\ Central\ Presents\ -\ \[*' ; then mv -v Comedy\ Central\ Presents\ -\ \[* "$TV_SYM"/"Comedy Central Presents"/              ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[*' ; then mv -v Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[* "$TV_SYM"/"Law & Order: Special Victims Unit"/              ; else false ; fi && echo -e "\n\n"
