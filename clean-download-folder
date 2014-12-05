@@ -31,6 +31,7 @@ sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
 -o -iname "*.bmp"  \
 -o -iname "*.gif"  \
 -o -iname "*.nfo"  \
+-o -iname "*.db"  \
 -o -iname "*.url"  \
 -o -iname "*.htm"  \
 -o -iname "*.html"  \
