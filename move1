@@ -1090,3 +1090,7 @@ if ls -U | grep -E 'Charmed\ -\ \[*' ; then mv -v Charmed\ -\ \[* "$TV_SYM"/"Cha
 if ls -U | grep -E 'Dallas\ -\ \[*' ; then mv -v Dallas\ -\ \[* "$TV_SYM"/"Dallas"/              ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Comedy\ Central\ Presents\ -\ \[*' ; then mv -v Comedy\ Central\ Presents\ -\ \[* "$TV_SYM"/"Comedy Central Presents"/              ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[*' ; then mv -v Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[* "$TV_SYM"/"Law & Order: Special Victims Unit"/              ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Law\ \&\ Order\ -\ \[*' ; then mv -v Law\ \&\ Order\ -\ \[* "$TV_SYM"/"Law & Order"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[*' ; then mv -v Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[* "$TV_SYM"/"Law & Order: Special Victims Unit"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Law\ \&\ Order\ Criminal\ Intent\ -\ \[*' ; then mv -v Law\ \&\ Order\ Criminal\ Intent\ -\ \[* "$TV_SYM"/"Law & Order: Criminal Intent"/ ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Law\ \&\ Order\ Los\ Angeles\ -\ \[*' ; then mv -v Law\ \&\ Order\ Los\ Angeles\ -\ \[* "$TV_SYM"/"Law & Order: Los Angeles"/ ; else false ; fi && echo -e "\n\n"
