@@ -13,23 +13,46 @@ CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 
 if echo "$CURRENTWIN" | grep "Mozilla Firefox" >/dev/null 
 then
+  if [ "$MIN"x = "YES"x ]
+  then
 notify-send "Close Window" "Minimizied Firefox"
 wmctrl -a firefox ; xdotool windowminimize $(xdotool getactivewindow)
+   else 
+xte "keydown Alt_L" "key F4" "keyup Alt_L"
+  fi
 
 elif echo "$CURRENTWIN" | grep "DownThemAll" >/dev/null 
 then
+  if [ "$MIN"x = "YES"x ]
+  then
 notify-send "Close Window" "Minimizied DownThemAll"
 wmctrl -a DownThemAll ; xdotool windowminimize $(xdotool getactivewindow)
+   else 
+xte "keydown Alt_L" "key F4" "keyup Alt_L"
+  fi
+
 
 elif echo "$CURRENTWIN" | grep "Friend - Salman"  >/dev/null
 then
+  if [ "$MIN"x = "YES"x ]
+  then
 notify-send "Close Window" "Minimized Pidgin"
 wmctrl -a salman ; xdotool windowminimize $(xdotool getactivewindow)
+   else 
+xte "keydown Alt_L" "key F4" "keyup Alt_L"
+  fi
+
 
 elif echo "$CURRENTWIN" | grep "KRDC"  >/dev/null
 then
+  if [ "$MIN"x = "YES"x ]
+  then
 notify-send "Close Window" "Minimized KRDC"
 wmctrl -a krdc ; xdotool windowminimize $(xdotool getactivewindow)
+   else 
+xte "keydown Alt_L" "key F4" "keyup Alt_L"
+  fi
+
 
 else
 xte "keydown Alt_L" "key F4" "keyup Alt_L"
