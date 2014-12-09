@@ -1093,4 +1093,3 @@ if ls -U | grep -E 'Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[*' ; then mv -v
 if ls -U | grep -E 'Law\ \&\ Order\ -\ \[*' ; then mv -v Law\ \&\ Order\ -\ \[* "$TV_SYM"/"Law & Order"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[*' ; then mv -v Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[* "$TV_SYM"/"Law & Order: Special Victims Unit"/ ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Law\ \&\ Order\ Criminal\ Intent\ -\ \[*' ; then mv -v Law\ \&\ Order\ Criminal\ Intent\ -\ \[* "$TV_SYM"/"Law & Order: Criminal Intent"/ ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Law\ \&\ Order\ Los\ Angeles\ -\ \[*' ; then mv -v Law\ \&\ Order\ Los\ Angeles\ -\ \[* "$TV_SYM"/"Law & Order: Los Angeles"/ ; else false ; fi && echo -e "\n\n"
