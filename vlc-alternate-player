@@ -14,17 +14,14 @@ if [ -f "$FILENAME"*.xspf ]
 
 then 
 
-[ -f "$FILENAME"*.srt ] && notify-send "Media" "Subtitle Found" || notify-send "Media" "Subtitle Not Found"
-echo SRT
-[ -f "$FILENAME"*.sub ] && notify-send "Media" "Subtitle Found" || notify-send "Media" "Subtitle Not Found"
-echo SUB
-vlc "$FILENAME"*.xspf --play-and-exit
+	[ -f "$FILENAME"*.srt -o -f "$FILENAME"*.sub ] || notify-send "Media" "Subtitle Not Found"
+
+	vlc "$FILENAME"*.xspf --play-and-exit
 
 else 
 
-[ -f "$FILENAME"*.srt ] && notify-send "Media" "Subtitle Found" || notify-send "Media" "Subtitle Not Found"
-[ -f "$FILENAME"*.sub ] && notify-send "Media" "Subtitle Found" || notify-send "Media" "Subtitle Not Found"
+	[ -f "$FILENAME"*.srt -o -f "$FILENAME"*.sub ] || notify-send "Media" "Subtitle Not Found"
 
-vlc "$1" --play-and-exit
+	vlc "$1" --play-and-exit
 
 fi
