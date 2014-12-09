@@ -70,7 +70,7 @@ echo -ne "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
 GREEN
 echo -ne "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
 GREEN
-echo -ne "Bitrate:	 ${WHITE}"$BITRATE" ${COLOR_OFF}"
+echo -ne "Bitr8:	${WHITE}"$BITRATE" ${COLOR_OFF}"
 GREEN
 echo -ne "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
 GREEN

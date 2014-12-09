@@ -41,7 +41,7 @@ else
 fi
 
 mysql -uroot -p"$DB_PASSWORD" movies << EOF
-INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date,Subtitle) 
+INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date,Subtitle, Bitrate) 
 VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF", "$DATE", "$SUBTITLE", "$BITRATE")
 ON DUPLICATE KEY UPDATE 
     Size_MB = "$SIZE",
