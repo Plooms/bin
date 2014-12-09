@@ -18,9 +18,12 @@ then
 echo SRT
 [ -f "$FILENAME"*.sub ] && notify-send "Media" "Subtitle Found" || notify-send "Media" "Subtitle Not Found"
 echo SUB
-#vlc "$FILENAME"*.xspf --play-and-exit
+vlc "$FILENAME"*.xspf --play-and-exit
 
 else 
+
+[ -f "$FILENAME"*.srt ] && notify-send "Media" "Subtitle Found" || notify-send "Media" "Subtitle Not Found"
+[ -f "$FILENAME"*.sub ] && notify-send "Media" "Subtitle Found" || notify-send "Media" "Subtitle Not Found"
 
 vlc "$1" --play-and-exit
 
