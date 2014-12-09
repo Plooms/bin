@@ -55,11 +55,12 @@ NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where N
 SIZE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Size_MB from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
 RES1="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 RES2="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+BITRATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Bitrate from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 DEF="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Definition from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Notes from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 DATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Date from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 #################################
 
 GREEN
@@ -69,11 +70,13 @@ echo -ne "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
 GREEN
 echo -ne "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
 GREEN
+echo -ne "Bitrate:	 ${WHITE}"$BITRATE" ${COLOR_OFF}"
+GREEN
 echo -ne "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
 GREEN
 echo -ne "Watched: ${WHITE}$WATCHED"
 GREEN
-[ -n "$NOTES" ] && echo -e "Notes:	 ${CYAN}$NOTES"
+echo -ne "Notes:	 ${CYAN}$NOTES"
 YELLOW
 
 
@@ -86,6 +89,7 @@ Path: $i
 Name:  $NAME
 Size:  $SIZE
 Res: $RES1 x "$RES2"p  $DEF
+Bitrate: $BITRATE
 Watched: $WATCHED
 -----------################-------------
 " >> "$TMP_LOG1"
@@ -139,7 +143,7 @@ fi
 
 
 if [ -n "$TERM_LAUNCH" ]
-then sleep 1000
+then sleep 10000
 fi
 ;;
 1)
