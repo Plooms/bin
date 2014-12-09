@@ -24,6 +24,7 @@ DATE="$(stat "$1" | grep Modify | awk '{print $2}')"
 SIZE="$(du -m "$1" | awk '{print $1}')"
 SUB="$( echo $1 | rev |cut -b 5- | rev )"
 BITRATE="$( grep "bit rate" "$1".log |cut -d: -f2 )"
+DURATION="$( grep "Duration" "$1".log |cut -d: -f2 )"
 NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g' | head -n1)" 2>/dev/null
 
@@ -41,8 +42,8 @@ else
 fi
 
 mysql -uroot -p"$DB_PASSWORD" movies << EOF
-INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date,Subtitle, Bitrate) 
-VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF", "$DATE", "$SUBTITLE", "$BITRATE")
+INSERT INTO movies (Name, Size_MB, ResWidth, ResHeight, Watched, Notes, Definition, Date, Subtitle, Bitrate, Duration) 
+VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF", "$DATE", "$SUBTITLE", "$BITRATE", "$DURATION")
 ON DUPLICATE KEY UPDATE 
     Size_MB = "$SIZE",
     ResWidth = "$RES1",
@@ -52,7 +53,8 @@ ON DUPLICATE KEY UPDATE
     Definition = "$DEF",
     Date = "$DATE",
     Subtitle = "$SUBTITILE",
-    Bitrate = "$BITRATE";
+    Bitrate = "$BITRATE",
+    Duration = "$DURATION";
 EOF
 
 GREEN

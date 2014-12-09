@@ -56,6 +56,7 @@ SIZE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Size_MB from movies wher
 RES1="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 RES2="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 BITRATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Bitrate from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+DURATION="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Duration from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 DEF="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Definition from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Notes from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
 DATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Date from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
@@ -71,6 +72,8 @@ GREEN
 echo -ne "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
 GREEN
 echo -ne "Rate:	${WHITE}"$BITRATE" ${COLOR_OFF}"
+GREEN
+echo -ne "Time:	${WHITE}"$DURATION" ${COLOR_OFF}"
 GREEN
 echo -ne "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
 GREEN
@@ -90,6 +93,7 @@ Name:  $NAME
 Size:  $SIZE
 Res: $RES1 x "$RES2"p  $DEF
 Bitrate: $BITRATE
+Time: $DURATION
 Watched: $WATCHED
 -----------################-------------
 " >> "$TMP_LOG1"
