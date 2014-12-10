@@ -1,6 +1,6 @@
 #!/bin/bash
-# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
-SCRIPT_NAME="ln2tb"
+# (Add - Move - Delete - Rename - Change - Find) and do lots of shit to the Media Collection
+SCRIPT_NAME="c.ln2tb-movie-find-single"
 PID=$$
 
 
@@ -8,54 +8,152 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
+# Time Calculation
+_START_TIME
 
-answer=$(dialog --stdout  --extra-button --extra-label "Back" --menu \
-"Choose the command You Wish to Execute" 14 50 50 \
-"1- Add" "" \
-"2- Delete" "" \
-"3- Find & Check Resolution" "" \
-"4- Edit Videos" "" \
-"5- Check for Duplicates" "" \
-"6- Check Mounts" "" )
+TMP="$(mktemp)"
+TMP2="$(mktemp)"
+TMP_LOG1="$(mktemp)"
+
+
+if [ -n "$TERM_LAUNCH" ]
+then FILE_NAME="$(xclip -o)"
+elif [ -n "$SCRIPT_LAUNCH" ]
+then FILE_NAME="$1"
+else
+FILE_NAME=$(dialog --extra-button --extra-label "Back" --stdout  --clear --inputbox \
+"Please Enter the name of the Movie" 10 50 )
+fi
 
 
 
 case $? in
 0)
 
-if [ "$answer" = "1- Add" ]
-then c.ln2tb-add
+# To remove whitespaces from the beginning & the end
+FILE_NAME="$(echo $FILE_NAME | sed "s/^[ \t]*//;s/[ \t]*$//")"
 
 
-elif [ "$answer" = "2- Delete" ]
-then c.ln2tb-delete
+# To get a filename suitable for mysql (no '(' , or ')' , or ' ' ' , or whtespace and convert '&' to '%'  and no " ? " or " : ")
+MOVIE_NAME="$(echo $FILE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//;s/&/%/g;s/?//g;s/://g")"
 
+mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss > $TMP
 
-elif [ "$answer" = "3- Find & Check Resolution" ]
-then c.ln2tb-find
-
-
-elif [ "$answer" = "4- Edit Videos" ]
-then c.ln2tb-video
-
-
-elif [ "$answer" = "5- Check for Duplicates" ]
-then c.ln2tb-dupes
-
-
-elif [ "$answer" = "6- Check Mounts" ]
-then c.ln2tb-mount-check
+while read -r FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
 
 
 
+
+
+
+for i in "${movie_array[@]}"
+do
+
+#################################
+MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+SIZE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Size_MB from movies where Name LIKE '%$MOVIE_NAME%'" -ss) MB"
+RES1="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+RES2="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+BITRATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Bitrate from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+DURATION="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Duration from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+DEF="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Definition from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Notes from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+DATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Date from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
+#################################
+
+GREEN
+echo -ne "Name:	 ${WHITE}$NAME${COLOR_OFF}"
+GREEN
+echo -ne "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
+GREEN
+echo -ne "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
+GREEN
+echo -ne "Rate:	${WHITE}"$BITRATE" ${COLOR_OFF}"
+GREEN
+echo -ne "Time:	${WHITE}"$DURATION" ${COLOR_OFF}"
+GREEN
+echo -ne "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
+GREEN
+echo -ne "Watched: ${WHITE}$WATCHED"
+GREEN
+echo -ne "Notes:	 ${CYAN}$NOTES"
+YELLOW
+
+
+
+
+####### For the log file#########
+if [[ "$WATCHED" = *"YES" ]] ; then WATCHED="(YES)";else WATCHED="(NO)";fi
+echo -e "
+Path: $i
+Name:  $NAME
+Size:  $SIZE
+Res: $RES1 x "$RES2"p  $DEF
+Bitrate: $BITRATE
+Time: $DURATION
+Watched: $WATCHED
+-----------################-------------
+" >> "$TMP_LOG1"
+####### For the log file#########
+
+done
+
+
+
+#---#
+if [ -n "$TERM_LAUNCH" ]
+then 
+echo "------------------------------------------------"
+echo ""
+fi
+
+
+if [ -n "$SCRIPT_LAUNCH" ]
+then echo -n
+else
+
+#################################
+for i in "${movie_array[@]}"
+do
+MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
+NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
+echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
+done
+
+#################################
+
+if [ -n "$TERM_LAUNCH" ]
+then
+YELLOW
+echo "------------------------------------------------"
+fi
+
+
+#echo "Log File:   sudo geany $TMP_LOG1"
+
+COLOR_OFF
+
+
+# Time Calculation
+_END_TIME
 
 fi
 
+
+
+if [ -n "$TERM_LAUNCH" ]
+then sleep 10000
+fi
 ;;
 1)
-_CANCEL_MSG 
+_CANCEL_MSG ;; 
 
-;; 
 3)
-exit 1 ;;
+ln2tb ;;
+
 esac
