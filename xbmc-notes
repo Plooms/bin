@@ -17,14 +17,14 @@ _START_TIME
 _LOCK_ON
 
 #########################################################
-
+notify-send ass ass
 [ -z "$1" ] && echo "No video specified" && exit 1 
 
 # To get the filename without extensions
 FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
 NOTE="$FILENAME-NOTES.txt"
 
-sudo nano "$NOTE"
+terminator -x sudo nano "$NOTE"
 sudo chown "$USERNAME" "$NOTE"
 sudo chmod 777 "$NOTE"
 
