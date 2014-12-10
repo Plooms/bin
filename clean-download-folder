@@ -119,7 +119,7 @@ CYAN
 echo "Fixing Permissions"
 COLOR_OFF
 
-sudo find "$TV_DOWNLOAD_DIR"/ -maxdepth 2 -exec sudo chmod 777 {} \; -exec sudo chown abz {} \; 2>/dev/null
+sudo find "$TV_DOWNLOAD_DIR"/ -maxdepth 2 -exec sudo chmod 777 {} \; -exec sudo chown "$USERNAME":"$USERNAME" {} \; 2>/dev/null
 GREEN
 echo "[*] Finished Fixing Permissions"
 COLOR_OFF

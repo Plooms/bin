@@ -1,5 +1,5 @@
 #!/bin/bash
-#script to convert all video files in the current directory  By: ABZ v12.3
+#script to convert all video files in the current directory
 SCRIPT_NAME="c.ln2tb-video-convert"
 PID=$$
 

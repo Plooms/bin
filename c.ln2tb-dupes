@@ -1,5 +1,5 @@
 #!/bin/bash
-# A script for finding Duplicates in Media By: ABZ v7.5
+# A script for finding Duplicates in Media
 SCRIPT_NAME="c.ln2tb-dupes"
 PID=$$
 
