@@ -18,10 +18,11 @@ _LOCK_ON
 
 #########################################################
 
+[ -z "$1" ] && echo "No video specified" && exit 1 
 
 # To get the filename without extensions
 FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
-NOTE=""$FILENAME"-NOTES.txt"
+NOTE="$FILENAME-NOTES.txt"
 
 sudo nano "$NOTE"
 sudo chown "$USERNAME" "$NOTE"
