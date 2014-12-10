@@ -14,7 +14,7 @@ wmctrl -l |grep SMPlayer
 
 if [ "$?" = "0" ]
 then
-echo "$(date |sed 's/AST 2014//g' )<-> ($(wmctrl -l |grep SMPlayer |cut -d" " -f5- | sed 's/ - SMPlayer2//g' |sed "s/'//g"  ))" > "$PLAYER_LAST_WATCHED"/"$DAY0"
+echo "$(date |sed 's/AST 2014//g' )<-> ($(wmctrl -l |grep SMPlayer |cut -d" " -f5- | sed 's/ - SMPlayer2//g' |sed "s/'//g"  ))" > "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 else
 echo "
 
