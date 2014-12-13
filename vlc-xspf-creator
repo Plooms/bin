@@ -79,6 +79,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 				<vlc:option>audio-track=0</vlc:option>
 			</extension>
 		</track>
+
+<!--
 		<track>
 			<location>file://"$FILE"</location>
 			<extension application=\"http://www.videolan.org/vlc/playlist/0\">
@@ -88,6 +90,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 				<vlc:option>audio-track=0</vlc:option>
 			</extension>
 		</track>
+-->
+
 	</trackList>
 	<extension application=\"http://www.videolan.org/vlc/playlist/0\">
 			<vlc:item tid=\"0\"/>
