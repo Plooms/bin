@@ -92,6 +92,18 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 		</track>
 -->
 
+<!--
+		<track>
+			<location>file://"$FILE"</location>
+			<extension application=\"http://www.videolan.org/vlc/playlist/0\">
+				<vlc:id>2</vlc:id>
+				<vlc:option>start-time=0</vlc:option>
+				<vlc:option>stop-time=0</vlc:option>
+				<vlc:option>audio-track=0</vlc:option>
+			</extension>
+		</track>
+-->
+
 	</trackList>
 	<extension application=\"http://www.videolan.org/vlc/playlist/0\">
 			<vlc:item tid=\"0\"/>
