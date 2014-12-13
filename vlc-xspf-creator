@@ -75,6 +75,16 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 			<extension application=\"http://www.videolan.org/vlc/playlist/0\">
 				<vlc:id>0</vlc:id>
 				<vlc:option>start-time=0</vlc:option>
+				<vlc:option>stop-time=0</vlc:option>
+				<vlc:option>audio-track=0</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file://"$FILE"</location>
+			<extension application=\"http://www.videolan.org/vlc/playlist/0\">
+				<vlc:id>1</vlc:id>
+				<vlc:option>start-time=0</vlc:option>
+				<vlc:option>stop-time=0</vlc:option>
 				<vlc:option>audio-track=0</vlc:option>
 			</extension>
 		</track>
