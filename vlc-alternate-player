@@ -14,13 +14,13 @@ if [ -f "$FILENAME"*.xspf ]
 
 then 
 
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sleep 2 &&  beep)
+	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
 
 	vlc "$FILENAME"*.xspf --play-and-exit
 
 else 
 
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sleep 2 && beep)
+	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sudo beep)
 
 	vlc "$1" --play-and-exit
 
