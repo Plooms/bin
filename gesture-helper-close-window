@@ -32,7 +32,7 @@ xte "keydown Alt_L" "key F4" "keyup Alt_L"
   fi
 
 
-elif echo "$CURRENTWIN" | grep "Friend - Salman"  >/dev/null
+elif echo "$CURRENTWIN" | grep -E "Friend - Salman|ABZ"  >/dev/null
 then
   if [ "$MIN"x = "YES"x ]
   then
