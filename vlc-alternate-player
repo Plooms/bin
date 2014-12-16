@@ -3,8 +3,13 @@
 SCRIPT_NAME="vlc-alternate-player"
 PID=$$
 
-#########################################################
 
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+
+#########################################################
 
 # To get the filename without extensions
 FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
@@ -16,9 +21,9 @@ then
 
 	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
 
-	vlc "$FILENAME"*.xspf --play-and-exit
+	echo "$FILENAME" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
-	sleep 1
+	vlc "$FILENAME"*.xspf --play-and-exit
 
 	echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$1"
 
@@ -26,9 +31,9 @@ else
 
 	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sudo beep)
 
-	vlc "$1" --play-and-exit
+	echo "$FILENAME" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
-	sleep 1
+	vlc "$1" --play-and-exit
 
 	echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$1"
 
