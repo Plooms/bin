@@ -18,10 +18,14 @@ then
 
 	vlc "$FILENAME"*.xspf --play-and-exit
 
+	echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker
+
 else 
 
 	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sudo beep)
 
 	vlc "$1" --play-and-exit
+
+	echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker
 
 fi
