@@ -115,6 +115,7 @@ export ENCRYPTED_DIR_ENCFS="/media/R1/Other/Encrypted/Private2"
 # No need to change these
 export USERNAME_CAPS="$( echo $USERNAME | tr '[:lower:]' '[:upper:]' )"
 export DB_PASSWORD="$(cat $MYHOME/.db-password)"
+export DDNS_PASSWORD="$(cat $MYHOME/.ddns-password)"
 export LOCKFOLDER="$MYHOME/.$USERNAME_CAPS-LOCKS"
 export LOCKFOLDER2="$MYHOME/.$USERNAME_CAPS-LOCKS/ln2tb"
 export LOCKFILE="$LOCKFOLDER/lock-$SCRIPT_NAME"

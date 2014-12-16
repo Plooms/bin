@@ -1,4 +1,11 @@
 #!/bin/bash
+# Update DDNS to point it to new IP
+SCRIPT_NAME="ddns"
+PID=$$
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
 
 
 ################ Script Variables ###############################
@@ -6,7 +13,7 @@ IPPATH=/var/log/IP                    # IP address storage file
 TMPIP=/tmp/tmpIP                      # Temp IP storage file
 TEMP=/tmp/temp                        # Temp storage file
 CIPUSER=sderawi                       # ChangeIP.com Username
-CIPPASS=sderawi8                      # ChangeIP.com Password
+CIPPASS="$(cat $DDNS_PASSWORD)"       # ChangeIP.com Password
 CIPSET=3                              # ChangeIP.com recordset
 IP="$(cat $IPPATH)"
 #################################################################
