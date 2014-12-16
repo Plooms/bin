@@ -23,7 +23,7 @@ _LOCK_ON
 FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
 NOTE="$FILENAME-NOTES.txt"
 
-terminator -x sudo nano "$NOTE"
+terminator -x $(dialog --stdout  --clear --yesno "Make a note for the Movie : $1  ?" 10 50 &&  sudo nano "$NOTE")
 sudo chown "$USERNAME" "$NOTE"
 sudo chmod 777 "$NOTE"
 
