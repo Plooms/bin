@@ -1,5 +1,5 @@
 #!/bin/bash
-# Update DDNS to point it to new IP
+# Update DDNS to point it to the new IP
 SCRIPT_NAME="ddns"
 PID=$$
 
@@ -13,7 +13,7 @@ IPPATH=/var/log/IP                    # IP address storage file
 TMPIP=/tmp/tmpIP                      # Temp IP storage file
 TEMP=/tmp/temp                        # Temp storage file
 CIPUSER=sderawi                       # ChangeIP.com Username
-CIPPASS="$(cat $DDNS_PASSWORD)"       # ChangeIP.com Password
+CIPPASS="$DDNS_PASSWORD"             # ChangeIP.com Password
 CIPSET=3                              # ChangeIP.com recordset
 IP="$(cat $IPPATH)"
 #################################################################
