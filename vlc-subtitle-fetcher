@@ -25,9 +25,9 @@ FILENAME2="$(echo "$1" | rev | cut -d"/" -f1 | rev)"
 
 
  
-filebot -get-subtitles -non-strict "$1"
+terminator -x filebot -get-subtitles -non-strict "$1"
 
-[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] && (notify-send "Media" "Subtitle Downloaded" && beep)
+[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Downloaded" && sudo beep)
 
 
 #########################################################
