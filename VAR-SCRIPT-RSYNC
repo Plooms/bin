@@ -16,7 +16,6 @@ Home-Backup/*/*
 Backups/*/*
 Other/Android/.*
 Other/Apps/NO-SYNC/*/*
-#Other/Downloads/Download-folder/*
 Other/Downloads/temp*/*
 Other/Shows-clean/*
 .Trash*
@@ -50,7 +49,6 @@ Dropbox/.dropbox*
 Private
 Private2
 TMP/full-temp/*
-VMs/*
 
 
 " >| "$RSYNC_EXCLUDE_22"
