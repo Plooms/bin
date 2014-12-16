@@ -2,7 +2,7 @@
 # Write notes on selected video from XBMC
 SCRIPT_NAME="vlc-note-taker-helper"
 PID=$$
-
+set -x
 
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
