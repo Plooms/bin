@@ -25,7 +25,18 @@ NOTE="$FILENAME-NOTES.txt"
 
  
 
-dialog --stdout  --clear --yesno "Make a note for the Movie :$1  ?" 10 50
+dialog --stdout  --clear --yesno "Make a note for the Movie :
+$1  ?" 10 50
+
+case $? in
+0) 
+sudo nano "$NOTE"
+sudo chown "$USERNAME" "$NOTE"
+sudo chmod 777 "$NOTE"
+
+;;
+1) exit 1 ;;
+esac
 
 
 

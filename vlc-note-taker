@@ -26,17 +26,6 @@ NOTE="$FILENAME-NOTES.txt"
  
 terminator -x /usr/local/bin/vlc-note-taker-helper "$1"
 
-case $? in
-0) 
-sudo nano "$NOTE"
-sudo chown "$USERNAME" "$NOTE"
-sudo chmod 777 "$NOTE"
-
-;;
-
-1) exit 1 ;;
-esac
-
 
 #########################################################
 
