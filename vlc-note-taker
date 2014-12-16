@@ -17,7 +17,6 @@ _START_TIME
 _LOCK_ON
 
 #########################################################
-notify-send ass ass
 [ -z "$1" ] && echo "No video specified" && exit 1 
 
 # To get the filename without extensions

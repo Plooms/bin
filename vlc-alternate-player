@@ -18,7 +18,7 @@ then
 
 	vlc "$FILENAME"*.xspf --play-and-exit
 
-	echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker
+	echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$1"
 
 else 
 
@@ -26,6 +26,6 @@ else
 
 	vlc "$1" --play-and-exit
 
-	echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker
+	echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$1"
 
 fi
