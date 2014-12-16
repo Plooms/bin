@@ -1,6 +1,6 @@
 #!/bin/bash
-# Write notes on selected video from XBMC
-SCRIPT_NAME="vlc-note-taker"
+# Fetch subtitles of selected video from XBMC
+SCRIPT_NAME="vlc-subtitle-fetcher"
 PID=$$
 
 
@@ -18,8 +18,16 @@ _LOCK_ON
 
 #########################################################
 [ -z "$1" ] && echo "No video specified" && exit 1 
+
+# To get the filename without extensions
+FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
+FILENAME2="$(echo "$1" | rev | cut -d"/" -f1 | rev)"
+
+
  
-terminator -x /usr/local/bin/vlc-note-taker-helper "$1" 2>/dev/null
+filebot -get-subtitles -non-strict "$1"
+
+[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] && (notify-send "Media" "Subtitle Downloaded" && beep)
 
 
 #########################################################
