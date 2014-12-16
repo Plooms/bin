@@ -3,6 +3,7 @@
 SCRIPT_NAME="vlc-note-taker-helper"
 PID=$$
 
+
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
@@ -30,7 +31,8 @@ NOTE="$FILENAME-NOTES.txt"
 
 dialog --stdout  --clear --yesno "Make a Note for the Movie :
 
-($FILENAME2)  ?" 10 50
+
+     -( $FILENAME2 )-" 10 50
 
 case $? in
 0) 

@@ -18,13 +18,8 @@ _LOCK_ON
 
 #########################################################
 [ -z "$1" ] && echo "No video specified" && exit 1 
-
-# To get the filename without extensions
-FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
-NOTE="$FILENAME-NOTES.txt"
-
  
-terminator -x /usr/local/bin/vlc-note-taker-helper "$1"
+terminator -x /usr/local/bin/vlc-note-taker-helper "$1" 2>/dev/null
 
 
 #########################################################
