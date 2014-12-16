@@ -355,7 +355,6 @@ if ls -U | grep -E 'The\ Neighbors\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Ne
 if ls -U | grep -E 'The\ Night\ Shift\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Night\ Shift\ -\ \[* "$TV_SYM"/"The Night Shift"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Odd\ Couple\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Odd\ Couple\ -\ \[* "$TV_SYM"/"The Odd Couple"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Office\ \(US\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Office\ \(US\)\ -\ \[* "$TV_SYM"/"The Office (US)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'The\ Rebels\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Rebels\ -\ \[* "$TV_SYM"/"The Rebels"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Shield\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Shield\ -\ \[* "$TV_SYM"/"The Shield"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Simpsons\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Simpsons\ -\ \[* "$TV_SYM"/"The Simpsons"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Six\ Million\ Dollar\ Man\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Six\ Million\ Dollar\ Man\ -\ \[* "$TV_SYM"/"The Six Million Dollar Man"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
