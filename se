@@ -9,6 +9,6 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
-yaourt $1
+yaourt "$1"
 
 

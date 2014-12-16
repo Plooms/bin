@@ -8,4 +8,4 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
-pacman -Ql $1 | grep bin
+pacman -Ql "$1" | grep bin
