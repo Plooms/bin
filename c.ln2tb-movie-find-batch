@@ -52,8 +52,8 @@ echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 for i in "${movie_array[@]}"
 do
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
-NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
+NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '$MOVIE_NAME'" -ss)"
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
 done
