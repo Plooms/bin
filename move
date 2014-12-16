@@ -90,7 +90,6 @@ if ls -U | grep -E 'Cheers\ -\ \[*' >/dev/null 2>&1 ; then mv -v Cheers\ -\ \[* 
 if ls -U | grep -E 'Chicago\ Fire\ -\ \[*' >/dev/null 2>&1 ; then mv -v Chicago\ Fire\ -\ \[* "$TV_SYM"/"Chicago Fire"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Chicago\ Hope\ -\ \[*' >/dev/null 2>&1 ; then mv -v Chicago\ Hope\ -\ \[* "$TV_SYM"/"Chicago Hope"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Chicago\ P.D.\ -\ \[*' >/dev/null 2>&1 ; then mv -v Chicago\ P.D.\ -\ \[* "$TV_SYM"/"Chicago P.D."/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Chip\ n\ Dale\ Rescue\ Rangers\ -\ \[*' >/dev/null 2>&1 ; then mv -v Chip\ n\ Dale\ Rescue\ Rangers\ -\ \[* "$TV_SYM"/"Chip n Dale Rescue Rangers"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Chozen\ -\ \[*' >/dev/null 2>&1 ; then mv -v Chozen\ -\ \[* "$TV_SYM"/"Chozen"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Chuck\ -\ \[*' >/dev/null 2>&1 ; then mv -v Chuck\ -\ \[* "$TV_SYM"/"Chuck"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Cold\ Case\ -\ \[*' >/dev/null 2>&1 ; then mv -v Cold\ Case\ -\ \[* "$TV_SYM"/"Cold Case"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
