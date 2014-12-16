@@ -1,5 +1,5 @@
 #!/bin/bash
-# Move episodes
+# Do a Tvnamer on media files & Move episodes
 SCRIPT_NAME="tv-move"
 PID=$$
 
@@ -22,7 +22,18 @@ fi
 /usr/local/bin/clean-download-folder
 
 
-cd "$TV_DOWNLOAD_DIR" && tv 2>&1 | tee -a .Rename.log ; date >> .Rename.log
+cd "$TV_DOWNLOAD_DIR" || exit 1
+
+sudo chmod 777 * ; sudo chown "$USERNANE":"$USERNAME" *
+
+PURPLE
+
+tvnamer -c ~/.tvnamer.json * | tee -a .Rename.log ; date >> .Rename.log
+
+RED
+
+tvnamer -c ~/.tvnamer.json * | grep skipping | tee -a .Rename.log ; date >> .Rename.log
+
 
 echo -e "${YELLOW}\n\n\n\nDo you want to Move?           y\n\n\n\n"
 
@@ -32,7 +43,7 @@ if [ "$confirmation" = "y" ]
 
 then
 
-move 2>&1 | tee -a .Move.log ; date >> .Move.log
+/usr/local/bin/move 2>&1 | tee -a .Move.log ; date >> .Move.log
 
 
 #if [ -n "$TERM_LAUNCH" ]
