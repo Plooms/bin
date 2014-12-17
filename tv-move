@@ -34,6 +34,9 @@ RED
 
 tvnamer -c ~/.tvnamer.json * | grep skipping | tee -a .Rename.log ; date >> .Rename.log
 
+CYAN
+
+filebot -get-missing-subtitles --lang en -non-strict *
 
 echo -e "${YELLOW}\n\n\n\nDo you want to Move?           y\n\n\n\n"
 
