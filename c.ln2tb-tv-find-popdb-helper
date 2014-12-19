@@ -13,9 +13,9 @@ SUB="$( echo $1 | rev | cut -d"." -f2- | rev )"
 NFO="$( echo $1 | rev | cut -d"." -f2- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g' | head -n1)" 2>/dev/null
 
-SUBTITILE="NO"
-if find "$SUB"*.srt -exec echo -n \; ; then SUBTITILE="YES" ; fi 2>/dev/null
-if find "$SUB"*.sub -exec echo -n \; ; then SUBTITILE="YES" ; fi 2>/dev/null
+SUBTITLE="NO"
+if find "$SUB"*.srt -exec echo -n \; ; then SUBTITLE="YES" ; fi 2>/dev/null
+if find "$SUB"*.sub -exec echo -n \; ; then SUBTITLE="YES" ; fi 2>/dev/null
 
 
 if [ -f "$NFO" ]
@@ -33,11 +33,11 @@ fi
 
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
 INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date,Subtitle) 
-VALUES ("$DIR/$NAME", "-", "-", "-", "$WATCHED", "-", "-", "-", "$SUBTITILE")
+VALUES ("$DIR/$NAME", "-", "-", "-", "$WATCHED", "-", "-", "-", "$SUBTITLE")
 ON DUPLICATE KEY UPDATE 
 	Name = "$DIR/$NAME",
 	Watched = "$WATCHED",
-	Subtitle = "$SUBTITILE";	
+	Subtitle = "$SUBTITLE";	
 EOF
 
 # To give colorized output
