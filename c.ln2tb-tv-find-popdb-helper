@@ -6,7 +6,6 @@ SCRIPT_NAME="c.ln2tb-tv-find-popdb-helper"
 source /usr/local/bin/VAR-SCRIPT
 
 count="$(cat $count_file)"
-set -x
 
 DIR="$(echo $( dirname "$( echo $1 )") | rev |cut -d/ -f1 |rev)"
 NAME="$(basename "$( echo $1 )")"
@@ -43,4 +42,5 @@ EOF
 
 GREEN
 echo -ne "$count)${CYAN} Adding Episode: ${COLOR_OFF}$DIR/$NAME"
+echo -e "[$WATCHED] [$SUBTITILE]"
 echo $((count + 1)) > "$count_file"
