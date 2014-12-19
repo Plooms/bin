@@ -11,7 +11,7 @@ source /usr/local/bin/VAR-SCRIPT
 # Dependencies (seperate by spaces)
 PKGS=('reflector' 'wget' 'sed' 'yaourt')
 
-for i in "${PKGS[@]}" ;do pacman -Qqe |grep "$i" 1>/dev/null ||(echo -e "\n${RED}You need to install ( $i )" && exit 2);done || exit 3 
+for i in "${PKGS[@]}" ;do pacman -Qqe | grep "$i" 1>/dev/null ||(echo -e "\n${RED}You need to install ( $i )" && exit 2);done || exit 3 
 
 
 

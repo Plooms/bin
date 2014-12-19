@@ -1,4 +1,4 @@
-#!/bin/bash
+z#!/bin/bash
 # Document the videos that are played on the system
 SCRIPT_NAME="media-log"
 PID=$$
@@ -11,9 +11,9 @@ source /usr/local/bin/VAR-SCRIPT
 export DISPLAY=:0.0
 
 
-if wmctrl -l |grep SMPlayer 
+if wmctrl -l | grep SMPlayer 
 then
-echo "$(date |cut -d" " -f 1-4) <-> ($(wmctrl -l |grep SMPlayer |cut -d" " -f5- | sed 's/ - SMPlayer2//g' |sed "s/'//g"  ))" > "$PLAYER_LAST_WATCHED"/"$DAY0".txt
+echo "$(date |cut -d" " -f 1-4) <-> ($(wmctrl -l | grep SMPlayer |cut -d" " -f5- | sed 's/ - SMPlayer2//g' |sed "s/'//g"  ))" > "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 else
 echo "
 
@@ -26,9 +26,9 @@ fi
 
 
 
-if wmctrl -l |grep VLC
+if wmctrl -l | grep VLC
 then
-echo "$(date |cut -d" " -f 1-4) <-> ($( wmctrl -l |grep VLC |cut -d" " -f5- | sed 's/ - VLC media player//g' |sed "s/'//g" ))" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
+echo "$(date |cut -d" " -f 1-4) <-> ($( wmctrl -l | grep VLC |cut -d" " -f5- | sed 's/ - VLC media player//g' |sed "s/'//g" ))" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 else
 echo "
