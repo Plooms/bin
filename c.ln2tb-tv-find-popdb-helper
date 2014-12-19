@@ -40,7 +40,11 @@ ON DUPLICATE KEY UPDATE
 	Subtitle = "$SUBTITILE";	
 EOF
 
+# To give colorized output
+[ "$SUBTITILE"x = "YES"x ] && SUBTITLE="${GREEN}$SUBTITLE" || SUBTITLE="${RED}$SUBTITLE"
+[ "$WATCHED"x = "YES"x   ] && WATCHED="${GREEN}$WATCHED"   || WATCHED="${RED}$WATCHED"
+
 GREEN
 echo -e "$count)${CYAN} Adding Episode: ${COLOR_OFF}$DIR/$NAME"
-echo -ne "    Watched:[$WATCHED] Sub:[$SUBTITILE]"
+echo -ne "          ${PURPLE}Watched:${COLOR_OFF}[$WATCHED]  ${PURPLE}Sub:${COLOR_OFF}[$SUBTITILE]"
 echo $((count + 1)) > "$count_file"
