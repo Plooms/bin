@@ -5,7 +5,6 @@ SCRIPT_NAME="c.ln2tb-tv-find-popdb-helper"
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
-set -x
 count="$(cat $count_file)"
 
 
