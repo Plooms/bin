@@ -48,3 +48,4 @@ GREEN
 echo -e "$count)${CYAN} Adding Episode: ${COLOR_OFF}$DIR/$NAME"
 echo -ne "          ${PURPLE}Watched:$WATCHED  ${PURPLE}Sub:$SUBTITLE"
 echo $((count + 1)) > "$count_file"
+COLOR_OFF
