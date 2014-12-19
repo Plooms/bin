@@ -41,6 +41,6 @@ ON DUPLICATE KEY UPDATE
 EOF
 
 GREEN
-echo -ne "$count)${CYAN} Adding Episode: ${COLOR_OFF}$DIR/$NAME"
-echo -e "[$WATCHED] [$SUBTITILE]"
+echo -e "$count)${CYAN} Adding Episode: ${COLOR_OFF}$DIR/$NAME"
+echo -ne "    Watched:[$WATCHED] Sub:[$SUBTITILE]"
 echo $((count + 1)) > "$count_file"
