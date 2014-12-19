@@ -28,7 +28,7 @@ echo "Searching for Movie files"
 echo ""
 
 _CHECK_MOUNT1 && \
-find "$MOVIE_SYM"/ -size +200M -exec /usr/local/bin/c.ln2tb-movie-find-popdb-helper {} \;
+find "$MOVIE_SYM"/ -size +300M -exec /usr/local/bin/c.ln2tb-movie-find-popdb-helper {} \;
 
 
 #########################################################
