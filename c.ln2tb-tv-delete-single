@@ -15,7 +15,7 @@ name=$(dialog --extra-button --extra-label "Back" --stdout  --backtitle "Make Yo
 
 case $? in 
 0)
-name2="$(echo $name| rev | cut -d/ -f1 | rev )"
+name2="$(echo $name | sed "s/\/$//" | rev | cut -d/ -f1 | rev )"
 
 du -hs "$TV_SYM"/"$name2"
 
