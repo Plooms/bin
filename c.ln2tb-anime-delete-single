@@ -29,7 +29,6 @@ echo -e "${YELLOW}" ; \
 sed -n "/\"$name2\"/p" /usr/local/bin/move ; \
 echo -e "${RED}" ; \
 sudo sed -i "/\"$name2\"/d" /usr/local/bin/move ; \
-sudo sed -i "/\"$name2\"/d" /usr/local/bin/move1 ; \
 echo -e "${CYAN} Dont forget SickBeard" ; echo -e "${WHITE}"
 
 else _CANCEL_MSG 
