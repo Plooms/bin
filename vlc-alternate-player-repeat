@@ -1,6 +1,6 @@
 #!/bin/bash
-# Wrapper for vlc that checks for xspf files
-SCRIPT_NAME="vlc-alternate-player"
+# Replay last video file if wanted
+SCRIPT_NAME="vlc-alternate-player-repeat"
 PID=$$
 
 
@@ -8,48 +8,45 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
 
 
 #########################################################
+[ -z "$1" ] && echo "No video specified" && exit 1 
 
 # To get the filename without extensions
 FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
 # To get the filename without the path
 FILENAME2="$(echo "$1" | rev | cut -d"/" -f1 | rev)"
 
-if [ -f "$FILENAME"*.xspf ]
 
-then 
 
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$1"
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
+dialog --stdout  --clear --yesno "Replay Video file again :
 
-	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
-
-	START_TIME=$(date +%s)
-
-	vlc "$FILENAME"*.xspf --play-and-exit
+       $FILENAME2 " 10 50
 
 
 
-else 
 
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$1"
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sudo beep)
+case $? in
+0) 
+/usr/local/bin/vlc-alternate-player "$1"
 
-	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
-
-	START_TIME=$(date +%s)
-
-	vlc "$1" --play-and-exit
+;;
+1) exit 1 ;;
+esac
 
 
-fi
+#########################################################
 
+# Time Calculation
+_END_TIME
 
+# End Lock
+_LOCK_OFF
 
-END_TIME=$(date +%s)
-END_TIME_SEC=$(( END_TIME - START_TIME ))
-[[ "$END_TIME_SEC" -gt 10 ]] && echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$1"
-
-/usr/local/bin/vlc-alternate-player-repeat "$1"
