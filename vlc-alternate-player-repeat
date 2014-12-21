@@ -20,8 +20,8 @@ _LOCK_ON
 # Get the file name from Last-video.txt
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 
-while read a ; do F_ARRAY+=("$(echo "$a")");done < <(tail -n 3 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
-for i in 1 2 3 ; do F2_ARRAY+=("$(basename "${F_ARRAY[$i]}")" ); done
+while read a ; do F_ARRAY+=("$(echo "$a")") ; done < <(tail -n 3 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
+while read b ; do F2_ARRAY+=("$(echo "$b")") ; done <  <("$(for i in 1 2 3 ; do basename "${F_ARRAY[$i]}" ); done)")
 
 # To get the filename without extensions
 FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
