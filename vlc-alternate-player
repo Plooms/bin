@@ -25,6 +25,8 @@ then
 	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
 
 	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
+	echo "$1" >| "$PLAYER_LAST_WATCHED"/"Last-Video".txt
+
 
 	START_TIME=$(date +%s)
 
