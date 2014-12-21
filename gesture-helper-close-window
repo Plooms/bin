@@ -54,6 +54,17 @@ xte "keydown Alt_L" "key F4" "keyup Alt_L"
   fi
 
 
+elif echo "$CURRENTWIN" | grep "XBMC"  >/dev/null
+then
+  if [ "$MIN"x = "YES"x ]
+  then
+notify-send "Close Window" "Minimized XBMC"
+wmctrl -a xbmc ; xdotool windowminimize $(xdotool getactivewindow)
+   else 
+xte "keydown Alt_L" "key F4" "keyup Alt_L"
+  fi
+
+
 else
 xte "keydown Alt_L" "key F4" "keyup Alt_L"
 fi
