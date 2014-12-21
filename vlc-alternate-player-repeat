@@ -49,6 +49,9 @@ SELECTION="$(dialog --stdout --radiolist \
 case $? in
 0) 
 
+	# To prevent the repeating action from clogging the Last-video.txt file
+	export REPEAT=ON
+
 	case "$SELECTION" in
 	1)
 	/usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" ;;
