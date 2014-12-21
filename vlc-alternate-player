@@ -21,8 +21,8 @@ if [ -f "$FILENAME"*.xspf ]
 
 then 
 
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$1"
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
+	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$1"
+	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
 
 	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
@@ -32,14 +32,14 @@ then
 
 	START_TIME=$(date +%s)
 
-	vlc "$FILENAME"*.xspf --play-and-exit
+	vlc "$FILENAME"*.xspf --play-and-exit  2>&1 >/dev/null
 
 
 
 else 
 
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$1"
-	[ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sudo beep)
+	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$1"
+	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sudo beep)
 
 	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
@@ -50,7 +50,8 @@ else
 
 	START_TIME=$(date +%s)
 
-	vlc "$1" --play-and-exit
+	vlc "$1" --play-and-exit  2>&1 >/dev/null
+
 
 
 fi

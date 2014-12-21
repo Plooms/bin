@@ -22,8 +22,8 @@ TMP="$(mktemp)"
 # Get the file name from Last-video.txt
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 
-while read a ; do F_ARRAY+=("$a") ; done < <(tail -n 4 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
-for i in 0 1 2 3 ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
+while read a ; do F_ARRAY+=("$a") ; done < <(tail -n 3 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
+for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
 while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
 
 # To get the filename without extensions
@@ -39,31 +39,6 @@ SELECTION="$(dialog --stdout --radiolist \
 3 "${F2_ARRAY[0]}" off )"
 
 
-echo "${F_ARRAY[0]}"
-echo '"${F_ARRAY[0]}"'
-
-echo "${F_ARRAY[1]}"
-echo '"${F_ARRAY[1]}"'
-
-echo "${F_ARRAY[2]}"
-echo '"${F_ARRAY[2]}"'
-
-echo "${F_ARRAY[3]}"
-echo '"${F_ARRAY[3]}"'
-
-
-echo "${F2_ARRAY[0]}"
-echo '"${F2_ARRAY[0]}"'
-
-echo "${F2_ARRAY[1]}"
-echo '"${F2_ARRAY[1]}"'
-
-echo "${F2_ARRAY[2]}"
-echo '"${F2_ARRAY[2]}"'
-
-echo "${F2_ARRAY[3]}"
-echo '"${F2_ARRAY[3]}"'
-
 
 case $? in
 0) 
@@ -73,11 +48,11 @@ case $? in
 
 	case "$SELECTION" in
 	1)
-	[ ! -z "${F_ARRAY[2]}" ] && /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" ;;
+	[ ! -z "${F_ARRAY[2]}" ] && /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" 2>&1 >/dev/null ;;
 	2)
-	[ ! -z "${F_ARRAY[1]}" ] && /usr/local/bin/vlc-alternate-player "${F_ARRAY[1]}" ;;
+	[ ! -z "${F_ARRAY[1]}" ] && /usr/local/bin/vlc-alternate-player "${F_ARRAY[1]}" 2>&1 >/dev/null ;;
 	3)
-	[ ! -z "${F_ARRAY[0]}" ] && /usr/local/bin/vlc-alternate-player "${F_ARRAY[0]}" ;;
+	[ ! -z "${F_ARRAY[0]}" ] && /usr/local/bin/vlc-alternate-player "${F_ARRAY[0]}" 2>&1 >/dev/null ;;
 	esac
 
 ;;
