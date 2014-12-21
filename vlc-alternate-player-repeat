@@ -21,7 +21,7 @@ _LOCK_ON
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 
 while read a ; do F_ARRAY+=("$(echo $a)");done < <(tail -n 4 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
-while read b ; do F2_ARRAY+=("$(echo "$(basename "$b")")");done < <(echo "${F_ARRAY[{1..4}]}")
+while read b ; do F2_ARRAY+=( "$( basename "$b" )" );done < <(echo "${F_ARRAY[1-2-3]}")
 
 # To get the filename without extensions
 FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
@@ -34,6 +34,12 @@ SELECTION="$(dialog --stdout --radiolist \
 1 "${F2_ARRAY[1]}" off \
 2 "${F2_ARRAY[2]}" off \
 3 "${F2_ARRAY[3]}" on )"
+
+
+echo "${F2_ARRAY[1]}"
+echo "${F2_ARRAY[2]}"
+echo "${F2_ARRAY[3]}"
+echo "${F2_ARRAY[@]}"
 
 
 #dialog --stdout  --clear --yesno "Replay Video file again :
