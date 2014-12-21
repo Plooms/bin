@@ -49,14 +49,17 @@ case $? in
 	case "$SELECTION" in
 	1)
 	[ ! -z "${F_ARRAY[2]}" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" 2>&1 >/dev/null &
+	sleep .1
 	exit 0 ;;
 
 	2)
 	[ ! -z "${F_ARRAY[1]}" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[1]}" 2>&1 >/dev/null &
+	sleep .1
 	exit 0 ;;
 
 	3)
 	[ ! -z "${F_ARRAY[0]}" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[0]}" 2>&1 >/dev/null &
+	sleep .1
 	exit 0 ;;
 	esac
 
