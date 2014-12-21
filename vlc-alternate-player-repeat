@@ -28,7 +28,10 @@ FILENAME="$(echo $FILE | rev | cut -d"." -f2- | rev)"
 # To get the filename without the path
 FILENAME2="$(echo $FILE | rev | cut -d"/" -f1 | rev)"
 
-
+echo "${F_ARRAY[1]}"
+echo "${F_ARRAY[1]}"
+echo "${F_ARRAY[1]}"
+echo "${F_ARRAY[1]}"
 
 SELECTION="$(dialog --stdout --radiolist \
 "Select Video File:" 10 400 3 \
