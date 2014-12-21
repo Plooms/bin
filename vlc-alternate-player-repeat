@@ -32,7 +32,7 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 # To get the filename without the path
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
-SELECTION="$(dialog --stdout --radiolist \
+SELECTION="$(dialog --stdout --clear --radiolist \
 "Select Video File:   (1= Newest -  3= Oldest)" 10 100 3 \
 1 "${F2_ARRAY[2]}" on \
 2 "${F2_ARRAY[1]}" off \
@@ -48,11 +48,16 @@ case $? in
 
 	case "$SELECTION" in
 	1)
-	[ ! -z "${F_ARRAY[2]}" ] && /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" 2>&1 >/dev/null ;;
+	[ ! -z "${F_ARRAY[2]}" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" 2>&1 >/dev/null & 
+	exit 0 ;;
+
 	2)
-	[ ! -z "${F_ARRAY[1]}" ] && /usr/local/bin/vlc-alternate-player "${F_ARRAY[1]}" 2>&1 >/dev/null ;;
+	[ ! -z "${F_ARRAY[1]}" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[1]}" 2>&1 >/dev/null &
+	exit 0 ;;
+
 	3)
-	[ ! -z "${F_ARRAY[0]}" ] && /usr/local/bin/vlc-alternate-player "${F_ARRAY[0]}" 2>&1 >/dev/null ;;
+	[ ! -z "${F_ARRAY[0]}" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[0]}" 2>&1 >/dev/null & 
+	exit 0 ;;
 	esac
 
 ;;
