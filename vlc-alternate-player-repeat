@@ -22,8 +22,8 @@ TMP="$(mktemp)"
 # Get the file name from Last-video.txt
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 
-while read a ; do F_ARRAY+=("$a") ; done < <(tail -n 4 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
-for i in 1 2 3 ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
+while read a ; do F_ARRAY+=("$a") ; done < <(tail -n 3 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
+for i in 0 1 2 3 ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
 while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
 
 # To get the filename without extensions
@@ -33,7 +33,7 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
 SELECTION="$(dialog --stdout --radiolist \
-"Select Video File:" 10 400 3 \
+"Select Video File:" 10 100 3 \
 1 "${F2_ARRAY[2]}" on \
 2 "${F2_ARRAY[1]}" off \
 3 "${F2_ARRAY[0]}" off )"
