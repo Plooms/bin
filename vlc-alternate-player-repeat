@@ -28,7 +28,7 @@ FILENAME2="$(echo "$1" | rev | cut -d"/" -f1 | rev)"
 
 dialog --stdout  --clear --yesno "Replay Video file again :
 
-       $FILENAME2 " 10 50
+$FILENAME2 " 10 50
 
 
 
