@@ -52,4 +52,4 @@ END_TIME=$(date +%s)
 END_TIME_SEC=$(( END_TIME - START_TIME ))
 [[ "$END_TIME_SEC" -gt 10 ]] && echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$1"
 
-[[ "$END_TIME_SEC" -lt 60 ]] && terminator -x /usr/local/bin/vlc-alternate-player-repeat "$1"
+terminator -x /usr/local/bin/vlc-alternate-player-repeat "$1"
