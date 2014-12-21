@@ -20,7 +20,8 @@ _LOCK_ON
 # Get the file name from Last-video.txt
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 
-F_ARRAY+=("$(tail -n 3 "$PLAYER_LAST_WATCHED"/Last-Video.txt)")
+tail -n 3 "$PLAYER_LAST_WATCHED"/Last-Video.txt | while read ass ; do 
+F_ARRAY+=("$(echo ass)") ; done
 
 # To get the filename without extensions
 FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev)"
@@ -29,9 +30,9 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev)"
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev)"
 
 echo "${F_ARRAY[1]}"
-echo "${F_ARRAY[1]}"
-echo "${F_ARRAY[1]}"
-echo "${F_ARRAY[1]}"
+echo "${F_ARRAY[2]}"
+echo "${F_ARRAY[3]}"
+echo "${F_ARRAY[@]}"
 
 SELECTION="$(dialog --stdout --radiolist \
 "Select Video File:" 10 400 3 \
@@ -56,7 +57,7 @@ case $? in
 	2)
 	/usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" ;;
 	3)
-	/usr/local/bin/vlc-alternate-player "${F_ARRAY[3]}" ;;
+x	/usr/local/bin/vlc-alternate-player "${F_ARRAY[3]}" ;;
 	esac
 
 ;;
