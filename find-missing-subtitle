@@ -19,7 +19,7 @@ echo "Searching for media files without subtitles...."
 echo ""
 
 # Shows
-find "$DIR" -type f -size +10M | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev  ;done >| "$TMP" 2>/dev/null
+find "$DIR" -type f -size +30M | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev  ;done >| "$TMP" 2>/dev/null
 find "$DIR" -type f -size -10M -iname "*.srt" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
 find "$DIR" -type f -size -10M -iname "*.sub" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
 sort "$TMP" | uniq -u >| "$TMP1"
@@ -30,53 +30,6 @@ export find_missing_file_move="Y" && /usr/local/bin/move >/dev/null
 sudo mv "$TMP_D"/Shows/* "$TMP_D"/
 sudo rm -r "$TMP_D"/Shows 2>/dev/null
 sudo rmdir "$TMP_D"/* 2>/dev/null
-
-# Clean out the Reality shows which tend to not have subs anyway
-sudo rm -r "$TMP_D"/"Auction Hunters" 2>/dev/null
-sudo rm -r "$TMP_D"/"Auction Kings" 2>/dev/null
-sudo rm -r "$TMP_D"/"Bait Car" 2>/dev/null
-sudo rm -r "$TMP_D"/"Bering Sea Gold" 2>/dev/null
-sudo rm -r "$TMP_D"/"Bering Sea Gold Under the Ice" 2>/dev/null
-sudo rm -r "$TMP_D"/"Beyond Scared Straight" 2>/dev/null
-sudo rm -r "$TMP_D"/"Black Gold" 2>/dev/null
-sudo rm -r "$TMP_D"/"Border Security" 2>/dev/null
-sudo rm -r "$TMP_D"/"Boston's Finest" 2>/dev/null
-sudo rm -r "$TMP_D"/"Cajun Pawn Stars" 2>/dev/null
-sudo rm -r "$TMP_D"/"Cops" 2>/dev/null
-sudo rm -r "$TMP_D"/"Counting Cars" 2>/dev/null
-sudo rm -r "$TMP_D"/"Deadliest Catch" 2>/dev/null
-sudo rm -r "$TMP_D"/"Dirty Money (2011)" 2>/dev/null
-sudo rm -r "$TMP_D"/"Dragons' Den (Canada)" 2>/dev/null
-sudo rm -r "$TMP_D"/"Dual Survival" 2>/dev/null
-sudo rm -r "$TMP_D"/"Extreme Makeover Home Edition" 2>/dev/null
-sudo rm -r "$TMP_D"/"Face Off" 2>/dev/null
-sudo rm -r "$TMP_D"/"Fast N' Loud" 2>/dev/null
-sudo rm -r "$TMP_D"/"Gold Rush" 2>/dev/null
-sudo rm -r "$TMP_D"/"Ice Cold Gold" 2>/dev/null
-sudo rm -r "$TMP_D"/"Impractical Jokers" 2>/dev/null
-sudo rm -r "$TMP_D"/"IRT Deadliest Roads" 2>/dev/null
-sudo rm -r "$TMP_D"/"Jackass" 2>/dev/null
-sudo rm -r "$TMP_D"/"Jail" 2>/dev/null
-sudo rm -r "$TMP_D"/"Las Vegas Jailhouse" 2>/dev/null
-sudo rm -r "$TMP_D"/"Most Daring" 2>/dev/null
-sudo rm -r "$TMP_D"/"My Five Wives" 2>/dev/null
-sudo rm -r "$TMP_D"/"MythBusters" 2>/dev/null
-sudo rm -r "$TMP_D"/"Only in America with Larry the Cable Guy" 2>/dev/null
-sudo rm -r "$TMP_D"/"Parking Wars" 2>/dev/null
-sudo rm -r "$TMP_D"/"Pimp My Ride" 2>/dev/null
-sudo rm -r "$TMP_D"/"Shark Tank" 2>/dev/null
-sudo rm -r "$TMP_D"/"Shipping Wars" 2>/dev/null
-sudo rm -r "$TMP_D"/"Sons of Guns" 2>/dev/null
-sudo rm -r "$TMP_D"/"South Beach Tow" 2>/dev/null
-sudo rm -r "$TMP_D"/"Storage Wars Texas" 2>/dev/null
-sudo rm -r "$TMP_D"/"Storage Wars" 2>/dev/null
-sudo rm -r "$TMP_D"/"Tanked" 2>/dev/null
-sudo rm -r "$TMP_D"/"The Amazing Race" 2>/dev/null
-sudo rm -r "$TMP_D"/"The Colony" 2>/dev/null
-sudo rm -r "$TMP_D"/"Top 20 Most Shocking" 2>/dev/null
-sudo rm -r "$TMP_D"/"Top Shot" 2>/dev/null
-sudo rm -r "$TMP_D"/"Utopia (US) (2014)" 2>/dev/null
-sudo rm -r "$TMP_D"/"Vegas Strip" 2>/dev/null
 
 
 ####To move 250 file sections into folders###
