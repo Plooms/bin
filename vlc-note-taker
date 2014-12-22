@@ -17,9 +17,11 @@ _START_TIME
 _LOCK_ON
 
 #########################################################
-[ -z "$1" ] && echo "No video specified" && exit 1 
+FNAME="$1"
+
+[ -z "$FNAME" ] && echo "No video specified" && exit 1 
  
-terminator -x /usr/local/bin/vlc-note-taker-helper "$1" 2>/dev/null
+terminator -x /usr/local/bin/vlc-note-taker-helper "$FNAME" 2>/dev/null
 
 
 #########################################################

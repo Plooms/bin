@@ -7,5 +7,6 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+FNAME="$1"
 
-pacman -Ql "$1" | grep bin
+pacman -Ql "$FNAME" | grep bin

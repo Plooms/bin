@@ -6,10 +6,11 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+FNAME="$1"
 
 
-tmpfile="$1-$(date)"
-sudo cp -a "$1" "$tmpfile"
-sudo mv "$tmpfile" "$1"        
-echo "${RED}(De-linked)${COLOR_OFF} $1"
+tmpfile="$FNAME-$(date)"
+sudo cp -a "$FNAME" "$tmpfile"
+sudo mv "$tmpfile" "$FNAME"        
+echo "${RED}(De-linked)${COLOR_OFF} $FNAME"
 

@@ -7,16 +7,16 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
-FILE="$1"
+FNAME="$1"
 
 TMP="$(mktemp)"
 
-if [ ! -f "$FILE".log ] 
+if [ ! -f "$FNAME".log ] 
 then
-mediainfo "$FILE" > $TMP
+mediainfo "$FNAME" > $TMP
 
-cat $TMP | grep -E 'Complete name |File size |Width |Height ' | sed 's/                         :/:/g' > "$FILE".log
-cat $TMP | grep -m 1 'Duration' | sed 's/                         :/:/g' >> "$FILE".log
-cat $TMP | grep 'Overall bit rate' | grep -v 'Overall bit rate mode' | sed 's/                         :/:/g' >> "$FILE".log
-echo "$FILE".log
+cat $TMP | grep -E 'Complete name |File size |Width |Height ' | sed 's/                         :/:/g' > "$FNAME".log
+cat $TMP | grep -m 1 'Duration' | sed 's/                         :/:/g' >> "$FNAME".log
+cat $TMP | grep 'Overall bit rate' | grep -v 'Overall bit rate mode' | sed 's/                         :/:/g' >> "$FNAME".log
+echo "$FNAME".log
 fi

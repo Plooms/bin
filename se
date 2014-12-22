@@ -7,8 +7,9 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+FNAME="$1"
 
 
-yaourt "$1"
+yaourt "$FNAME"
 
 

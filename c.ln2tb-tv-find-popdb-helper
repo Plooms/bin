@@ -5,12 +5,14 @@ SCRIPT_NAME="c.ln2tb-tv-find-popdb-helper"
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+FNAME="$1"
+
 count="$(cat $count_file)"
 
-DIR="$(echo $( dirname "$( echo $1 )") | rev |cut -d/ -f1 |rev)"
-NAME="$(basename "$( echo $1 )")"
-SUB="$( echo $1 | rev | cut -d"." -f2- | rev )"
-NFO="$( echo $1 | rev | cut -d"." -f2- | rev )".nfo
+DIR="$(echo $( dirname "$( echo $FNAME )") | rev |cut -d/ -f1 |rev)"
+NAME="$(basename "$( echo $FNAME )")"
+SUB="$( echo $FNAME | rev | cut -d"." -f2- | rev )"
+NFO="$( echo $FNAME | rev | cut -d"." -f2- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g' | head -n1)" 2>/dev/null
 
 SUBTITLE="NO"

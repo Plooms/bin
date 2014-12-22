@@ -11,23 +11,24 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 #########################################################
+FNAME="$1"
 
 # To get the filename without extensions
-FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
+FILENAME="$(echo "$FNAME" | rev | cut -d"." -f2- | rev)"
 # To get the filename without the path
-FILENAME2="$(echo "$1" | rev | cut -d"/" -f1 | rev)"
+FILENAME2="$(echo "$FNAME" | rev | cut -d"/" -f1 | rev)"
 
 if [ -f "$FILENAME"*.xspf ]
 
 then 
 
-	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$1"
+	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME"
 	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
 
 	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 	# REPEAT variable comes from the repeater script to prevent clogging this file needlessly
-	[ -z "$REPEAT" ] && echo "$1" >> "$PLAYER_LAST_WATCHED"/"Last-Video".txt
+	[ -z "$REPEAT" ] && echo "$FNAME" >> "$PLAYER_LAST_WATCHED"/"Last-Video".txt
 
 
 	START_TIME=$(date +%s)
@@ -38,19 +39,19 @@ then
 
 else 
 
-	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$1"
+	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME"
 	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sudo beep)
 
 	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 	# REPEAT variable comes from the repeater script to prevent clogging this file needlessly
-	[ -z "$REPEAT" ] && echo "$1" >> "$PLAYER_LAST_WATCHED"/"Last-Video".txt
+	[ -z "$REPEAT" ] && echo "$FNAME" >> "$PLAYER_LAST_WATCHED"/"Last-Video".txt
 
 
 
 	START_TIME=$(date +%s)
 
-	vlc "$1" --play-and-exit  2>&1 >/dev/null
+	vlc "$FNAME" --play-and-exit  2>&1 >/dev/null
 
 
 
@@ -60,4 +61,4 @@ fi
 
 END_TIME=$(date +%s)
 END_TIME_SEC=$(( END_TIME - START_TIME ))
-[[ "$END_TIME_SEC" -gt 10 ]] && echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$1"
+[[ "$END_TIME_SEC" -gt 10 ]] && echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$FNAME"

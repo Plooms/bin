@@ -13,38 +13,38 @@ source /usr/local/bin/VAR-SCRIPT
 count="$(cat $count_file)"
 
 
-i="$1"
+FNAME="$1"
 
-if [ ! -f "$i".md5 ]
+if [ ! -f "$FNAME".md5 ]
 then
 	CYAN
 	echo "$count) Checking:"
-	echo "$i"
+	echo "$FNAME"
 
-	MD5="$(md5sum "$i"|awk '{print $1}')"
-	NAME="$(basename "$i")"
-	echo "$MD5  $NAME" > "$i".md5
+	MD5="$(md5sum "$FNAME"|awk '{print $1}')"
+	NAME="$(basename "$FNAME")"
+	echo "$MD5  $NAME" > "$FNAME".md5
 	echo $((count + 1)) > "$count_file"
 else
-	if [ "$(stat -c %s "$i".md5)" -lt 30 ]
+	if [ "$(stat -c %s "$FNAME".md5)" -lt 30 ]
 	then
-		rm "$i".md5
+		rm "$FNAME".md5
 		RED
 		echo "Removing empty or corrupt md5 file:"
-		echo "$i.md5"
+		echo "$FNAME.md5"
 		YELLOW
 		echo "$count) Re-Checking:"
-		echo "$i"
+		echo "$FNAME"
 
-		MD5="$(md5sum "$i"|awk '{print $1}')"
-		NAME="$(basename "$i")"
-		echo "$MD5  $NAME" > "$i".md5
+		MD5="$(md5sum "$FNAME"|awk '{print $1}')"
+		NAME="$(basename "$FNAME")"
+		echo "$MD5  $NAME" > "$FNAME".md5
 		echo $((count + 1)) > "$count_file"
 
 	else
 		GREEN
 		echo "$count) Skipping:"
-		echo "$i.md5 exists"
+		echo "$FNAME.md5 exists"
 		echo $((count + 1)) > "$count_file"
 
 	fi

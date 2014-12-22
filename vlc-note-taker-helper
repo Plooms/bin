@@ -17,13 +17,15 @@ _START_TIME
 _LOCK_ON
 
 #########################################################
-[ -z "$1" ] && echo "No video specified" && exit 1 
+FNAME="$1"
+
+[ -z "$FNAME" ] && echo "No video specified" && exit 1 
 
 # To get the filename without extensions
-FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
+FILENAME="$(echo "$FNAME" | rev | cut -d"." -f2- | rev)"
 
 # To get the filename only without the whole path
-FILENAME2="$(basename "$1")"
+FILENAME2="$(basename "$FNAME")"
 
 NOTE="$FILENAME-NOTES.txt"
 

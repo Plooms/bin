@@ -17,15 +17,17 @@ _START_TIME
 _LOCK_ON
 
 #########################################################
-[ -z "$1" ] && echo "No video specified" && exit 1 
+FNAME="$1"
+
+[ -z "$FNAME" ] && echo "No video specified" && exit 1 
 
 # To get the filename without extensions
-FILENAME="$(echo "$1" | rev | cut -d"." -f2- | rev)"
-FILENAME2="$(echo "$1" | rev | cut -d"/" -f1 | rev)"
+FILENAME="$(echo "$FNAME" | rev | cut -d"." -f2- | rev)"
+FILENAME2="$(echo "$FNAME" | rev | cut -d"/" -f1 | rev)"
 
 
  
-terminator -x filebot -get-missing-subtitles --lang en -non-strict "$1"
+terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME"
 
 [ -f "$(ls "$FILENAME"*.srt|head -n1)" -o -f "$(ls "$FILENAME"*.sub|head -n1)" ] || (notify-send "Media" "Subtitle Not Downloaded" && sudo beep)
 
