@@ -18,3 +18,7 @@ echo $TMP | grep -m 1 'Duration' | sed 's/                         :/:/g' >> "$1
 echo $TMP | grep 'Overall bit rate' | grep -v 'Overall bit rate mode' | sed 's/                         :/:/g' >> "$1".log
 echo "$1".log
 fi
+
+echo $TMP | grep -E 'Complete name |File size |Width |Height ' >> "$1".log
+echo $TMP | grep -m 1 'Duration' | sed 's/                         :/:/g' >> "$1".log
+echo $TMP | grep 'Overall bit rate' | grep -v 'Overall bit rate mode' >> "$1".log
