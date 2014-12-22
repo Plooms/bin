@@ -5,6 +5,7 @@ SCRIPT_NAME="c.ln2tb-movie-find-popdb"
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+FNAME="$1"
 
 count="$(cat $count_file)"
 
@@ -12,20 +13,20 @@ TMP="$(mktemp)"
 TMP2="$(mktemp)"
 TMP_LOG1="$(mktemp)"
 
-RES1=$(ffprobe -v quiet -show_streams "$1" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
-RES2=$(ffprobe -v quiet -show_streams "$1" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
+RES1=$(ffprobe -v quiet -show_streams "$FNAME" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
+RES2=$(ffprobe -v quiet -show_streams "$FNAME" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
 
 if [ -z "$RES1" -o -z "$RES2"  ]; then RES1="0" && RES2="0" ; fi
 
 DEF="$( [ "$RES1" -lt 1000 ] && [ "$RES2" -lt 700 ] && echo "[SD]")"
-NAME="$(basename "$( echo $1 | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
-NOTES="$(cat "$(echo $1 | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
-DATE="$(stat "$1" | grep Modify | awk '{print $2}')"
-SIZE="$(du -m "$1" | awk '{print $1}')"
-SUB="$( echo $1 | rev |cut -b 5- | rev )"
-BITRATE="$( grep "bit rate" "$1".log |cut -d: -f2 )"
-DURATION="$( grep "Duration" "$1".log |cut -d: -f2 )"
-NFO="$( echo $1 | rev |cut -b 5- | rev )".nfo
+NAME="$(basename "$( echo $FNAME | rev |cut -b 5- | rev | sed 's/(//g;s/)//g' )")"
+NOTES="$(cat "$(echo $FNAME | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>/dev/null
+DATE="$(stat "$FNAME" | grep Modify | awk '{print $2}')"
+SIZE="$(du -m "$FNAME" | awk '{print $FNAME}')"
+SUB="$( echo $FNAME | rev |cut -b 5- | rev )"
+BITRATE="$( grep "bit rate" "$FNAME".log |cut -d: -f2 )"
+DURATION="$( grep "Duration" "$FNAME".log |cut -d: -f2 )"
+NFO="$( echo $FNAME | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g' | head -n1)" 2>/dev/null
 
 
