@@ -92,8 +92,7 @@ sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
 -o -iname "ETRG.avi" \) -exec rm {} \; \
 -o -type d -iname "sample" -exec rm -r {} \; 2>/dev/null \
 -o -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null \
--o -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null \
--o -type f -name "*.srt" -exec sed -i '/Subtitles downloaded from www.OpenSubtitles.org/d;/Best watched using Open Subtitles MKV Player/d;/Support us and become VIP member/d;/to remove all ads from OpenSubtitles.org/d;/Advertise your product or brand here/d;/contact www.OpenSubtitles.org today/d' {} \; -exec echo {} \;
+-o -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null
 
 GREEN
 echo "[*] Finished Cleaning Junk"
