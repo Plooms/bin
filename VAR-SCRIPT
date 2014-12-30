@@ -18,12 +18,12 @@ export USERNAME="abz"
 export MYHOME="/home/abz"
 
 # How many NAS servers do you have ?
-export NAS_COUNT="2"
+export NAS_COUNT="1"
 
 
 # NAS1 Mount Point (/media/?)
 export NAS1_MOUNT_POINT="/media/R1"
-export NAS1_IP="192.168.0.101"
+export NAS1_IP="10.0.0.101"
 
 
 # NAS2 Mount Point (/media/?)
