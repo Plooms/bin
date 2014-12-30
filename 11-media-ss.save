@@ -1,0 +1,65 @@
+#!/bin/bash
+# Backup "/media" (Snapshot Style-oooooh yeah)
+SCRIPT_NAME="11-media-ss"
+PID=$$
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Run <script_name> -c to check if the script is running
+if [[ "$1" = "-c"* ]] ;then _LOCK_CHECK ; fi
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+# Start Progress indicator
+#_PROGRESS
+
+#########################################################
+
+# Snapshot NAS1
+
+RANDOM_COLOR
+
+if [ ! -d "$LNK_11" ]
+then
+
+_CANCEL_MSG
+
+echo -e "Script Warning! Please Check The Script ($SCRIPT_NAME)\n\n 
+Reason : The Previous Backup Symlink was not Found"
+
+exit 2
+
+else
+
+
+_CHECK_MOUNT1 \
+&& mkdir -p "$TRG_11" \
+&& echo "Created Dir: $TRG_11" \
+&& sudo rsync "${OPT_11[@]}" "$SRC_11" "$TRG_11" 
+
+
+
+if [ -d "$TRG_11_OLD" ]
+#then
+#echo "Removing Old Backups"
+#echo ""
+#sudo find "$TRG_11_OLD" -maxdepth 1 -type d | sort | tail -n +3 | xargs sudo rm -r
+#fi
+
+
+fi
+
+
+#########################################################
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF

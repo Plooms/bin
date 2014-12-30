@@ -222,6 +222,8 @@ export HOUR1="$(date +%p-%H -d "1 hour ago")"
 export MIN0="$(date +%M)"
 ##Previous Minute:
 export MIN1="$(date +%M -d "1 minute ago")"
+##10 days ago in ISO-8601 format
+export DAY10=$(date -I -d "10 days ago")
 ##30 days ago in ISO-8601 format
 export DAY30=$(date -I -d "30 days ago")
 ##60 days ago in ISO-8601 format
@@ -249,7 +251,7 @@ export DAY60=$(date -I -d "60 days ago")
 
 export SNAPSHOT_DIR="Snapshots/$DAY0/$HOUR0"
 
-export SNAPSHOT_DIR_OLD="Snapshots/$DAY60"
+export SNAPSHOT_DIR_OLD="Snapshots/$DAY10"
 
 export RSYNC_LOG="logs/$SCRIPT_NAME-$DAY0-$HOUR0"
 
