@@ -12,5 +12,5 @@ FNAME="$1"
 tmpfile="$FNAME-$(date)"
 sudo cp -a "$FNAME" "$tmpfile"
 sudo mv "$tmpfile" "$FNAME"        
-echo "${RED}(De-linked)${COLOR_OFF} $FNAME"
+echo -e "${RED}(De-linked)${COLOR_OFF} $FNAME"
 
