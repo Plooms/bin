@@ -73,8 +73,8 @@ export ETC_BACKUP_FOLDER="/home/abz/Ares/Config-files"
 export DROPBOX="/home/abz/Dropbox/Shared (1)"
 
 
-# BTSync folder
-export BTSYNC="/home/abz/xxx"
+# Sync folder
+export SYNC="/home/abz/xxx"
 
 
 # Movie symlink in /home/?/?

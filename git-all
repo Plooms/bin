@@ -26,9 +26,9 @@ git add -A . 2>/dev/null ; git commit -m N/A 2>/dev/null ; git push origin 2>/de
 echo "#############################################################"
 echo ""
 
-YELLOW ; echo "$MYHOME/BTSync-Central-Repo" ; COLOR_OFF
+YELLOW ; echo "$MYHOME/Sync-Central-Repo" ; COLOR_OFF
 
-cd "$MYHOME"/BTSync-Central-Repo
+cd "$MYHOME"/Sync-Central-Repo
 git add -A . 2>/dev/null ; git commit -m N/A 2>/dev/null ; git push origin 2>/dev/null
 
 echo "#############################################################"
