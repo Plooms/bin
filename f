@@ -26,8 +26,7 @@ answer=$(dialog --stdout --clear --colors --menu \
 "Refresh & Update 1" "-- Yaourt" \
 "Refresh & Update 2" "-- Pacman" \
 "Optimize Database" "-- Compress & Clear The Database" \
-"Reflector" "-- $MIRRORS" \
-"Re-Do Reflector" "-- Download latest mirrors & Re-test" )
+"Re-Do Reflector" "-- Download latest mirrors -- $MIRRORS" )
 
 case $? in
 0)
@@ -89,19 +88,7 @@ then
 clear
             sudo pacman -Sc && sudo pacman-optimize
   
-  
-elif [ "$answer" = "Reflector" ];
-then
-clear
-	    if [ ! -f /etc/pacman.d/mirrorlist.pacnew ] ; then echo -e ${RED} '\n\n There are no new mirrors' ; else \
-	    sudo cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup && \
-	    sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist && \
-	    sudo cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.all && \
-	    sudo sed '/^#\S/ s|#||' -i /etc/pacman.d/mirrorlist && \
-	    sudo reflector --verbose -l 30 --sort rate --save /etc/pacman.d/mirrorlist
-	    sleep 2
-	    fi
-  
+    
 elif [ "$answer" = "Re-Do Reflector" ];
 then
 clear
