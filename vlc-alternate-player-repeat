@@ -33,7 +33,7 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
 SELECTION="$(dialog --stdout --clear --radiolist \
-"Select Video File:   (1= Newest -  3= Oldest)" 10 100 3 \
+"Select Video File:   (1 = Newest /  3 = Oldest)" 10 100 3 \
 1 "${F2_ARRAY[2]}" on \
 2 "${F2_ARRAY[1]}" off \
 3 "${F2_ARRAY[0]}" off )"
