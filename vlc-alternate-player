@@ -13,6 +13,10 @@ source /usr/local/bin/VAR-SCRIPT
 #########################################################
 FNAME="$1"
 
+
+TMP="$(mktemp)"
+
+
 # To get the filename without extensions
 FILENAME="$(echo "$FNAME" | rev | cut -d"." -f2- | rev)"
 # To get the filename without the path
@@ -35,7 +39,10 @@ then
 
 	vlc "$FILENAME"*.xspf --play-and-exit  2>&1 >/dev/null
 
+	XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
+ sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
 
+	while read a ; do notify-send "Media" "$a" ; done < $TMP
 
 else 
 
@@ -53,7 +60,8 @@ else
 
 	vlc "$FNAME" --play-and-exit  2>&1 >/dev/null
 
-
+	XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
+	sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
 
 fi
 
@@ -62,3 +70,5 @@ fi
 END_TIME=$(date +%s)
 END_TIME_SEC=$(( END_TIME - START_TIME ))
 [[ "$END_TIME_SEC" -gt 10 ]] && echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$FNAME"
+
+while read a ; do notify-send "Media" "$a - Marked as Watched" ; done < $TMP
