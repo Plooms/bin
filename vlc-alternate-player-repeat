@@ -30,10 +30,7 @@ while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
 
 
 XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
-sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n5  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP2
-
-sed -i '/^$/d' $TMP2
-
+sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n100  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP2
 
 
 # To get the filename without extensions
@@ -42,8 +39,10 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 # To get the filename without the path
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
+
 # Remove All Blank Lines
 sed -i '/^$/d' $TMP2
+
 grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A="[Y]  -  ${F2_ARRAY[2]}" || A="[N]  -  ${F2_ARRAY[2]}"
 grep --fixed-strings "${F2_ARRAY[1]}" $TMP2 && B="[Y]  -  ${F2_ARRAY[1]}" || B="[N]  -  ${F2_ARRAY[1]}"
 grep --fixed-strings "${F2_ARRAY[0]}" $TMP2 && C="[Y]  -  ${F2_ARRAY[0]}" || C="[N]  -  ${F2_ARRAY[0]}"
