@@ -23,9 +23,9 @@ TMP2="$(mktemp)"
 # Get the file name from Last-video.txt
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 
-while read a ; do F_ARRAY+=("$a") ; done < <(tail -n 3 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
-for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
-while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
+while read a    ; do F_ARRAY+=("$a") ; done < <(tail -n 3 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
+for i in 0 1 2  ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
+while read b    ; do F2_ARRAY+=("$b") ; done <  $TMP
 
 
 XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
@@ -40,7 +40,7 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 # To get the filename without the path
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
-A="$(grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A="$(echo "${F2_ARRAY[2]}"-watched)" )"
+A="$(grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A=""${F2_ARRAY[2]}"-watched)" )"
 [ -z "$A" ] && A="${F2_ARRAY[2]}"
 
 B="$(grep --fixed-strings "${F2_ARRAY[1]}" $TMP2 && B="$(echo "${F2_ARRAY[1]}")" )"
