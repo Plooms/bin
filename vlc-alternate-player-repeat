@@ -40,9 +40,13 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 # To get the filename without the path
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
-A="$(grep "${F2_ARRAY[2]}" $TMP2 && A="$(echo "${F2_ARRAY[2]}"-watched)" || A="${F2_ARRAY[2]}" )"
-B="$(grep "${F2_ARRAY[1]}" $TMP2 && B="$(echo "${F2_ARRAY[1]}"-watched)" || B="${F2_ARRAY[1]}" )"
-C="$(grep "${F2_ARRAY[0]}" $TMP2 && C="$(echo "${F2_ARRAY[0]}"-watched)" || C="${F2_ARRAY[0]}" )"
+A="$(grep "${F2_ARRAY[2]}" $TMP2 && A="$(echo "${F2_ARRAY[2]}")" || A="${F2_ARRAY[2]}" )"
+B="$(grep "${F2_ARRAY[1]}" $TMP2 && B="$(echo "${F2_ARRAY[1]}")" || B="${F2_ARRAY[1]}" )"
+C="$(grep "${F2_ARRAY[0]}" $TMP2 && C="$(echo "${F2_ARRAY[0]}")" || C="${F2_ARRAY[0]}" )"
+
+echo "$A"
+echo "$B"
+echo "$C"
 
 SELECTION="$(dialog --stdout --clear --radiolist \
 "Select Video File:   (1 = Newest /  3 = Oldest)" 10 100 3 \
