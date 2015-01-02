@@ -1,5 +1,5 @@
 #!/bin/bash
-# Write notes on selected video from XBMC
+# Write notes on selected video from KODI
 SCRIPT_NAME="vlc-note-taker-helper"
 PID=$$
 

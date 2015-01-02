@@ -29,8 +29,8 @@ sed -i '/^$/d' $TMP
 while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
 
 
-XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
-sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n100  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP2
+KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
+sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n100  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP2
 
 
 # To get the filename without extensions

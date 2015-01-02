@@ -40,7 +40,7 @@ echo "
 .macromedia/
 .nv
 .thumbnails/
-.xbmc/*
+.kodi/*
 *.socket
 *.pipe
 *.log

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Fetch subtitles of selected video from XBMC
+# Fetch subtitles of selected video from KODI
 SCRIPT_NAME="vlc-subtitle-fetcher"
 PID=$$
 
