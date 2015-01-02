@@ -14,7 +14,7 @@ source /usr/local/bin/VAR-SCRIPT
 FNAME="$1"
 
 
-TMP="$(mktemp)"
+export TMP="$(mktemp)"
 
 
 # To get the filename without extensions
@@ -70,4 +70,4 @@ END_TIME=$(date +%s)
 END_TIME_SEC=$(( END_TIME - START_TIME ))
 [[ "$END_TIME_SEC" -gt 10 ]] && echo "$FILENAME" | grep "/Movies/" && /usr/local/bin/vlc-note-taker "$FNAME"
 
-while read a ; do notify-send "Media" "$a - Marked as Watched" ; done < $TMP
+nohup sleep 2 && while read a ; do notify-send "Media" "$a - Marked as Watched" ; done < $TMP &
