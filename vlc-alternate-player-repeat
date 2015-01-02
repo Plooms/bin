@@ -27,6 +27,13 @@ while read a ; do F_ARRAY+=("$a") ; done < <(tail -n 3 "$PLAYER_LAST_WATCHED"/La
 for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
 while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
 
+
+XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
+sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n5  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' >> $TMP2
+
+while read c ; do W_ARRAY+=("$c") ; done < <(tail -n 3 $TMP2)
+
+
 # To get the filename without extensions
 FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 
@@ -34,18 +41,15 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
 
-XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
-sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n5  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' >> $TMP2
-while read c ; do W_ARRAY+=("$c") ; done < <(tail -n 3 $TMP2)
-
-
-
+A="[ "${F2_ARRAY[2]}" = "${W_ARRAY[2]}" ] && A="echo "$A"-[watched]" || A="${F2_ARRAY[2]}" "
+B="[ "${F2_ARRAY[1]}" = "${W_ARRAY[1]}" ] && B="echo "$B"-[watched]" || B="${F2_ARRAY[1]}" "
+C="[ "${F2_ARRAY[0]}" = "${W_ARRAY[0]}" ] && C="echo "$C"-[watched]" || C="${F2_ARRAY[0]}" "
 
 SELECTION="$(dialog --stdout --clear --radiolist \
 "Select Video File:   (1 = Newest /  3 = Oldest)" 10 100 3 \
-1 "${F2_ARRAY[2]}" on \
-2 "${F2_ARRAY[1]}" off \
-3 "${F2_ARRAY[0]}" off )"
+1 "$A" on \
+2 "$B" off \
+3 "$C" off )"
 
 
 
