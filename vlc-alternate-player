@@ -40,7 +40,7 @@ then
 	vlc "$FILENAME"*.xspf --play-and-exit  2>&1 >/dev/null
 
 	XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
- sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
+ sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
 
 	while read a ; do notify-send "Media" "$a" ; done < $TMP
 
@@ -61,7 +61,7 @@ else
 	vlc "$FNAME" --play-and-exit  2>&1 >/dev/null
 
 	XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
-	sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
+	sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
 
 fi
 
