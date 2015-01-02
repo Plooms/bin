@@ -40,9 +40,10 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 # To get the filename without the path
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
-A="$(grep "${F2_ARRAY[2]}" $TMP2 && A="$(echo "${F2_ARRAY[2]}")" || A="${F2_ARRAY[2]}" )"
-B="$(grep "${F2_ARRAY[1]}" $TMP2 && B="$(echo "${F2_ARRAY[1]}")" || B="${F2_ARRAY[1]}" )"
-C="$(grep "${F2_ARRAY[0]}" $TMP2 && C="$(echo "${F2_ARRAY[0]}")" || C="${F2_ARRAY[0]}" )"
+A="$(grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A="$(echo "${F2_ARRAY[2]}")" )"
+[ -z "$A" ] && A="${F2_ARRAY[2]}"
+B="$(grep --fixed-strings "${F2_ARRAY[1]}" $TMP2 && B="$(echo "${F2_ARRAY[1]}")" )"
+C="$(grep --fixed-strings "${F2_ARRAY[0]}" $TMP2 && C="$(echo "${F2_ARRAY[0]}")" )"
 
 echo "$A"
 echo "$B"
