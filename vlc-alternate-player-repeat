@@ -31,7 +31,7 @@ while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
 XBMC_LAST_WATCHED="$(ls -t ~/.xbmc/userdata/Database/MyVideo* |head -n 1)" &&\
 sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n5  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP2
 
-while read c ; do W_ARRAY+=("$c") ; done < <(tail -n 3 $TMP2)
+while read c ; do W_ARRAY+=("$c") ; done < $TMP2
 
 
 # To get the filename without extensions
@@ -40,10 +40,15 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 # To get the filename without the path
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
-
-A="[ "${F2_ARRAY[2]}" = "${W_ARRAY[2]}" ] && A="echo $A-[watched]" || A="${F2_ARRAY[2]}" "
-B="[ "${F2_ARRAY[1]}" = "${W_ARRAY[1]}" ] && B="echo $B-[watched]" || B="${F2_ARRAY[1]}" "
-C="[ "${F2_ARRAY[0]}" = "${W_ARRAY[0]}" ] && C="echo $C-[watched]" || C="${F2_ARRAY[0]}" "
+A="${F2_ARRAY[2]}"
+A1="$(grep "${F2_ARRAY[2]}" "${W_ARRAY[]}" ] 
+&& A="echo $A-[watched]" || A="${F2_ARRAY[2]}" "
+B="${F2_ARRAY[1]}"
+B="[ "${F2_ARRAY[1]}" = "${W_ARRAY[1]}" ]
+&& B="echo $B-[watched]" || B="${F2_ARRAY[1]}" "
+C="${F2_ARRAY[0]}"
+C="[ "${F2_ARRAY[0]}" = "${W_ARRAY[0]}" ]
+&& C="echo $C-[watched]" || C="${F2_ARRAY[0]}" "
 
 SELECTION="$(dialog --stdout --clear --radiolist \
 "Select Video File:   (1 = Newest /  3 = Oldest)" 10 100 3 \
