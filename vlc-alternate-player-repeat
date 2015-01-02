@@ -34,7 +34,6 @@ sqlite3  "$XBMC_LAST_WATCHED" "select strFilename, playCount from files order by
 
 sed -i '/^$/d' $TMP2
 
-#while read c ; do W_ARRAY+=("$c") ; done < $TMP2
 
 
 # To get the filename without extensions
@@ -43,6 +42,8 @@ FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
 # To get the filename without the path
 FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 
+# Remove All Blank Lines
+sed -i '/^$/d' $TMP2
 grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A="[Y]  -  ${F2_ARRAY[2]}" || A="[N]  -  ${F2_ARRAY[2]}"
 grep --fixed-strings "${F2_ARRAY[1]}" $TMP2 && B="[Y]  -  ${F2_ARRAY[1]}" || B="[N]  -  ${F2_ARRAY[1]}"
 grep --fixed-strings "${F2_ARRAY[0]}" $TMP2 && C="[Y]  -  ${F2_ARRAY[0]}" || C="[N]  -  ${F2_ARRAY[0]}"
@@ -64,17 +65,17 @@ case $? in
 
 	case "$SELECTION" in
 	1)
-	[ ! -z "$A" ] && nohup /usr/local/bin/vlc-alternate-player "${F2_ARRAY[2]}" 2>&1 >/dev/null &
+	[ ! -z "$A" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" 2>&1 >/dev/null &
 	sleep .1
 	exit 0 ;;
 
 	2)
-	[ ! -z "$B" ] && nohup /usr/local/bin/vlc-alternate-player "${F2_ARRAY[1]}" 2>&1 >/dev/null &
+	[ ! -z "$B" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[1]}" 2>&1 >/dev/null &
 	sleep .1
 	exit 0 ;;
 
 	3)
-	[ ! -z "$C" ] && nohup /usr/local/bin/vlc-alternate-player "${F2_ARRAY[0]}" 2>&1 >/dev/null &
+	[ ! -z "$C" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[0]}" 2>&1 >/dev/null &
 	sleep .1
 	exit 0 ;;
 	esac
