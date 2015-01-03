@@ -55,7 +55,7 @@ grep --fixed-strings "${F2_ARRAY[0]}" $TMP2 && C="${GREENz}[Y]${COLORz_OFF}  -  
 
 
 SELECTION="$(dialog --stdout --colors --clear --radiolist \
-"Select Video File:   (1 = Newest /  3 = Oldest)" 10 100 3 \
+"Select Video File:   (1 = Newest /  3 = Oldest)" 10 100 5 \
 1 "$A" on \
 2 "$B" off \
 3 "$C" off )"
@@ -80,7 +80,7 @@ case $? in
 	
 	;;
 	2)
-	dialog --stdout --checklist "Video Options: (${F2_ARRAY[1]})" 20 75 5 \
+	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[1]}  )" 12 100 5 \
 		"Repeat Video"				"" off \
 		"Remove Video Subtitles"	"" off \
 		"Take Notes"				"" off \
@@ -97,7 +97,7 @@ case $? in
 	
 	;;
 	3)
-	dialog --stdout --checklist "Video Options: (${F2_ARRAY[0]})" 20 75 5 \
+	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[0]}  )" 12 100 5 \
 		"Repeat Video"				"" off \
 		"Remove Video Subtitles"	"" off \
 		"Take Notes"				"" off \
