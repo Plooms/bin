@@ -19,6 +19,7 @@ WHITE='\e[1;97m'
 # Dialog
 REDz='\Zb\Z1'
 GREENz='\Zb\Z2'
+COLORz_OFF='\Zn'
 
 # Regular Colors
 RBLACK='\e[0;30m'
