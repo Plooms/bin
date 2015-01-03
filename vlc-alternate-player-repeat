@@ -27,7 +27,7 @@ TMP4="$(mktemp)"
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 
 # F_ARRAY = Full file path , eg: /X/X/X.avi
-while read a ; do F_ARRAY+=("$a") ; done < <(uniq -u "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 3)
+while read a ; do F_ARRAY+=("$a") ; done < <(uniq "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 3)
 
 for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
 sed -i '/^$/d' $TMP
