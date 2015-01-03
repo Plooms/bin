@@ -66,15 +66,15 @@ case $? in
 
 	case "$SELECTION" in
 	1)
-	dialog --stdout --checklist "Video Options: (${F2_ARRAY[2]})" 20 75 5 \
+	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[2]}  )" 12 100 5 \
 		"Repeat Video"				"" off \
 		"Remove Video Subtitles"	"" off \
 		"Take Notes"				"" off \
-		""							"" off \
-		""							"" off > $TMP3
+		"Empty"							"" off \
+		"Empty"							"" off > $TMP3
 
 	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[2]}"
-	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm -iv "${F3_ARRAY[2]}*.srt"
+	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm -iv "${F3_ARRAY[2]}*.srt" && rm -iv "${F3_ARRAY[2]}*.sub"
 	grep --fixed-strings "Repeat Video" $TMP3 && export REPEAT=ON && \
 	[ ! -z "$A" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" 2>&1 >/dev/null &
 	
