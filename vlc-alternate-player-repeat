@@ -20,6 +20,7 @@ _LOCK_ON
 TMP="$(mktemp)"
 TMP2="$(mktemp)"
 TMP3="$(mktemp)"
+TMP4="$(mktemp)"
 
 
 # Get the file name from Last-video.txt
@@ -34,12 +35,11 @@ sed -i '/^$/d' $TMP
 # F2_ARRAY = Filename Only , eg: X.avi
 while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
 
-rm $TMP
-for i in 0 1 2 ; do  echo "${F_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done >> $TMP
-sed -i '/^$/d' $TMP
+for i in 0 1 2 ; do  echo "${F_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done >> $TMP4
+sed -i '/^$/d' $TMP4
 
 # F3_ARRAY = Full File path without extensions , eg: /X/X/X/X
-while read c ; do F3_ARRAY+=("$c") ; done <  $TMP
+while read c ; do F3_ARRAY+=("$c") ; done <  $TMP4
 
 
 KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
