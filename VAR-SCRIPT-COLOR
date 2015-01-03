@@ -17,8 +17,8 @@ CYAN='\e[1;96m'
 WHITE='\e[1;97m'
 
 # Dialog
-REDz='\Z1'
-GREENz='\Z2'
+REDz='\Zb\Z1'
+GREENz='\Zb\Z2'
 
 # Regular Colors
 RBLACK='\e[0;30m'

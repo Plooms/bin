@@ -43,12 +43,12 @@ FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
 # Remove All Blank Lines
 sed -i '/^$/d' $TMP2
 
-grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A="[Y]  -  ${F2_ARRAY[2]}" || A="[N]  -  ${F2_ARRAY[2]}"
-grep --fixed-strings "${F2_ARRAY[1]}" $TMP2 && B="[Y]  -  ${F2_ARRAY[1]}" || B="[N]  -  ${F2_ARRAY[1]}"
-grep --fixed-strings "${F2_ARRAY[0]}" $TMP2 && C="[Y]  -  ${F2_ARRAY[0]}" || C="[N]  -  ${F2_ARRAY[0]}"
+grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A="${GREENz}[Y]  -  ${F2_ARRAY[2]}" || A="${REDz}[N]  -  ${F2_ARRAY[2]}"
+grep --fixed-strings "${F2_ARRAY[1]}" $TMP2 && B="${GREENz}[Y]  -  ${F2_ARRAY[1]}" || B="${REDz}[N]  -  ${F2_ARRAY[1]}"
+grep --fixed-strings "${F2_ARRAY[0]}" $TMP2 && C="${GREENz}[Y]  -  ${F2_ARRAY[0]}" || C="${REDz}[N]  -  ${F2_ARRAY[0]}"
 
 
-SELECTION="$(dialog --stdout --clear --radiolist \
+SELECTION="$(dialog --stdout --colors --clear --radiolist \
 "Select Video File:   (1 = Newest /  3 = Oldest)" 10 100 3 \
 1 "$A" on \
 2 "$B" off \
