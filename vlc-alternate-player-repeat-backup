@@ -1,0 +1,95 @@
+#!/bin/bash
+# Replay last video file if wanted
+SCRIPT_NAME="vlc-alternate-player-repeat"
+PID=$$
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+
+# Time Calculation
+_START_TIME
+
+# Start Lock
+_LOCK_ON
+
+
+
+#########################################################
+TMP="$(mktemp)"
+TMP2="$(mktemp)"
+
+# Get the file name from Last-video.txt
+FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
+
+while read a ; do F_ARRAY+=("$a") ; done < <(tail -n 3 "$PLAYER_LAST_WATCHED"/Last-Video.txt)
+for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
+sed -i '/^$/d' $TMP
+while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
+
+
+KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
+sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n100  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP2
+
+
+# To get the filename without extensions
+FILENAME="$(echo "$FILE" | rev | cut -d"." -f2- | rev )"
+
+# To get the filename without the path
+FILENAME2="$(echo "$FILE" | rev | cut -d"/" -f1 | rev )"
+
+
+# Remove All Blank Lines
+sed -i '/^$/d' $TMP2
+
+grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[2]}" || A="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[2]}"
+grep --fixed-strings "${F2_ARRAY[1]}" $TMP2 && B="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[1]}" || B="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[1]}"
+grep --fixed-strings "${F2_ARRAY[0]}" $TMP2 && C="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[0]}" || C="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[0]}"
+
+
+SELECTION="$(dialog --stdout --colors --clear --radiolist \
+"Select Video File:   (1 = Newest /  3 = Oldest)" 10 100 3 \
+1 "$A" on \
+2 "$B" off \
+3 "$C" off )"
+
+
+
+case $? in
+0) 
+
+	# To prevent the repeating action from clogging the Last-video.txt file
+	export REPEAT=ON
+
+	case "$SELECTION" in
+	1)
+	[ ! -z "$A" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" 2>&1 >/dev/null &
+	sleep .1
+	exit 0 ;;
+
+	2)
+	[ ! -z "$B" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[1]}" 2>&1 >/dev/null &
+	sleep .1
+	exit 0 ;;
+
+	3)
+	[ ! -z "$C" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[0]}" 2>&1 >/dev/null &
+	sleep .1
+	exit 0 ;;
+	esac
+
+;;
+1) 
+exit 1 ;;
+esac
+
+
+#########################################################
+
+# Time Calculation
+_END_TIME
+
+# End Lock
+_LOCK_OFF
+
