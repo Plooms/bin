@@ -69,9 +69,7 @@ case $? in
 	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[2]}  )" 12 100 5 \
 		"Repeat Video"				"" off \
 		"Remove Video Subtitles"	"" off \
-		"Take Notes"				"" off \
-		"Empty"						"" off \
-		"Empty"						"" off > $TMP3
+		"Take Notes"				"" off > $TMP3
 
 	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[2]}"
 	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm "${F3_ARRAY[2]}"*.srt && rm "${F3_ARRAY[2]}"*.sub
@@ -83,9 +81,7 @@ case $? in
 	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[1]}  )" 12 100 5 \
 		"Repeat Video"				"" off \
 		"Remove Video Subtitles"	"" off \
-		"Take Notes"				"" off \
-		""							"" off \
-		""							"" off > $TMP3
+		"Take Notes"				"" off  > $TMP3
 
 	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[1]}"
 	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm "${F3_ARRAY[1]}"*.srt && rm "${F3_ARRAY[1]}"*.sub
@@ -99,9 +95,7 @@ case $? in
 	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[0]}  )" 12 100 5 \
 		"Repeat Video"				"" off \
 		"Remove Video Subtitles"	"" off \
-		"Take Notes"				"" off \
-		""							"" off \
-		""							"" off > $TMP3
+		"Take Notes"				"" off > $TMP3
 
 	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[0]}"
 	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm "${F3_ARRAY[0]}"*.srt && rm "${F3_ARRAY[0]}"*.sub
