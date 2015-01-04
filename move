@@ -272,7 +272,6 @@ if ls -U | grep -E 'Silicon\ Valley\ -\ \[*' >/dev/null 2>&1 ; then mv -v Silico
 if ls -U | grep -E 'Six\ Feet\ Under\ -\ \[*' >/dev/null 2>&1 ; then mv -v Six\ Feet\ Under\ -\ \[* "$TV_SYM"/"Six Feet Under"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Sleepy\ Hollow\ -\ \[*' >/dev/null 2>&1 ; then mv -v Sleepy\ Hollow\ -\ \[* "$TV_SYM"/"Sleepy Hollow"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Sons\ of\ Anarchy\ -\ \[*' >/dev/null 2>&1 ; then mv -v Sons\ of\ Anarchy\ -\ \[* "$TV_SYM"/"Sons of Anarchy"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Sons\ of\ Guns\ -\ \[*' >/dev/null 2>&1 ; then mv -v Sons\ of\ Guns\ -\ \[* "$TV_SYM"/"Sons of Guns"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'South\ Beach\ Tow\ -\ \[*' >/dev/null 2>&1 ; then mv -v South\ Beach\ Tow\ -\ \[* "$TV_SYM"/"South Beach Tow"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Southland\ -\ \[*' >/dev/null 2>&1 ; then mv -v Southland\ -\ \[* "$TV_SYM"/"Southland"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'South\ Park\ -\ \[*' >/dev/null 2>&1 ; then mv -v South\ Park\ -\ \[* "$TV_SYM"/"South Park"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
