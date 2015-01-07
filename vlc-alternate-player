@@ -47,7 +47,7 @@ then
 
 	
 
-	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
+	echo "$(date | cut -d" " -f 1-5) <-> Started  - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 	# REPEAT variable comes from the repeater script to prevent clogging this file needlessly
 	[ -z "$REPEAT" ] && echo "$FNAME" >> "$PLAYER_LAST_WATCHED"/"Last-Video".txt
@@ -79,7 +79,7 @@ else
 		fi
 
 
-	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
+	echo "$(date | cut -d" " -f 1-5) <-> Started  - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 	# REPEAT variable comes from the repeater script to prevent clogging this file needlessly
 	[ -z "$REPEAT" ] && echo "$FNAME" >> "$PLAYER_LAST_WATCHED"/"Last-Video".txt
@@ -100,6 +100,6 @@ fi
 END_TIME=$(date +%s)
 END_TIME_SEC=$(( END_TIME - START_TIME ))
 
-[ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-4) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
+[ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 nohup sleep 1 && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
