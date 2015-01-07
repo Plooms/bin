@@ -18,16 +18,34 @@ export TMP="$(mktemp)"
 
 
 # To get the filename without extensions
-FILENAME="$(echo "$FNAME" | rev | cut -d"." -f2- | rev)"
+FILENAME="$( echo "$FNAME" | rev | cut -d"."  -f2- | rev )"
 # To get the filename without the path
-FILENAME2="$(echo "$FNAME" | rev | cut -d"/" -f1 | rev)"
+FILENAME2="$( echo "$FNAME" | rev | cut -d"/" -f1  | rev )"
+# To get the path without the filename
+FILENAME3="$( dirname "$FNAME" )"
+
+
 
 if [ -f "$FILENAME"*.xspf ]
 
 then 
 
-	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME"
-	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
+	if 
+	
+		# Find if we need Subs Really
+		[ "$(cat $FILENAME3/1-info)" = "No Need For Subs" ]
+	
+	then
+		echo "No Need For Subs"
+	
+	else
+
+		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME"
+		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
+
+	fi
+
+	
 
 	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
@@ -44,9 +62,22 @@ then
 
 
 else 
+	
+		if 
+	
+		# Find if we need Subs Really
+		[ "$(cat $FILENAME3/1-info)" = "No Need For Subs" ]
+	
+		then
+		echo "No Need For Subs"
+	
+		else
 
-	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME"
-	[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found" && sudo beep)
+		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME"
+		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
+
+	fi
+
 
 	echo "$(date | cut -d" " -f 1-4) <-> Started - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
@@ -68,5 +99,7 @@ fi
 
 END_TIME=$(date +%s)
 END_TIME_SEC=$(( END_TIME - START_TIME ))
+
+[ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-4) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 nohup sleep 1 && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
