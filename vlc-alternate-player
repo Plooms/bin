@@ -47,6 +47,7 @@ then
 
 	
 
+	echo "" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 	echo "$(date | cut -d" " -f 1-5) <-> Started  - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 	# REPEAT variable comes from the repeater script to prevent clogging this file needlessly
@@ -79,6 +80,7 @@ else
 		fi
 
 
+	echo "" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 	echo "$(date | cut -d" " -f 1-5) <-> Started  - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 	# REPEAT variable comes from the repeater script to prevent clogging this file needlessly
