@@ -15,7 +15,7 @@ FNAME="$1"
 
 
 export TMP="$(mktemp)"
-
+export TIME_TMP="$(mktemp)"
 
 # To get the filename without extensions
 FILENAME="$( echo "$FNAME" | rev | cut -d"."  -f2- | rev )"
@@ -56,10 +56,15 @@ then
 
 	START_TIME=$(date +%s)
 
-	vlc "$FILENAME"*.xspf --play-and-exit  2>&1 >/dev/null
-
-	KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
-	sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
+	
+	if [ -f "$FILENAME".time.txt ]
+	then vlc "$FILENAME" --start-time "$(cat "$FILENAME".time.txt)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null &
+	else vlc "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null &
+	fi
+	
+	while curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml >/dev/null ; do VLC_TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml | grep time |cut -d"/" -f1 | sed 's/<time>//g;s/<//g' >> $TIME_TMP )" && sleep .5 || (export VLC_TIME="$VLC_TIME" && break) ;done && echo "$VLC_TIME" > "$FILENAME.time.txt"
+	
+	KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
 
 
 else 
@@ -89,11 +94,15 @@ else
 
 
 	START_TIME=$(date +%s)
+	
+	if [ -f "$FNAME".time.txt ]
+	then vlc "$FNAME" --start-time "$(cat "$FNAME".time.txt)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null &
+	else vlc "$FNAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null &
+	fi
+	
+	while curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml >/dev/null ; do VLC_TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml | grep time |cut -d"/" -f1 | sed 's/<time>//g;s/<//g' >> $TIME_TMP )" && sleep .5 || (export VLC_TIME="$VLC_TIME" && break) ;done && echo "$VLC_TIME" > "$FNAME.time.txt"
 
-	vlc "$FNAME" --play-and-exit  2>&1 >/dev/null
-
-	KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
-	sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
+	KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
 
 fi
 
