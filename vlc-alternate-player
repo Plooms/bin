@@ -26,7 +26,7 @@ FILENAME3="$( dirname "$FNAME" )"
 
 ass()
 {
-while true ; do VLC_TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml | grep time |cut -d"/" -f1 | sed 's/<time>//g;s/<//g' >> $TIME_TMP )" && sleep .5 || (export VLC_TIME="$(cat $TIME_TMP| sed 's/^$/d')" && break) ;done && echo "$VLC_TIME" >> "$FNAME.time.txt"
+while [ -z "$KILL_ME" ] ; do VLC_TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml | grep time |cut -d"/" -f1 | sed 's/<time>//g;s/<//g' >> $TIME_TMP )" && sleep .5 || (export VLC_TIME="$(cat $TIME_TMP| sed 's/^$/d')" && break) ;done && echo "$VLC_TIME" >> "$FNAME.time.txt"
 }
 
 
@@ -69,7 +69,8 @@ ass &
 vlc "$FNAME" --start-time "$(tail -n1 "$FNAME".time.txt)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
 	else vlc "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
 	fi
-sudo killall ass
+KILL_ME=YES
+
 #	
 	KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
 
