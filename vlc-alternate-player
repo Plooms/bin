@@ -11,7 +11,7 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 #########################################################
-export FNAME="$1"
+FNAME="$1"
 
 
 TMP="$(mktemp)"
@@ -25,7 +25,7 @@ FILENAME2="$( echo "$FNAME" | rev | cut -d"/" -f1  | rev )"
 FILENAME3="$( dirname "$FNAME" )"
 
 touch /tmp/vcheck1
-while [ -f /tmp/vcheck1 ] ; do [ -f /tmp/vcheck2 ] && sleep 1 && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- >> $TIME_TMP || break  ; done &
+while [ -f /tmp/vcheck1 ] ; do [ -f /tmp/vcheck2 ] && sleep 1 && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
 
 
 
@@ -67,7 +67,9 @@ touch /tmp/vcheck2
 rm /tmp/vcheck1 /tmp/vcheck2
 
 #echo "$(cat $TIME_TMP| sed '/^$/d;/^0$/d;s/^[ \t]*//;s/[ \t]*$//' |tail -n1)" >> "$FNAME".time.txt
-mv $TIME_TMP "$FNAME".time.txt
+
+echo -e "\n\n\n" >>  "$FNAME".time.txt
+cat $TIME_TMP >>  "$FNAME".time.txt
 
 	else
 
