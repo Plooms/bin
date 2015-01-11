@@ -44,13 +44,50 @@ else
 #sudo find "$TRG_11_OLD" -maxdepth 1 -type d | sort | tail -n +3 | xargs sudo rm -r
 #fi
 
+
+# All Files Backup
+if [ "$ALL_FILES"x = "ON"x ]
+then
+	GREEN
 _CHECK_MOUNT1 \
 && mkdir -p "$TRG_11" \
 && echo "Created Dir: $TRG_11" \
 && sudo rsync "${OPT_11[@]}" "$SRC_11" "$TRG_11" 
 
+else
+	RED
+ 	echo "You have the option of backing up (ALL_FILES) or (SMALL_FILES)"
+	echo ""
+	echo "export ALL_FILES=ON    |    export SMALL_FILES=ON"
+	echo ""
 fi
 
+##
+##
+# All Files Backup
+if [ "$SMALL_FILES"x = "ON"x ]
+then
+	GREEN
+_CHECK_MOUNT1 \
+&& mkdir -p "$TRG_11_2" \
+&& echo "Created Dir: $TRG_11_2" \
+&& sudo rsync "${OPT_11_2[@]}" "$SRC_11_2" "$TRG_11_2" 
+
+else
+	RED
+ 	echo "You have the option of backing up (ALL_FILES) or (SMALL_FILES)"
+	echo ""
+	echo "export ALL_FILES=ON    |    export SMALL_FILES=ON"
+	echo ""
+fi
+
+	COLOR_OFF
+
+else
+
+_CANCEL_MSG2
+
+fi
 
 #########################################################
 
