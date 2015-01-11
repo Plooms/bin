@@ -66,10 +66,17 @@ touch /tmp/vcheck2
 	vlc "$FNAME" --start-time "$(sed '/^$/d;s/^ $//g' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
 rm /tmp/vcheck1 /tmp/vcheck2
 
+#echo "$(cat $TIME_TMP| sed '/^$/d;/^0$/d;s/^[ \t]*//;s/[ \t]*$//' |tail -n1)" >> "$FNAME".time.txt
+mv $TIME_TMP "$FNAME".time.txt
+
+	else
+
+touch /tmp/vcheck2
+	vlc "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+rm /tmp/vcheck1 /tmp/vcheck2
+
 echo "$(cat $TIME_TMP| sed '/^$/d;/^0$/d;s/^[ \t]*//;s/[ \t]*$//' |tail -n1)" >> "$FNAME".time.txt
 
-
-	else vlc "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
 	fi
 
 
