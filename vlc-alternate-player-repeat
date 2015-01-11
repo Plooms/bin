@@ -74,7 +74,7 @@ case $? in
 
 	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[2]}"
 	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm "${F3_ARRAY[2]}"*.srt && rm "${F3_ARRAY[2]}"*.sub
-	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "${F3_ARRAY[2]}".time.txt
+	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "${F_ARRAY[2]}".time.txt
 	grep --fixed-strings "Repeat Video" $TMP3 && export REPEAT=ON && \
 	[ ! -z "$A" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" 2>&1 >/dev/null &
 	sleep .3
@@ -89,7 +89,7 @@ case $? in
 
 	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[1]}"
 	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm "${F3_ARRAY[1]}"*.srt && rm "${F3_ARRAY[1]}"*.sub
-	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "${F3_ARRAY[1]}".time.txt
+	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "${F_ARRAY[1]}".time.txt
 	grep --fixed-strings "Repeat Video" $TMP3 && export REPEAT=ON && \
 	[ ! -z "$B" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[1]}" 2>&1 >/dev/null &
 	sleep .3
@@ -106,7 +106,7 @@ case $? in
 
 	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[0]}"
 	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm "${F3_ARRAY[0]}"*.srt && rm "${F3_ARRAY[0]}"*.sub
-	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "${F3_ARRAY[0]}".time.txt
+	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "${F_ARRAY[0]}".time.txt
 	grep --fixed-strings "Repeat Video" $TMP3 && export REPEAT=ON && \
 	[ ! -z "$C" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[0]}" 2>&1 >/dev/null &
 	sleep .3
