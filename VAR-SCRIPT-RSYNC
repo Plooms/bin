@@ -242,9 +242,9 @@ export DAY60=$(date -I -d "60 days ago")
 
 #################################################### /
 # NOTE:                                              /
-#	 when TRG is in SRC folder                   	 /
-#	 rsync must be = "$SRC_15"*  (Notice the *)  	 /
-#	 to avoid duplication of TRG                 	 /
+#	 when TRG is in SRC folder                   /
+#	 rsync must be = "$SRC_15"*  (Notice the *)  /
+#	 to avoid duplication of TRG                 /
 #################################################### /
 
 ####################################################
@@ -274,8 +274,9 @@ export LNK_11="/media/R1/"
 export LOG_11="/media/R1/Backups/$RSYNC_LOG"
 
 # Rsync Options
-OPT_11=("-iavhHP"  "--exclude-from=$RSYNC_EXCLUDE_11" "--log-file=$LOG_11" "--link-dest=$LNK_11")
-
+OPT_11=("-iavhHP"  "--exclude-from=$RSYNC_EXCLUDE_11" "--link-dest=$LNK_11")
+OPT_11_2=("-iavhHP"  "--exclude-from=$RSYNC_EXCLUDE_11" "--max-size=20M")
+# OPT_11_2 has no (link dest) so it will make new copies of files less than 20MB
 
 ###############################################################
 
