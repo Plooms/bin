@@ -16,6 +16,8 @@ FNAME="$1"
 
 TMP="$(mktemp)"
 TIME_TMP="$(mktemp)"
+TRIGGER1="$(mktemp)"
+TRIGGER2="$(mktemp)"
 
 # To get the filename without extensions
 FILENAME="$( echo "$FNAME" | rev | cut -d"."  -f2- | rev )"
@@ -25,7 +27,7 @@ FILENAME2="$( echo "$FNAME" | rev | cut -d"/" -f1  | rev )"
 FILENAME3="$( dirname "$FNAME" )"
 
 touch /tmp/vcheck1
-while [ -f /tmp/vcheck1 ] ; do sleep .1 && [ -f /tmp/vcheck2 ] && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
+while [ -f $TRIGGER1 ] ; do sleep .1 && [ -f $TRIGGER2 ] && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
 
 
 
@@ -62,16 +64,16 @@ then
 	
 	if [ -f "$FNAME".time.txt ]
 	then 
-touch /tmp/vcheck2 ; sleep .3
-	vlc "$FNAME" --start-time "$(sed '/^$/d;/^ $/d' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
-rm /tmp/vcheck1 /tmp/vcheck2 ; sleep .3
+	touch $TRIGGER2
+	vlc --quiet "$FNAME" --start-time "$(sed '/^$/d;/^ $/d;/^0$/d' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+	rm $TRIGGER1 $TRIGGER2
 
-tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
+tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
 	else
 
 touch /tmp/vcheck2
-	vlc "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+	vlc --quiet "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
 rm /tmp/vcheck1 /tmp/vcheck2
 
 echo "$(cat $TIME_TMP| sed '/^$/d;/^0$/d;s/^[ \t]*//;s/[ \t]*$//' |tail -n1)" >> "$FNAME".time.txt
@@ -111,8 +113,8 @@ else
 	START_TIME=$(date +%s)
 	
 	if [ -f "$FNAME".time.txt ]
-	then vlc "$FNAME" --start-time "$(tail -n1 "$FNAME".time.txt)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
-	else vlc "$FNAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+	then vlc --quiet "$FNAME" --start-time "$(tail -n1 "$FNAME".time.txt)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+	else vlc --quiet "$FNAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
 	fi
 	
 	while curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml >/dev/null ; do VLC_TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml | grep time |cut -d"/" -f1 | sed 's/<time>//g;s/<//g' >> $TIME_TMP )" && sleep .5 || (export VLC_TIME="$(cat $TIME_TMP| sed 's/^$/d')" && break) ;done && echo "$VLC_TIME" >> "$FNAME.time.txt"
