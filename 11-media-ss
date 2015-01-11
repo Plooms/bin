@@ -34,8 +34,8 @@ echo -e "Script Warning! Please Check The Script ($SCRIPT_NAME)\n\n
 Reason : The Previous Backup Symlink was not Found"
 
 exit 2
+fi
 
-else
 
 #if [ -d "$TRG_11_OLD" ]
 #then
@@ -83,11 +83,7 @@ fi
 
 	COLOR_OFF
 
-else
 
-_CANCEL_MSG2
-
-fi
 
 #########################################################
 
