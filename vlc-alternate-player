@@ -24,6 +24,10 @@ FILENAME2="$( echo "$FNAME" | rev | cut -d"/" -f1  | rev )"
 # To get the path without the filename
 FILENAME3="$( dirname "$FNAME" )"
 
+ass()
+{
+while [ -f /tmp/vcheck1 ] ; do [ -f /tmp/vcheck2 ] && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- >> $TIME_TMP  ; done
+}
 
 if [ -f "$FILENAME"*.xspf ]
 
@@ -58,9 +62,11 @@ then
 	
 	if [ -f "$FNAME".time.txt ]
 	then 
+touch /tmp/vcheck1 /tmp/vcheck2
+ass
+	vlc "$FNAME" --start-time "$(sed '/^$/d;s/^ $//g' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+rm /tmp/vcheck2
 
-	vlc "$FNAME" --start-time "$(sed '/^$/d;s/^ $//g' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null &
-#	vlc-progress-monitor "$FNAME" 
 	else vlc "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
 	fi
 
@@ -115,3 +121,5 @@ END_TIME_SEC=$(( END_TIME - START_TIME ))
 [ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 nohup sleep 1 && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
+
+rm /tmp/vcheck1
