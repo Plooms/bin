@@ -262,16 +262,20 @@ export LINK_SYM="current"
 
 #The source directory:
 export SRC_11="/media/R1/"
+export SRC_11_2="/media/R1/"
 
 #The target directory:
 export TRG_11="/media/R1/Backups/$SNAPSHOT_DIR"
-export TRG_11_OLD="/media/R1/Backups/$SNAPSHOT_DIR_OLD"
+export TRG_11_2="/media/R1/Backups/$SNAPSHOT_DIR-small"
+#export TRG_11_OLD="/media/R1/Backups/$SNAPSHOT_DIR_OLD"
 
 #The link destination directory:
 export LNK_11="/media/R1/"
+export LNK_11_2="/media/R1/"
 
 #The Log file
 export LOG_11="/media/R1/Backups/$RSYNC_LOG"
+export LOG_11_2="/media/R1/Backups/$RSYNC_LOG"
 
 # Rsync Options
 OPT_11=("-iavhHP"  "--exclude-from=$RSYNC_EXCLUDE_11" "--link-dest=$LNK_11")
