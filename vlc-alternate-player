@@ -65,7 +65,7 @@ then
 	then 
 
 #while curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml >/dev/null ; do VLC_TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.xml | grep time |cut -d"/" -f1 | sed 's/<time>//g;s/<//g' >> $TIME_TMP )" && sleep .5 || (export VLC_TIME="$(cat $TIME_TMP| sed 's/^$/d')" && break) ;done && echo "$VLC_TIME" >> "$FNAME.time.txt" &
-	vlc "$FNAME" --start-time "$(sed '/^$/d' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null &
+	vlc "$FNAME" --start-time "$(sed '/^$/d;s/^ $//g' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null &
 	else vlc "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
 	fi
 ass
