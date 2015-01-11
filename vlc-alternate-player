@@ -15,7 +15,7 @@ FNAME="$1"
 
 
 TMP="$(mktemp)"
-TIME_TMP="/tmp/gig"
+TIME_TMP="$(mktemp)"
 
 # To get the filename without extensions
 FILENAME="$( echo "$FNAME" | rev | cut -d"."  -f2- | rev )"
@@ -63,14 +63,10 @@ then
 	if [ -f "$FNAME".time.txt ]
 	then 
 touch /tmp/vcheck2
-sleep .2
 	vlc "$FNAME" --start-time "$(sed '/^$/d;s/^ $//g' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
-sleep .2
 rm /tmp/vcheck1 /tmp/vcheck2
 
-
-echo -e "a\na\na\n" >>  "$FNAME".time.txt
-cat $TIME_TMP >>  "$FNAME".time.txt
+tail -n30 $TIME_TMP >>  "$FNAME".time.txt
 
 	else
 
