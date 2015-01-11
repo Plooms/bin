@@ -112,7 +112,7 @@ else
 	if [ -f "$FNAME".time.txt ]
 	then 
 	touch $TRIGGER2
-	vlc --quiet "$FNAME" --start-time "$(tail -n1 "$FNAME".time.txt)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+	vlc --quiet "$FNAME" --start-time "$(sed '/^$/d;/^ $/d;/^0$/d' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
 	rm $TRIGGER1 $TRIGGER2
 	tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
