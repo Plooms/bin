@@ -57,7 +57,7 @@ then
 
 	START_TIME=$(date +%s)
 
-touch /tmp/vcheck1
+touch $TRIGGER1
 while [ -f $TRIGGER1 ] ; do sleep .1 && [ -f $TRIGGER2 ] && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
 
 
@@ -109,7 +109,7 @@ else
 
 	START_TIME=$(date +%s)
 
-touch /tmp/vcheck1
+touch $TRIGGER1
 while [ -f $TRIGGER1 ] ; do sleep .1 && [ -f $TRIGGER2 ] && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
 
 
