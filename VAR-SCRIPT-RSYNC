@@ -142,7 +142,7 @@ export SRC_11_2="/media/R1/"
 
 #The target directory:
 export TRG_11="/media/R1/Backups/$SNAPSHOT_DIR"
-export TRG_11_2="/media/R1/Backups/$SNAPSHOT_DIR-small"
+export TRG_11_2="/media/R1/Backups/"$SNAPSHOT_DIR"-small"
 #export TRG_11_OLD="/media/R1/Backups/$SNAPSHOT_DIR_OLD"
 
 #The link destination directory:
