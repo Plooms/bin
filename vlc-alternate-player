@@ -26,10 +26,6 @@ FILENAME2="$( echo "$FNAME" | rev | cut -d"/" -f1  | rev )"
 # To get the path without the filename
 FILENAME3="$( dirname "$FNAME" )"
 
-touch /tmp/vcheck1
-while [ -f $TRIGGER1 ] ; do sleep .1 && [ -f $TRIGGER2 ] && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
-
-
 
 if [ -f "$FILENAME"*.xspf ]
 
@@ -60,6 +56,10 @@ then
 
 
 	START_TIME=$(date +%s)
+
+touch /tmp/vcheck1
+while [ -f $TRIGGER1 ] ; do sleep .1 && [ -f $TRIGGER2 ] && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
+
 
 	
 	if [ -f "$FNAME".time.txt ]
@@ -108,7 +108,11 @@ else
 
 
 	START_TIME=$(date +%s)
-	
+
+touch /tmp/vcheck1
+while [ -f $TRIGGER1 ] ; do sleep .1 && [ -f $TRIGGER2 ] && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
+
+
 	if [ -f "$FNAME".time.txt ]
 	then 
 	touch $TRIGGER2
