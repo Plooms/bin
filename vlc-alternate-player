@@ -36,7 +36,7 @@ then
 	if 
 	
 		# Find if we need Subs Really
-		[ "$(cat "$FILENAME3"/1-info)" = "No Need For Subs" ]
+		[ "$(cat "$FILENAME3"/1-info 2>/dev/null)" = "No Need For Subs" ]
 	
 	then
 		echo "No Need For Subs"
@@ -87,7 +87,7 @@ else
 		if 
 	
 		# Find if we need Subs Really
-		[ "$(cat "$FILENAME3"/1-info)" = "No Need For Subs" ]
+		[ "$(cat "$FILENAME3"/1-info 2>/dev/null)" = "No Need For Subs" ]
 	
 		then
 		echo "No Need For Subs"
@@ -128,5 +128,5 @@ END_TIME_SEC=$(( END_TIME - START_TIME ))
 
 [ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
-nohup sleep 1 && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
+nohup sleep 1  2>&1 >/dev/null && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
 
