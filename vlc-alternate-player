@@ -62,11 +62,11 @@ then
 	
 	if [ -f "$FNAME".time.txt ]
 	then 
-touch /tmp/vcheck2
-	vlc "$FNAME" --start-time "$(sed '/^$/d;s/^ $//g' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
-rm /tmp/vcheck1 /tmp/vcheck2
+touch /tmp/vcheck2 ; sleep .3
+	vlc "$FNAME" --start-time "$(sed '/^$/d;/^ $/d' "$FNAME".time.txt | tail -n1)" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+rm /tmp/vcheck1 /tmp/vcheck2 ; sleep .3
 
-tail -n30 $TIME_TMP >>  "$FNAME".time.txt
+tail $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
 	else
 
