@@ -82,7 +82,7 @@ then
 	touch $TRIGGER2
 	
 	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FNAME"| cut -d. -f1)"
-	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FNAME".time.txt | tail -n1)"
+	CURRENT_POSITION="0"
 	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt 10 ] \
 	&& START_POSITION="0" \
 	|| START_POSITION="$CURRENT_POSITION"
@@ -148,7 +148,7 @@ else
 	touch $TRIGGER2
 	
 	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FNAME"| cut -d. -f1)"
-	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FNAME".time.txt | tail -n1)"
+	CURRENT_POSITION="0"
 	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt 10 ] \
 	&& START_POSITION="0" \
 	|| START_POSITION="$CURRENT_POSITION"
