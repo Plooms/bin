@@ -90,9 +90,10 @@ sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
 -o -iname "ETRG.mp4"  \
 -o -iname "ETRG.mkv"  \
 -o -iname "ETRG.avi" \) -exec rm {} \; \
--o -type d -iname "sample" -exec rm -r {} \; 2>/dev/null \
--o -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null \
--o -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null
+-o -type d -iname "sample" -exec rm -r {} \; 2>/dev/null
+
+find -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null
+find -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null
 
 GREEN
 echo "[*] Finished Cleaning Junk"
