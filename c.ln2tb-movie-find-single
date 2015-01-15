@@ -85,17 +85,17 @@ YELLOW
 
 
 ####### For the log file#########
-if [[ "$WATCHED" = *"YES" ]] ; then WATCHED="(YES)";else WATCHED="(NO)";fi
-echo -e "
-Path: $i
-Name:  $NAME
-Size:  $SIZE
-Res: $RES1 x "$RES2"p  $DEF
-Bitrate: $BITRATE
-Time: $DURATION
-Watched: $WATCHED
------------################-------------
-" >> "$TMP_LOG1"
+#if [[ "$WATCHED" = *"YES" ]] ; then WATCHED="(YES)";else WATCHED="(NO)";fi
+#echo -e "
+#Path: $i
+#Name:  $NAME
+#Size:  $SIZE
+#Res: $RES1 x "$RES2"p  $DEF
+#Bitrate: $BITRATE
+#Time: $DURATION
+#Watched: $WATCHED
+#-----------################-------------
+#" >> "$TMP_LOG1"
 ####### For the log file#########
 
 done
@@ -133,7 +133,7 @@ echo "------------------------------------------------"
 fi
 
 
-#echo "Log File:   sudo geany $TMP_LOG1"
+echo "Log File:   geany $TMP_LOG1"
 
 COLOR_OFF
 
