@@ -67,11 +67,11 @@ _CANCEL_MSG2()
 _CHECK_MOUNT1() 
 { 
 
-mount | grep $NAS1_MOUNT_POINT > /dev/null \
+mount | grep "$NAS1_MOUNT_POINT" > /dev/null \
 &&	[ ! -z "$NAS_ALIVE_CHECK" ] \
 && [ -f "$NAS1_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] \
 && CHECK="$(cat $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK)" \
-&& [ -r $NAS1_MOUNT_POINT/$NAS_ALIVE_CHECK ] && [ $CHECK = 0 ]
+&& [ -r "$NAS1_MOUNT_POINT"/"$NAS_ALIVE_CHECK" ] && [ $CHECK = 0 ]
 	if [ "$?" != 0 ]
 	then echo "Please check that $NAS1_MOUNT_POINT is mounted and alive"
 	exit 1
