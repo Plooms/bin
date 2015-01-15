@@ -98,9 +98,6 @@ then
 
 	fi
 
-	sleep 1
-	KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
-
 
 else 
 	
@@ -167,8 +164,6 @@ else
 
 	fi
 	
-	sleep 1
-	KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP
 
 fi
 
@@ -178,6 +173,7 @@ END_TIME=$(date +%s)
 END_TIME_SEC=$(( END_TIME - START_TIME ))
 
 [ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
+	
 
-nohup sleep 1  2>&1 >/dev/null && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
+nohup sleep 1 2>&1 >/dev/null && KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3 "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
 
