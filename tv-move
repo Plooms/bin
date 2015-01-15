@@ -36,8 +36,6 @@ tvnamer -c ~/.tvnamer.json * | grep skipping | tee -a .Rename.log ; date >> .Ren
 
 CYAN
 
-filebot -get-missing-subtitles --lang en -non-strict *
-
 echo -e "${YELLOW}\n\n\n\nDo you want to Move?           y\n\n\n\n"
 
 read confirmation
@@ -45,6 +43,8 @@ read confirmation
 if [ "$confirmation" = "y" ]
 
 then
+
+filebot -get-missing-subtitles --lang en -non-strict *
 
 /usr/local/bin/move 2>&1 | tee -a .Move.log ; date >> .Move.log
 
