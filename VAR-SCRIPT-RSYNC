@@ -40,7 +40,7 @@ echo "
 .macromedia/
 .nv
 .thumbnails/
-.kodi/*
+.kodi/userdata/Thumbnails
 *.socket
 *.pipe
 *.log
