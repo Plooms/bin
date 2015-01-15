@@ -178,5 +178,5 @@ END_TIME_SEC=$(( END_TIME - START_TIME ))
 
 [ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
-nohup sleep 1  2>&1 >/dev/null && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
+nohup sleep 3  2>&1 >/dev/null && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
 
