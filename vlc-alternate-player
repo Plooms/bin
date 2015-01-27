@@ -65,9 +65,19 @@ FILENAME3="$( dirname "$FNAME" )"
 RESET_TIME="10"
 
 
+# Generates a random port for VLC http interface
+VLC_PORT_GENERATOR
 
 touch $TRIGGER1
-while [ -f $TRIGGER1 ] ; do sleep .1 && [ -f $TRIGGER2 ] && curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_HTTP_PORT"/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
+
+while [ -f $TRIGGER1 ]
+do sleep .1 \
+&& [ -f $TRIGGER2 ] \
+&& curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_HTTP_PORT"/requests/status.json \
+| grep time \
+| sed 's/,//g' \
+|cut -b 10-
+done > $TIME_TMP &
 
 
 if [ -f "$FILENAME"*.xspf ]
@@ -205,7 +215,7 @@ fi
 # Update the save position info file
 tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
-END_TIME=$(date +%s)
+END_TIME="$(date +%s)"
 END_TIME_SEC=$(( END_TIME - START_TIME ))
 
 [ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
