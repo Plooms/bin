@@ -67,7 +67,7 @@ case $? in
 	case "$SELECTION" in
 	1)
 	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[2]}  )" 12 100 5 \
-		"Repeat Video"				"" off \
+		"Repeat Video"				"" on \
 		"Remove Video Subtitles"		"" off \
 		"Take Notes"				"" off \
 		"Forget Saved Position"			"" off > $TMP3
@@ -82,7 +82,7 @@ case $? in
 	;;
 	2)
 	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[1]}  )" 12 100 5 \
-		"Repeat Video"				"" off \
+		"Repeat Video"				"" on \
 		"Remove Video Subtitles"		"" off \
 		"Take Notes"				"" off \
 		"Forget Saved Position"			"" off > $TMP3
@@ -99,7 +99,7 @@ case $? in
 	;;
 	3)
 	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[0]}  )" 12 100 5 \
-		"Repeat Video"				"" off \
+		"Repeat Video"				"" on \
 		"Remove Video Subtitles"		"" off \
 		"Take Notes"				"" off \
 		"Forget Saved Position"			"" off > $TMP3
