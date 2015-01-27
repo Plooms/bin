@@ -9,6 +9,38 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
+depends=('vlc' 'curl' 'sed' 'ffprobe' 'perl')
+
+usage(){
+	echo "Usage: $0 filename"
+	exit 1
+}
+ 
+check_file_exist(){
+	f="$1"
+	
+	if [[ ! -f "$f" ]]
+	then  
+	echo "File Not Found"
+	exit 1
+	fi
+}
+
+
+VLC_PORT_GENERATOR(){
+
+	xy="$( perl -e 'print int rand 100,print int rand 100,print int rand 100,; ' | cut -b 1-2 )"
+
+	VLC_HTTP_PORT="88$xy"
+
+}
+
+
+for i in "${depends[@]}" ;do which "$i" > /dev/null 2>&1 || (echo -e "Make sure the package ( $i ) is installed" && exit 2) ; done
+
+[[ $# -eq 0 ]] && usage
+
+check_file_exist "$@"
 
 #########################################################
 FNAME="$1"
@@ -26,19 +58,16 @@ FILENAME2="$( echo "$FNAME" | rev | cut -d"/" -f1  | rev )"
 # To get the path without the filename
 FILENAME3="$( dirname "$FNAME" )"
 
+# Change (RESET_TIME) to whatever value the counter should reset on.
+#+ i.e: if the video was closed with less than 10 seconds remaining
+#+ the next time it is opened it resets the position and starts from the beginning.
+#+ use "0" to disable
+RESET_TIME="10"
 
-
-VLC_PORT_GENERATOR(){
-
-	xy="$( perl -e 'print int rand 100,print int rand 100,print int rand 100, ""; ' | cut -b 1-2 )"
-
-	VLC_HTTP_PORT="88$xy"
-
-}
 
 
 touch $TRIGGER1
-while [ -f $TRIGGER1 ] ; do sleep .1 && [ -f $TRIGGER2 ] && curl -s -u ":vlcremote" http://127.0.0.1:8888/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
+while [ -f $TRIGGER1 ] ; do sleep .1 && [ -f $TRIGGER2 ] && curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_HTTP_PORT"/requests/status.json | grep time | sed 's/,//g' |cut -b 10- ; done > $TIME_TMP &
 
 
 if [ -f "$FILENAME"*.xspf ]
@@ -81,30 +110,28 @@ then
 	
 	[ -z "$CURRENT_POSITION" ] && CURRENT_POSITION="0"
 	
-	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt 10 ] \
+	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt "$RESET_TIME" ] \
 	&& START_POSITION="0" \
 	|| START_POSITION="$CURRENT_POSITION"
 	
-	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	rm $TRIGGER1 $TRIGGER2
 	
-	tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
 	else
 	touch $TRIGGER2
 	
 	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FNAME"| cut -d. -f1)"
 	CURRENT_POSITION="0"
-	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt 10 ] \
+	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt "$RESET_TIME" ] \
 	&& START_POSITION="0" \
 	|| START_POSITION="$CURRENT_POSITION"
 
-	vlc --quiet "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+	vlc --quiet "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	rm $TRIGGER1 $TRIGGER2
 	
-	tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
 	fi
 
@@ -147,37 +174,36 @@ else
 	
 	[ -z "$CURRENT_POSITION" ] && CURRENT_POSITION="0"
 
-	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt 10 ] \
+	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt "$RESET_TIME" ] \
 	&& START_POSITION="0"\
 	|| START_POSITION="$CURRENT_POSITION"
 
-	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	rm $TRIGGER1 $TRIGGER2
 	
-	tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
 	else 
 	touch $TRIGGER2
 	
 	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FNAME"| cut -d. -f1)"
 	CURRENT_POSITION="0"
-	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt 10 ] \
+	[ "$((($LENGTH - $CURRENT_POSITION)))" -lt "$RESET_TIME" ] \
 	&& START_POSITION="0" \
 	|| START_POSITION="$CURRENT_POSITION"
 	
-	vlc --quiet "$FNAME" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port 8888 --http-password 'vlcremote' 2>&1 >/dev/null
+	vlc --quiet "$FNAME" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	rm $TRIGGER1 $TRIGGER2
 	
-	tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
 	fi
 	
 
 fi
 
-
+# Update the save position info file
+tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
 END_TIME=$(date +%s)
 END_TIME_SEC=$(( END_TIME - START_TIME ))
@@ -185,5 +211,5 @@ END_TIME_SEC=$(( END_TIME - START_TIME ))
 [ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 	
 
-nohup sleep 1 2>&1 >/dev/null && KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3 "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
+nohup sleep 1 >/dev/null 2>&1 && KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3 "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP && while read a ; do notify-send "Media" "$a \n\nMarked as Watched" ; done < $TMP &
 
