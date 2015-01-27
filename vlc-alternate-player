@@ -87,7 +87,7 @@ then
 	if 
 	
 		# Find if we need Subs Really
-		[ "$(cat "$FILENAME3"/1-info 2>/dev/null)" = "No Need For Subs" ]
+		[ -f "$FILENAME3/1-no-subs" ]
 	
 	then
 		echo "No Need For Subs"
@@ -151,7 +151,7 @@ else
 		if 
 	
 		# Find if we need Subs Really
-		[ "$(cat "$FILENAME3"/1-info 2>/dev/null)" = "No Need For Subs" ]
+		[ -f "$FILENAME3/1-no-subs" ]
 	
 		then
 		echo "No Need For Subs"
