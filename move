@@ -287,7 +287,6 @@ if ls -U | grep -E 'Tanked\ -\ \[*' >/dev/null 2>&1 ; then mv -v Tanked\ -\ \[* 
 if ls -U | grep -E 'That\ 70s\ Show\ -\ \[*' >/dev/null 2>&1 ; then mv -v That\ 70s\ Show\ -\ \[* "$TV_SYM"/"That 70's Show"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ 4400\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ 4400\ -\ \[* "$TV_SYM"/"The 4400"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Affair\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Affair\ -\ \[* "$TV_SYM"/"The Affair"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'The\ After\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ After\ -\ \[* "$TV_SYM"/"The After"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Amazing\ Race\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Amazing\ Race\ -\ \[* "$TV_SYM"/"The Amazing Race"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Americans\ \(2013\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Americans\ \(2013\)\ -\ \[* "$TV_SYM"/"The Americans (2013)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ A-Team\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ A-Team\ -\ \[* "$TV_SYM"/"The A-Team"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
