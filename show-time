@@ -14,7 +14,7 @@ DAY="$( date +%_d | sed 's/^ //' )"
 MONTH="$( date +%_m | sed 's/^ //' )"
 YEAR="$( date +%Y )"
 
-HIJRI="$( curl -q "http://www.islamicfinder.org/dateConversion.php?mode=ger-hij&day=$DAY&month=$MONTH&year=$YEAR&date_result=1&lang=english" >/dev/null 2>&1 | grep -o -P '(?<=The conversion result is: </b> ).*(?=<br>\*There is a small probability)' )"
+HIJRI="$( curl -q "http://www.islamicfinder.org/dateConversion.php?mode=ger-hij&day=$DAY&month=$MONTH&year=$YEAR&date_result=1&lang=english" >/dev/null 2>&1 | grep -o -P '(?<=The conversion result is: </b> ).*(?=<br>\*There is a small probability)' | sed 's/`//g' )"
 DATE="$( date +%c | cut -d" " -f1-6 )"
 
 
