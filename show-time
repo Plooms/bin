@@ -17,4 +17,4 @@ YEAR="$( date +%Y )"
 HIJRI="$( curl -q "http://www.islamicfinder.org/dateConversion.php?mode=ger-hij&day=$DAY&month=$MONTH&year=$YEAR&date_result=1&lang=english" | grep -o -P '(?<=The conversion result is: </b> ).*(?=<br>\*There is a small probability)' | sed 's/`//g' )"
 DATE="$( date +%c | cut -d" " -f1-6 )"
 
-notify-send "$DATE" "$HIJRI"
+notify-send -t 20 "$DATE" "$HIJRI"
