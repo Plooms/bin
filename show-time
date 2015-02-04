@@ -8,13 +8,15 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
+# show date and time first for faster results
+DATE="$( date +%c | cut -d" " -f1-6 )"
+notify-send "$DATE"
 
-
+# Generate hijri date
 DAY="$( date +%_d | sed 's/^ //' )"
 MONTH="$( date +%_m | sed 's/^ //' )"
 YEAR="$( date +%Y )"
 
-HIJRI="$( curl -s "http://www.islamicfinder.org/dateConversion.php?mode=ger-hij&day=$DAY&month=$MONTH&year=$YEAR&date_result=1&lang=english" | grep -o -P '(?<=The conversion result is: </b> ).*(?=<br>\*There is a small probability)' | sed 's/`//g' )"
-DATE="$( date +%c | cut -d" " -f1-6 )"
+HIJRI="$( curl -s "http://www.islamicfinder.org/dateConversion.php?mode=ger-hij&day=$DAY&month=$MONTH&year=$YEAR&date_result=1&lang=english" | grep -o -P '(?<=The conversion result is: </b> ).*(?=<br>\*There is a small probability)' )"
 
-notify-send "$DATE" "$HIJRI"
+notify-send "$HIJRI"
