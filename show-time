@@ -10,3 +10,6 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 notify-send "$(date +%c | sed 's/AST//g;s/2015/2015  /')"
+
+curl -q "http://www.islamicfinder.org/dateConversion.php?mode=ger-hij&day=4&month=2&year=2015&date_result=1&lang=english" >/dev/null 2>&1 | grep -o -P '(?<=The conversion result is: </b> ).*(?=<br>\*There is a small probability)'
+
