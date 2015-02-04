@@ -9,7 +9,7 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 # show date and time first for faster results
-DATE="$( date +%A\ %d\ %B\ \(%r\) )"
+DATE="$( date +%A\ %d\ %B\ \ \ \(%r\) )"
 notify-send "$DATE"
 
 # Generate hijri date
