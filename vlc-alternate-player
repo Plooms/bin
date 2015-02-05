@@ -80,7 +80,7 @@ do sleep .1 \
 |cut -b 10-
 done > $TIME_TMP &
 
-
+while [ -f $TRIGGER1 -o -f $TRIGGER2 ]  ;do sleep .5 ; tail -n1 $TIME_TMP |tee /home/abz/time;done &
 check_subs()
 {
 	# Find Subs
