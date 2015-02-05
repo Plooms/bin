@@ -84,7 +84,7 @@ VLC_POLL()
 
 	while [ -f "$TRIGGER2" ] ; do
 	sleep .5
-	tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' > "$FNAME".time.txt
+	tail -n1 "$TIME_TMP" | sed '/^$/d;/^ $/d;/^0$/d' > "$FNAME".time.txt
 	done &
 }
 
