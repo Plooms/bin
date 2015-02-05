@@ -47,6 +47,7 @@ FNAME="$1"
 
 
 TMP="$(mktemp)"
+TMP2="$(mktemp)"
 TIME_TMP="$(mktemp)"
 TRIGGER1="$(mktemp)"
 TRIGGER2="$(mktemp)"
@@ -84,7 +85,7 @@ done > $TIME_TMP &
 	# Find Subs
 	if [ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ]
 	then	return 0
-	else	nohup terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME" 2>&1  | grep -q "No matching subtitles found" && notify-send ass || (notify-send "Media" "Subtitle Found - reload vlc" ; sudo beep) &
+	else	nohup terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME" 2>&1 > "$TMP2" ; grep -q "No matching subtitles found" "$TMP2" || (notify-send "Media" "Subtitle Found - reload vlc" ; sudo beep) >/dev/null 2>&1  &
 	fi
 
 
