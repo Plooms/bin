@@ -29,7 +29,7 @@ check_file_exist(){
 
 VLC_PORT_GENERATOR(){
 
-	xy="$( perl -e 'print int rand 100,print int rand 100,print int rand 100,; ' | cut -b 1-2 )"
+	xy="$( perl -e 'print int rand 100,print int rand 100,print int rand 100,; ' 2>/dev/null | cut -b 1-2 )"
 
 	VLC_HTTP_PORT="88$xy"
 
@@ -132,10 +132,7 @@ done > $TIME_TMP &
 
 
 	
-			
-	
 
-fi
 
 # Update the save position info file
 tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
