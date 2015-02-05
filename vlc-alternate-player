@@ -81,18 +81,18 @@ do sleep .1 \
 done > $TIME_TMP &
 
 
-ass()
+check_subs()
 {
 	# Find Subs
 	if [ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ]
 	then	return 0
 	else	
 	filebot -get-missing-subtitles --lang en -non-strict "$FNAME" > "$TMP2" 2>&1
-	grep -q "No matching subtitles found" "$TMP2" && notify-send ass || notify-send "Media" "Subtitle Found - reload vlc"
+	grep -q "No matching subtitles found" "$TMP2" || (notify-send "Media" "Subtitle Found - Reload VLC" ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep)
 	fi
 }
 
-ass &
+check_subs &
 	
 	echo "" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 	echo "$(date | cut -d" " -f 1-5) <-> Started  - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
