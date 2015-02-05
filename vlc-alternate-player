@@ -80,17 +80,18 @@ do sleep .1 \
 done > $TIME_TMP &
 
 
-PLAYER_COMMAND()
-{
-	if 
-		# Find if we need Subs Really
-		[ -f "$FILENAME3/1-no-subs" ]
-	then
-		echo "No Need For Subs"
-	else
-		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME"
-		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
-	fi
+#PLAYER_COMMAND()
+#{
+
+#####	if 
+#####		# Find if we need Subs Really
+#####		[ -f "$FILENAME3/1-no-subs" ]
+#####	then
+#####		echo "No Need For Subs"
+#####	else
+		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || nohup terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME" &
+#####		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
+#####	fi
 
 	echo "" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 	echo "$(date | cut -d" " -f 1-5) <-> Started  - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
@@ -98,16 +99,13 @@ PLAYER_COMMAND()
 	# REPEAT variable comes from the repeater script to prevent clogging this file needlessly
 	[ -z "$REPEAT" ] && echo "$FNAME" >> "$PLAYER_LAST_WATCHED"/"Last-Video".txt
 
+	touch $TRIGGER2
 
 	START_TIME=$(date +%s)
-
-	if [ -f "$FNAME".time.txt ]
-	then 
-	touch $TRIGGER2
 	
 	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FNAME"| cut -d. -f1)"
 	
-	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FNAME".time.txt | tail -n1)"
+	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FNAME".time.txt >/dev/null 2>&1 | tail -n1)"
 	
 	if [ -z "$CURRENT_POSITION" ]
 	then	CURRENT_POSITION="0"
@@ -118,37 +116,21 @@ PLAYER_COMMAND()
 	else	START_POSITION="$CURRENT_POSITION"
 	fi
 
-	if [ -f "$FILENAME"*.xspf ]
+	if [ -f "$FILENAME".xspf ]
 	then
-	sed -i -e "s/start-time=.*</start-time=$START_POSITION</g"
-
-	vlc --quiet "$1" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+		sed -i -e "s/start-time=.*</start-time=$START_POSITION</g" "$FILENAME".xspf
+		vlc --quiet "$FILENAME".xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
-	rm $TRIGGER1 $TRIGGER2
-	
-
 	else
-	touch $TRIGGER2
-
-	vlc --quiet "$1" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
-	rm $TRIGGER1 $TRIGGER2
+		vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
-
 	fi
 	
-	
-	
-	
+		
+	rm $TRIGGER1 $TRIGGER2	
 
 
-if [ -f "$FILENAME"*.xspf ]
-
-then 
-PLAYER_COMMAND "$FNAME"
-
-else 
-PLAYER_COMMAND "$FNAME"
 	
 			
 	
