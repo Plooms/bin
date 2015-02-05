@@ -69,24 +69,25 @@ RESET_TIME="10"
 # Generates a random port for VLC http interface
 VLC_PORT_GENERATOR
 
-touch "$TRIGGER1"
 
-#Update the save position info file
-while [ -f "$TRIGGER1" ] ; do 
+VLC_POLL_LOOP()
+{
+	# Update the save position file
+	touch "$TRIGGER1"
 
-sleep .1
+	while [ -f "$TRIGGER1" ] ; do 
+	sleep .1
+	[ -f "$TRIGGER2" ] &&\
+	TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_PORT"/requests/status.json)"
+	grep time "$TIME" | sed 's/,//g' | cut -b 10-
+	done > "$TIME_TMP"
 
-[ -f "$TRIGGER2" ] &&\
-TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_PORT"/requests/status.json)"
+	while [ -f "$TRIGGER2" ] ; do
+	sleep .5
+	tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' | tee "$FNAME".time.txt
+	done
 
-grep time "$TIME" | sed 's/,//g' | cut -b 10- ; done > "$TIME_TMP" &
-
-while [ -f "$TRIGGER1" ] ; do
-sleep
-tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' > "$FNAME".time.txt
-
-
-check_subs()
+CHECK_SUBS()
 {
 	# Find Subs
 	if [ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ]
@@ -97,8 +98,11 @@ check_subs()
 	fi
 }
 
-check_subs &
-	
+# Start the process
+VLC_POLL_LOOP &
+CHECK_SUBS &
+
+
 	echo "" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 	echo "$(date | cut -d" " -f 1-5) <-> Started  - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
