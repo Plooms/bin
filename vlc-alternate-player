@@ -1,5 +1,5 @@
 #!/bin/bash
-# Wrapper for vlc that checks for xspf files
+# Wrapper for vlc that checks for xspf files and/or subs
 SCRIPT_NAME="vlc-alternate-player"
 PID=$$
 
@@ -50,7 +50,8 @@ TMP="$(mktemp)"
 TIME_TMP="$(mktemp)"
 TRIGGER1="$(mktemp)"
 TRIGGER2="$(mktemp)"
-PIDFILE="$(mktemp)"
+SCRIPT_PID="$(echo $$ > )"
+VLC_PIDFILE="$(mktemp)"
 
 # To get the filename without extensions
 FILENAME="$( echo "$FNAME" | rev | cut -d"."  -f2- | rev )"
