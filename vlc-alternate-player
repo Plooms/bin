@@ -123,7 +123,7 @@ CHECK_SUBS &
 	then	CURRENT_POSITION="0"
 	fi
 	
-	if [ "$((($LENGTH - $CURRENT_POSITION)))" -lt "$RESET_TIME" ]
+	if [ "$( ((LENGTH - CURRENT_POSITION)) )" -lt "$RESET_TIME" ]
 	then	START_POSITION="0"
 	else	START_POSITION="$CURRENT_POSITION"
 	fi
