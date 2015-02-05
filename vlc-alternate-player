@@ -105,7 +105,7 @@ CHECK_SUBS()
 VLC_POLL &
 CHECK_SUBS &
 
-
+	# Insert the filename into the media log
 	echo "" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 	echo "$(date | cut -d" " -f 1-5) <-> Started  - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
@@ -114,30 +114,41 @@ CHECK_SUBS &
 
 	touch "$TRIGGER2"
 
-	START_TIME=$(date +%s)
-	
 	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FNAME" | cut -d. -f1)"
-	
 	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FILENAME".time.txt 2>/dev/null | tail -n1)"
 	
+	# Zero-out the current position if null
 	if [ -z "$CURRENT_POSITION" ]
 	then	CURRENT_POSITION="0"
 	fi
 	
+	# Zero-out the length if null
+	if [ -z "$LENGTH" ]
+	then	LENGTH="0"
+	fi
+	
+	# Check if current position is less than the RESET_TIME
 	if [ "$( ((LENGTH - CURRENT_POSITION)) )" -lt "$RESET_TIME" ]
 	then	START_POSITION="0"
 	else	START_POSITION="$CURRENT_POSITION"
 	fi
 
+
+	START_TIME=$(date +%s)
+
+	# Play the file
 	if [ -f "$FILENAME".xspf ]
-	then
-		sed -i -e "s/start-time=.*</start-time=$START_POSITION</g" "$FILENAME".xspf
-		vlc --quiet "$FILENAME".xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
-	else	
-		vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+	then	vlc --quiet "$FILENAME".xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+	else	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	fi
 	
-		
+	# Update the xspf after playing the file (if found)
+	if [ -f "$FILENAME".xspf ]
+	then
+	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FILENAME".time.txt 2>/dev/null | tail -n1)"
+	sed -i -e "s/start-time=.*</start-time=$CURRENT_POSITION</g" "$FILENAME".xspf
+	fi
+	
 	rm "$TRIGGER1" "$TRIGGER2"
 
 
@@ -149,4 +160,3 @@ END_TIME_SEC=$(( END_TIME - START_TIME ))
 [ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 nohup sleep 1 >/dev/null 2>&1 && KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3 "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP && while read a ; do notify-send "Media" "$a - Marked as Watched" ; done < $TMP &
-
