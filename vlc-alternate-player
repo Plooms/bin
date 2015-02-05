@@ -52,6 +52,7 @@ TIME_TMP="$(mktemp)"
 TRIGGER1="$(mktemp)"
 TRIGGER2="$(mktemp)"
 
+
 # To get the filename without extensions
 FILENAME="$( echo "$FNAME" | rev | cut -d"."  -f2- | rev )"
 # To get the filename without the path
