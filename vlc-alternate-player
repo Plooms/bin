@@ -84,7 +84,7 @@ VLC_POLL()
 
 	while [ -f "$TRIGGER2" ] ; do
 	sleep .5
-	tail -n1 "$TIME_TMP" | sed '/^$/d;/^ $/d;/^0$/d' > "$FNAME".time.txt
+	tail -n1 "$TIME_TMP" | sed '/^$/d;/^ $/d;/^0$/d' > "$FILENAME".time.txt
 	done &
 }
 
@@ -116,7 +116,7 @@ CHECK_SUBS &
 	
 	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FNAME"| cut -d. -f1)"
 	
-	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FNAME".time.txt 2>/dev/null | tail -n1)"
+	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FILENAME".time.txt 2>/dev/null | tail -n1)"
 	
 	if [ -z "$CURRENT_POSITION" ]
 	then	CURRENT_POSITION="0"
