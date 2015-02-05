@@ -58,8 +58,6 @@ FILENAME="$( echo "$FNAME" | rev | cut -d"."  -f2- | rev )"
 FILENAME2="$( echo "$FNAME" | rev | cut -d"/" -f1  | rev )"
 # To get the path without the filename
 FILENAME3="$( dirname "$FNAME" )"
-# To guess the filename
-FILENAME4="$( find "$FILENAME3" -type f -iname "$FILENAME*" -size +40M 2>/dev/null |head -n1 )"
 
 
 # Change (RESET_TIME) to whatever value the counter should reset on.
@@ -97,7 +95,7 @@ CHECK_SUBS()
 	if [ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ]
 	then	return 0
 	else	
-	filebot -get-missing-subtitles --lang en -non-strict "$FILENAME4" > "$TMP2" 2>&1
+	filebot -get-missing-subtitles --lang en -non-strict "$FNAME" > "$TMP2" 2>&1
 	grep -q "No matching subtitles found" "$TMP2" && notify-send "Media" "Subtitle Not Found" || (notify-send "Media" "Subtitle Found - Reloading VLC" ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key n' ; wmctrl -a "$CURRENTWIN")
 	fi
 }
@@ -111,13 +109,13 @@ CHECK_SUBS &
 	echo "$(date | cut -d" " -f 1-5) <-> Started  - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 	# REPEAT variable comes from the repeater script to prevent clogging this file needlessly
-	[ -z "$REPEAT" ] && echo "$FILENAME4" >> "$PLAYER_LAST_WATCHED"/"Last-Video".txt
+	[ -z "$REPEAT" ] && echo "$FNAME" >> "$PLAYER_LAST_WATCHED"/"Last-Video".txt
 
 	touch "$TRIGGER2"
 
 	START_TIME=$(date +%s)
 	
-	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FILENAME".[ | cut -d. -f1)"
+	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FNAME" | cut -d. -f1)"
 	
 	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FILENAME".time.txt 2>/dev/null | tail -n1)"
 	
@@ -135,7 +133,7 @@ CHECK_SUBS &
 		sed -i -e "s/start-time=.*</start-time=$START_POSITION</g" "$FILENAME".xspf
 		vlc --quiet "$FILENAME".xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	else	
-		vlc --quiet "$FILENAME4" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+		vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	fi
 	
 		
