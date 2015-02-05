@@ -59,7 +59,7 @@ FILENAME2="$( echo "$FNAME" | rev | cut -d"/" -f1  | rev )"
 # To get the path without the filename
 FILENAME3="$( dirname "$FNAME" )"
 # To guess the filename
-FILENAME4="$( ls -1 $FILENAME.{mkv,avi,mp4,ts,mpg,mpeg,rm} 2>/dev/null |head -n1 )"
+FILENAME4="$( find -type f -iname "$FILENAME*" -size +40M 2>/dev/null |head -n1 )"
 
 
 # Change (RESET_TIME) to whatever value the counter should reset on.
