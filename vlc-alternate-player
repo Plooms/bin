@@ -72,15 +72,12 @@ VLC_PORT_GENERATOR
 touch $TRIGGER1
 
 while [ -f $TRIGGER1 ]
-do sleep .1 \
-&& [ -f $TRIGGER2 ] \
+do sleep .1 && [ -f $TRIGGER2 ] \
 && curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_HTTP_PORT"/requests/status.json \
-| grep time \
-| sed 's/,//g' \
-|cut -b 10-
+| grep time | sed 's/,//g' | cut -b 10-
 done > $TIME_TMP &
 
-while [ -f $TRIGGER1 -o -f $TRIGGER2 ]  ;do sleep .5 ; tail -n1 $TIME_TMP |tee /home/abz/time;done &
+
 check_subs()
 {
 	# Find Subs
@@ -136,7 +133,7 @@ check_subs &
 
 
 # Update the save position info file
-tail -n2 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
+tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' >  "$FNAME".time.txt
 
 END_TIME="$(date +%s)"
 END_TIME_SEC=$(( END_TIME - START_TIME ))
