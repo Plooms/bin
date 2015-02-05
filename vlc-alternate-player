@@ -31,7 +31,7 @@ VLC_PORT_GENERATOR(){
 
 	xy="$( perl -e 'print int rand 100,print int rand 100,print int rand 100,; ' 2>/dev/null | cut -b 1-2 )"
 
-	VLC_HTTP_PORT="88$xy"
+	VLC_PORT="88$xy"
 
 }
 
@@ -71,11 +71,19 @@ VLC_PORT_GENERATOR
 
 touch "$TRIGGER1"
 
-while [ -f "$TRIGGER1" ]
-do sleep .1 && [ -f "$TRIGGER2" ] \
-&& curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_HTTP_PORT"/requests/status.json \
-| grep time | sed 's/,//g' | cut -b 10-
-done > $TIME_TMP &
+#Update the save position info file
+while [ -f "$TRIGGER1" ] ; do 
+
+sleep .1
+
+[ -f "$TRIGGER2" ] &&\
+TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_PORT"/requests/status.json)"
+
+grep time "$TIME" | sed 's/,//g' | cut -b 10- ; done > "$TIME_TMP" &
+
+while [ -f "$TRIGGER1" ] ; do
+sleep
+tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' > "$FNAME".time.txt
 
 
 check_subs()
@@ -117,11 +125,11 @@ check_subs &
 	if [ -f "$FILENAME".xspf ]
 	then
 		sed -i -e "s/start-time=.*</start-time=$START_POSITION</g" "$FILENAME".xspf
-		vlc --quiet "$FILENAME".xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+		vlc --quiet "$FILENAME".xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	else
 	
-		vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+		vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	fi
 	
@@ -130,10 +138,6 @@ check_subs &
 
 
 	
-
-
-# Update the save position info file
-tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' > "$FNAME".time.txt
 
 END_TIME="$(date +%s)"
 END_TIME_SEC=$(( END_TIME - START_TIME ))
