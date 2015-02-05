@@ -70,22 +70,20 @@ RESET_TIME="10"
 VLC_PORT_GENERATOR
 
 
-VLC_POLL_LOOP()
-{
 	# Update the save position file
 	touch "$TRIGGER1"
 
 	while [ -f "$TRIGGER1" ] ; do 
 	sleep .1
 	[ -f "$TRIGGER2" ] &&\
-	TIME="$(curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_PORT"/requests/status.json)"
-	grep time "$TIME" | sed 's/,//g' | cut -b 10-
-	done > "$TIME_TMP"
+	curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_PORT"/requests/status.json \
+	grep time | sed 's/,//g' | cut -b 10-
+	done > "$TIME_TMP" &
 
-	while [ -f "$TRIGGER2" ] ; do
+	while [ -f "$TRIGGER1" ] ; do
 	sleep .5
 	tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' | tee "$FNAME".time.txt
-	done
+	done &
 
 CHECK_SUBS()
 {
@@ -99,7 +97,6 @@ CHECK_SUBS()
 }
 
 # Start the process
-VLC_POLL_LOOP &
 CHECK_SUBS &
 
 
