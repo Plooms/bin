@@ -89,7 +89,7 @@ done > $TIME_TMP &
 #####	then
 #####		echo "No Need For Subs"
 #####	else
-		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || nohup terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME" &
+		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || nohup terminator -x filebot -get-missing-subtitles --lang en -non-strict "$FNAME" >/dev/null 2>&1 &
 #####		[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] || (notify-send "Media" "Subtitle Not Found"  &&  sudo beep)
 #####	fi
 
@@ -105,7 +105,7 @@ done > $TIME_TMP &
 	
 	LENGTH="$(ffprobe -show_entries format=duration -v quiet -of csv="p=0" -i "$FNAME"| cut -d. -f1)"
 	
-	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FNAME".time.txt >/dev/null 2>&1 | tail -n1)"
+	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FNAME".time.txt 2>/dev/null | tail -n1)"
 	
 	if [ -z "$CURRENT_POSITION" ]
 	then	CURRENT_POSITION="0"
