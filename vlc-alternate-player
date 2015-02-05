@@ -69,7 +69,8 @@ RESET_TIME="10"
 # Generates a random port for VLC http interface
 VLC_PORT_GENERATOR
 
-
+VLC_POLL()
+{
 	# Update the save position file
 	touch "$TRIGGER1"
 
@@ -77,13 +78,14 @@ VLC_PORT_GENERATOR
 	sleep .1
 	[ -f "$TRIGGER2" ] &&\
 	curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_PORT"/requests/status.json \
-	grep time | sed 's/,//g' | cut -b 10-
+	| grep time | sed 's/,//g' | cut -b 10-
 	done > "$TIME_TMP" &
 
 	while [ -f "$TRIGGER2" ] ; do
 	sleep .5
-	tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' | tee  "$FNAME".time.txt
+	tail -n1 $TIME_TMP | sed '/^$/d;/^ $/d;/^0$/d' > "$FNAME".time.txt
 	done &
+}
 
 CHECK_SUBS()
 {
@@ -97,6 +99,7 @@ CHECK_SUBS()
 }
 
 # Start the process
+VLC_POLL &
 CHECK_SUBS &
 
 
