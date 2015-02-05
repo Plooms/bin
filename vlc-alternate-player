@@ -50,6 +50,7 @@ TMP="$(mktemp)"
 TIME_TMP="$(mktemp)"
 TRIGGER1="$(mktemp)"
 TRIGGER2="$(mktemp)"
+PIDFILE="$(mktemp)"
 
 # To get the filename without extensions
 FILENAME="$( echo "$FNAME" | rev | cut -d"."  -f2- | rev )"
@@ -124,7 +125,7 @@ then
 	&& START_POSITION="0" \
 	|| START_POSITION="$CURRENT_POSITION"
 	
-	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --daemon --pidfile "$PIDFILE" --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	rm $TRIGGER1 $TRIGGER2
 	
@@ -138,7 +139,7 @@ then
 	&& START_POSITION="0" \
 	|| START_POSITION="$CURRENT_POSITION"
 
-	vlc --quiet "$FILENAME"*.xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+	vlc --quiet "$FILENAME"*.xspf --play-and-exit --daemon --pidfile "$PIDFILE" --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	rm $TRIGGER1 $TRIGGER2
 	
@@ -188,7 +189,7 @@ else
 	&& START_POSITION="0"\
 	|| START_POSITION="$CURRENT_POSITION"
 
-	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --daemon --pidfile "$PIDFILE" --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	rm $TRIGGER1 $TRIGGER2
 	
@@ -202,7 +203,7 @@ else
 	&& START_POSITION="0" \
 	|| START_POSITION="$CURRENT_POSITION"
 	
-	vlc --quiet "$FNAME" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+	vlc --quiet "$FNAME" --play-and-exit --daemon --pidfile "$PIDFILE" --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_HTTP_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	
 	rm $TRIGGER1 $TRIGGER2
 	
