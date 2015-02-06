@@ -23,7 +23,7 @@ echo "Cleaning Junk"
 COLOR_OFF
 
 sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
--o -iname "*.log"  \
+-o -name "*.log"  \
 -o -iname "*.jp*g"  \
 -o -iname "*.png"  \
 -o -iname "*.txt"  \
