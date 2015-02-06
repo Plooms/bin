@@ -89,7 +89,7 @@ sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
 -o -iname "RARBG.com.avi"  \
 -o -iname "ETRG.mp4"  \
 -o -iname "ETRG.mkv"  \
--o -iname "ETRG.avi" \) -not iname ".Move.log" -exec rm {} \; \
+-o -iname "ETRG.avi" \) -exec rm {} \; \
 -o -type d -iname "sample" -exec rm -r {} \; 2>/dev/null
 
 find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null
