@@ -147,8 +147,10 @@ TIME_BEFORE_WATCHED()
 	notify-send "Time before marking as Watched" "$TIMER"
 	TIMER=$(($TIMER-30)) ; sleep 30
 	done
-	rm "$TRIGGER3"
+		notify-send "KIlled TIMER"
+
 	done
+	rm "$TRIGGER3"
 	done
 	
 	sleep 1
