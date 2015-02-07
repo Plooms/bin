@@ -54,24 +54,30 @@ PLAY()
 {
 	if	[ "$1" = "FIRST" ]
 	then
-	FILENAME_ONLY="${F2_ARRAY[2]}"
-	FULL_PATH="${F_ARRAY[2]}"
-	FULL_PATH_NO_EXT="${F3_ARRAY[2]}"
-	LETTER="$A"
+		FILENAME_ONLY="${F2_ARRAY[2]}"
+		FULL_PATH="${F_ARRAY[2]}"
+		FULL_PATH_NO_EXT="${F3_ARRAY[2]}"
+		LETTER="$A"
 	
 	elif	[ "$1" = "SECOND" ]
 	then
-	FILENAME_ONLY="${F2_ARRAY[1]}"
-	FULL_PATH="${F_ARRAY[1]}"
-	FULL_PATH_NO_EXT="${F3_ARRAY[11]}"
-	LETTER="$B"
+		FILENAME_ONLY="${F2_ARRAY[1]}"
+		FULL_PATH="${F_ARRAY[1]}"
+		FULL_PATH_NO_EXT="${F3_ARRAY[11]}"
+		LETTER="$B"
 	
 	elif	[ "$1" = "THIRD" ]
 	then
-	FILENAME_ONLY="${F2_ARRAY[0]}"
-	FULL_PATH="${F_ARRAY[0]}"
-	FULL_PATH_NO_EXT="${F3_ARRAY[0]}"
-	LETTER="$C"
+		FILENAME_ONLY="${F2_ARRAY[0]}"
+		FULL_PATH="${F_ARRAY[0]}"
+		FULL_PATH_NO_EXT="${F3_ARRAY[0]}"
+		LETTER="$C"
+		
+	elif [ -z "$1" ]
+	then
+		echo "No file selected"
+		return 1
+	
 	fi
 
 	
