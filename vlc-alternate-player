@@ -165,6 +165,8 @@ POSITION_INFO()
 {
 	
 	CHECK_RESET_TIME
+echo "Current-position=$CURRENT_POSITION"
+echo "start-position=$LENGTH"
 
 	case "$1" in
 		
