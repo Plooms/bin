@@ -17,7 +17,7 @@ _LOCK_ON
 
 
 #########################################################
-TMP="$(mktemp)"
+TMP1="$(mktemp)"
 TMP2="$(mktemp)"
 TMP3="$(mktemp)"
 TMP4="$(mktemp)"
@@ -29,77 +29,56 @@ FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 # F_ARRAY = Full file path , eg: /X/X/X.avi
 while read a ; do F_ARRAY+=("$a") ; done < <(uniq "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 3)
 
-for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> $TMP
-sed -i '/^$/d' $TMP
+for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> "$TMP1"
+sed -i '/^$/d' "$TMP1"
 
 # F2_ARRAY = Filename Only , eg: X.avi
-while read b ; do F2_ARRAY+=("$b") ; done <  $TMP
+while read b ; do F2_ARRAY+=("$b") ; done < "$TMP1"
 
-for i in 0 1 2 ; do  echo "${F_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done >> $TMP4
-sed -i '/^$/d' $TMP4
+for i in 0 1 2 ; do  echo "${F_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done >> "$TMP4"
+sed -i '/^$/d' "$TMP4"
 
 # F3_ARRAY = Full File path without extensions , eg: /X/X/X/X
-while read c ; do F3_ARRAY+=("$c") ; done <  $TMP4
+while read c ; do F3_ARRAY+=("$c") ; done <  "$TMP4"
 
 
 KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
-sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n100  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> $TMP2
+sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n100  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> "$TMP2"
 
 
 # Remove All Blank Lines
-sed -i '/^$/d' $TMP2
+sed -i '/^$/d' "$TMP2"
 
 
 PLAY()
 {
-	if	[ "$1" = "FIRST" ]
-	then
-		FILENAME_ONLY="${F2_ARRAY[2]}"
-		FULL_PATH="${F_ARRAY[2]}"
-		FULL_PATH_NO_EXT="${F3_ARRAY[2]}"
-		LETTER="$A"
+	[ "$1" = "FIRST" ]  && VALUE="2" && LETTER="A"
+	[ "$1" = "SECOND" ] && VALUE="1" && LETTER="B"
+	[ "$1" = "THIRD" ]  && VALUE="0" && LETTER="C"
+	[ -z "$1" ]         && (echo "No file selected" ; return 1)
 	
-	elif	[ "$1" = "SECOND" ]
-	then
-		FILENAME_ONLY="${F2_ARRAY[1]}"
-		FULL_PATH="${F_ARRAY[1]}"
-		FULL_PATH_NO_EXT="${F3_ARRAY[11]}"
-		LETTER="$B"
-	
-	elif	[ "$1" = "THIRD" ]
-	then
-		FILENAME_ONLY="${F2_ARRAY[0]}"
-		FULL_PATH="${F_ARRAY[0]}"
-		FULL_PATH_NO_EXT="${F3_ARRAY[0]}"
-		LETTER="$C"
-		
-	elif [ -z "$1" ]
-	then
-		echo "No file selected"
-		return 1
-	
-	fi
-
-	
+	FILENAME_ONLY="${F2_ARRAY[$VALUE]}"
+	FULL_PATH="${F_ARRAY[$VALUE]}"
+	FULL_PATH_NO_EXT="${F3_ARRAY[$VALUE]}"
 	
 	dialog --stdout --checklist "Options for: (  $FILENAME_ONLY  )" 13 100 5 \
 	"Repeat Video"				"" on \
 	"Remove Video Subtitles"		"" off \
 	"Take Notes"				"" off \
-	"Forget Saved Position"			"" off > $TMP3
+	"Forget Saved Position"			"" off > "$TMP3"
 
-	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "$FULL_PATH"
-	grep --fixed-strings "Remove Video Subtitles" $TMP3 && (rm "$FULL_PATH_NO_EXT"*.srt ; rm "$FULL_PATH_NO_EXT"*.sub)
-	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "$FULL_PATH_NO_EXT".time.txt
-	grep --fixed-strings "Repeat Video" $TMP3 && export REPEAT=ON && \
+	grep --fixed-strings "Take Notes" "$TMP3" && /usr/local/bin/vlc-note-taker "$FULL_PATH"
+	grep --fixed-strings "Remove Video Subtitles" "$TMP3" && (rm "$FULL_PATH_NO_EXT"*.srt ; rm "$FULL_PATH_NO_EXT"*.sub)
+	grep --fixed-strings "Forget Saved Position" "$TMP3" && rm "$FULL_PATH_NO_EXT".time.txt
+	grep --fixed-strings "Repeat Video" "$TMP3" && export REPEAT=ON && \
 	[ ! -z "$LETTER" ] && nohup /usr/local/bin/vlc-alternate-player "$FULL_PATH" >/dev/null 2>&1 &
 	sleep .3
 
 }
 
-grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[2]}" || A="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[2]}"
-grep --fixed-strings "${F2_ARRAY[1]}" $TMP2 && B="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[1]}" || B="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[1]}"
-grep --fixed-strings "${F2_ARRAY[0]}" $TMP2 && C="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[0]}" || C="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[0]}"
+grep --fixed-strings "${F2_ARRAY[2]}" "$TMP2" && A="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[2]}" || A="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[2]}"
+grep --fixed-strings "${F2_ARRAY[1]}" "$TMP2" && B="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[1]}" || B="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[1]}"
+grep --fixed-strings "${F2_ARRAY[0]}" "$TMP2" && C="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[0]}" || C="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[0]}"
 
 
 SELECTION="$(dialog --stdout --colors --clear --radiolist \
