@@ -102,6 +102,19 @@ CHECK_SUBS()
 	fi
 }
 
+POSITION_INFO()
+{
+	case "$1" in
+		
+		"SET")
+			sed '/^$/d;/^ $/d;/^0$/d' "$TIME_TMP" | tail -n1 | tee "$FILENAME".time.txt
+	;;
+		"GET") 
+			CURRENT_POSITION="$( sed '/^$/d;/^ $/d;/^0$/d' "$FILENAME".time.txt | tail -n1 )" ;; 
+	esac
+}
+
+
 # Start the process
 VLC_POLL &
 CHECK_SUBS &
@@ -162,18 +175,18 @@ TIME_BEFORE_WATCHED &
 	then	vlc --quiet "$FILENAME".xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	else	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	fi
+		
+	# Update time info
+	POSITION_INFO SET
 	
 	# Update the xspf after playing the file (if found)
 	if [ -f "$FILENAME".xspf ]
 	then
-	CURRENT_POSITION="$(sed '/^$/d;/^ $/d;/^0$/d' "$FILENAME".time.txt 2>/dev/null | tail -n1)"
-	sed -i -e "s/start-time=.*</start-time=$CURRENT_POSITION</g" "$FILENAME".xspf
+		POSITION_INFO GET
+		sed -i -e "s/start-time=.*</start-time=$CURRENT_POSITION</g" "$FILENAME".xspf
 	fi
 	
 	rm "$TRIGGER1" "$TRIGGER2"
-
-	sed '/^$/d;/^ $/d;/^0$/d' "$TIME_TMP" | tail -n1 | tee "$FILENAME".time.txt
-
 
 	
 
