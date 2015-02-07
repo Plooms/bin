@@ -105,13 +105,11 @@ CHECK_SUBS()
 			then	notify-send "Media" "Subtitle Not Found"
 			else	notify-send "Media" "Subtitle Found - Reloading VLC" ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key n' ; wmctrl -a "$CURRENTWIN"
 			fi
+		else
+		exit 1
 		fi
 	fi
 }
-
-# Start the process
-VLC_POLL &
-CHECK_SUBS &
 
 	# Insert the filename into the media log
 	echo "" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
@@ -160,8 +158,6 @@ TIME_BEFORE_WATCHED()
 	
 }
 
-TIME_BEFORE_WATCHED &
-	
 POSITION_INFO()
 {
 	
@@ -175,6 +171,12 @@ POSITION_INFO()
 	;;
 	esac
 }
+
+# Start the process
+VLC_POLL &
+CHECK_SUBS &
+TIME_BEFORE_WATCHED &
+	
 
 	START_TIME=$(date +%s)
 	
