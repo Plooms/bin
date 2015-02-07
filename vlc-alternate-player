@@ -175,20 +175,17 @@ TIME_BEFORE_WATCHED &
 	then	vlc --quiet "$FILENAME".xspf --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	else	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf=http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	fi
-		
+	
+	rm "$TRIGGER1" "$TRIGGER2"
+
 	# Update time info
 	POSITION_INFO SET
 	
 	# Update the xspf after playing the file (if found)
-	if [ -f "$FILENAME".xspf ]
-	then
-		POSITION_INFO GET
-		sed -i -e "s/start-time=.*</start-time=$CURRENT_POSITION</g" "$FILENAME".xspf
-	fi
-	
-	rm "$TRIGGER1" "$TRIGGER2"
+	[ -f "$FILENAME".xspf ] \
+	&&	POSITION_INFO GET \
+	&&	sed -i -e "s/start-time=.*</start-time=$CURRENT_POSITION</g" "$FILENAME".xspf
 
-	
 
 END_TIME="$(date +%s)"
 END_TIME_SEC=$(( END_TIME - START_TIME ))
