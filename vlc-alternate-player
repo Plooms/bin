@@ -90,10 +90,6 @@ VLC_POLL()
 	| grep time | sed 's/,//g' | cut -b 10-
 	done >> "$TIME_TMP" &
 
-#	while [ -f "$TRIGGER2" ] ; do
-#	sleep .5
-#	sed '/^$/d;/^ $/d;/^0$/d' "$TIME_TMP" | tail -n2  | tee -a "$FILENAME".time.txt
-#	done &
 }
 
 CHECK_SUBS()
@@ -106,19 +102,6 @@ CHECK_SUBS()
 	grep -q "No matching subtitles found" "$TMP2" && notify-send "Media" "Subtitle Not Found" || (notify-send "Media" "Subtitle Found - Reloading VLC" ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key n' ; wmctrl -a "$CURRENTWIN")
 	fi
 }
-
-POSITION_INFO()
-{
-	case "$1" in
-		
-		"SET")
-			sed '/^$/d;/^ $/d;/^0$/d' "$TIME_TMP" | tail -n1 | tee "$FILENAME".time.txt
-	;;
-		"GET") 
-			CURRENT_POSITION="$( sed '/^$/d;/^ $/d;/^0$/d' "$FILENAME".time.txt | tail -n1 )" ;; 
-	esac
-}
-
 
 # Start the process
 VLC_POLL &
@@ -175,11 +158,29 @@ TIME_BEFORE_WATCHED()
 
 TIME_BEFORE_WATCHED &
 	
+POSITION_INFO()
+{
+	case "$1" in
+		
+		"SET")
+			sed '/^$/d;/^ $/d;/^0$/d' "$TIME_TMP" | tail -n1 | tee "$FILENAME".time.txt
+	;;
+		"GET") 
+			CURRENT_POSITION="$( sed '/^$/d;/^ $/d;/^0$/d' "$FILENAME".time.txt | tail -n1 )"
+	;;	
+		"UPDATE")
+			sed -i -e "s/start-time=.*</start-time=$CURRENT_POSITION</g" "$FILENAME".xspf
+
+	;;
+	esac
+}
+
 	
 	# Update the xspf before playing the file (if found)
 	[ -f "$FILENAME".xspf ] \
 	&&	POSITION_INFO GET \
-	&&	sed -i -e "s/start-time=.*</start-time=$CURRENT_POSITION</g" "$FILENAME".xspf
+	&&	POSITION_INFO UPDATE
+
 
 	# Play the file
 	if [ -f "$FILENAME".xspf ]
@@ -195,7 +196,7 @@ TIME_BEFORE_WATCHED &
 	# Update the xspf after playing the file (if found)
 	[ -f "$FILENAME".xspf ] \
 	&&	POSITION_INFO GET \
-	&&	sed -i -e "s/start-time=.*</start-time=$CURRENT_POSITION</g" "$FILENAME".xspf
+	&&	POSITION_INFO UPDATE
 
 
 END_TIME="$(date +%s)"
