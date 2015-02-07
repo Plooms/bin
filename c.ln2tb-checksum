@@ -20,11 +20,6 @@ _LOCK_ON
 #_PROGRESS
 
 #########################################################
-
-TMP="$(mktemp)"
-TMP2="$(mktemp)"
-export count_file="$(mktemp)"
-
 echo 1 > "$count_file"
 
 
@@ -52,10 +47,6 @@ echo 1 > "$count_file"
 
 _CHECK_MOUNT1 && \
 find "$TV_SYM"/ -size +25M -exec /usr/local/bin/c.ln2tb-checksum-find {} \;
-
-
-
-
 
 
 COLOR_OFF
