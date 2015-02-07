@@ -142,17 +142,16 @@ TIME_BEFORE_WATCHED()
 	touch "$TRIGGER3"
 	TIMER=120
 	while [ -f "$TRIGGER3" ] ; do
-	while [ 0 -ne "$TIMER" ] ; do 
-
 	[ -f "$TRIGGER2" ] &&\
+	[ 0 -ne "$TIMER" ] &&\
 	notify-send "Time before marking as Watched" "$TIMER" &&\
-	TIMER=$(($TIMER-30)) && sleep 30 || (TIMER="0" ; break)
-	done
-		notify-send "KIlled TIMER"
+	TIMER=$(($TIMER-30)) 
+	#&& sleep 30
+
+
 
 	done
 	rm "$TRIGGER3"
-	done
 	
 	sleep 1
 	notify-send "File will be marked as Watched"
