@@ -147,9 +147,7 @@ TIME_BEFORE_WATCHED()
 	notify-send "Time before marking as Watched" "$TIMER"
 	TIMER=$(($TIMER-30)) ; 	sleep 30
 	done
-	notify-send "killed loop break"
 	rm "$TRIGGER3"
-
 	done
 	
 	sleep 1
