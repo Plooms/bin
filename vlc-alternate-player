@@ -46,7 +46,7 @@ check_file_exist "$@"
 FNAME="$1"
 
 
-TMP="$(mktemp)"
+TMP1="$(mktemp)"
 TMP2="$(mktemp)"
 TIME_TMP="$(mktemp)"
 TRIGGER1="$(mktemp)"
@@ -142,27 +142,15 @@ TIME_BEFORE_WATCHED()
 	touch "$TRIGGER3"
 	TIMER=120
 	while [ -f "$TRIGGER3" ] ; do
-	
-	if	[ -f "$TRIGGER2" ] ; then
-	
 	while [ 0 -ne "$TIMER" ] ; do
+	[ -f "$TRIGGER2" ] || break
 	notify-send "Time before marking as Watched" "$TIMER"
-	TIMER=$(($TIMER-30))
+	TIMER=$(($TIMER-30)) ; 	sleep 1
 	done
-	
-	else
-
-	rm "$TRIGGER3"
 	notify-send "killed loop break"
-
-	fi
-	
-	#&& sleep 30
-
-
+	rm "$TRIGGER3"
 
 	done
-	rm "$TRIGGER3"
 	
 	sleep 1
 	notify-send "File will be marked as Watched"
