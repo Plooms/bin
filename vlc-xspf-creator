@@ -16,15 +16,19 @@ _START_TIME
 _LOCK_ON
 
 #########################################################
+TMP1="$(mktemp)"
 
-TMP="$(mktemp)"
-TMP2="$(mktemp)"
+CLEAN_TMP_FILES()
+{	
+rm "$TMP1"	2>/dev/null
+}
+
 
 echo "Searching for TV files without VLC XSPF files"
 echo ""
 
 _CHECK_MOUNT1 && \
-find "$TV_SYM"/ -size +25M  > $TMP
+find "$TV_SYM"/ -size +25M  > "$TMP"
 
 while read file
 do
@@ -117,8 +121,10 @@ echo "$FILENAME".xspf
 fi
 
 
-done < $TMP
+done < "$TMP"
 
+
+CLEAN_TMP_FILES
 
 #########################################################
 

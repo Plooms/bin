@@ -22,6 +22,10 @@ TMP2="$(mktemp)"
 TMP3="$(mktemp)"
 TMP4="$(mktemp)"
 
+CLEAN_TMP_FILES()
+{	
+rm "$TMP1" "$TMP2" "$TMP3" "$TMP4" 2>/dev/null
+}
 
 # Get the file name from Last-video.txt
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
@@ -93,19 +97,13 @@ case $? in
 
 	case "$SELECTION" in
 	1)
-	
 		PLAY "FIRST"
-	
 	;;
 	2)
-	
 		PLAY "SECOND"
-
-	
 	;;
 	3)
 		PLAY "THIRD"
-
 	;;
 	esac
 
@@ -115,6 +113,7 @@ exit 1 ;;
 esac
 
 
+CLEAN_TMP_FILES
 
 #########################################################
 
