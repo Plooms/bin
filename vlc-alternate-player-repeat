@@ -49,6 +49,48 @@ sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by
 # Remove All Blank Lines
 sed -i '/^$/d' $TMP2
 
+
+PLAY()
+{
+	if	[ "$1" = "FIRST" ]
+	then
+	FILENAME_ONLY="${F2_ARRAY[2]}"
+	FULL_PATH="${F_ARRAY[2]}"
+	FULL_PATH_NO_EXT="${F3_ARRAY[2]}"
+	LETTER="$A"
+	
+	elif	[ "$1" = "SECOND" ]
+	then
+	FILENAME_ONLY="${F2_ARRAY[1]}"
+	FULL_PATH="${F_ARRAY[1]}"
+	FULL_PATH_NO_EXT="${F3_ARRAY[11]}"
+	LETTER="$B"
+	
+	elif	[ "$1" = "THIRD" ]
+	then
+	FILENAME_ONLY="${F2_ARRAY[0]}"
+	FULL_PATH="${F_ARRAY[0]}"
+	FULL_PATH_NO_EXT="${F3_ARRAY[0]}"
+	LETTER="$C"
+	fi
+
+	
+	
+	dialog --stdout --checklist "Options for: (  $FILENAME_ONLY  )" 13 100 5 \
+	"Repeat Video"				"" on \
+	"Remove Video Subtitles"		"" off \
+	"Take Notes"				"" off \
+	"Forget Saved Position"			"" off > $TMP3
+
+	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "$FULL_PATH"
+	grep --fixed-strings "Remove Video Subtitles" $TMP3 && (rm "$FULL_PATH_NO_EXT"*.srt ; rm "$FULL_PATH_NO_EXT"*.sub)
+	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "$FULL_PATH_NO_EXT".time.txt
+	grep --fixed-strings "Repeat Video" $TMP3 && export REPEAT=ON && \
+	[ ! -z "$LETTER" ] && nohup /usr/local/bin/vlc-alternate-player "$FULL_PATH" >/dev/null 2>&1 &
+	sleep .3
+
+}
+
 grep --fixed-strings "${F2_ARRAY[2]}" $TMP2 && A="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[2]}" || A="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[2]}"
 grep --fixed-strings "${F2_ARRAY[1]}" $TMP2 && B="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[1]}" || B="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[1]}"
 grep --fixed-strings "${F2_ARRAY[0]}" $TMP2 && C="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[0]}" || C="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[0]}"
@@ -66,51 +108,20 @@ case $? in
 
 	case "$SELECTION" in
 	1)
-	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[2]}  )" 13 100 5 \
-		"Repeat Video"				"" on \
-		"Remove Video Subtitles"		"" off \
-		"Take Notes"				"" off \
-		"Forget Saved Position"			"" off > $TMP3
-
-	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[2]}"
-	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm "${F3_ARRAY[2]}"*.srt && rm "${F3_ARRAY[2]}"*.sub
-	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "${F_ARRAY[2]}".time.txt
-	grep --fixed-strings "Repeat Video" $TMP3 && export REPEAT=ON && \
-	[ ! -z "$A" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[2]}" 2>&1 >/dev/null &
-	sleep .3
+	
+		PLAY "FIRST"
 	
 	;;
 	2)
-	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[1]}  )" 13 100 5 \
-		"Repeat Video"				"" on \
-		"Remove Video Subtitles"		"" off \
-		"Take Notes"				"" off \
-		"Forget Saved Position"			"" off > $TMP3
-
-	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[1]}"
-	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm "${F3_ARRAY[1]}"*.srt && rm "${F3_ARRAY[1]}"*.sub
-	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "${F_ARRAY[1]}".time.txt
-	grep --fixed-strings "Repeat Video" $TMP3 && export REPEAT=ON && \
-	[ ! -z "$B" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[1]}" 2>&1 >/dev/null &
-	sleep .3
-
 	
+		PLAY "SECOND"
+
 	
 	;;
 	3)
-	dialog --stdout --checklist "Options for: (  ${F2_ARRAY[0]}  )" 13 100 5 \
-		"Repeat Video"				"" on \
-		"Remove Video Subtitles"		"" off \
-		"Take Notes"				"" off \
-		"Forget Saved Position"			"" off > $TMP3
+		PLAY "THIRD"
 
-	grep --fixed-strings "Take Notes" $TMP3 && /usr/local/bin/vlc-note-taker "${F_ARRAY[0]}"
-	grep --fixed-strings "Remove Video Subtitles" $TMP3 && rm "${F3_ARRAY[0]}"*.srt && rm "${F3_ARRAY[0]}"*.sub
-	grep --fixed-strings "Forget Saved Position" $TMP3 && rm "${F_ARRAY[0]}".time.txt
-	grep --fixed-strings "Repeat Video" $TMP3 && export REPEAT=ON && \
-	[ ! -z "$C" ] && nohup /usr/local/bin/vlc-alternate-player "${F_ARRAY[0]}" 2>&1 >/dev/null &
-	sleep .3
-
+	;;
 	esac
 
 ;;
