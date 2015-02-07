@@ -48,7 +48,7 @@ FNAME="$1"
 
 TMP1="$(mktemp)"
 TMP2="$(mktemp)"
-TIME_TMP="$(mktemp)"
+TIME_TMP="/tmp/asss"
 TRIGGER1="$(mktemp)"
 TRIGGER2="$(mktemp)"
 TRIGGER3="$(mktemp)"
@@ -87,7 +87,7 @@ VLC_POLL()
 
 	while [ -f "$TRIGGER2" ] ; do
 	sleep .6
-	tail -n2 "$TIME_TMP" | sed '/^$/d;/^ $/d;/^0$/d' > "$FILENAME".time.txt
+	sed '/^$/d;/^ $/d;/^0$/d' "$TIME_TMP" | tail -n2  | tee "$FILENAME".time.txt
 	done &
 }
 
