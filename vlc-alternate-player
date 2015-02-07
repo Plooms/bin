@@ -138,6 +138,8 @@ CHECK_RESET_TIME()
 	fi
 }
 
+CHECK_RESET_TIME
+
 
 TIME_BEFORE_WATCHED()
 {
@@ -147,7 +149,7 @@ TIME_BEFORE_WATCHED()
 	while [ 0 -ne "$TIMER" ] ; do
 	[ -f "$TRIGGER2" ] || break
 	notify-send "Time before marking as Watched" "$TIMER"
-	TIMER=$(($TIMER-30)) ; 	sleep 30
+	TIMER=$((TIMER-30)) ; 	sleep 30
 	done
 	rm "$TRIGGER3"
 	done
