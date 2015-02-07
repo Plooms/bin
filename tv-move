@@ -34,6 +34,8 @@ RED
 
 tvnamer -c ~/.tvnamer.json * | grep skipping | tee -a .Rename.Log ; date >> .Rename.Log
 
+rename ".srt" ".eng.srt" *.srt
+
 CYAN
 
 echo -e "${YELLOW}\n\n\n\nDo you want to Move?           y\n\n\n\n"
