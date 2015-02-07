@@ -10,20 +10,26 @@ source /usr/local/bin/VAR-SCRIPT
 
 export DIR="$TV_SYM"
 export TMP="$(mktemp)"
-export TMP1="$(mktemp)"
 export TMP2="$(mktemp)"
+export TMP3="$(mktemp)"
 export TMP_D="$(mktemp -d /tmp/Shows.XXXX)"
 #export TMP_D_SUB="$(mktemp -d -p $TMP_D)"
+
+CLEAN_TMP_FILES()
+{	
+rm "$TMP2" "$TMP3" "$TIME_TMP1" "$TRIGGER1" "$TRIGGER2" "$TRIGGER3"	2>/dev/null
+}
+
 
 echo "Searching for media files without subtitles...."
 echo ""
 
 # Shows
-find "$DIR" -type f -size +30M | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev  ;done >| "$TMP" 2>/dev/null
-find "$DIR" -type f -size -10M -iname "*.srt" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
-find "$DIR" -type f -size -10M -iname "*.sub" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP" 2>/dev/null
-sort "$TMP" | uniq -u >| "$TMP1"
-while read -r i ;do sudo touch "$TMP_D"/"$i".avi ; done < "$TMP1"
+find "$DIR" -type f -size +30M | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev  ;done >| "$TMP1" 2>/dev/null
+find "$DIR" -type f -size -10M -iname "*.srt" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP1" 2>/dev/null
+find "$DIR" -type f -size -10M -iname "*.sub" | sort | while read -r i ; do rev | cut -d"." -f2- | cut -d/ -f1 | rev | sed 's/\.english//'|sed 's/\.eng//'|sed 's/\.en//' ;done  >> "$TMP1" 2>/dev/null
+sort "$TMP1" | uniq -u >| "$TMP2"
+while read -r i ;do sudo touch "$TMP_D"/"$i".avi ; done < "$TMP2"
 find "$DIR" -maxdepth 1 |cut -d/ -f6 | while read -r i ; do mkdir -p "$TMP_D"/Shows/"$i" ; done
 cd "$TMP_D"
 export find_missing_file_move="Y" && /usr/local/bin/move >/dev/null
@@ -35,8 +41,8 @@ sudo rmdir "$TMP_D"/* 2>/dev/null
 ####To move 250 file sections into folders###
 #while [ "$(find "$TMP_D" -maxdepth 1 -type f)" ]
 #do
-#       find "$TMP_D" -maxdepth 1 -type f | sort | head -n 250 >| "$TMP2"
-#       while read -r i ; do mv "$i" "$TMP_D_SUB" ; done < "$TMP2"
+#       find "$TMP_D" -maxdepth 1 -type f | sort | head -n 250 >| "$TMP3"
+#       while read -r i ; do mv "$i" "$TMP_D_SUB" ; done < "$TMP3"
 #       TMP_D_SUB="$(mktemp -d -p $TMP_D)"
 #done
 #rmdir "$TMP_D"/* 2>/dev/null
@@ -54,8 +60,8 @@ cd "$DIR"
 while read -r dir ;do find "$dir" -size +30M ;done < /tmp/a2 >| /tmp/a3 2>/dev/null
 cat  /tmp/a3 | cut -d/ -f7 >| /tmp/a4
 TMP="$(mktemp -d /tmp/Movies.XXXX)"
-while read -r dir ;do touch "$TMP"/"$dir";done < /tmp/a4
-export Path="$TMP" && parent
+while read -r dir ;do touch "$TMP1"/"$dir";done < /tmp/a4
+export Path="$TMP1" && parent
 
 
 # cleanup exported vars
@@ -64,5 +70,8 @@ export find_missing_file_move=""
 YELLOW
 
 echo ""
-echo "The files are now in $TMP_D & $TMP"
-dolphin "$TMP_D" "$TMP" 2>/dev/null &
+echo "The files are now in $TMP_D & $TMP1"
+dolphin "$TMP_D" "$TMP1" 2>/dev/null &
+
+
+CLEAN_TMP_FILES

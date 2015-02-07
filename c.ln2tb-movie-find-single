@@ -10,9 +10,13 @@ source /usr/local/bin/VAR-SCRIPT
 # Time Calculation
 _START_TIME
 
-TMP="$(mktemp)"
-TMP2="$(mktemp)"
+TMP1="$(mktemp)"
 TMP_LOG1="$(mktemp)"
+
+CLEAN_TMP_FILES()
+{	
+rm ""$TMP1"" "$TMP2" "$TIME_TMP" "$TRIGGER1" "$TRIGGER2" "$TRIGGER3"	2>/dev/null
+}
 
 
 if [ -n "$TERM_LAUNCH" ]
@@ -36,9 +40,9 @@ FILE_NAME="$(echo $FILE_NAME | sed "s/^[ \t]*//;s/[ \t]*$//")"
 # To get a filename suitable for mysql (no '(' , or ')' , or ' ' ' , or whtespace and convert '&' to '%'  and no " ? " or " : ")
 MOVIE_NAME="$(echo $FILE_NAME | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//;s/&/%/g;s/?//g;s/://g")"
 
-mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss > $TMP
+mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '%$MOVIE_NAME%'" -ss > "$TMP1"
 
-while read -r FILE2 ; do movie_array+=("$FILE2") ; done < $TMP
+while read -r FILE2 ; do movie_array+=("$FILE2") ; done < "$TMP1"
 
 
 
@@ -156,3 +160,5 @@ _CANCEL_MSG ;;
 ln2tb ;;
 
 esac
+
+CLEAN_TMP_FILES
