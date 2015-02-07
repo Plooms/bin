@@ -85,10 +85,10 @@ VLC_POLL()
 	| grep time | sed 's/,//g' | cut -b 10-
 	done >> "$TIME_TMP" &
 
-	while [ -f "$TRIGGER2" ] ; do
-	sleep .5
-	sed '/^$/d;/^ $/d;/^0$/d' "$TIME_TMP" | tail -n2  | tee -a "$FILENAME".time.txt
-	done &
+#	while [ -f "$TRIGGER2" ] ; do
+#	sleep .5
+#	sed '/^$/d;/^ $/d;/^0$/d' "$TIME_TMP" | tail -n2  | tee -a "$FILENAME".time.txt
+#	done &
 }
 
 CHECK_SUBS()
@@ -171,6 +171,8 @@ TIME_BEFORE_WATCHED &
 	fi
 	
 	rm "$TRIGGER1" "$TRIGGER2"
+
+	sed '/^$/d;/^ $/d;/^0$/d' "$TIME_TMP" | tail -n1 | tee "$FILENAME".time.txt
 
 
 	
