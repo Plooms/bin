@@ -18,18 +18,18 @@ echo "#############################################################"
 ###################################################################
 ###################################################################
 
-TMP="$(mktemp)"
+TMP1="$(mktemp)"
 TMP_LOG="$(mktemp)"
 
 CLEAN_TMP_FILES()
 {	
-rm "$TMP1" "$TMP2" "$TIME_TMP" "$TRIGGER1" "$TRIGGER2" "$TRIGGER3"	2>/dev/null
+rm "$TMP1" 2>/dev/null
 }
 
 
-mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > $TMP
+mysql -uroot -p"$DB_PASSWORD" tv -e "select Name from tv"  -ss > "$TMP1"
 
-cat $TMP | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
+cat "$TMP1" | cut -d"]" -f1| uniq -id > "$DUPES_BUFFER"
 
 while read -r FILE  ; do dupes_array+=("$FILE") ;done < "$DUPES_BUFFER"
 
@@ -39,15 +39,15 @@ DIR="$(echo $i | cut -d/ -f1)"
 NAME="$(echo $i | cut -d/ -f2)"
 NAME2="$(echo "$i" | cut -d/ -f2 | sed "s/'/\\\\\\'/" )"
 
-CYAN ; echo "Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
+CYAN ; echo "Duplicates:" | tee -a "$TMP_LOG" ; COLOR_OFF
 
 RED
-find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a $TMP_LOG
+find  "$TV_SYM"/"$DIR"/ -size +25M -type f -iname "$NAME*" -exec du -hs {} \; -exec echo "" \; | tee -a "$TMP_LOG"
 
-echo "" | tee -a $TMP_LOG
-CYAN ; echo "Actions on Duplicates:" | tee -a $TMP_LOG ; COLOR_OFF
+echo "" | tee -a "$TMP_LOG"
+CYAN ; echo "Actions on Duplicates:" | tee -a "$TMP_LOG" ; COLOR_OFF
 
-find  "$TV_SYM"/"$DIR"/ -type f -iname "$NAME*" -exec echo -e "${GREEN}" \; -exec du -hs {} \; -exec echo -e "${COLOR_OFF}" \; -exec sudo rm -i {} \; -exec echo "" \; | tee -a $TMP_LOG
+find  "$TV_SYM"/"$DIR"/ -type f -iname "$NAME*" -exec echo -e "${GREEN}" \; -exec du -hs {} \; -exec echo -e "${COLOR_OFF}" \; -exec sudo rm -i {} \; -exec echo "" \; | tee -a "$TMP_LOG"
 echo ""
 
 echo "Delete the Database Entry ($i) ?   y"
@@ -65,14 +65,10 @@ done
 
 
 
-
-
-
-
 echo "
 
 
-Logfile:  $TMP_LOG
+Logfile:  "$TMP_LOG"
 
 "
 
@@ -92,5 +88,6 @@ mysql -uroot -p"$DB_PASSWORD" tv -e "DELETE from tv" -ss ; echo "Deleted the TV 
 else
 echo exiting
 fi
+
 
 CLEAN_TMP_FILES
