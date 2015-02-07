@@ -105,7 +105,7 @@ CHECK_SUBS()
 			then	notify-send "Media" "Subtitle Not Found"
 			else	
 			[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] \
-			&& notify-send "Media" "Subtitle Found - Reloading VLC" ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key n' ; wmctrl -a "$CURRENTWIN"
+			&& (notify-send "Media" "Subtitle Found - Reloading VLC" ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key n' ; wmctrl -a "$CURRENTWIN")
 			fi
 		else
 		exit 1
@@ -203,7 +203,8 @@ TIME_BEFORE_WATCHED &
 END_TIME="$(date +%s)"
 END_TIME_SEC=$(( END_TIME - START_TIME ))
 
-[ "$END_TIME_SEC" -gt 60 ] &&  echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
+[ "$END_TIME_SEC" -lt 120 ] && notify-send "Media" "Canceled Marking the media file as watched"  
+[ "$END_TIME_SEC" -gt 120 ] && echo "$(date | cut -d" " -f 1-5) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 nohup sleep 1 >/dev/null 2>&1 && KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3 "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> "$TMP1" && while read a ; do notify-send "Media" "$a - Marked as Watched" ; done < "$TMP1" &
 
