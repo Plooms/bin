@@ -99,7 +99,7 @@ CHECK_SUBS()
 	then	return 0
 	else	
 	filebot -get-missing-subtitles --lang en -non-strict "$FNAME" > "$TMP2" 2>&1
-		if [ -f "$TMP2" ] 
+		if [ -f "$TMP2" ]
 		then
 			if grep -q "No matching subtitles found" "$TMP2"
 			then	notify-send "Media" "Subtitle Not Found"
