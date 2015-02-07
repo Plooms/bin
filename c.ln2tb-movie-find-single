@@ -15,7 +15,7 @@ TMP_LOG1="$(mktemp)"
 
 CLEAN_TMP_FILES()
 {	
-rm ""$TMP1"" "$TMP2" "$TIME_TMP" "$TRIGGER1" "$TRIGGER2" "$TRIGGER3"	2>/dev/null
+rm "$TMP1" 2>/dev/null
 }
 
 

@@ -9,9 +9,7 @@ FNAME="$1"
 
 count="$(cat $count_file)"
 
-TMP="$(mktemp)"
-TMP2="$(mktemp)"
-TMP_LOG1="$(mktemp)"
+
 
 RES1=$(ffprobe -v quiet -show_streams "$FNAME" | egrep -e 'width' |sed 's/width=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
 RES2=$(ffprobe -v quiet -show_streams "$FNAME" | egrep -e 'height' |sed 's/height=//g' | sed 's/N\/A//g' | sed '/^\s*$/d' | head -n1)
@@ -61,3 +59,4 @@ EOF
 GREEN
 echo -ne "$count) ${CYAN}Adding File: ${COLOR_OFF}$NAME"
 echo $((count + 1)) > "$count_file"
+
