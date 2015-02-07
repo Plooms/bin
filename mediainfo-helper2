@@ -9,14 +9,22 @@ source /usr/local/bin/VAR-SCRIPT
 
 FNAME="$1"
 
-TMP="$(mktemp)"
+TMP1="$(mktemp)"
+
+CLEAN_TMP_FILES()
+{	
+rm "$TMP1" 	2>/dev/null
+}
+
 
 if [ ! -f "$FNAME".log ] 
 then
-mediainfo "$FNAME" > $TMP
+mediainfo "$FNAME" >  "$TMP1" 
 
-cat $TMP | grep -E 'Complete name |File size |Width |Height ' | sed 's/                         :/:/g' > "$FNAME".log
-cat $TMP | grep -m 1 'Duration' | sed 's/                         :/:/g' >> "$FNAME".log
-cat $TMP | grep 'Overall bit rate' | grep -v 'Overall bit rate mode' | sed 's/                         :/:/g' >> "$FNAME".log
+cat  "$TMP1" | grep -E 'Complete name |File size |Width |Height ' | sed 's/                         :/:/g' > "$FNAME".log
+cat  "$TMP1" | grep -m 1 'Duration' | sed 's/                         :/:/g' >> "$FNAME".log
+cat  "$TMP1" | grep 'Overall bit rate' | grep -v 'Overall bit rate mode' | sed 's/                         :/:/g' >> "$FNAME".log
 echo "$FNAME".log
 fi
+
+CLEAN_TMP_FILES
