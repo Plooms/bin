@@ -13,7 +13,7 @@ export DISPLAY=:0.0
 
 if wmctrl -l | grep VLC
 then
-echo "$(date |cut -d" " -f 1-5) <-> Ongoing  - ($( wmctrl -l | grep VLC\ media\ player |cut -d" " -f5- | sed 's/ - VLC media player//g' |sed "s/'//g" ))" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
+echo "$(date +%a\ %d\ %b\ %r) <-> Ongoing  - ($( wmctrl -l | grep VLC\ media\ player |cut -d" " -f5- | sed 's/ - VLC media player//g' |sed "s/'//g" ))" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
 else
 echo "
