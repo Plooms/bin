@@ -10,5 +10,4 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 sudo find /usr/local/bin/ -name "*~" -exec sudo rm -v {} \;
-sudo find $MYHOME/ -name "*~" -exec sudo rm -v {} \;
-
+sudo find "$MYHOME"/ -name "*~" -exec sudo rm -v {} \;
