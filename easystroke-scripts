@@ -8,37 +8,37 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
-[ "CLOSE_WIN" ] && export MIN=YES ; /usr/local/bin/gesture-helper-close-window
-export MIN=NO ; /usr/local/bin/gesture-helper-close-window
-xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a salman ; sleep .2 ; xte "key h" "key e" "key l" "key l" "key o"  ; xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN" ; notify-send "Pidgin" "Sent hello to Salman"
-
-xte "keydown Alt_L"  "keydown Shift_L" "keyup Alt_L"  "keyup Shift_L"
-xte "keydown Control_R"  "keydown Alt_L"  "key r" "key r" "key r" "keyup Control_R" "keyup Alt_L"
-KEY="key q" ; xte "keydown Control_R"  "keydown Alt_L"  "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "keyup Control_R" "keyup Alt_L"
-dolphin
-terminator
-br
-wmctrl -a firefox && xte "keydown Control_R" "key t" "key k" "keyup Control_R"
-wmctrl -a firefox && xte "keydown Control_R" "key t" "key k" "keyup Control_R" ; sleep 3 ; xdotool type "$(xclip -o)" ; xdotool key Return
-export TERM_LAUNCH=Y ; terminator -x c.ln2tb-movie-find-single
-firefox "www.youtube.com/results?search_query=$(xclip -o|sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g')&sm=3" ; firefox "http://kickass.to/usearch/$(xclip -o|sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g")" ; firefox "http://thetvdb.com/?string=$(xclip -o|sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g')&searchseriesid=&tab=listseries&function=Search"
-firefox "www.youtube.com/results?search_query=$(xclip -o|sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g')&sm=3" ; firefox "http://kickass.to/usearch/$(xclip -o|sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g")"
-firefox "http://kickass.to/usearch/$(xclip -o|sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g")"
-mv ~/Downloads/*.torrent ~/NAS/Other/Downloads/shared-folder/ ; mv ~/Downloads/*.nzb ~/NAS/Other/Downloads/shared-folder/
-CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key space' ; wmctrl -a "$CURRENTWIN"
-xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key f' ; wmctrl -a "$CURRENTWIN"
-xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key space' 'key f'; wmctrl -a "$CURRENTWIN"
-WIN="$(wmctrl -lp | grep `xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'` | cut -d" " -f1)"; wmctrl -i -r $WIN -b add,above
-WIN="$(wmctrl -lp | grep `xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'` | cut -d" " -f1)"; wmctrl -i -r $WIN -b remove,above
-wmctrl -a firefox
-wmctrl -a dolphin
-wmctrl -a salman
-wmctrl -a kodi
-wmctrl -a vlc
-wmctrl -a geany
-killall florence ; florence
-KEY="key b" ; xte "keydown Control_R"  "keydown Alt_L"   "$KEY" "keyup Control_R" "keyup Alt_L"
-KEY="key n" ; xte "keydown Control_R"  "keydown Alt_L"  "$KEY" "keyup Control_R" "keyup Alt_L"
-xte "keydown Control_L" "keydown Shift_R" ; sleep 3 ;  xte "keyup Control_L" "keyup Shift_R" ; notify-send "Gesture" "keyup CTRL+SHIFT"
-/usr/local/bin/show-time
-xte "keydown Control_L"  "key a" "keyup Control_L" "key backspace" "key BackSpace"
+[ "$C1" ]  && export MIN=YES ; /usr/local/bin/gesture-helper-close-window
+[ "$C2" ]  && export MIN=NO ; /usr/local/bin/gesture-helper-close-window
+[ "$C3" ]  && xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a salman ; sleep .2 ; xte "key h" "key e" "key l" "key l" "key o"  ; xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN" ; notify-send "Pidgin" "Sent hello to Salman"
+[ "$C4" ]  && xte "keydown Alt_L"  "keydown Shift_L" "keyup Alt_L"  "keyup Shift_L"
+[ "$C5" ]  && xte "keydown Control_R"  "keydown Alt_L"  "key r" "key r" "key r" "keyup Control_R" "keyup Alt_L"
+[ "$C6" ]  && KEY="key q" ; xte "keydown Control_R"  "keydown Alt_L"  "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "keyup Control_R" "keyup Alt_L"
+[ "$C7" ]  && dolphin
+[ "$C8" ]  && terminator
+[ "$C9" ]  && br
+[ "$C10" ] && wmctrl -a firefox && xte "keydown Control_R" "key t" "key k" "keyup Control_R"
+[ "$C11" ] && wmctrl -a firefox && xte "keydown Control_R" "key t" "key k" "keyup Control_R" ; sleep 3 ; xdotool type "$(xclip -o)" ; xdotool key Return
+[ "$C12" ] && export TERM_LAUNCH=Y ; terminator -x c.ln2tb-movie-find-single
+[ "$C13" ] && firefox "www.youtube.com/results?search_query=$(xclip -o|sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g')&sm=3" ; firefox "http://kickass.to/usearch/$(xclip -o|sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g")" ; firefox "http://thetvdb.com/?string=$(xclip -o|sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g')&searchseriesid=&tab=listseries&function=Search"
+[ "$C14" ] && firefox "www.youtube.com/results?search_query=$(xclip -o|sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g')&sm=3" ; firefox "http://kickass.to/usearch/$(xclip -o|sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g")"
+[ "$C15" ] && firefox "http://kickass.to/usearch/$(xclip -o|sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g")"
+[ "$C16" ] && mv ~/Downloads/*.torrent ~/NAS/Other/Downloads/shared-folder/ ; mv ~/Downloads/*.nzb ~/NAS/Other/Downloads/shared-folder/
+[ "$C17" ] && CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key space' ; wmctrl -a "$CURRENTWIN"
+[ "$C18" ] && xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key f' ; wmctrl -a "$CURRENTWIN"
+[ "$C19" ] && xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key space' 'key f'; wmctrl -a "$CURRENTWIN"
+[ "$C20" ] && WIN="$(wmctrl -lp | grep `xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'` | cut -d" " -f1)"; wmctrl -i -r $WIN -b add,above
+[ "$C21" ] && WIN="$(wmctrl -lp | grep `xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'` | cut -d" " -f1)"; wmctrl -i -r $WIN -b remove,above
+[ "$C22" ] && wmctrl -a firefox
+[ "$C23" ] && wmctrl -a dolphin
+[ "$C24" ] && wmctrl -a salman
+[ "$C25" ] && wmctrl -a kodi
+[ "$C26" ] && wmctrl -a vlc
+[ "$C27" ] && wmctrl -a geany
+[ "$C28" ] && killall florence ; florence
+[ "$C29" ] && KEY="key b" ; xte "keydown Control_R"  "keydown Alt_L"   "$KEY" "keyup Control_R" "keyup Alt_L"
+[ "$C30" ] && KEY="key n" ; xte "keydown Control_R"  "keydown Alt_L"  "$KEY" "keyup Control_R" "keyup Alt_L"
+[ "$C31" ] && xte "keydown Control_L" "keydown Shift_R" ; sleep 3 ;  xte "keyup Control_L" "keyup Shift_R" ; notify-send "Gesture" "keyup CTRL+SHIFT"
+[ "$C32" ] && xte "keydown Control_L" ; sleep 3 ;  xte "keyup Control_L" ; notify-send "Gesture" "keyup CTRL"
+[ "$C33" ] && /usr/local/bin/show-time
+[ "$C34" ] && xte "keydown Control_L"  "key a" "keyup Control_L" "key backspace" "key BackSpace"
