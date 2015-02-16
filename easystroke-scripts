@@ -7,7 +7,6 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
-export DISPLAY=0.0
 
 [ "$C1" ]  && (export MIN=YES ; /usr/local/bin/gesture-helper-close-window)
 [ "$C2" ]  && (export MIN=NO ; /usr/local/bin/gesture-helper-close-window)
@@ -42,4 +41,4 @@ export DISPLAY=0.0
 [ "$C31" ] && (xte "keydown Control_L" "keydown Shift_R" ; sleep 3 ;  xte "keyup Control_L" "keyup Shift_R" ; notify-send "Gesture" "keyup CTRL+SHIFT")
 [ "$C32" ] && (xte "keydown Control_L" ; sleep 3 ;  xte "keyup Control_L" ; notify-send "Gesture" "keyup CTRL")
 [ "$C33" ] && (/usr/local/bin/show-time)
-[ "$C34" ] && (xte "keydown Control_L"  "key a" "keyup Control_L" "key backspace" "key BackSpace")
+[ "$C34" ] && (xte "keydown Control_L" "key a" "keyup Control_L" "key BackSpace" "key BackSpace")
