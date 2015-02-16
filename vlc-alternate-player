@@ -177,7 +177,7 @@ POSITION_INFO()
 # Start the process
 VLC_POLL &
 CHECK_SUBS &
-TIME_BEFORE_WATCHED &
+[ -z "$REPEAT" ] && TIME_BEFORE_WATCHED &
 	
 
 	START_TIME=$(date +%s)
