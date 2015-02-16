@@ -9,14 +9,17 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
+# Close Window
 if [ ! -z "$C1" ]  ; then
 export MIN=YES ; /usr/local/bin/gesture-helper-close-window
 fi
 
+# Close Window Really
 if [ ! -z "$C2" ]  ; then
 export MIN=NO ; /usr/local/bin/gesture-helper-close-window
 fi
 
+# Pidgin Text
 if [ ! -z "$C3" ]  ; then
 xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
@@ -25,50 +28,57 @@ xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN"
 notify-send "Pidgin" "Sent hello to Salman"
 fi
 
+# Change Language
 if [ ! -z "$C4" ]  ; then
 xte "keydown Alt_L"  "keydown Shift_L" "keyup Alt_L"  "keyup Shift_L"
 fi
 
+# Visibility -
 if [ ! -z "$C5" ]  ; then
 xte "keydown Control_R"  "keydown Alt_L"  "key r" "key r" "key r" "keyup Control_R" "keyup Alt_L"
 fi
 
+# Visibility +
 if [ ! -z "$C6" ]  ; then
 KEY="key q" ; xte "keydown Control_R"  "keydown Alt_L"  "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "$KEY" "keyup Control_R" "keyup Alt_L"
 fi
 
+# File Manager
 if [ ! -z "$C7" ]  ; then
 dolphin
 fi
 
+# Terminal
 if [ ! -z "$C8" ]  ; then
 terminator
 fi
 
+# Brightness
 if [ ! -z "$C9" ]  ; then
 /usr/local/bin/br
 fi
 
+# Search Google
 if [ ! -z "$C10" ] ; then
 wmctrl -a firefox && xte "keydown Control_R" "key t" "key k" "keyup Control_R"
 fi
 
+# Search Google-2
 if [ ! -z "$C11" ] ; then
 wmctrl -a firefox && xte "keydown Control_R" "key t" "key k" "keyup Control_R"
 sleep 3 ; xdotool type "$(xclip -o)" ; xdotool key Return
 fi
 
+# ln2tb-Movies
 if [ ! -z "$C12" ] ; then
 export TERM_LAUNCH=Y ; terminator -x c.ln2tb-movie-find-single
 fi
 
+# Search YT - KAT - TVDB
 if [ ! -z "$C13" ] ; then
-IMDB_NAME="$( echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
 YT_NAME="$(   echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
 KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 TVDB_NAME="$( echo "$TITLE"  | sed 's/(//g;s///g;s/&/and/g;s/\ /+/g' )"
-#IMDB
-firefox "http://www.imdb.com/title/$MOVIE" 2>/dev/null
 # YT
 firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 # KAT
@@ -77,6 +87,7 @@ firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 firefox "http://thetvdb.com/?string=$TVDB_NAME&searchseriesid=&tab=listseries&function=Search"
 fi
 
+# Search YT & KAT
 if [ ! -z "$C14" ] ; then
 YT_NAME="$(   echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
 KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
@@ -86,23 +97,27 @@ firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 fi
 
+# Search KAT
 if [ ! -z "$C15" ] ; then
 KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 # KAT
 firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 fi
 
+# Move p2p
 if [ ! -z "$C16" ] ; then
 mv ~/Downloads/*.torrent ~/NAS/Other/Downloads/shared-folder/
 mv ~/Downloads/*.nzb ~/NAS/Other/Downloads/shared-folder/
 fi
 
+# Pause VLC
 if [ ! -z "$C17" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 wmctrl -a "VLC media player" ; sleep .1 ; xte 'key space'
 wmctrl -a "$CURRENTWIN"
 fi
 
+# Fullscreen VLC
 if [ ! -z "$C18" ] ; then
 xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
@@ -110,6 +125,7 @@ wmctrl -a "VLC media player" ; sleep .1 ; xte 'key f'
 wmctrl -a "$CURRENTWIN"
 fi
 
+# Fullscreen + Pause VLC
 if [ ! -z "$C19" ] ; then
 xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
@@ -117,52 +133,66 @@ wmctrl -a "VLC media player" ; sleep .1 ; xte 'key space' 'key f'
 wmctrl -a "$CURRENTWIN"
 fi
 
+# Window Above
 if [ ! -z "$C20" ] ; then
 WIN="$(wmctrl -lp | grep `xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'` | cut -d" " -f1)"
 wmctrl -i -r "$WIN" -b add,above
 fi
 
+# Window Below
 if [ ! -z "$C21" ] ; then
 WIN="$(wmctrl -lp | grep `xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'` | cut -d" " -f1)"
 wmctrl -i -r "$WIN" -b remove,above
 fi
 
+# Firefox Focus
 if [ ! -z "$C22" ] ; then
 wmctrl -a firefox
 fi
 
+# Dolphin Focus
 if [ ! -z "$C23" ] ; then
 wmctrl -a dolphin
 fi
 
+# Pidgin Focus
 if [ ! -z "$C24" ] ; then
 wmctrl -a salman
 fi
 
+# KODI Focus
 if [ ! -z "$C25" ] ; then
 wmctrl -a kodi
 fi
 
+# VLC Focus
 if [ ! -z "$C26" ] ; then
 wmctrl -a vlc
 fi
 
+# Geany Focus
 if [ ! -z "$C27" ] ; then
 wmctrl -a geany
 fi
 
+# Open Keyboard
 if [ ! -z "$C28" ] ; then
 killall florence ; florence
 fi
 
+# Volume UP
 if [ ! -z "$C29" ] ; then
-KEY="key b" ; xte "keydown Control_R" "keydown Alt_L" "$KEY" "keyup Control_R" "keyup Alt_L"
+KEY="key b"
+xte "keydown Control_R" "keydown Alt_L" "$KEY" "keyup Control_R" "keyup Alt_L"
 fi
 
+# Volume Down
 if [ ! -z "$C30" ] ; then
-KEY="key n" ; xte "keydown Control_R" "keydown Alt_L" "$KEY" "keyup Control_R" "keyup Alt_L"
+KEY="key n"
+xte "keydown Control_R" "keydown Alt_L" "$KEY" "keyup Control_R" "keyup Alt_L"
 fi
 
+# Press CTRL+SHIFT
 if [ ! -z "$C31" ] ; then
 xte "keydown Control_L" "keydown Shift_R"
 sleep 3
@@ -170,6 +200,7 @@ xte "keyup Control_L" "keyup Shift_R"
 notify-send "Gesture" "keyup CTRL+SHIFT"
 fi
 
+# Press CTRL
 if [ ! -z "$C32" ] ; then
 xte "keydown Control_L"
 sleep 3
@@ -177,9 +208,11 @@ xte "keyup Control_L"
 notify-send "Gesture" "keyup CTRL"
 fi
 
+# Show-Time
 if [ ! -z "$C33" ] ; then
 /usr/local/bin/show-time
 fi
 
+# Select Text & Delete
 if [ ! -z "$C34" ] ; then
 xte "keydown Control_L" "key a" "keyup Control_L" "key BackSpace" "key BackSpace"
