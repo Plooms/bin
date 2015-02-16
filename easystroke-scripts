@@ -67,23 +67,29 @@ IMDB_NAME="$( echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
 YT_NAME="$(   echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
 KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 TVDB_NAME="$( echo "$TITLE"  | sed 's/(//g;s///g;s/&/and/g;s/\ /+/g' )"
-#IMDBfirefox "http://www.imdb.com/title/$MOVIE" 2>/dev/null
-# YTfirefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
-# KATfirefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
-# TVDBfirefox "http://thetvdb.com/?string=$TVDB_NAME&searchseriesid=&tab=listseries&function=Search"
-
+#IMDB
+firefox "http://www.imdb.com/title/$MOVIE" 2>/dev/null
+# YT
+firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
+# KAT
+firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
+# TVDB
+firefox "http://thetvdb.com/?string=$TVDB_NAME&searchseriesid=&tab=listseries&function=Search"
 fi
 
 if [ ! -z "$C14" ] ; then
 YT_NAME="$(   echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
 KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
-# YTfirefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
-# KATfirefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
+# YT
+firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
+# KAT
+firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 fi
 
 if [ ! -z "$C15" ] ; then
 KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
-# KATfirefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
+# KAT
+firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 fi
 
 if [ ! -z "$C16" ] ; then
