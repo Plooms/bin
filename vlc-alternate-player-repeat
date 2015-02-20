@@ -22,6 +22,7 @@ TMP2="$(mktemp)"
 TMP3="$(mktemp)"
 TMP4="$(mktemp)"
 TMP5="$(mktemp)"
+TMP6="$(mktemp)"
 
 CLEAN_TMP_FILES()
 {	
@@ -34,11 +35,12 @@ FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 # F_ARRAY = Full file path , eg: /X/X/X.avi
 while read a ; do F_ARRAY+=("$a") ; done < <(uniq "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 3)
 
-for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> "$TMP1"
+for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> "$TMP2"
 sed -i '/^$/d' "$TMP1"
+sed -i '/^$/d' "$TMP2"
 
 # F2_ARRAY = Filename Only , eg: X.avi
-while read b ; do F2_ARRAY+=("$b") ; done < "$TMP1"
+while read b ; do F2_ARRAY+=("$b") ; done < "$TMP2"
 for i in 0 1 2 ; do  echo "${F_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done >> "$TMP4"
 sed -i '/^$/d' "$TMP4"
 
@@ -47,15 +49,15 @@ while read c ; do F3_ARRAY+=("$c") ; done <  "$TMP4"
 
 # F4_ARRAY = Parent dir of File , eg: /X/X/X/
 while read d ; do F4_ARRAY+=("$d") ; done < "$TMP1"
-for i in 0 1 2 ; do  dirname "${F_ARRAY[$i]}" ; done >> "$TMP5"
+for i in 0 1 2 ; do  dirname "${F4_ARRAY[$i]}" ; done >> "$TMP5"
 
 
 KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
-sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n100  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> "$TMP2"
+sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n100  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> "$TMP6"
 
 
 # Remove All Blank Lines
-sed -i '/^$/d' "$TMP2"
+sed -i '/^$/d' "$TMP6"
 
 
 PLAY()
@@ -87,9 +89,9 @@ PLAY()
 
 }
 
-grep --fixed-strings "${F2_ARRAY[2]}" "$TMP2" && A="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[2]}" || A="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[2]}"
-grep --fixed-strings "${F2_ARRAY[1]}" "$TMP2" && B="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[1]}" || B="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[1]}"
-grep --fixed-strings "${F2_ARRAY[0]}" "$TMP2" && C="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[0]}" || C="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[0]}"
+grep --fixed-strings "${F2_ARRAY[2]}" "$TMP6" && A="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[2]}" || A="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[2]}"
+grep --fixed-strings "${F2_ARRAY[1]}" "$TMP6" && B="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[1]}" || B="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[1]}"
+grep --fixed-strings "${F2_ARRAY[0]}" "$TMP6" && C="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[0]}" || C="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[0]}"
 
 
 SELECTION="$(dialog --stdout --colors --clear --radiolist \
