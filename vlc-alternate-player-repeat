@@ -20,13 +20,10 @@ _LOCK_ON
 TMP1="$(mktemp)"
 TMP2="$(mktemp)"
 TMP3="$(mktemp)"
-TMP4="$(mktemp)"
-TMP5="$(mktemp)"
-TMP6="$(mktemp)"
 
 CLEAN_TMP_FILES()
 {	
-rm "$TMP1" "$TMP2" "$TMP3" "$TMP4" "$TMP5" 2>/dev/null
+rm "$TMP1" "$TMP2" 2>/dev/null
 }
 
 # Get the file name from Last-video.txt
@@ -37,9 +34,6 @@ FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 # F1_ARRAY = Full file path , eg: /X/X/X.avi
 while read a ; do F1_ARRAY+=("$a")
 done < <(uniq "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 3)
-
-#sed -i '/^$/d' "$TMP1"
-#sed -i '/^$/d' "$TMP2"
 
 # F2_ARRAY = Filename Only , eg: X.avi
 while read b ; do F2_ARRAY+=("$b")
@@ -58,11 +52,11 @@ KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" \
 && sqlite3 "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" \
 | head -n100 \
 | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' \
-| cut -d"|" -f1 >> "$TMP6"
+| cut -d"|" -f1 >> "$TMP3"
 
 
 # Remove All Blank Lines
-sed -i '/^$/d' "$TMP6"
+sed -i '/^$/d' "$TMP3"
 
 
 PLAY()
@@ -82,21 +76,21 @@ PLAY()
 	"Remove Video Subtitles"	"" off \
 	"Take Notes"				"" off \
 	"Forget Saved Position"		"" off \
-	"Open in Dolphin"			"" off > "$TMP3"
+	"Open in Dolphin"			"" off > "$TMP2"
 
-	grep --fixed-strings "Take Notes" "$TMP3" && /usr/local/bin/vlc-note-taker "$FULL_PATH"
-	grep --fixed-strings "Remove Video Subtitles" "$TMP3" && (rm "$FULL_PATH_NO_EXT"*.srt ; rm "$FULL_PATH_NO_EXT"*.sub)
-	grep --fixed-strings "Forget Saved Position" "$TMP3" && rm "$FULL_PATH_NO_EXT".time.txt
-	grep --fixed-strings "Open in Dolphin" "$TMP3" && dolphin "$PARENT_DIR"
-	grep --fixed-strings "Repeat Video" "$TMP3" && export REPEAT=ON && \
+	grep --fixed-strings "Take Notes" "$TMP2" && /usr/local/bin/vlc-note-taker "$FULL_PATH"
+	grep --fixed-strings "Remove Video Subtitles" "$TMP2" && (rm "$FULL_PATH_NO_EXT"*.srt ; rm "$FULL_PATH_NO_EXT"*.sub)
+	grep --fixed-strings "Forget Saved Position" "$TMP2" && rm "$FULL_PATH_NO_EXT".time.txt
+	grep --fixed-strings "Open in Dolphin" "$TMP2" && dolphin "$PARENT_DIR" &
+	grep --fixed-strings "Repeat Video" "$TMP2" && export REPEAT=ON && \
 	[ ! -z "$LETTER" ] && nohup /usr/local/bin/vlc-alternate-player "$FULL_PATH" >/dev/null 2>&1 &
 	sleep .3
 
 }
 
-grep --fixed-strings "${F2_ARRAY[2]}" "$TMP6" && A="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[2]}" || A="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[2]}"
-grep --fixed-strings "${F2_ARRAY[1]}" "$TMP6" && B="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[1]}" || B="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[1]}"
-grep --fixed-strings "${F2_ARRAY[0]}" "$TMP6" && C="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[0]}" || C="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[0]}"
+grep --fixed-strings "${F2_ARRAY[2]}" "$TMP3" && A="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[2]}" || A="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[2]}"
+grep --fixed-strings "${F2_ARRAY[1]}" "$TMP3" && B="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[1]}" || B="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[1]}"
+grep --fixed-strings "${F2_ARRAY[0]}" "$TMP3" && C="${GREENz}[Y]${COLORz_OFF}  -  ${F2_ARRAY[0]}" || C="${REDz}[N]${COLORz_OFF}  -  ${F2_ARRAY[0]}"
 
 
 SELECTION="$(dialog --stdout --colors --clear --radiolist \
