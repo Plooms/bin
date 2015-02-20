@@ -21,10 +21,11 @@ TMP1="$(mktemp)"
 TMP2="$(mktemp)"
 TMP3="$(mktemp)"
 TMP4="$(mktemp)"
+TMP5="$(mktemp)"
 
 CLEAN_TMP_FILES()
 {	
-rm "$TMP1" "$TMP2" "$TMP3" "$TMP4" 2>/dev/null
+rm "$TMP1" "$TMP2" "$TMP3" "$TMP4" "$TMP5" 2>/dev/null
 }
 
 # Get the file name from Last-video.txt
@@ -38,12 +39,15 @@ sed -i '/^$/d' "$TMP1"
 
 # F2_ARRAY = Filename Only , eg: X.avi
 while read b ; do F2_ARRAY+=("$b") ; done < "$TMP1"
-
 for i in 0 1 2 ; do  echo "${F_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done >> "$TMP4"
 sed -i '/^$/d' "$TMP4"
 
 # F3_ARRAY = Full File path without extensions , eg: /X/X/X/X
 while read c ; do F3_ARRAY+=("$c") ; done <  "$TMP4"
+
+# F4_ARRAY = Parent dir of File , eg: /X/X/X/
+while read d ; do F4_ARRAY+=("$d") ; done < "$TMP1"
+for i in 0 1 2 ; do  dirname "${F_ARRAY[$i]}" ; done >> "$TMP5"
 
 
 KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
@@ -64,16 +68,19 @@ PLAY()
 	FILENAME_ONLY="${F2_ARRAY[$VALUE]}"
 	FULL_PATH="${F_ARRAY[$VALUE]}"
 	FULL_PATH_NO_EXT="${F3_ARRAY[$VALUE]}"
+	PARENT_DIR="${F4_ARRAY[$VALUE]}"
 	
 	dialog --stdout --checklist "Options for: (  $FILENAME_ONLY  )" 13 100 5 \
 	"Repeat Video"				"" on \
-	"Remove Video Subtitles"		"" off \
+	"Remove Video Subtitles"	"" off \
 	"Take Notes"				"" off \
-	"Forget Saved Position"			"" off > "$TMP3"
+	"Forget Saved Position"		"" off \
+	"Open in Dolphin"			"" off > "$TMP3"
 
 	grep --fixed-strings "Take Notes" "$TMP3" && /usr/local/bin/vlc-note-taker "$FULL_PATH"
 	grep --fixed-strings "Remove Video Subtitles" "$TMP3" && (rm "$FULL_PATH_NO_EXT"*.srt ; rm "$FULL_PATH_NO_EXT"*.sub)
 	grep --fixed-strings "Forget Saved Position" "$TMP3" && rm "$FULL_PATH_NO_EXT".time.txt
+	grep --fixed-strings "Open in Dolphin" "$TMP3" && dolphin "$PARENT_DIR"
 	grep --fixed-strings "Repeat Video" "$TMP3" && export REPEAT=ON && \
 	[ ! -z "$LETTER" ] && nohup /usr/local/bin/vlc-alternate-player "$FULL_PATH" >/dev/null 2>&1 &
 	sleep .3
