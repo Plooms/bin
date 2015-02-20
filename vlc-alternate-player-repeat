@@ -32,24 +32,22 @@ rm "$TMP1" "$TMP2" "$TMP3" "$TMP4" "$TMP5" 2>/dev/null
 # Get the file name from Last-video.txt
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 
-# F_ARRAY = Full file path , eg: /X/X/X.avi
-while read a ; do F_ARRAY+=("$a") ; done < <(uniq "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 3)
-
-for i in 0 1 2 ; do basename "${F_ARRAY[$i]}" ; done >> "$TMP2"
+# Populate the Arrays
+while read a ; do F1_ARRAY+=("$a") ; done < <(uniq "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 3)
+for i in 0 1 2 ; do basename "${F1_ARRAY[$i]}" ; done >> "$TMP2"
 sed -i '/^$/d' "$TMP1"
 sed -i '/^$/d' "$TMP2"
-
-# F2_ARRAY = Filename Only , eg: X.avi
 while read b ; do F2_ARRAY+=("$b") ; done < "$TMP2"
-for i in 0 1 2 ; do  echo "${F_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done >> "$TMP4"
+for i in 0 1 2 ; do  echo "${F1_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done >> "$TMP4"
 sed -i '/^$/d' "$TMP4"
-
-# F3_ARRAY = Full File path without extensions , eg: /X/X/X/X
 while read c ; do F3_ARRAY+=("$c") ; done <  "$TMP4"
+for i in 0 1 2 ; do  dirname "${F1_ARRAY[$i]}" ; done >> "$TMP5"
+while read d ; do F4_ARRAY+=("$d") ; done < "$TMP5"
 
+# F1_ARRAY = Full file path , eg: /X/X/X.avi
+# F2_ARRAY = Filename Only , eg: X.avi
+# F3_ARRAY = Full File path without extensions , eg: /X/X/X/X
 # F4_ARRAY = Parent dir of File , eg: /X/X/X/
-while read d ; do F4_ARRAY+=("$d") ; done < "$TMP1"
-for i in 0 1 2 ; do  dirname "${F4_ARRAY[$i]}" ; done >> "$TMP5"
 
 
 KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
@@ -68,7 +66,7 @@ PLAY()
 	[ -z "$1" ]         && (echo "No file selected" ; return 1)
 	
 	FILENAME_ONLY="${F2_ARRAY[$VALUE]}"
-	FULL_PATH="${F_ARRAY[$VALUE]}"
+	FULL_PATH="${F1_ARRAY[$VALUE]}"
 	FULL_PATH_NO_EXT="${F3_ARRAY[$VALUE]}"
 	PARENT_DIR="${F4_ARRAY[$VALUE]}"
 	
