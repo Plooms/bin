@@ -81,7 +81,7 @@ PLAY()
 	grep --fixed-strings "Take Notes" "$TMP2" && /usr/local/bin/vlc-note-taker "$FULL_PATH"
 	grep --fixed-strings "Remove Video Subtitles" "$TMP2" && (rm "$FULL_PATH_NO_EXT"*.srt ; rm "$FULL_PATH_NO_EXT"*.sub)
 	grep --fixed-strings "Forget Saved Position" "$TMP2" && rm "$FULL_PATH_NO_EXT".time.txt
-	grep --fixed-strings "Open in Dolphin" "$TMP2" && dolphin "$PARENT_DIR" &
+	grep --fixed-strings "Open in Dolphin" "$TMP2" && dolphin "$PARENT_DIR"
 	grep --fixed-strings "Repeat Video" "$TMP2" && export REPEAT=ON && \
 	[ ! -z "$LETTER" ] && nohup /usr/local/bin/vlc-alternate-player "$FULL_PATH" >/dev/null 2>&1 &
 	sleep .3
