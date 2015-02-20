@@ -33,25 +33,32 @@ rm "$TMP1" "$TMP2" "$TMP3" "$TMP4" "$TMP5" 2>/dev/null
 FILE="$(cat "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 1)"
 
 # Populate the Arrays
-while read a ; do F1_ARRAY+=("$a") ; done < <(uniq "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 3)
-for i in 0 1 2 ; do basename "${F1_ARRAY[$i]}" ; done >> "$TMP2"
-sed -i '/^$/d' "$TMP1"
-sed -i '/^$/d' "$TMP2"
-while read b ; do F2_ARRAY+=("$b") ; done < "$TMP2"
-for i in 0 1 2 ; do  echo "${F1_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done >> "$TMP4"
-sed -i '/^$/d' "$TMP4"
-while read c ; do F3_ARRAY+=("$c") ; done <  "$TMP4"
-for i in 0 1 2 ; do  dirname "${F1_ARRAY[$i]}" ; done >> "$TMP5"
-while read d ; do F4_ARRAY+=("$d") ; done < "$TMP5"
 
 # F1_ARRAY = Full file path , eg: /X/X/X.avi
+while read a ; do F1_ARRAY+=("$a")
+done < <(uniq "$PLAYER_LAST_WATCHED"/Last-Video.txt | tail -n 3)
+
+#sed -i '/^$/d' "$TMP1"
+#sed -i '/^$/d' "$TMP2"
+
 # F2_ARRAY = Filename Only , eg: X.avi
+while read b ; do F2_ARRAY+=("$b")
+done < <(for i in 0 1 2 ; do basename "${F1_ARRAY[$i]}" ; done)
+
 # F3_ARRAY = Full File path without extensions , eg: /X/X/X/X
+while read c ; do F3_ARRAY+=("$c")
+done < <(for i in 0 1 2 ; do  echo "${F1_ARRAY[$i]}" | rev | cut -d"." -f2- | rev  ; done)
+
 # F4_ARRAY = Parent dir of File , eg: /X/X/X/
+while read d ; do F4_ARRAY+=("$d")
+done < <(for i in 0 1 2 ; do  dirname "${F1_ARRAY[$i]}" ; done)
 
 
-KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" &&\
-sqlite3  "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" | head -n100  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> "$TMP6"
+KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" \
+&& sqlite3 "$KODI_LAST_WATCHED" "select strFilename, playCount from files order by lastPlayed desc;" \
+| head -n100 \
+| sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' \
+| cut -d"|" -f1 >> "$TMP6"
 
 
 # Remove All Blank Lines
