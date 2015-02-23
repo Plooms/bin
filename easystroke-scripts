@@ -217,6 +217,10 @@ fi
 if [ "$1" == "C34" ] ; then
 xte "keydown Control_L" "key a" "keyup Control_L" "key BackSpace" "key BackSpace"
 fi
-
+# Select Text & Delete
+if [ -z "$1" ] ; then
 echo "USAGE: $SCRIPT_NAME C##"
 echo "Nothing left to do or no options were passed"
+fi
+
+
