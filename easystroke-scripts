@@ -23,9 +23,9 @@ fi
 if [ ! -z "$C3" ]  ; then
 xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a salman ; sleep .2 ; xte "key h" "key e" "key l" "key l" "key o"
-xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN"
-notify-send "Pidgin" "Sent hello to Salman"
+wmctrl -a salman && (sleep .2 ; xte "str hello" \
+xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN" \
+notify-send "Pidgin" "Sent hello to Salman")
 fi
 
 # Change Language
@@ -216,3 +216,4 @@ fi
 # Select Text & Delete
 if [ ! -z "$C34" ] ; then
 xte "keydown Control_L" "key a" "keyup Control_L" "key BackSpace" "key BackSpace"
+fi
