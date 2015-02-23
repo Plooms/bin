@@ -23,8 +23,9 @@ fi
 if [ "$1" == "C3" ]  ; then
 xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a salman && (sleep .2 ; xte "str hello" \
-xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN" \
+wmctrl -a salman &&\
+(sleep .2 ; xte "str hello" ; xte "key Return" ; sleep .1 ;\
+wmctrl -a "$CURRENTWIN" \
 notify-send "Pidgin" "Sent hello to Salman") || notify-send "Gesture" "Pidgin window Not Found"
 fi
 
@@ -89,8 +90,8 @@ fi
 
 # Search YT & KAT
 if [ "$1" == "C14" ] ; then
-YT_NAME="$(   echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
-KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
+YT_NAME="$(  echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+KAT_NAME="$( echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 # YT
 firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 # KAT
@@ -99,7 +100,7 @@ fi
 
 # Search KAT
 if [ "$1" == "C15" ] ; then
-KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
+KAT_NAME="$( echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 # KAT
 firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 fi
@@ -113,24 +114,24 @@ fi
 # Pause VLC
 if [ "$1" == "C17" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" ; sleep .1 ; xte 'key space'
-wmctrl -a "$CURRENTWIN"
+wmctrl -a "VLC media player" &&\
+( sleep .1 ; xte 'key space' ; wmctrl -a "$CURRENTWIN" )
 fi
 
 # Fullscreen VLC
 if [ "$1" == "C18" ] ; then
 xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" ; sleep .1 ; xte 'key f'
-wmctrl -a "$CURRENTWIN"
+wmctrl -a "VLC media player" &&\
+( sleep .1 ; xte 'key f' ; wmctrl -a "$CURRENTWIN" )
 fi
 
 # Fullscreen + Pause VLC
 if [ "$1" == "C19" ] ; then
 xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" ; sleep .1 ; xte 'key space' 'key f'
-wmctrl -a "$CURRENTWIN"
+wmctrl -a "VLC media player" && \
+( sleep .1 ; xte 'key space' 'key f' wmctrl -a "$CURRENTWIN" )
 fi
 
 # Window Above
@@ -147,12 +148,12 @@ fi
 
 # Firefox Focus
 if [ "$1" == "C22" ] ; then
-wmctrl -a firefox
+wmctrl -a firefox || (notify-send "Gesture" "Firefox Window Not Found" ; sudo beep)
 fi
 
 # Dolphin Focus
 if [ "$1" == "C23" ] ; then
-wmctrl -a dolphin
+wmctrl -a dolphin || (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
 fi
 
 # Pidgin Focus
@@ -162,17 +163,17 @@ fi
 
 # KODI Focus
 if [ "$1" == "C25" ] ; then
-wmctrl -a kodi
+wmctrl -a kodi || (notify-send "Gesture" "KODI Window Not Found" ; sudo beep)
 fi
 
 # VLC Focus
 if [ "$1" == "C26" ] ; then
-wmctrl -a vlc
+wmctrl -a vlc || (notify-send "Gesture" "VLC Window Not Found" ; sudo beep)
 fi
 
 # Geany Focus
 if [ "$1" == "C27" ] ; then
-wmctrl -a geany
+wmctrl -a geany || (notify-send "Gesture" "Geany Window Not Found" ; sudo beep)
 fi
 
 # Open Keyboard
