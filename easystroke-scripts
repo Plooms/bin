@@ -49,7 +49,7 @@ dolphin
 fi
 
 # Terminal
-if [ ! -z "$C8" ]  ; then
+if [ "$1" == "C8" ]  ; then
 terminator
 fi
 
@@ -217,3 +217,6 @@ fi
 if [ ! -z "$C34" ] ; then
 xte "keydown Control_L" "key a" "keyup Control_L" "key BackSpace" "key BackSpace"
 fi
+
+echo "Nothing Left to Do or no options were passed"
+echo "USAGE: $SCRIPT_NAME C??"
