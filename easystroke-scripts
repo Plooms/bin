@@ -25,7 +25,7 @@ xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 wmctrl -a salman && (sleep .2 ; xte "str hello" \
 xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN" \
-notify-send "Pidgin" "Sent hello to Salman")
+notify-send "Pidgin" "Sent hello to Salman") || notify-send "Gesture" "Pidgin window Not Found"
 fi
 
 # Change Language
@@ -157,7 +157,7 @@ fi
 
 # Pidgin Focus
 if [ "$1" == "C24" ] ; then
-wmctrl -a salman
+wmctrl -a salman || (notify-send "Gesture" "Pidgin Window Not Found" ; sudo beep)
 fi
 
 # KODI Focus
