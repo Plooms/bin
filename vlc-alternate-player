@@ -84,7 +84,7 @@ VLC_POLL()
 	touch "$TRIGGER1"
 
 	while [ -f "$TRIGGER1" ] ; do 
-	sleep .5
+	sleep .2
 	[ -f "$TRIGGER2" ] &&\
 	curl -s -u ":vlcremote" http://127.0.0.1:"$VLC_PORT"/requests/status.json \
 	| grep time | sed 's/,//g' | cut -b 10-
