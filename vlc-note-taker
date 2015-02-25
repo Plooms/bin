@@ -19,10 +19,26 @@ _LOCK_ON
 #########################################################
 FNAME="$1"
 
-[ -z "$FNAME" ] && echo "No video specified" && exit 1 
- 
-terminator -x /usr/local/bin/vlc-note-taker-helper "$FNAME" 2>/dev/null
+if [ ! -z "$FNAME" ]
+then
 
+# To get the filename without extensions
+FILENAME="$(echo "$FNAME" | rev | cut -d"." -f2- | rev)"
+# To get the filename only without the whole path
+FILENAME2="$(basename "$FNAME")"
+
+NOTE="$FILENAME-NOTES.txt"
+
+ 
+sudo nano "$NOTE"
+sudo chown "$USERNAME" "$NOTE"
+sudo chmod 777 "$NOTE"
+
+else
+echo "No video specified"
+exit 1 
+ 
+fi
 
 #########################################################
 
