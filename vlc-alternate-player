@@ -71,7 +71,7 @@ FILENAME3="$( dirname "$FNAME" )"
 #+ i.e: if the video was closed with less than 10 seconds remaining
 #+ the next time it is opened it resets the position and starts from the beginning.
 #+ use "0" to disable
-RESET_TIME="10"
+RESET_TIME="60"
 
 
 # Generates a random port for VLC http interface
