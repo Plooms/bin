@@ -77,9 +77,9 @@ fi
 
 # Search YT - KAT - TVDB
 if [ "$1" == "C13" ] ; then
-YT_NAME="$(   echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
-KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
-TVDB_NAME="$( echo "$TITLE"  | sed 's/(//g;s///g;s/&/and/g;s/\ /+/g' )"
+YT_NAME="$(   xclip -o  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+KAT_NAME="$(  xclip -o  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
+TVDB_NAME="$( xclip -o  | sed 's/(//g;s///g;s/&/and/g;s/\ /+/g' )"
 # YT
 firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 # KAT
@@ -90,8 +90,8 @@ fi
 
 # Search YT & KAT
 if [ "$1" == "C14" ] ; then
-YT_NAME="$(  echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
-KAT_NAME="$( echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
+YT_NAME="$(  xclip -o  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+KAT_NAME="$( xclip -o  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 # YT
 firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 # KAT
@@ -100,7 +100,7 @@ fi
 
 # Search KAT
 if [ "$1" == "C15" ] ; then
-KAT_NAME="$( echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
+KAT_NAME="$( xclip -o  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
 # KAT
 firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 fi
