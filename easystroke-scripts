@@ -10,17 +10,17 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 # Close Window
-if [ "$1" == "C1" ]  ; then
+if [ "$1" == "C01" ]  ; then
 export MIN=YES ; /usr/local/bin/gesture-helper-close-window
 fi
 
 # Close Window Really
-if [ "$1" == "C2" ]  ; then
+if [ "$1" == "C02" ]  ; then
 export MIN=NO ; /usr/local/bin/gesture-helper-close-window
 fi
 
 # Pidgin Text
-if [ "$1" == "C3" ]  ; then
+if [ "$1" == "C03" ]  ; then
 xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 wmctrl -a salman &&\
@@ -30,32 +30,32 @@ notify-send "Pidgin" "Sent hello to Salman") || notify-send "Gesture" "Pidgin wi
 fi
 
 # Change Language
-if [ "$1" == "C4" ]  ; then
+if [ "$1" == "C04" ]  ; then
 xte "keydown Alt_L"  "keydown Shift_L" "keyup Alt_L"  "keyup Shift_L"
 fi
 
 # Visibility -
-if [ "$1" == "C5" ]  ; then
+if [ "$1" == "C05" ]  ; then
 xte "keydown Control_R"  "keydown Alt_L"  "str rrr" "keyup Control_R" "keyup Alt_L"
 fi
 
 # Visibility +
-if [ "$1" == "C6" ]  ; then
+if [ "$1" == "C06" ]  ; then
 xte "keydown Control_R"  "keydown Alt_L"  "str qqqqqqqqqqqqqqq" "keyup Control_R" "keyup Alt_L"
 fi
 
 # File Manager
-if [ "$1" == "C7" ]  ; then
+if [ "$1" == "C07" ]  ; then
 dolphin
 fi
 
 # Terminal
-if [ "$1" == "C8" ]  ; then
+if [ "$1" == "C08" ]  ; then
 terminator
 fi
 
 # Brightness
-if [ "$1" == "C9" ]  ; then
+if [ "$1" == "C09" ]  ; then
 /usr/local/bin/br
 fi
 
