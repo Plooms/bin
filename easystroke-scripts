@@ -183,14 +183,12 @@ fi
 
 # Volume UP
 if [ "$1" == "C29" ] ; then
-KEY="key b"
-xte "keydown Control_R" "keydown Alt_L" "$KEY" "keyup Control_R" "keyup Alt_L"
+xte "keydown Control_R" "keydown Alt_L" "str bbbb" "keyup Control_R" "keyup Alt_L"
 fi
 
 # Volume Down
 if [ "$1" == "C30" ] ; then
-KEY="key n"
-xte "keydown Control_R" "keydown Alt_L" "$KEY" "keyup Control_R" "keyup Alt_L"
+xte "keydown Control_R" "keydown Alt_L" "str nnnn" "keyup Control_R" "keyup Alt_L"
 fi
 
 # Press CTRL+SHIFT
