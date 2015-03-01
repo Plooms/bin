@@ -217,7 +217,23 @@ if [ "$1" == "C34" ] ; then
 xte "keydown Control_L" "key a" "keyup Control_L" "key BackSpace" "key BackSpace"
 fi
 
-# Select Text & Delete
+# VLC Jump Forward
+if [ "$1" == "C35" ] ; then
+CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
+wmctrl -a "VLC media player" &&\
+( sleep .1 ; xte "keydown Control_L" "key Right" "keyup Control_L" ; wmctrl -a "$CURRENTWIN" )
+fi
+
+# VLC Jump Back
+if [ "$1" == "C36" ] ; then
+CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
+wmctrl -a "VLC media player" &&\
+( sleep .1 ; xte "keydown Control_L" "key Left" "keyup Control_L" ; wmctrl -a "$CURRENTWIN" )
+fi
+
+
+
+# END OF FILE
 if [ -z "$1" ] ; then
 echo "USAGE: $SCRIPT_NAME C##"
 echo "Nothing left to do or no options were passed"
