@@ -164,7 +164,7 @@ TIME_BEFORE_WATCHED()
 	done
 	
 	sleep 1
-	[ "$TIMER" = "0" ] && notify-send "File will be marked as Watched"
+	[ "$TIMER" = "0" ] && notify-send "File will be marked as Watched" && sudo beep -f 1000
 	
 }
 
@@ -214,6 +214,6 @@ END_TIME_SEC=$(( END_TIME - START_TIME ))
 [ "$END_TIME_SEC" -lt 120 ] && notify-send "Media" "Canceled Marking the media file as watched"  
 [ "$END_TIME_SEC" -gt 120 ] && echo "$(date +%a\ %d\ %b\ %r) <-> Finished - ($FILENAME2)" >> "$PLAYER_LAST_WATCHED"/"$DAY0".txt
 
-nohup sleep 1 >/dev/null 2>&1 && KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3 "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> "$TMP1" && while read a ; do notify-send "Media" "$a - Marked as Watched" ; sudo beep -f 1000 ; done < "$TMP1" &
+nohup sleep 1 >/dev/null 2>&1 && KODI_LAST_WATCHED="$(ls -t ~/.kodi/userdata/Database/MyVideo* |head -n 1)" && sqlite3 "$KODI_LAST_WATCHED" "select strFilename, playCount from files where strFilename like '%$FILENAME2' ;" | head -n1  | sed 's/^|1//g;/|$/d;s/^[ \t]*//;s/[ \t]*$//;/^$/d' | cut -d"|" -f1 >> "$TMP1" && while read a ; do notify-send "Media" "$a - Marked as Watched" ; done < "$TMP1" &
 
 CLEAN_TMP_FILES
