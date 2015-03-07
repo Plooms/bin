@@ -105,7 +105,7 @@ CHECK_SUBS()
 			then	notify-send "Media" "Subtitle Not Found"
 			else	
 			[ -f "$(ls "$FILENAME"*.srt 2>/dev/null |head -n1)" -o -f "$(ls "$FILENAME"*.sub 2>/dev/null |head -n1)" ] \
-			&& (notify-send "Media" "Subtitle Found - Reloading VLC" ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; sleep 1 ; sudo beep ; xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key n' ; wmctrl -a "$CURRENTWIN")
+			&& (notify-send "Media" "Subtitle Found - Reloading VLC" ; sleep 1 ; sudo beep -r 3 -d 1000  ; xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R' ; CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))" ; wmctrl -a "VLC media player" && sleep .1 && xte 'key n' ; wmctrl -a "$CURRENTWIN")
 			fi
 		else
 		exit 1
