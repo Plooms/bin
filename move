@@ -218,7 +218,6 @@ if ls -U | grep -E 'Modern\ Family\ -\ \[*' >/dev/null 2>&1 ; then mv -v Modern\
 if ls -U | grep -E 'Mom\ -\ \[*' >/dev/null 2>&1 ; then mv -v Mom\ -\ \[* "$TV_SYM"/"Mom"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Monk\ -\ \[*' >/dev/null 2>&1 ; then mv -v Monk\ -\ \[* "$TV_SYM"/"Monk"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Most\ Daring\ -\ \[*' >/dev/null 2>&1 ; then mv -v Most\ Daring\ -\ \[* "$TV_SYM"/"Most Daring"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Mountain\ Men\ -\ \[*' >/dev/null 2>&1 ; then mv -v Mountain\ Men\ -\ \[* "$TV_SYM"/"Mountain Men"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Mulaney\ -\ \[*' >/dev/null 2>&1 ; then mv -v Mulaney\ -\ \[* "$TV_SYM"/"Mulaney"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Murphy\ Brown\ -\ \[*' >/dev/null 2>&1 ; then mv -v Murphy\ Brown\ -\ \[* "$TV_SYM"/"Murphy Brown"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'My\ Five\ Wives\ -\ \[*' >/dev/null 2>&1 ; then mv -v My\ Five\ Wives\ -\ \[* "$TV_SYM"/"My Five Wives"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
