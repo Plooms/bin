@@ -26,10 +26,10 @@ fi
 # Pidgin Text
 if [ "$1" == "C03" ]  ; then
 _CHANGE_LANG_US
-wmctrl -a salman &&\
-(sleep .2 ; xte "str hello" ; xte "key Return" ; sleep .1 ;\
-wmctrl -a "$CURRENTWIN" \
-notify-send "Pidgin" "Sent hello to Salman") || notify-send "Gesture" "Pidgin window Not Found"
+	if wmctrl -a salman
+	then wmctrl -a salman ; sleep .2 ; xte "str hello" ; xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN" ; notify-send "Pidgin" "Sent hello to Salman"
+	else notify-send "Gesture" "Pidgin window Not Found"
+	fi
 fi
 
 # Change Language
