@@ -7,6 +7,10 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
+_CHANGE_LANG_US()
+{
+	xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
+}
 
 
 # Close Window
@@ -21,8 +25,7 @@ fi
 
 # Pidgin Text
 if [ "$1" == "C03" ]  ; then
-xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
-CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
+_CHANGE_LANG_US
 wmctrl -a salman &&\
 (sleep .2 ; xte "str hello" ; xte "key Return" ; sleep .1 ;\
 wmctrl -a "$CURRENTWIN" \
@@ -114,24 +117,29 @@ fi
 # Pause VLC
 if [ "$1" == "C17" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a vlc || (notify-send "Gesture" "VLC Window Not Found" ; sudo beep) &&\
-( sleep .1 ; xte 'key space' ; wmctrl -a "$CURRENTWIN" )
+	if wmctrl -a "VLC media player" 
+	then sleep .1 ; xte 'key space' ; wmctrl -a "$CURRENTWIN"
+	else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+	fi
 fi
 
 # Fullscreen VLC
 if [ "$1" == "C18" ] ; then
-xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
-CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" &&\
-( sleep .1 ; xte 'key f' ; wmctrl -a "$CURRENTWIN" )
+_CHANGE_LANG_US
+	if wmctrl -a "VLC media player" 
+	then wmctrl -a "VLC media player" ; sleep .1 ; xte 'key f' ; wmctrl -a "$CURRENTWIN"
+	else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+	fi
 fi
 
 # Fullscreen + Pause VLC
 if [ "$1" == "C19" ] ; then
-xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
+_CHANGE_LANG_US
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" && \
-( sleep .1 ; xte 'key space' 'key f' wmctrl -a "$CURRENTWIN" )
+	if wmctrl -a "VLC media player" 
+	then wmctrl -a "VLC media player" ; sleep .1 ; xte 'key space' 'key f' ; wmctrl -a "$CURRENTWIN"
+	else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+	fi
 fi
 
 # Window Above
@@ -168,7 +176,7 @@ fi
 
 # VLC Focus
 if [ "$1" == "C26" ] ; then
-wmctrl -a vlc || (notify-send "Gesture" "VLC Window Not Found" ; sudo beep)
+wmctrl -a "VLC media player" || (notify-send "Gesture" "VLC Window Not Found" ; sudo beep)
 fi
 
 # Geany Focus
