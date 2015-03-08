@@ -114,7 +114,7 @@ fi
 # Pause VLC
 if [ "$1" == "C17" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" &&\
+wmctrl -a vlc || (notify-send "Gesture" "VLC Window Not Found" ; sudo beep) &&\
 ( sleep .1 ; xte 'key space' ; wmctrl -a "$CURRENTWIN" )
 fi
 
