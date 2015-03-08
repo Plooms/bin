@@ -18,11 +18,13 @@ if [ "$1" == "C01" ]  ; then
 export MIN=YES ; /usr/local/bin/gesture-helper-close-window
 fi
 
+##########################################################
 # Close Window Really
 if [ "$1" == "C02" ]  ; then
 export MIN=NO ; /usr/local/bin/gesture-helper-close-window
 fi
 
+##########################################################
 # Pidgin Text
 if [ "$1" == "C03" ]  ; then
 _CHANGE_LANG_US
@@ -32,52 +34,62 @@ _CHANGE_LANG_US
 	fi
 fi
 
+##########################################################
 # Change Language
 if [ "$1" == "C04" ]  ; then
 xte "keydown Alt_L"  "keydown Shift_L" "keyup Alt_L"  "keyup Shift_L"
 fi
 
+##########################################################
 # Visibility -
 if [ "$1" == "C05" ]  ; then
 xte "keydown Control_R"  "keydown Alt_L"  "str rrr" "keyup Control_R" "keyup Alt_L"
 fi
 
+##########################################################
 # Visibility +
 if [ "$1" == "C06" ]  ; then
 xte "keydown Control_R"  "keydown Alt_L"  "str qqqqqqqqqqqqqqq" "keyup Control_R" "keyup Alt_L"
 fi
 
+##########################################################
 # File Manager
 if [ "$1" == "C07" ]  ; then
 dolphin
 fi
 
+##########################################################
 # Terminal
 if [ "$1" == "C08" ]  ; then
 terminator
 fi
 
+##########################################################
 # Brightness
 if [ "$1" == "C09" ]  ; then
 /usr/local/bin/br
 fi
 
+##########################################################
 # Search Google
 if [ "$1" == "C10" ] ; then
 wmctrl -a firefox && xte "keydown Control_R" "key t" "key k" "keyup Control_R"
 fi
 
+##########################################################
 # Search Google-2
 if [ "$1" == "C11" ] ; then
 wmctrl -a firefox && xte "keydown Control_R" "key t" "key k" "keyup Control_R"
 sleep 3 ; xdotool type "$(xclip -o)" ; xdotool key Return
 fi
 
+##########################################################
 # ln2tb-Movies
 if [ "$1" == "C12" ] ; then
 export TERM_LAUNCH=Y ; terminator -x c.ln2tb-movie-find-single
 fi
 
+##########################################################
 # Search YT - KAT - TVDB
 if [ "$1" == "C13" ] ; then
 YT_NAME="$(   xclip -o  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
@@ -91,6 +103,7 @@ firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 firefox "http://thetvdb.com/?string=$TVDB_NAME&searchseriesid=&tab=listseries&function=Search"
 fi
 
+##########################################################
 # Search YT & KAT
 if [ "$1" == "C14" ] ; then
 YT_NAME="$(  xclip -o  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
@@ -101,6 +114,7 @@ firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 fi
 
+##########################################################
 # Search KAT
 if [ "$1" == "C15" ] ; then
 KAT_NAME="$( xclip -o  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
@@ -108,12 +122,14 @@ KAT_NAME="$( xclip -o  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;
 firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 fi
 
+##########################################################
 # Move p2p
 if [ "$1" == "C16" ] ; then
 mv ~/Downloads/*.torrent ~/NAS/Other/Downloads/shared-folder/
 mv ~/Downloads/*.nzb ~/NAS/Other/Downloads/shared-folder/
 fi
 
+##########################################################
 # Pause VLC
 if [ "$1" == "C17" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
@@ -123,6 +139,7 @@ CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 	fi
 fi
 
+##########################################################
 # Fullscreen VLC
 if [ "$1" == "C18" ] ; then
 _CHANGE_LANG_US
@@ -132,6 +149,7 @@ _CHANGE_LANG_US
 	fi
 fi
 
+##########################################################
 # Fullscreen + Pause VLC
 if [ "$1" == "C19" ] ; then
 _CHANGE_LANG_US
@@ -142,63 +160,75 @@ CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 	fi
 fi
 
+##########################################################
 # Window Above
 if [ "$1" == "C20" ] ; then
 WIN="$(wmctrl -lp | grep `xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'` | cut -d" " -f1)"
 wmctrl -i -r "$WIN" -b add,above
 fi
 
+##########################################################
 # Window Below
 if [ "$1" == "C21" ] ; then
 WIN="$(wmctrl -lp | grep `xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'` | cut -d" " -f1)"
 wmctrl -i -r "$WIN" -b remove,above
 fi
 
+##########################################################
 # Firefox Focus
 if [ "$1" == "C22" ] ; then
 wmctrl -a firefox || (notify-send "Gesture" "Firefox Window Not Found" ; sudo beep)
 fi
 
+##########################################################
 # Dolphin Focus
 if [ "$1" == "C23" ] ; then
 wmctrl -a dolphin || (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
 fi
 
+##########################################################
 # Pidgin Focus
 if [ "$1" == "C24" ] ; then
 wmctrl -a salman || (notify-send "Gesture" "Pidgin Window Not Found" ; sudo beep)
 fi
 
+##########################################################
 # KODI Focus
 if [ "$1" == "C25" ] ; then
 wmctrl -a kodi || (notify-send "Gesture" "KODI Window Not Found" ; sudo beep)
 fi
 
+##########################################################
 # VLC Focus
 if [ "$1" == "C26" ] ; then
 wmctrl -a "VLC media player" || (notify-send "Gesture" "VLC Window Not Found" ; sudo beep)
 fi
 
+##########################################################
 # Geany Focus
 if [ "$1" == "C27" ] ; then
 wmctrl -a geany || (notify-send "Gesture" "Geany Window Not Found" ; sudo beep)
 fi
 
+##########################################################
 # Open Keyboard
 if [ "$1" == "C28" ] ; then
 killall florence ; florence
 fi
 
+##########################################################
 # Volume UP
 if [ "$1" == "C29" ] ; then
 xte "keydown Control_R" "keydown Alt_L" "str bbbb" "keyup Control_R" "keyup Alt_L"
 fi
 
+##########################################################
 # Volume Down
 if [ "$1" == "C30" ] ; then
 xte "keydown Control_R" "keydown Alt_L" "str nnnn" "keyup Control_R" "keyup Alt_L"
 fi
 
+##########################################################
 # Press CTRL+SHIFT
 if [ "$1" == "C31" ] ; then
 xte "keydown Control_L" "keydown Shift_R"
@@ -207,6 +237,7 @@ xte "keyup Control_L" "keyup Shift_R"
 notify-send "Gesture" "keyup CTRL+SHIFT"
 fi
 
+##########################################################
 # Press CTRL
 if [ "$1" == "C32" ] ; then
 xte "keydown Control_L"
@@ -215,16 +246,19 @@ xte "keyup Control_L"
 notify-send "Gesture" "keyup CTRL"
 fi
 
+##########################################################
 # Show-Time
 if [ "$1" == "C33" ] ; then
 /usr/local/bin/show-time
 fi
 
+##########################################################
 # Select Text & Delete
 if [ "$1" == "C34" ] ; then
 xte "keydown Control_L" "key a" "keyup Control_L" "key BackSpace" "key BackSpace"
 fi
 
+##########################################################
 # VLC Jump Forward
 if [ "$1" == "C35" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
@@ -234,6 +268,7 @@ CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 	fi
 fi
 
+##########################################################
 # VLC Jump Back
 if [ "$1" == "C36" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
@@ -243,6 +278,7 @@ CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 	fi
 fi
 
+##########################################################
 # VLC Volume UP
 if [ "$1" == "C37" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
@@ -252,6 +288,7 @@ CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 	fi
 fi
 
+##########################################################
 # VLC Volume Down
 if [ "$1" == "C38" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
@@ -262,7 +299,7 @@ CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 fi
 
 
-
+##########################################################
 # END OF FILE
 if [ -z "$1" ] ; then
 echo "USAGE: $SCRIPT_NAME C##"
