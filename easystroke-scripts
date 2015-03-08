@@ -228,28 +228,37 @@ fi
 # VLC Jump Forward
 if [ "$1" == "C35" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" &&\
-( sleep .1 ; xte "keydown Control_L" "key Right" "keyup Control_L" ; wmctrl -a "$CURRENTWIN" )
+	if wmctrl -a "VLC media player" 
+	then wmctrl -a "VLC media player" ; sleep .1 ; xte "keydown Control_L" "key Right" "keyup Control_L" ; wmctrl -a "$CURRENTWIN"
+	else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+	fi
 fi
 
 # VLC Jump Back
 if [ "$1" == "C36" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" &&\
-( sleep .1 ; xte "keydown Control_L" "key Left" "keyup Control_L" ; wmctrl -a "$CURRENTWIN" )
+	if wmctrl -a "VLC media player" 
+	then wmctrl -a "VLC media player" ; sleep .1 ; xte "keydown Control_L" "key Left" "keyup Control_L" ; wmctrl -a "$CURRENTWIN"
+	else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+	fi
 fi
 
 # VLC Volume UP
 if [ "$1" == "C37" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" &&\
-( sleep .1 ; xte "keydown Control_L" "key Up" "keyup Control_L" ; wmctrl -a "$CURRENTWIN" )
+	if wmctrl -a "VLC media player" 
+	then wmctrl -a "VLC media player" ; sleep .1 ; xte "keydown Control_L" "key Up" "keyup Control_L" ; wmctrl -a "$CURRENTWIN"
+	else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+	fi
 fi
+
 # VLC Volume Down
 if [ "$1" == "C38" ] ; then
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-wmctrl -a "VLC media player" &&\
-( sleep .1 ; xte "keydown Control_L" "key Down" "keyup Control_L" ; wmctrl -a "$CURRENTWIN" )
+	if wmctrl -a "VLC media player" 
+	then wmctrl -a "VLC media player" ; sleep .1 ; xte "keydown Control_L" "key Down" "keyup Control_L" ; wmctrl -a "$CURRENTWIN"
+	else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+	fi
 fi
 
 
