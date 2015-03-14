@@ -12,7 +12,7 @@ _CHANGE_LANG_US()
 	xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 }
 
-
+##########################################################
 # Close Window
 if [ "$1" == "C01" ]  ; then
 export MIN=YES ; /usr/local/bin/gesture-helper-close-window
@@ -28,6 +28,7 @@ fi
 # Pidgin Text
 if [ "$1" == "C03" ]  ; then
 _CHANGE_LANG_US
+CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 	if wmctrl -a salman
 	then wmctrl -a salman ; sleep .2 ; xte "str hello" ; xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN" ; notify-send "Pidgin" "Sent hello to Salman"
 	else notify-send "Gesture" "Pidgin window Not Found"
