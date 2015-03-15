@@ -12,10 +12,10 @@ TMP="$(mktemp)"
 
 
 
-cd ~/Downloads/http_/www.imdb.com/title/
+cd ~/Downloads/http_/www.imdb.com/title2/ || exit 1
 
 
-echo "Downloading Movie Data for $(ls | wc -l) movies in (~/Downloads/http_/www.imdb.com)"
+echo "Downloading Movie Data for "$(ls | wc -l)" movies in (~/Downloads/http_/www.imdb.com)"
 echo ""
 
 COUNT=0
@@ -28,10 +28,10 @@ do
 
 TITLE="$(curl -s http://www.imdb.com/title/"$MOVIE"/ |grep "<title>" |sed 's/<title>//g ; s/\ -\ IMDb<\/title>//g' | sed 's/^[ \t]*//' | sed 's/&amp;/and/g' )" 
 
-IMDB_NAME="$( echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
-YT_NAME="$(   echo "$TITLE"  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' )"
+IMDB_NAME="$( echo "$TITLE"  | sed "s/(//g;s/)//g;s/&/and/g;s/\ /+/g" )"
+YT_NAME="$(   echo "$TITLE"  | sed "s/(//g;s/)//g;s/&/and/g;s/\ /+/g" )"
 KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g" )"
-TVDB_NAME="$( echo "$TITLE"  | sed 's/(//g;s///g;s/&/and/g;s/\ /+/g' )"
+TVDB_NAME="$( echo "$TITLE"  | sed "s/(//g;s///g;s/&/and/g;s/\ /+/g" )"
 
 echo "$TITLE" >> "$BATCH_FILE_MOVIE_FIND"
 
