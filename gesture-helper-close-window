@@ -54,11 +54,11 @@ xte "keydown Alt_L" "key F4" "keyup Alt_L"
   fi
 
 
-elif echo "$CURRENTWIN" | grep "KODI"  >/dev/null
+elif echo "$CURRENTWIN" | grep "Kodi"  >/dev/null
 then
   if [ "$MIN"x = "YES"x ]
   then
-notify-send "Close Window" "Minimized KODI"
+notify-send "Close Window" "Minimized Kodi"
 wmctrl -a kodi ; xdotool windowminimize $(xdotool getactivewindow)
    else 
 xte "keydown Alt_L" "key F4" "keyup Alt_L"
