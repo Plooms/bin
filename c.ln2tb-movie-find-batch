@@ -69,27 +69,6 @@ echo -e "${YELLOW}\n-----------################-------------\n${COLOR_OFF}"
 #################################
 
 
-####### For the log file#########
-if [[ "$WATCHED" = *"YES" ]] ; then WATCHED="(YES)";else WATCHED="(NO)";fi
-echo -e "
-Path: $i
-Name:  $NAME
-Size:  $SIZE
-Res: $RES1 x "$RES2"p  $DEF
-Watched: $WATCHED
------------################-------------
-" >> "$TMP_LOG1"
-####### For the log file#########
-
-
-
-
-
-
-
-echo "Log File:   sudo geany $TMP_LOG1"
-
-
 # Time Calculation
 _END_TIME
 
