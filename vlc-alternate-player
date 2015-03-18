@@ -164,7 +164,7 @@ TIME_BEFORE_WATCHED()
 	done
 	
 	sleep 1
-	[ "$TIMER" = "0" ] && notify-send "KODI" "File will be marked as Watched" && sudo beep -f 1000
+	[ "$TIMER" = "0" ] && [ -f "$TRIGGER2" ] && notify-send "KODI" "File will be marked as Watched" && sudo beep -f 1000
 	
 }
 
