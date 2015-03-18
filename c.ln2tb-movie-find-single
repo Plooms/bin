@@ -54,7 +54,7 @@ do
 
 #################################
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
-ANCHOR="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+ANCHOR="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select * from movies where Name LIKE '$MOVIE_NAME'" -ss)"
 NAME="$(     echo "$ANCHOR" | cut -f 1)"
 SIZE="$(     echo "$ANCHOR" | cut -f 2) MB"
 RES1="$(     echo "$ANCHOR" | cut -f 3)"
