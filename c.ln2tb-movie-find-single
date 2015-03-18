@@ -54,16 +54,17 @@ do
 
 #################################
 MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
-NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '$MOVIE_NAME'" -ss)"
-SIZE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Size_MB from movies where Name LIKE '$MOVIE_NAME'" -ss) MB"
-RES1="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResWidth from movies where Name LIKE '$MOVIE_NAME'" -ss)"
-RES2="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select ResHeight from movies where Name LIKE '$MOVIE_NAME'" -ss)"
-BITRATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Bitrate from movies where Name LIKE '$MOVIE_NAME'" -ss)"
-DURATION="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Duration from movies where Name LIKE '$MOVIE_NAME'" -ss)"
-DEF="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Definition from movies where Name LIKE '$MOVIE_NAME'" -ss)"
-NOTES="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Notes from movies where Name LIKE '$MOVIE_NAME'" -ss)"
-DATE="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Date from movies where Name LIKE '$MOVIE_NAME'" -ss)"
-WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+ANCHOR="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '$MOVIE_NAME'" -ss)"
+NAME="$(     echo "$ANCHOR" | cut -f 1)"
+SIZE="$(     echo "$ANCHOR" | cut -f 2) MB"
+RES1="$(     echo "$ANCHOR" | cut -f 3)"
+RES2="$(     echo "$ANCHOR" | cut -f 4)"
+NOTES="$(    echo "$ANCHOR" | cut -f 6)"
+DEF="$(      echo "$ANCHOR" | cut -f 7)"
+DATE="$(     echo "$ANCHOR" | cut -f 8)"
+BITRATE="$(  echo "$ANCHOR" | cut -f 10)"
+DURATION="$( echo "$ANCHOR" | cut -f 11)"
+WATCHED="$(  echo "$ANCHOR" | cut -f 5)"
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 #################################
 
