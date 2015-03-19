@@ -93,8 +93,12 @@ GREEN
 echo -ne "Notes:	 ${CYAN}"$NOTES""
 COLOR_OFF
 YELLOW
+COLOR_OFF
 
-ass+=("$NAME"-"$WATCHED")
+
+WHITE
+ass+=("$NAME" "$WATCHED")
+YELLOW
 
 done
 
@@ -113,7 +117,9 @@ then echo -n
 else
 
 #################################
-echo "${ass[*]}"
+WHITE
+
+echo -e "${ass[*]}"
 #for i in "${movie_array[@]}"
 #do
 #MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
