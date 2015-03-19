@@ -68,38 +68,41 @@ WATCHED="$(  echo "$ANCHOR" | cut -f 5)"
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 #################################
 NAME="${WHITE}$NAME"
-WATCHED="${WHITE}$WATCHED"
+SIZE="${WHITE}$SIZE"
+RES1="${WHITE}"$RES1
+RES2="${WHITE}"$RES2"p"
+DEF="${PURPLE}  $DEF"
+BITRATE="${WHITE}$BITRATE"
+DURATION="${WHITE}"$DURATION""
+DATE="${WHITE}"$DATE""
+WATCHED="${WHITE}"$WATCHED""
+NOTES="${CYAN}"$NOTES""
+
+
+
+
 
 GREEN
-echo -ne "Name:	 ${WHITE}"$NAME""
-COLOR_OFF
+echo -ne "Name:	 "$NAME""
 GREEN
-echo -ne "Size:	 ${WHITE}"$SIZE""
-COLOR_OFF
+echo -ne "Size:	 "$SIZE""
 GREEN
-echo -ne "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" "
-COLOR_OFF
+echo -ne "Res:	 "$RES1" x "$RES2"p  "$DEF""
 GREEN
-echo -ne "Rate:	${WHITE}"$BITRATE""
-COLOR_OFF
+echo -ne "Rate:	"$BITRATE""
 GREEN
-echo -ne "Time:	${WHITE}"$DURATION""
-COLOR_OFF
+echo -ne "Time:	"$DURATION""
 GREEN
-echo -ne "Added:	 ${WHITE}"$DATE""
-COLOR_OFF
+echo -ne "Added:	 "$DATE""
 GREEN
-echo -ne "Watched: ${WHITE}"$WATCHED""
-COLOR_OFF
+echo -ne "Watched: "$WATCHED""
 GREEN
-echo -ne "Notes:	 ${CYAN}"$NOTES""
-COLOR_OFF
+echo -ne "Notes:	 "$NOTES""
 YELLOW
-COLOR_OFF
 
 
 
-ass+=("$NAME  $WATCHED")
+movie_array2_name+=("$NAME  $WATCHED")
 
 
 done
@@ -119,16 +122,11 @@ then echo -n
 else
 
 #################################
-a=0; for i in "${ass[@]}" ; do echo -e "${ass[$a]}" ; a=$((a + 1));done
-#for i in "${movie_array[@]}"
-#do
-#MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
-#NAME="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Name from movies where Name LIKE '$MOVIE_NAME%'" -ss)"
-#WATCHED="$(mysql -uroot -p"$DB_PASSWORD" movies -e "select Watched from movies where Name LIKE '%$MOVIE_NAME%'" -ss)"
-#if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
-#echo -e "${WHITE}$NAME${COLOR_OFF} $WATCHED"
-#done
-
+# display movie names at the end
+item="0"
+for i in "${movie_array2_name[@]}"
+do echo -e "${GREEN}$item:${movie_array2_name[$item]}" ; item=$((item + 1))
+done
 #################################
 
 if [ -n "$TERM_LAUNCH" ]
