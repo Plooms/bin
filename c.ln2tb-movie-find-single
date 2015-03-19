@@ -67,6 +67,8 @@ DURATION="$( echo "$ANCHOR" | cut -f 11)"
 WATCHED="$(  echo "$ANCHOR" | cut -f 5)"
 if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(NO)";fi
 #################################
+NAME="${WHITE}$NAME"
+WATCHED="${WHITE}$WATCHED"
 
 GREEN
 echo -ne "Name:	 ${WHITE}"$NAME""
@@ -97,7 +99,7 @@ COLOR_OFF
 
 
 
-ass+=("$NAME"-"$WATCHED")
+ass+=('"$NAME"  "$WATCHED"')
 
 
 done
@@ -117,7 +119,7 @@ then echo -n
 else
 
 #################################
-echo -e "${ass[5]}"
+a=0; for i in "${ass[@]}" ; do echo -e "${ass[$a]}" ; a=$((a + 1));done
 #for i in "${movie_array[@]}"
 #do
 #MOVIE_NAME="$(echo $i | sed "s/(//g;s/)//g;s/'/\\\\\\'/g;s/^[ \t]*//;s/[ \t]*$//")"
