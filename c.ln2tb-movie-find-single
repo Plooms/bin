@@ -99,7 +99,7 @@ COLOR_OFF
 
 
 
-ass+=('"$NAME"  "$WATCHED"')
+ass+=("$NAME  $WATCHED")
 
 
 done
