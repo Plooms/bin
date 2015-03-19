@@ -69,21 +69,29 @@ if [ "$WATCHED" = "YES" ] ; then WATCHED="${PURPLE}(YES)";else WATCHED="${RED}(N
 #################################
 
 GREEN
-echo -ne "Name:	 ${WHITE}$NAME${COLOR_OFF}"
+echo -ne "Name:	 ${WHITE}"$NAME""
+COLOR_OFF
 GREEN
-echo -ne "Size:	 ${WHITE}$SIZE${COLOR_OFF}"
+echo -ne "Size:	 ${WHITE}"$SIZE""
+COLOR_OFF
 GREEN
-echo -ne "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" ${COLOR_OFF}"
+echo -ne "Res:	 ${WHITE}"$RES1 x $RES2"p ${COLOR_OFF}${PURPLE}  "$DEF" "
+COLOR_OFF
 GREEN
-echo -ne "Rate:	${WHITE}"$BITRATE" ${COLOR_OFF}"
+echo -ne "Rate:	${WHITE}"$BITRATE""
+COLOR_OFF
 GREEN
-echo -ne "Time:	${WHITE}"$DURATION" ${COLOR_OFF}"
+echo -ne "Time:	${WHITE}"$DURATION""
+COLOR_OFF
 GREEN
-echo -ne "Added:	 ${WHITE}"$DATE" ${COLOR_OFF}"
+echo -ne "Added:	 ${WHITE}"$DATE""
+COLOR_OFF
 GREEN
-echo -ne "Watched: ${WHITE}$WATCHED"
+echo -ne "Watched: ${WHITE}"$WATCHED""
+COLOR_OFF
 GREEN
-echo -ne "Notes:	 ${CYAN}$NOTES"
+echo -ne "Notes:	 ${CYAN}"$NOTES""
+COLOR_OFF
 YELLOW
 
 

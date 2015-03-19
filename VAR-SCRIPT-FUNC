@@ -149,7 +149,7 @@ _START_TIME() { START_TIME=$(date +%s) ; }
 _END_TIME()
 { 
         END_TIME=$(date +%s)
-        END_TIME_SEC=$(( END_TIME - START_TIME ))
+        END_TIME_SEC="$(( END_TIME - START_TIME ))"
         END_TIME_MIN=$(echo "scale=1; ($END_TIME - $START_TIME) / 60" | bc )
         END_TIME_HR=$(echo "scale=1; $END_TIME_MIN / 60" | bc)
 	RUN_TIME="$(echo $END_TIME_SEC s)"
