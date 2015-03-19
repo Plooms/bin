@@ -110,11 +110,11 @@ done
 
 
 #---#
-if [ -n "$TERM_LAUNCH" ]
-then 
-echo "------------------------------------------------"
-echo ""
-fi
+#if [ -n "$TERM_LAUNCH" ]
+#then 
+#echo "------------------------------------------------"
+#echo ""
+#fi
 
 
 if [ -n "$SCRIPT_LAUNCH" ]
@@ -125,7 +125,7 @@ else
 # display movie names at the end
 item="0"
 for i in "${movie_array2_name[@]}"
-do echo -e "${GREEN}$item:${movie_array2_name[$item]}" ; item=$((item + 1))
+do echo -e "${movie_array2_name[$item]}" ; item=$((item + 1))
 done
 #################################
 
