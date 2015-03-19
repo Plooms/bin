@@ -87,7 +87,7 @@ echo -ne "Name:	 "$NAME""
 GREEN
 echo -ne "Size:	 "$SIZE""
 GREEN
-echo -ne "Res:	 "$RES1" x "$RES2"p  "$DEF""
+echo -ne "Res:	 "$RES1" x "$RES2"  "$DEF""
 GREEN
 echo -ne "Rate:	"$BITRATE""
 GREEN
