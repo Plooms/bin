@@ -58,7 +58,6 @@ TMP/full-temp/*
 
 
 
-
 ##########################  14-media-offsite clean media only #################################
 # Change the included directories & files
 echo "
@@ -73,6 +72,24 @@ Movies/A Goofy Movie (1995)/***
 
 
 " >| "$RSYNC_EXCLUDE_33"
+
+
+
+
+##########################  18-home-dots* #################################
+# Change the excluded directories & files
+echo "
+
+.cache
+.dropbox
+.dropbox-dist
+.ecryptfs
+.kodi
+.ssh
+.thumbnails
+
+
+" >| "$RSYNC_EXCLUDE_44"
 
 
 
@@ -243,9 +260,21 @@ export OPT_17="--exclude=.*"
 
 ###############################################################
 
+#The source directory:
+export SRC_18="$MYHOME/.*"
+
+#The target directory:
+export TRG_18="/home/abz/Ares/Dot-Files"
+
+#The link destination directory:
+export LNK_18="$HOME_BACKUP_FOLDER/$LINK_SYM"
+
+#The Log file
+export LOG_18="$HOME_BACKUP_FOLDER/$RSYNC_LOG"
+
+#The rsync options:
+OPT_18=("-biavhHP" "--exclude-from=$RSYNC_EXCLUDE_44")
 
 
-
-
-
+###############################################################
 
