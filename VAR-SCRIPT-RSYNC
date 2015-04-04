@@ -266,15 +266,8 @@ export SRC_18="$MYHOME"
 #The target directory:
 export TRG_18="/home/abz/Ares/Dot-Files"
 
-#The link destination directory:
-export LNK_18="$HOME_BACKUP_FOLDER/$LINK_SYM"
-
-#The Log file
-export LOG_18="$HOME_BACKUP_FOLDER/$RSYNC_LOG"
-
 #The rsync options:
-OPT_18=("-biavhHP" "--exclude-from=$RSYNC_EXCLUDE_44")
+OPT_18=("-iavhHP" "--del" "--safe-links" "--exclude-from=$RSYNC_EXCLUDE_44")
 
 
 ###############################################################
-
