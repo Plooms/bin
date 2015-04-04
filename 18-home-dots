@@ -1,6 +1,6 @@
 #!/bin/bash
-# Backup "/home"
-SCRIPT_NAME="12-home"
+# Backup "/home/*/.*"
+SCRIPT_NAME="18-home-dots"
 PID=$$
 
 # Source the VAR MOAS
@@ -18,56 +18,10 @@ _LOCK_ON
 
 #########################################################
 
-# Sync $HOME to NAS1
-
 if _CHECK_MOUNT1
 then
 
-
-
-#if [ -d "$TRG_12_OLD" ]
-#then
-#echo "Removing Old Backups"
-#echo ""
-#sudo find "$TRG_12_OLD" -maxdepth 1 -type d | sort |head -n -1 |tail -n +2 |xargs rm -r
-#fi
-
-
-# Rsync Backup
-if [ "$RSYNC"x = "ON"x ]
-then
-	GREEN
-	sudo rsync "${OPT_12_2[@]}" "$SRC_12_2" "$TRG_12_2"
-else
-	RED
- 	echo "Not using Rsync, or no Backup Method selected"
-	echo ""
-	echo "export RSYNC=ON    |    export TAR=ON"
-	echo ""
-fi
-
-##
-##
-
-# Tar Backup
-if [ "$TAR"x = "ON"x ]
-then
-	CYAN
-	mkdir -p "$TRG_12"
-	rmdir "$TRG_12"
-	echo "Created File: $TRG_12-$MIN0.tgz" \
-	&& sudo tar "${OPT_12_TAR[@]}" -cpvf "$TRG_12-$MIN0".tgz "$SRC_12"
-else
-	CYAN
-        echo "Not using Tar, or no Backup Method selected"
-        echo ""
-        echo "export RSYNC=ON    |    export TAR=ON"
-        echo ""
-
-
-fi
-
-	COLOR_OFF
+	sudo rsync "${OPT_18[@]}" "$SRC_18"/.* "$TRG_18"
 
 else
 

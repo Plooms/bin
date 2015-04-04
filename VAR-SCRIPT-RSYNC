@@ -261,7 +261,7 @@ export OPT_17="--exclude=.*"
 ###############################################################
 
 #The source directory:
-export SRC_18="$MYHOME/.*"
+export SRC_18="$MYHOME"
 
 #The target directory:
 export TRG_18="/home/abz/Ares/Dot-Files"
