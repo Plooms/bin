@@ -80,6 +80,8 @@ Movies/A Goofy Movie (1995)/***
 # Change the excluded directories & files
 echo "
 
+.
+..
 .cache
 .dropbox
 .dropbox-dist
