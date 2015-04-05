@@ -86,7 +86,7 @@ Downloads
 Dropbox
 NAS
 Open-Office
-Sync-Central-Repo
+Sync-Central-Repo/.git
 TMP
 .cache
 .dropbox
@@ -275,7 +275,7 @@ export SRC_18="$MYHOME/"
 export TRG_18="/home/abz/Ares/Dot-Files"
 
 #The rsync options:
-OPT_18=("-iavhHP" "--del" "--safe-links" "--exclude-from=$RSYNC_EXCLUDE_44")
+OPT_18=("-iavhHP" "--del" "--safe-links" "--chmod=777" "--exclude-from=$RSYNC_EXCLUDE_44")
 
 
 ###############################################################
