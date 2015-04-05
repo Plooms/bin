@@ -80,8 +80,14 @@ Movies/A Goofy Movie (1995)/***
 # Change the excluded directories & files
 echo "
 
-.
-..
+Ares
+Desktop
+Downloads
+Dropbox
+NAS
+Open-Office
+Sync-Central-Repo
+TMP
 .cache
 .dropbox
 .dropbox-dist
@@ -263,7 +269,7 @@ export OPT_17="--exclude=.*"
 ###############################################################
 
 #The source directory:
-export SRC_18="$MYHOME"
+export SRC_18="$MYHOME/"
 
 #The target directory:
 export TRG_18="/home/abz/Ares/Dot-Files"

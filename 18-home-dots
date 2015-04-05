@@ -21,7 +21,7 @@ _LOCK_ON
 if _CHECK_MOUNT1
 then
 
-	sudo rsync "${OPT_18[@]}" "$SRC_18"/.* "$TRG_18"
+	sudo rsync "${OPT_18[@]}" "$SRC_18" "$TRG_18"
 
 else
 
