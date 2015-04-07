@@ -377,3 +377,4 @@ if ls -U | grep -E 'Law\ \&\ Order\ Special\ Victims\ Unit\ -\ \[*' >/dev/null 2
 if ls -U | grep -E 'Law\ \&\ Order\ Criminal\ Intent\ -\ \[*' >/dev/null 2>&1 ; then mv -v Law\ \&\ Order\ Criminal\ Intent\ -\ \[* "$TV_SYM"/"Law & Order: Criminal Intent"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Zorro\ \(1957\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Zorro\ \(1957\)\ -\ \[* "$TV_SYM"/"Zorro (1957)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Better\ Call\ Saul\ -\ \[*' >/dev/null 2>&1 ; then mv -v Better\ Call\ Saul\ -\ \[* "$TV_SYM"/"Better Call Saul"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Coach\ -\ \[*' >/dev/null 2>&1 ; then mv -v Coach\ -\ \[* "$TV_SYM"/"Coach"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
