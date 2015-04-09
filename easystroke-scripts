@@ -12,6 +12,11 @@ _CHANGE_LANG_US()
 	xte 'keydown Control_R' 'keydown Alt_R' 'key 0' 'keyup Control_R' 'keyup Alt_R'
 }
 
+_MOVE_WINDOW()
+{
+	xte "keydown Control_L" "keydown Alt_L" "key 8" "keyup Control_L" "keyup Alt_L"
+}
+
 ##########################################################
 # Close Window
 if [ "$1" == "C01" ]  ; then
@@ -297,6 +302,26 @@ CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
 	then wmctrl -a "VLC media player" ; sleep .1 ; xte "keydown Control_L" "key Down" "keyup Control_L" ; wmctrl -a "$CURRENTWIN"
 	else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
 	fi
+fi
+
+
+##########################################################
+# KODI Move
+if [ "$1" == "C39" ] ; then
+        if wmctrl -a "kodi" 
+        then wmctrl -a "kodi" ; sleep .1 ; _MOVE_WINDOW
+        else notify-send "Gesture" "KODI Window Not Found" ; sudo beep
+        fi
+fi
+
+
+##########################################################
+# VLC Move
+if [ "$1" == "C40" ] ; then
+        if wmctrl -a "VLC media player" 
+        then wmctrl -a "VLC media player" ; sleep .1 ; _MOVE_WINDOW
+        else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+        fi
 fi
 
 
