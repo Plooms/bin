@@ -219,7 +219,10 @@ fi
 ##########################################################
 # Open Keyboard
 if [ "$1" == "C28" ] ; then
-killall florence ; florence
+	if pgrep florence
+	then killall florence
+	else florence
+	fi
 fi
 
 ##########################################################
