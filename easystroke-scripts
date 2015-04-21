@@ -228,13 +228,13 @@ fi
 ##########################################################
 # Volume UP
 if [ "$1" == "C29" ] ; then
-xte "keydown Control_R" "keydown Alt_L" "str bbbb" "keyup Control_R" "keyup Alt_L"
+xte "keydown Control_R" "keydown Alt_L" "str b" "keyup Control_R" "keyup Alt_L"
 fi
 
 ##########################################################
 # Volume Down
 if [ "$1" == "C30" ] ; then
-xte "keydown Control_R" "keydown Alt_L" "str nnnn" "keyup Control_R" "keyup Alt_L"
+xte "keydown Control_R" "keydown Alt_L" "str n" "keyup Control_R" "keyup Alt_L"
 fi
 
 ##########################################################
