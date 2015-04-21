@@ -46,12 +46,12 @@ firefox "http://kickass.to/usearch/$KAT_NAME" 2>/dev/null
 
 COUNT=$(($(echo $COUNT) + 1))
 
-if [ $COUNT -gt "10" ]
-then COUNT="$COUNT"
-else COUNT="0$COUNT"
+if [ $COUNT -gt "9" ]
+then COUNT_1="$COUNT"
+else COUNT_1="0$COUNT"
 fi
 
-echo -en "$COUNT) Opening tabs for ${YELLOW}$TITLE"
+echo -en "$COUNT_1) Opening tabs for ${YELLOW}$TITLE"
 
 COLOR_OFF
 done
