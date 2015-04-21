@@ -30,7 +30,7 @@ TITLE="$(curl -s http://www.imdb.com/title/"$MOVIE"/ |grep "<title>" |sed 's/<ti
 
 IMDB_NAME="$( echo "$TITLE"  | sed "s/(//g;s/)//g;s/&/and/g;s/\ /+/g" )"
 YT_NAME="$(   echo "$TITLE + trailer"  | sed "s/(//g;s/)//g;s/&/and/g;s/\ /+/g" )"
-KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g;/\//+/g" )"
+KAT_NAME="$(  echo "$TITLE"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g;s/\//+/g" )"
 TVDB_NAME="$( echo "$TITLE"  | sed "s/(//g;s///g;s/&/and/g;s/\ /+/g" )"
 
 echo "$TITLE" >> "$BATCH_FILE_MOVIE_FIND"
