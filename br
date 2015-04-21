@@ -8,17 +8,12 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 
-TEMP=/tmp/xbrightness.tmp
-
-[ ! -f "$TEMP" ] && echo off > "$TEMP" && echo "creating temp file $TEMP"
-
-
 SELECTION="$(dialog --stdout --checklist "Choose Brightness Level" 13 100 5 \
-        "Low-M-1"                          "" on \
-        "Low-M-2"        "" off \
-        "High"                            "" off \
-        "Low"         "" off \
-        "Normal"                       "" off)" 
+        "Low-M-1" "" off \
+        "Low-M-2" "" off \
+        "High"    "" off \
+        "Low"     "" off \
+        "Normal"  "" off)" 
 
 
 if [ "$SELECTION" = "Low-M-1" ]
@@ -40,7 +35,7 @@ then
 	echo -e "\n\n\n OFF LOW-M-1 LOW-M-2 [HIGH] LOW "
 	notify-send Brightness HIGH
 
-elif [ "$COUNTER" = "Low" ]
+elif [ "$SELECTION" = "Low" ]
 then
         echo "Brightness = LOW" && xrandr --output DVI-I-1 --brightness 0.1 ; xrandr --output VGA-1 --brightness 0.2 ; xrandr --output HDMI-1 --brightness 0.3 > /dev/null
 	echo -e "\n\n\n OFF LOW-M-1 LOW-M-2 HIGH [LOW] "
