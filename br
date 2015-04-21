@@ -12,46 +12,46 @@ TEMP=/tmp/xbrightness.tmp
 
 [ ! -f "$TEMP" ] && echo off > "$TEMP" && echo "creating temp file $TEMP"
 
-####  idea   #####  if cat temp file / 2 = true then do this ;or else do this
+
+SELECTION="$(dialog --stdout --checklist "Choose Brightness Level" 13 100 5 \
+        "Low-M-1"                          "" on \
+        "Low-M-2"        "" off \
+        "High"                            "" off \
+        "Low"         "" off \
+        "Normal"                       "" off)" 
 
 
-COUNTER=$(cat "$TEMP")
-
-
-
-if [ "$COUNTER" = off ]
+if [ "$SELECTION" = "Low-M-1" ]
 then
-	echo "Brightness = Low-M-1" && echo low-m-1 >| "$TEMP" && xrandr --output DVI-I-1 --brightness 0.3 && xrandr --output VGA-1 --brightness 1.0 > /dev/null
+	echo "Brightness = Low-M-1" && xrandr --output DVI-I-1 --brightness 0.3 && xrandr --output VGA-1 --brightness 1.0 > /dev/null
 	echo -e "\n\n\n OFF [LOW-M-1] LOW-M-2 HIGH LOW "
 	notify-send Brightness LOW-M-1
 
-elif [ "$COUNTER" = low-m-1 ]
+elif [ "$SELECTION" = "Low-M-2" ]
 then
-	echo "Brightness = Low-M-2" && echo low-m-2 >| "$TEMP" && \
-xrandr --output VGA-1 --brightness 0.3 ; xrandr --output HDMI-1 --brightness 0.3 ; xrandr --output DVI-I-1 --brightness 1.0 > /dev/null
+	echo "Brightness = Low-M-2" && xrandr --output VGA-1 --brightness 0.3 ; xrandr --output HDMI-1 --brightness 0.3 ; xrandr --output DVI-I-1 --brightness 1.0 > /dev/null
 	echo -e "\n\n\n OFF LOW-M-1 [LOW-M-2] HIGH LOW "
 	notify-send Brightness LOW-M-2
 
-elif [ "$COUNTER" = low-m-2 ]
+elif [ "$SELECTION" = "High" ]
 then
-	echo "Brightness = HIGH" && echo high >| "$TEMP" && xrandr --output DVI-I-1 --brightness 1.0 ; xrandr --output VGA-1 --brightness 1.0 ; xrandr --output HDMI-1 --brightness 1.0
+	echo "Brightness = HIGH" && xrandr --output DVI-I-1 --brightness 1.0 ; xrandr --output VGA-1 --brightness 1.0 ; xrandr --output HDMI-1 --brightness 1.0
 	xbrightness 40000 24000 20000
 	echo -e "\n\n\n OFF LOW-M-1 LOW-M-2 [HIGH] LOW "
 	notify-send Brightness HIGH
 
-elif [ "$COUNTER" = low ]
+elif [ "$COUNTER" = "Low" ]
 then
-	echo "Brightness = OFF" && echo off >| "$TEMP" && xrandr --output DVI-I-1 --brightness 1.0 && xrandr --output VGA-1 --brightness 1.0
-	xbrightness 63000
-	echo -e "\n\n\n [OFF] LOW-M-1 LOW-M-2 HIGH LOW "
-	notify-send Brightness OFF
-
-elif [ "$COUNTER" = high ]
-then
-        echo "Brightness = LOW" && echo low >| "$TEMP" && \
-xrandr --output DVI-I-1 --brightness 0.1 ; xrandr --output VGA-1 --brightness 0.2 ; xrandr --output HDMI-1 --brightness 0.3 > /dev/null
+        echo "Brightness = LOW" && xrandr --output DVI-I-1 --brightness 0.1 ; xrandr --output VGA-1 --brightness 0.2 ; xrandr --output HDMI-1 --brightness 0.3 > /dev/null
 	echo -e "\n\n\n OFF LOW-M-1 LOW-M-2 HIGH [LOW] "
 	notify-send Brightness LOW
+
+elif [ "$SELECTION" = "Normal" ]
+then
+	echo "Brightness = Normal" && xrandr --output DVI-I-1 --brightness 1.0 && xrandr --output VGA-1 --brightness 1.0
+	xbrightness 63000
+	echo -e "\n\n\n [Normal] LOW-M-1 LOW-M-2 HIGH LOW "
+	notify-send Brightness Normal
 fi
 
 
