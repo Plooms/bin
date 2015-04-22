@@ -7,35 +7,70 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
-
-SELECTION="$(dialog --stdout --checklist "Choose Brightness Level" 13 100 5 \
-        "Low-M-1" "" off \
-        "Low-M-2" "" off \
-        "High"    "" off \
-        "Low"     "" off \
-        "Normal"  "" off)" 
+SELECTION1="$(dialog --stdout --checklist "Choose Brightness Level" 13 100 5 \
+        "Monitor-1"     "" off \
+        "Monitor-2"     "" off \
+        "Both-Monitors" "" off)" 
 
 
-if [ "$SELECTION" = "Low-M-1" ]
+
+
+SELECTION2="$(dialog --stdout --checklist "Choose Brightness Level" 13 100 5 \
+        "Very High" "" off \
+        "High"      "" off \
+        "Medium"    "" off \
+        "Low"       "" off \
+        "Very Low"  "" off)"
+
+
+if [ "$SELECTION2" = "Very High" ]
 then
-	xrandr --output DVI-I-1 --brightness 0.3 && xrandr --output VGA-1 --brightness 1.0 > /dev/null
+		[ "$SELECTION1" = "Monitor-1" ] && \
+		xrandr --output DVI-I-1 --brightness 1.0 > /dev/null
 
-elif [ "$SELECTION" = "Low-M-2" ]
-then
-	xrandr --output VGA-1 --brightness 0.3 ; xrandr --output HDMI-1 --brightness 0.3 ; xrandr --output DVI-I-1 --brightness 1.0 > /dev/null
+		[ "$SELECTION1" = "Monitor-2" ] && \
+		xrandr --output VGA-1 --brightness 1.0
+		xrandr --output HDMI-1 --brightness 1.0
 
-elif [ "$SELECTION" = "High" ]
+elif [ "$SELECTION2" = "High" ]
 then
-	xrandr --output DVI-I-1 --brightness 1.0 ; xrandr --output VGA-1 --brightness 0.5 ; xrandr --output HDMI-1 --brightness 1.0
+		[ "$SELECTION1" = "Monitor-1" ] && \
+		xrandr --output DVI-I-1 --brightness 1.0
+
+		[ "$SELECTION1" = "Monitor-2" ] && \
+		xrandr --output VGA-1 --brightness 0.5
+		xrandr --output HDMI-1 --brightness 1.0
 	xbrightness 40000 34000 20000
 
-elif [ "$SELECTION" = "Low" ]
+elif [ "$SELECTION2" = "Normal" ]
 then
-	xrandr --output DVI-I-1 --brightness 0.1 ; xrandr --output VGA-1 --brightness 0.2 ; xrandr --output HDMI-1 --brightness 0.3 > /dev/null
 
-elif [ "$SELECTION" = "Normal" ]
-then
-	xrandr --output DVI-I-1 --brightness 1.0 && xrandr --output VGA-1 --brightness 1.0
+		[ "$SELECTION1" = "Monitor-1" ] && \
+		xrandr --output DVI-I-1 --brightness 1.0
+
+		[ "$SELECTION1" = "Monitor-2" ] && \
+		xrandr --output VGA-1 --brightness 1.0
+		xrandr --output HDMI-1 --brightness 1.0
 	xbrightness 63000
-fi
 
+elif [ "$SELECTION2" = "Low" ]
+then
+	
+		[ "$SELECTION1" = "Monitor-1" ] && \
+		xrandr --output DVI-I-1 --brightness 0.1
+
+		[ "$SELECTION1" = "Monitor-2" ] && \
+		xrandr --output VGA-1 --brightness 0.2
+		xrandr --output HDMI-1 --brightness 0.3 > /dev/null
+
+
+elif [ "$SELECTION2" = "Very Low" ]
+then
+	
+		[ "$SELECTION1" = "Monitor-1" ] && \
+		xrandr --output DVI-I-1 --brightness 0.1
+
+		[ "$SELECTION1" = "Monitor-2" ] && \
+		xrandr --output VGA-1 --brightness 0.2
+		xrandr --output HDMI-1 --brightness 0.3
+fi
