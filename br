@@ -8,9 +8,9 @@ source /usr/local/bin/VAR-SCRIPT
 
 
 SELECTION1="$(dialog --stdout --radiolist "Choose Brightness Level" 13 100 5 \
-        "Monitor-1"     "" off \
-        "Monitor-2"     "" off \
-        "Both-Monitors" "" off)" 
+        "Monitor-1"     "Right" off \
+        "Monitor-2"     "Left" off \
+        "Both-Monitors" "Right+Left" off)" 
 
 
 SELECTION2="$(dialog --stdout --radiolist "Choose Brightness Level" 13 100 5 \
