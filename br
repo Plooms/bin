@@ -7,6 +7,9 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
+[ "$1" = "OFF" ] && exit 0
+
+
 SELECTION1="$(dialog --stdout --radiolist "Choose Brightness Level" 13 100 5 \
         "Monitor-1"     "Right" off \
         "Monitor-2"     "Left" off \
