@@ -26,7 +26,11 @@ DISPLAY_BRIGHTNESS()
 	
 
 
-[ "$1" = "OFF" ] && (DISPLAY_BRIGHTNESS OFF && exit 0)
+if [ "$1" = "OFF" ]
+then
+	DISPLAY_BRIGHTNESS OFF
+	exit 0
+else
 
 SELECTION1="$(dialog --stdout --radiolist "Choose Brightness Level" 13 100 5 \
         "Monitor-1"     "Right" off \
@@ -61,4 +65,6 @@ then
 elif [ "$SELECTION2" = "Very Low" ]
 then
 		DISPLAY_BRIGHTNESS 0.1
+fi
+
 fi
