@@ -329,6 +329,12 @@ fi
 
 
 ##########################################################
+# Brightness
+if [ "$1" == "C41" ]  ; then
+terminator -x /usr/local/bin/br OFF
+fi
+
+##########################################################
 # END OF FILE
 if [ -z "$1" ] ; then
 echo "USAGE: $SCRIPT_NAME C##"
