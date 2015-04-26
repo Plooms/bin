@@ -11,6 +11,8 @@ source /usr/local/bin/VAR-SCRIPT
 DISPLAY_BRIGHTNESS()
 {
 	
+		[ "$1" = "OFF" ] && SELECTION1="Both-Monitors"
+
 		[ "$SELECTION1" = "Monitor-1" -o "$SELECTION1" = "Both-Monitors" ] && \
 		xrandr --output DVI-I-1 --brightness "$1"
 
@@ -21,7 +23,7 @@ DISPLAY_BRIGHTNESS()
 	
 
 
-[ "$1" = "OFF" ] && (DISPLAY_BRIGHTNESS 1.0 && exit 0)
+[ "$1" = "OFF" ] && DISPLAY_BRIGHTNESS 1.0 && exit 0
 
 SELECTION1="$(dialog --stdout --radiolist "Choose Brightness Level" 13 100 5 \
         "Monitor-1"     "Right" off \
