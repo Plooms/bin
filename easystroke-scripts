@@ -335,6 +335,34 @@ terminator -x /usr/local/bin/br OFF
 fi
 
 ##########################################################
+# VLC Sub Delay
+if [ "$1" == "C42" ] ; then
+_CHANGE_LANG_US
+CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
+        if wmctrl -a "VLC media player" 
+        then wmctrl -a "VLC media player" ; sleep .1 ; xte 'key h' ; wmctrl -a "$CURRENTWIN"
+        else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+        fi
+fi
+
+##########################################################
+# VLC Sub Hasten
+if [ "$1" == "C43" ] ; then
+_CHANGE_LANG_US
+CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
+        if wmctrl -a "VLC media player" 
+        then wmctrl -a "VLC media player" ; sleep .1 ; xte 'key g' ; wmctrl -a "$CURRENTWIN"
+        else notify-send "Gesture" "VLC Window Not Found" ; sudo beep
+        fi
+fi
+
+
+
+
+
+
+
+##########################################################
 # END OF FILE
 if [ -z "$1" ] ; then
 echo "USAGE: $SCRIPT_NAME C##"
