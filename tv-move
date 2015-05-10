@@ -28,6 +28,7 @@ sudo chmod 777 * ; sudo chown "$USERNANE":"$USERNAME" *
 
 PURPLE
 
+filebot -rename --format "{n} - [{s.pad(2)}x{e.pad(2)}] - {t}" --db TheTVDB -non-strict Cops* >/dev/null 2>&1
 tvnamer -c ~/.tvnamer.json * | tee -a .Rename.Log ; date >> .Rename.Log
 
 RED
