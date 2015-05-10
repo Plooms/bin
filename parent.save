@@ -1,0 +1,24 @@
+#!/bin/bash
+# Make a Parent DIR for each item in a directory
+SCRIPT_NAME="parent"
+PID=$$
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+if [ -z $Path ];
+then
+	export Path="$PWD"
+else
+	export Path="$Path"
+fi
+
+
+for file in "$Path"/* ; do
+    filename=$(echo "$file" | rev | cut -d"." -f2- | rev)
+    dir=$(mktemp -d "$filename.XXX")
+    mv "$file" "$dir"
+    mv "$dir" "$filename"
+done
+
