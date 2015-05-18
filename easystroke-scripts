@@ -360,6 +360,14 @@ fi
 
 
 
+##########################################################
+# Press ALT
+if [ "$1" == "C44" ] ; then
+xte "keydown Alt_L"
+sleep 3
+xte "keyup Alt_L"
+notify-send "Gesture" "keyup ALT"
+fi
 
 
 ##########################################################
