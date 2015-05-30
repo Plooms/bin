@@ -28,6 +28,7 @@ echo "Searching for Movie files"
 echo ""
 
 _CHECK_MOUNT1 && \
+mysql -uroot -p"$DB_PASSWORD" movies -e "delete from movies;" && \
 find "$MOVIE_SYM"/ -size +300M -exec /usr/local/bin/c.ln2tb-movie-find-popdb-helper {} \;
 
 
