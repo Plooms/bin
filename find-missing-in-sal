@@ -10,10 +10,12 @@ source /usr/local/bin/VAR-SCRIPT
 
 Dropbox="$DROPBOX/TV/lists"
 
-find "$TV_SYM"  -type f  -size +20M > "$Dropbox"/abz1.txt
-sed -i "s/TV\/Shows\//d;s/NAS\/Shows\//d" "$Dropbox"/*1.txt
-cut -d "]" -f1 "$DROPBOX"/TV/lists/abz1.txt > "$Dropbox"/abz2.txt
-cut -d "]" -f1 "$DROPBOX"/TV/lists/sal1.txt > "$Dropbox"/sal2.txt
-diff -i "$Dropbox"/sal2.txt "$Dropbox"/abz2.txt | grep -E '<' > "$Dropbox"/not-in-sal.txt
-diff -i "$Dropbox"/sal2.txt "$Dropbox"/abz2.txt | grep -E '>' > "$Dropbox"/not-in-abz.txt
+cd "$Dropbox" || exit 1
+
+find "$TV_SYM"  -type f  -size +20M > abz1.txt
+sed -i "s/TV\/Shows\//d;s/NAS\/Shows\//d" *1.txt
+cut -d "]" -f1 "$DROPBOX"/TV/lists/abz1.txt > abz2.txt
+cut -d "]" -f1 "$DROPBOX"/TV/lists/sal1.txt > sal2.txt
+diff -i sal2.txt abz2.txt | grep -E '<' > sal3-missing.txt
+diff -i sal2.txt abz2.txt | grep -E '>' > abz3-missing.txt
 
