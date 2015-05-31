@@ -44,6 +44,7 @@ TMP_LOG1="$(mktemp)"
 
 
 _CHECK_MOUNT1 && \
+mysql -uroot -p"$DB_PASSWORD" movie_folders -e "delete from folders;" && \
 cd "$MOVIE_SYM" && find . -maxdepth 1 | sort -bf | tail -n +2 |cut -b3- > $TMP
 
 while read -r FILE  ; do movie_folder_array+=("$FILE") ;done < $TMP
