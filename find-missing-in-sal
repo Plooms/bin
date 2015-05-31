@@ -20,7 +20,7 @@ find "$TV_SYM"  -type f  -size +20M > abz1.txt
 while read f ; do basename "$f" | cut -d "]" -f1 >>| abz2.txt ;done < abz1.txt 
 while read f ; do basename "$f" | cut -d "]" -f1 >>| sal2.txt ;done < sal1.txt
 cut -d "]" -f1 * | sort -f |uniq -u > c1.txt
-while read -r a ; do grep -q "$a" && echo "$a - is in abz only" | tee -a c2.txt
+while read -r a ; do grep -q "$a" && echo "$a - is in abz only" | tee -a c2.txt ; done
 
 
 #sort -f abz2.txt > abz3.txt
