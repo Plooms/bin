@@ -27,7 +27,7 @@ find "$TV_SYM"  -type f  -size +20M -exec basename {} \; > .abz1.txt
 echo ""
 echo "Manipulating the episodes file"
 
-while read f ; do basename "$f" | cut -d "]" -f1 ;done > .sal2.txt < .sal1.txt
+while read f ; do basename "$f" | cut -d "]" -f1 ;done < .sal1.txt > .sal2.txt
 
 sed "s/\[/\\\[/g" .abz1.txt > .abz2.txt
 sed "s/\[/\\\[/g" .sal1.txt > .sal2.txt
