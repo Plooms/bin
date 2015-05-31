@@ -17,6 +17,6 @@ find "$TV_SYM"  -type f  -size +20M > abz1.txt
 sed -i "s/\/home\/sal\/TV\/Shows\///g;s/\/home\/abz\/NAS\/Shows\///g" *1.txt
 cut -d "]" -f1 abz1.txt > abz2.txt
 cut -d "]" -f1 sal1.txt > sal2.txt
-diff -i sal2.txt abz2.txt | grep -E '<' > sal3-missing.txt
-diff -i sal2.txt abz2.txt | grep -E '>' > abz3-missing.txt
+diff -i sal2.txt abz2.txt | sort -f | grep -E '<' > sal3-missing.txt
+diff -i sal2.txt abz2.txt | sort -f | grep -E '>' > abz3-missing.txt
 echo "Finished"
