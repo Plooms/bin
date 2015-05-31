@@ -14,11 +14,12 @@ cd "$Dropbox" || exit 1
 
 echo "Deleting old list files"
 
-rm -v .abz[12].txt 2>/dev/null
-rm -v .sal2.txt 2>/dev/null
-rm -v .c*.txt 2>/dev/null
-rm -v *missing*.txt 2>/dev/null
+rm .abz[12].txt 2>/dev/null
+rm .sal2.txt 2>/dev/null
+rm .c*.txt 2>/dev/null
+rm *missing*.txt 2>/dev/null
 
+echo ""
 echo "Populating the episodes file"
 
 find "$TV_SYM"  -type f  -size +20M -exec basename {} \; > .abz1.txt
@@ -28,8 +29,11 @@ echo "Manipulating the episodes file"
 
 while read f ; do basename "$f" | cut -d "]" -f1 >> .sal2.txt ;done < .sal1.txt
 
-cut -d "]" -f1  .abz1.txt .sal2.txt | sed "s/\[/\\\[/g" | sort -f |uniq -u > .c1.txt
+sed -i "s/\[/\\\[/g" .abz1.txt .sal1.txt
 
+cut -d "]" -f1  .abz1.txt .sal2.txt | sort -f |uniq -u > .c1.txt
+
+echo ""
 echo "Finalizing the episodes file"
 
 while read -r a ; do grep -q "$a" .abz1.txt && echo "$a    -    is in abz only" ; done < .c1.txt > sal-missing.txt
