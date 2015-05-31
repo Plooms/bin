@@ -22,17 +22,15 @@ rm *missing*.txt 2>/dev/null
 echo ""
 echo "Populating the episodes file"
 
-find "$TV_SYM"  -type f  -size +20M -exec basename {} \; > .abz1.txt
+find "$TV_SYM"  -type f  -size +20M > .abz1.txt
 
 echo ""
 echo "Manipulating the episodes file"
 
+while read f ; do basename "$f" | cut -d "]" -f1 ;done < .abz1.txt >> .abz2.txt
 while read f ; do basename "$f" | cut -d "]" -f1 ;done < .sal1.txt >> .sal2.txt
 
-sed "s/\[/\\\[/g" .abz1.txt > .abz2.txt
-sed -i "s/\[/\\\[/g" .sal2.txt
-
-cut -d "]" -f1  .abz2.txt .sal2.txt | sort -f |uniq -u > .c1.txt
+cut -d "]" -f1  .abz2.txt .sal2.txt | sort -f | uniq -u > .c1.txt
 sed -i "s/\[/\\\[/g" .c1.txt
 
 echo ""
