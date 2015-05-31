@@ -29,7 +29,7 @@ echo "Manipulating the episodes file"
 
 while read f ; do basename "$f" | cut -d "]" -f1 >> .sal2.txt ;done < .sal1.txt
 
-sed -i "s/\[/\\\[/g" .abz1.txt .sal1.txt
+sed -i "s/\[/\\\[/g" .abz1.txt .sal1.txt .sal2.txt
 
 cut -d "]" -f1  .abz1.txt .sal2.txt | sort -f |uniq -u > .c1.txt
 
