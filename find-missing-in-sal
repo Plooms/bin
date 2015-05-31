@@ -15,7 +15,7 @@ cd "$Dropbox" || exit 1
 echo "Deleting old list files"
 
 rm -v abz*.txt 2>/dev/null
-rm -v sal[23]*.txt 2>/dev/null
+rm -v sal[2345]*.txt 2>/dev/null
 
 echo "Populating the episodes file"
 
@@ -26,8 +26,8 @@ while read f ; do basename "$f" | cut -d "]" -f1 >> sal2.txt ;done < sal1.txt
 
 cut -d "]" -f1 *1.txt | sed "s/\[/\\\[/g" | sort -f |uniq -u > c1.txt
 
-while read -r a ; do grep -q "$a" abz1.txt && echo "$a - is in abz only" ; done < c1.txt > abz5-missing.txt
-while read -r a ; do grep -q "$a" sal1.txt && echo "$a - is in sal only" ; done < c1.txt > sal5-missing.txt
+while read -r a ; do grep -q "$a" abz1.txt && echo "$a - is in abz only" ; done < c1.txt > sal-missing.txt
+while read -r a ; do grep -q "$a" sal1.txt && echo "$a - is in sal only" ; done < c1.txt > abz-missing.txt
 
 
 echo "Finished - check ($DROPBOX)"
