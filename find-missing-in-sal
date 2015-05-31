@@ -17,8 +17,8 @@ rm -v abz*.txt 2>/dev/null
 rm -v sal[23]*.txt 2>/dev/null
 echo "Populating the episodes file"
 find "$TV_SYM"  -type f  -size +20M > abz1.txt
-while read f ; do basename "$f" | cut -d "]" -f1 >> abz2.txt ;done < abz1.txt 
-while read f ; do basename "$f" | cut -d "]" -f1 >> sal2.txt ;done < sal1.txt
+while read f ; do basename "$f" | cut -d "]" -f1 | sort -f >> abz2.txt ;done < abz1.txt 
+while read f ; do basename "$f" | cut -d "]" -f1 | sort -f >> sal2.txt ;done < sal1.txt
 diff -i sal2.txt abz2.txt | sort -f | grep -E '>' > sal3-missing.txt
 diff -i sal2.txt abz2.txt | sort -f | grep -E '<' > abz3-missing.txt
 echo "Finished"
