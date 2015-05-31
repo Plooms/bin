@@ -14,22 +14,21 @@ cd "$Dropbox" || exit 1
 
 echo "Deleting old list files"
 
-#rm -v .abz[12].txt 2>/dev/null
-#rm -v .sal2.txt 2>/dev/null
-#rm -v .c*.txt 2>/dev/null
-#rm -v *missing*.txt 2>/dev/null
+rm -v .abz[12].txt 2>/dev/null
+rm -v .sal2.txt 2>/dev/null
+rm -v .c*.txt 2>/dev/null
+rm -v *missing*.txt 2>/dev/null
 
-#echo "Populating the episodes file"
+echo "Populating the episodes file"
 
-#find "$TV_SYM"  -type f  -size +20M > .abz1.txt
+find "$TV_SYM"  -type f  -size +20M -exec basename {} \; > .abz1.txt
 
 echo ""
 echo "Manipulating the episodes file"
 
-while read f ; do basename "$f" | cut -d "]" -f1 >> .abz2.txt ;done < .abz1.txt 
 while read f ; do basename "$f" | cut -d "]" -f1 >> .sal2.txt ;done < .sal1.txt
 
-cut -d "]" -f1 *.2.txt | sed "s/\[/\\\[/g" | sort -f |uniq -u > .c1.txt
+cut -d "]" -f1  .abz1.txt .sal2.txt | sed "s/\[/\\\[/g" | sort -f |uniq -u > .c1.txt
 
 echo "Finalizing the episodes file"
 
