@@ -1,6 +1,6 @@
 #!/bin/bash
-# (Add - Move - Delete - Rename - Change - Check) and do lots of shit to the Media Collection
-SCRIPT_NAME="ln2tb"
+# find episodes missing in sal's library
+SCRIPT_NAME="find-missing-in-sal"
 PID=$$
 
 
@@ -8,54 +8,12 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
+Dropbox="$DROPBOX/TV/lists"
 
-answer=$(dialog --stdout  --extra-button --extra-label "Back" --menu \
-"Choose the command You Wish to Execute" 14 50 50 \
-"1- Add" "" \
-"2- Delete" "" \
-"3- Find & Check Resolution" "" \
-"4- Edit Videos" "" \
-"5- Check for Duplicates" "" \
-"6- Check Mounts" "" )
+find "$TV_SYM"  -type f  -size +20M > "$Dropbox"/abz1.txt
+sed -i "s/TV\/Shows\//d;s/NAS\/Shows\//d" "$Dropbox"/*1.txt
+cut -d "]" -f1 "$DROPBOX"/TV/lists/abz1.txt > "$Dropbox"/abz2.txt
+cut -d "]" -f1 "$DROPBOX"/TV/lists/sal1.txt > "$Dropbox"/sal2.txt
+diff -i "$Dropbox"/sal2.txt "$Dropbox"/abz2.txt | grep -E '<' > "$Dropbox"/not-in-sal.txt
+diff -i "$Dropbox"/sal2.txt "$Dropbox"/abz2.txt | grep -E '>' > "$Dropbox"/not-in-abz.txt
 
-
-
-case $? in
-0)
-
-if [ "$answer" = "1- Add" ]
-then c.ln2tb-add
-
-
-elif [ "$answer" = "2- Delete" ]
-then c.ln2tb-delete
-
-
-elif [ "$answer" = "3- Find & Check Resolution" ]
-then c.ln2tb-find
-
-
-elif [ "$answer" = "4- Edit Videos" ]
-then c.ln2tb-video
-
-
-elif [ "$answer" = "5- Check for Duplicates" ]
-then c.ln2tb-dupes
-
-
-elif [ "$answer" = "6- Check Mounts" ]
-then c.ln2tb-mount-check
-
-
-
-
-fi
-
-;;
-1)
-_CANCEL_MSG 
-
-;; 
-3)
-exit 1 ;;
-esac
