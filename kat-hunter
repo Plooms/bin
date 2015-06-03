@@ -1,0 +1,13 @@
+#!/bin/bash
+# Search KAT for many names by "while read a; do kat-hunter $a ;done < filename"
+SCRIPT_NAME="kat-hunter"
+PID=$$
+
+
+# Source the VAR MOAS
+source /usr/local/bin/VAR-SCRIPT
+
+KAT_NAME="$(  echo "$1"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g;s/\//+/g" )"
+
+# KAT
+firefox "https://kat.cr/usearch/$KAT_NAME" 2>/dev/null
