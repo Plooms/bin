@@ -62,6 +62,7 @@ sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
 -o -iname "*hungarian.srt"  \
 -o -iname "*ndonesian.srt"  \
 -o -iname "*.ico"  \
+-o -iname "icon_"  \
 -o -iname "*ita.srt"  \
 -o -iname "*per.srt"  \
 -o -iname "*por-BR.srt"  \
