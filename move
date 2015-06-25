@@ -379,3 +379,4 @@ if ls -U | grep -E 'Zorro\ \(1957\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Zorro\
 if ls -U | grep -E 'Better\ Call\ Saul\ -\ \[*' >/dev/null 2>&1 ; then mv -v Better\ Call\ Saul\ -\ \[* "$TV_SYM"/"Better Call Saul"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Coach\ -\ \[*' >/dev/null 2>&1 ; then mv -v Coach\ -\ \[* "$TV_SYM"/"Coach"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Brink\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Brink\ -\ \[* "$TV_SYM"/"The Brink"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Entourage\ -\ \[*' >/dev/null 2>&1 ; then mv -v Entourage\ -\ \[* "$TV_SYM"/"Entourage"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
