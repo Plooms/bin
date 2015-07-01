@@ -98,6 +98,7 @@ clear
 	    sudo sed '/^#\S/ s|#||' -i /etc/pacman.d/mirrorlist && \
 	    sudo reflector -l 3 --sort rate --save /etc/pacman.d/mirrorlist && \
 	    cat /etc/pacman.d/mirrorlist
+	    /usr/local/bin/f
 fi
 
 ;;
