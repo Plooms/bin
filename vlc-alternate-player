@@ -196,8 +196,8 @@ CHECK_SUBS &
 
 	# Play the file
 	if [ -f "$FILENAME".xspf ]
-	then	vlc --quiet "$FILENAME".xspf --play-and-exit -I http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' -I gestures >/dev/null 2>&1
-	else	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit -I http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' -I gestures >/dev/null 2>&1
+	then	vlc --quiet "$FILENAME".xspf --play-and-exit --extraintf http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
+	else	vlc --quiet "$FNAME" --start-time "$START_POSITION" --play-and-exit --extraintf http --http-host 127.0.0.1 --http-port "$VLC_PORT" --http-password 'vlcremote' >/dev/null 2>&1
 	fi
 	
 	rm -f "$TRIGGER1" "$TRIGGER2"
