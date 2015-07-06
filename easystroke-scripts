@@ -371,6 +371,13 @@ fi
 
 
 ##########################################################
+# KRDC Focus
+if [ "$1" == "C45" ] ; then
+wmctrl -a "KRDC" || (notify-send "Gesture" "KRDC Window Not Found" ; sudo beep)
+fi
+
+
+##########################################################
 # END OF FILE
 if [ -z "$1" ] ; then
 echo "USAGE: $SCRIPT_NAME C##"
