@@ -22,8 +22,8 @@ NOTES="$(cat "$(echo $FNAME | rev |cut -b 5- | rev )"-NOTES.txt 2>/dev/null)" 2>
 DATE="$(stat "$FNAME" | grep Modify | awk '{print $2}')"
 SIZE="$(du -m "$FNAME" | awk '{print $1}')"
 SUB="$( echo $FNAME | rev |cut -b 5- | rev )"
-BITRATE="$( grep "bit rate" "$FNAME".log |cut -d: -f2 )"
-DURATION="$( grep "Duration" "$FNAME".log |cut -d: -f2 )"
+BITRATE="$( grep -s "bit rate" "$FNAME".log |cut -d: -f2 )"
+DURATION="$( grep -s "Duration" "$FNAME".log |cut -d: -f2 )"
 NFO="$( echo $FNAME | rev |cut -b 5- | rev )".nfo
 [ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g' | head -n1)" 2>/dev/null
 
