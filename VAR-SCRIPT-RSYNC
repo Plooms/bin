@@ -123,6 +123,8 @@ export HOUR1="$(date +%p-%H -d "1 hour ago")"
 export MIN0="$(date +%M)"
 ##Previous Minute:
 export MIN1="$(date +%M -d "1 minute ago")"
+##This second
+export SEC0="$(date +%Y-%m-%d-%p-%H-%M-%S)"
 ##10 days ago in ISO-8601 format
 export DAY10=$(date -I -d "10 days ago")
 ##30 days ago in ISO-8601 format
