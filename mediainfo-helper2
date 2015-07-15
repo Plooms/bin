@@ -20,10 +20,18 @@ rm "$TMP1" 	2>/dev/null
 if [ ! -f "$FNAME".log ] 
 then
 mediainfo "$FNAME" >  "$TMP1" 
+stat "$FNAME" >>  "$TMP1"
 
 cat  "$TMP1" | grep -E 'Complete name |File size |Width |Height ' | sed 's/                         :/:/g' > "$FNAME".log
 cat  "$TMP1" | grep -m 1 'Duration' | sed 's/                         :/:/g' >> "$FNAME".log
 cat  "$TMP1" | grep 'Overall bit rate' | grep -v 'Overall bit rate mode' | sed 's/                         :/:/g' >> "$FNAME".log
+
+echo -n "\n\n" >> "$FNAME".log
+
+cat  "$TMP1" | grep -m 1 'Access:' >> "$FNAME".log
+cat  "$TMP1" | grep -m 1 'Modify:' >> "$FNAME".log
+cat  "$TMP1" | grep -m 1 'Change:' >> "$FNAME".log
+
 echo "$FNAME".log
 fi
 
