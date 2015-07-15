@@ -26,11 +26,11 @@ cat  "$TMP1" | grep -E 'Complete name |File size |Width |Height ' | sed 's/     
 cat  "$TMP1" | grep -m 1 'Duration' | sed 's/                         :/:/g' >> "$FNAME".log
 cat  "$TMP1" | grep 'Overall bit rate' | grep -v 'Overall bit rate mode' | sed 's/                         :/:/g' >> "$FNAME".log
 
-echo -n "\n\n" >> "$FNAME".log
+echo -e "\n\n" >> "$FNAME".log
 
-cat  "$TMP1" | grep -m 1 'Access:' >> "$FNAME".log
-cat  "$TMP1" | grep -m 1 'Modify:' >> "$FNAME".log
-cat  "$TMP1" | grep -m 1 'Change:' >> "$FNAME".log
+cat  "$TMP1" | grep -m 1 'Access: 20' >> "$FNAME".log
+cat  "$TMP1" | grep -m 1 'Modify: 20' >> "$FNAME".log
+cat  "$TMP1" | grep -m 1 'Change: 20' >> "$FNAME".log
 
 echo "$FNAME".log
 fi
