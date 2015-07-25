@@ -21,15 +21,18 @@ _MOVE_WINDOW()
 
 if [ "$1" == "dolphin" ]
 then
-	ass="$(mktemp)"
-	wmctrl -l | grep -i "dolphin" | cut -d" " -f 5-  >> "$ass"
-	while read a ; do windows+=("$a") ; done < "$ass"
+	win_selector="$(mktemp)"
+	wmctrl -l | grep -i "dolphin" | cut -d" " -f 5-  >> "$win_selector"
+	while read a ; do windows+=("$a") ; done < "$win_selector"
 
 	answer="$(dialog --stdout --menu "Choose window" 0 0 0 \
         "${windows[0]}" "" \
         "${windows[1]}" "" \
         "${windows[2]}" "" \
         "${windows[3]}" "" )"
+        
+     wmctrl -a "$answer" || (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
+
 fi
 	
 ##########################################################
