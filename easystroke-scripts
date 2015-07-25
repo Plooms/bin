@@ -23,10 +23,6 @@ _WIN_SELECTOR()
 }
 	if [ "$1" == "dolphin" ]
 	then
-echo ass
-ass="$(mktemp)"
-	wmctrl -l | grep "dolphin" | cut -d" " -f 5-  >> "$ass"
-	while read a ; do windows+=("$a") ; done < "$ass"
 	answer="$(dialog --stdout  --extra-button --extra-label "Back" --menu "Choose window" 14 50 50 \
 	"${windows[0]}" "" \
 	"${windows[1]}" "" \
@@ -208,6 +204,10 @@ fi
 # Dolphin Focus
 if [ "$1" == "C23" ] ; then
 _WIN_SELECTOR
+ass="$(mktemp)"
+wmctrl -l | grep "dolphin" | cut -d" " -f 5-  >> "$ass"
+while read a ; do windows+=("$a") ; done < "$ass"
+
 #wmctrl -a dolphin || (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
 fi
 
