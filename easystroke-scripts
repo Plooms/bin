@@ -22,7 +22,7 @@ _MOVE_WINDOW()
 if [ "$1" == "dolphin" ]
 then
     
-    if wmctrl -a "dolphin"
+    if [ "$(wmctrl -l |grep -i dolphin | wc -l)" -gt 1 ]
     then
     win_selector="$(mktemp)"
 	wmctrl -l | grep -i "dolphin" | cut -d" " -f 5-  >> "$win_selector"
@@ -34,8 +34,8 @@ then
         "${windows[3]}" "" )"
      wmctrl -a "$answer" 
      
-     else
-     (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
+    else
+    wmctrl -a "dolphin" || (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
 	fi
 fi
 	
@@ -211,9 +211,14 @@ fi
 ##########################################################
 # Dolphin Focus
 if [ "$1" == "C23" ] ; then
-terminator -x terminator-helper easystroke-scripts dolphin
 
-#wmctrl -a dolphin || (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
+if [ "$(wmctrl -l |grep -i dolphin | wc -l)" -gt 1 ]
+then
+terminator -x terminator-helper easystroke-scripts dolphin
+else
+wmctrl -a dolphin || (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
+fi
+
 fi
 
 ##########################################################
