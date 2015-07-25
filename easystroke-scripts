@@ -19,17 +19,18 @@ _MOVE_WINDOW()
 
 _WIN_SELECTOR()
 {
-	wmctrl -l | grep "$1" | cut -d" " -f 5- > /tmp/win_selector
-	while read a ; do windows+="($a)" ; done < /tmp/win_selector
 	terminator -x /usr/local/bin/terminator-helper easystroke-scripts dolphin
 }
 	if [ "$1" == "dolphin" ]
 	then
+	wmctrl -l | grep "dolphin" | cut -d" " -f 5- >> /tmp/win_selector
+	while read a ; do windows+="($a)" ; done < /tmp/win_selector
 	answer="$(dialog --stdout  --extra-button --extra-label "Back" --menu "Choose window" 14 50 50 \
 	"${windows[0]}" "" \
 	"${windows[1]}" "" \
 	"${windows[2]}" "" \
 	"${windows[3]}" "" )"
+	exit 0
 	fi
 
 ##########################################################
