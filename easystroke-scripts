@@ -32,11 +32,8 @@ then
         "${windows[1]}" "" \
         "${windows[2]}" "" \
         "${windows[3]}" "" )"
-     wmctrl -a "$answer" 
-     
-    else
-    wmctrl -a "dolphin" || (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
-	fi
+    wmctrl -a "$answer"  
+    fi
 fi
 	
 ##########################################################
