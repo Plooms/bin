@@ -202,7 +202,7 @@ fi
 ##########################################################
 # Dolphin Focus
 if [ "$1" == "C23" ] ; then
-terminator -x dolphin-helper
+terminator -x terminator-helper easystroke-scripts _WIN_SELECTOR
 
 #wmctrl -a dolphin || (notify-send "Gesture" "Dolphin Window Not Found" ; sudo beep)
 fi
