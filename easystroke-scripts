@@ -23,8 +23,9 @@ _WIN_SELECTOR()
 }
 	if [ "$1" == "dolphin" ]
 	then
+#	rm /tmp/win_selector
 	wmctrl -l | grep "dolphin" | cut -d" " -f 5- >> /tmp/win_selector
-	while read a ; do windows+="($a)" ; done < /tmp/win_selector
+	while read a ; do windows+=("$a") ; done < /tmp/win_selector
 	answer="$(dialog --stdout  --extra-button --extra-label "Back" --menu "Choose window" 14 50 50 \
 	"${windows[0]}" "" \
 	"${windows[1]}" "" \
