@@ -17,6 +17,18 @@ _MOVE_WINDOW()
 	xte "keydown Control_L" "keydown Alt_L" "key 8" "keyup Control_L" "keyup Alt_L"
 }
 
+_WIN_SELECTOR()
+{
+	ass="$(mktemp)"
+	wmctrl -l | grep -i "dolphin" | cut -d" " -f 5-  >> "$ass"
+	while read a ; do windows+=("$a") ; done < "$ass"
+
+	answer="$(dialog --stdout --menu "Choose window" 14 50 50 \
+        "${windows[0]}" "" \
+        "${windows[1]}" "" \
+        "${windows[2]}" "" \
+        "${windows[3]}" "" )"
+}
 	
 ##########################################################
 # Close Window

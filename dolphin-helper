@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ass="$(mktemp)"
-wmctrl -l | grep "dolphin" | cut -d" " -f 5-  >> "$ass"
-wmctrl -l | grep "dolphin" | cut -d" " -f 5-
+wmctrl -l | grep -i "dolphin" | cut -d" " -f 5-  >> "$ass"
+wmctrl -l | grep -i "dolphin" | cut -d" " -f 5-
 while read a ; do windows+=("$a") ; done < "$ass"
 
 answer="$(dialog --stdout --menu "Choose window" 14 50 50 \
@@ -10,7 +10,3 @@ answer="$(dialog --stdout --menu "Choose window" 14 50 50 \
 	"${windows[1]}" "" \
 	"${windows[2]}" "" \
 	"${windows[3]}" "" )"
-
-echo b
-wmctrl -l | grep "dolphin" | cut -d" " -f 5-
-echo a
