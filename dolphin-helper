@@ -10,6 +10,7 @@ answer="$(dialog --stdout --menu "Choose window" 14 50 50 \
 	"${windows[1]}" "" \
 	"${windows[2]}" "" \
 	"${windows[3]}" "" )"
-	exit 0
-	fi
 
+echo b
+wmctrl -l | grep "dolphin" | cut -d" " -f 5-
+echo a
