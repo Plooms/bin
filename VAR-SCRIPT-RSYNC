@@ -95,7 +95,7 @@ TMP
 .kodi
 .ssh
 .thumbnails
-
+.mozilla/firefox/of45aroj.default/sessions
 
 " >| "$RSYNC_EXCLUDE_44"
 
