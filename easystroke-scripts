@@ -141,6 +141,14 @@ firefox "https://kat.cr/usearch/$KAT_NAME" 2>/dev/null
 fi
 
 ##########################################################
+# Search TVDB
+if [ "$1" == "C14-1" ] ; then
+TVDB_NAME="$( xclip -o  | sed 's/(//g;s///g;s/&/and/g;s/\ /+/g' )"
+# TVDB
+firefox "http://thetvdb.com/?string=$TVDB_NAME&searchseriesid=&tab=listseries&function=Search"
+fi
+
+##########################################################
 # Search KAT
 if [ "$1" == "C15" ] ; then
 KAT_NAME="$( xclip -o  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g;s/\//+/g" )"
