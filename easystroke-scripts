@@ -121,12 +121,12 @@ if [ "$1" == "C13" ] ; then
 YT_NAME="$(   xclip -o  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' ) trailer"
 KAT_NAME="$(  xclip -o  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g;s/\//+/g" )"
 TVDB_NAME="$( xclip -o  | sed 's/(//g;s///g;s/&/and/g;s/\ /+/g' )"
-# YT
-firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
-# KAT
-firefox "https://kat.cr/usearch/$KAT_NAME" 2>/dev/null
 # TVDB
 firefox "http://thetvdb.com/?string=$TVDB_NAME&searchseriesid=&tab=listseries&function=Search"
+# KAT
+firefox "https://kat.cr/usearch/$KAT_NAME" 2>/dev/null
+# YT
+firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 fi
 
 ##########################################################
@@ -134,10 +134,10 @@ fi
 if [ "$1" == "C14" ] ; then
 YT_NAME="$(  xclip -o  | sed 's/(//g;s/)//g;s/&/and/g;s/\ /+/g' ) trailer"
 KAT_NAME="$( xclip -o  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g;s/\//+/g" )"
-# YT
-firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 # KAT
 firefox "https://kat.cr/usearch/$KAT_NAME" 2>/dev/null
+# YT
+firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 fi
 
 ##########################################################
