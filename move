@@ -428,3 +428,5 @@ if ls -U | grep -E 'Complications\ -\ \[*' >/dev/null 2>&1 ; then mv -v Complica
 if ls -U | grep -E 'Clipped\ -\ \[*' >/dev/null 2>&1 ; then mv -v Clipped\ -\ \[* "$TV_SYM"/"Clipped"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Making\ Of\ The\ Mob\ New\ York\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Making\ Of\ The\ Mob\ New\ York\ -\ \[* "$TV_SYM"/"The Making Of The Mob: New York"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Mr.\ Robot\ -\ \[*' >/dev/null 2>&1 ; then mv -v Mr.\ Robot\ -\ \[* "$TV_SYM"/"Mr. Robot"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Brink\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Brink\ -\ \[* "$TV_SYM"/"The Brink"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Ballers\ -\ \[*' >/dev/null 2>&1 ; then mv -v Ballers\ -\ \[* "$TV_SYM"/"Ballers"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
