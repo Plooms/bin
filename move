@@ -436,3 +436,4 @@ if ls -U | grep -E 'Why\ With\ Hannibal\ Buress\ -\ \[*' >/dev/null 2>&1 ; then 
 if ls -U | grep -E 'The\ Jim\ Gaffigan\ Show\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Jim\ Gaffigan\ Show\ -\ \[* "$TV_SYM"/"The Jim Gaffigan Show"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Impastor\ -\ \[*' >/dev/null 2>&1 ; then mv -v Impastor\ -\ \[* "$TV_SYM"/"Impastor"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E '\ -\ \[*' >/dev/null 2>&1 ; then mv -v \ -\ \[* "$TV_SYM"/""/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Pawn\ Stars\ Australia\ -\ \[*' >/dev/null 2>&1 ; then mv -v Pawn\ Stars\ Australia\ -\ \[* "$TV_SYM"/"Pawn Stars Australia"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
