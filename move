@@ -417,7 +417,6 @@ if ls -U | grep -E 'Life\ in\ Pieces\ -\ \[*' >/dev/null 2>&1 ; then mv -v Life\
 if ls -U | grep -E 'Minority\ Report\ -\ \[*' >/dev/null 2>&1 ; then mv -v Minority\ Report\ -\ \[* "$TV_SYM"/"Minority Report"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Moonbeam\ City\ -\ \[*' >/dev/null 2>&1 ; then mv -v Moonbeam\ City\ -\ \[* "$TV_SYM"/"Moonbeam City"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Rosewood\ -\ \[*' >/dev/null 2>&1 ; then mv -v Rosewood\ -\ \[* "$TV_SYM"/"Rosewood"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Aquarius\ -\ \[*' >/dev/null 2>&1 ; then mv -v Aquarius\ -\ \[* "$TV_SYM"/"Aquarius"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Briefcase\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Briefcase\ -\ \[* "$TV_SYM"/"The Briefcase"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Sense8\ -\ \[*' >/dev/null 2>&1 ; then mv -v Sense8\ -\ \[* "$TV_SYM"/"Sense8"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'UnReal\ -\ \[*' >/dev/null 2>&1 ; then mv -v UnReal\ -\ \[* "$TV_SYM"/"UnReal"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
@@ -437,3 +436,4 @@ if ls -U | grep -E 'The\ Jim\ Gaffigan\ Show\ -\ \[*' >/dev/null 2>&1 ; then mv 
 if ls -U | grep -E 'Impastor\ -\ \[*' >/dev/null 2>&1 ; then mv -v Impastor\ -\ \[* "$TV_SYM"/"Impastor"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E '\ -\ \[*' >/dev/null 2>&1 ; then mv -v \ -\ \[* "$TV_SYM"/""/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Pawn\ Stars\ Australia\ -\ \[*' >/dev/null 2>&1 ; then mv -v Pawn\ Stars\ Australia\ -\ \[* "$TV_SYM"/"Pawn Stars Australia"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'Aquarius\ \(2015\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Aquarius\ \(2015\)\ -\ \[* "$TV_SYM"/"Aquarius (2015)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
