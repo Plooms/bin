@@ -418,7 +418,6 @@ if ls -U | grep -E 'Moonbeam\ City\ -\ \[*' >/dev/null 2>&1 ; then mv -v Moonbea
 if ls -U | grep -E 'Rosewood\ -\ \[*' >/dev/null 2>&1 ; then mv -v Rosewood\ -\ \[* "$TV_SYM"/"Rosewood"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Briefcase\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Briefcase\ -\ \[* "$TV_SYM"/"The Briefcase"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Sense8\ -\ \[*' >/dev/null 2>&1 ; then mv -v Sense8\ -\ \[* "$TV_SYM"/"Sense8"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'UnReal\ -\ \[*' >/dev/null 2>&1 ; then mv -v UnReal\ -\ \[* "$TV_SYM"/"UnReal"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Whispers\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Whispers\ -\ \[* "$TV_SYM"/"The Whispers"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Odd\ Mom\ Out\ -\ \[*' >/dev/null 2>&1 ; then mv -v Odd\ Mom\ Out\ -\ \[* "$TV_SYM"/"Odd Mom Out"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Astronaut\ Wives\ Club\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Astronaut\ Wives\ Club\ -\ \[* "$TV_SYM"/"The Astronaut Wives Club"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
@@ -436,3 +435,5 @@ if ls -U | grep -E 'Impastor\ -\ \[*' >/dev/null 2>&1 ; then mv -v Impastor\ -\ 
 if ls -U | grep -E '\ -\ \[*' >/dev/null 2>&1 ; then mv -v \ -\ \[* "$TV_SYM"/""/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Pawn\ Stars\ Australia\ -\ \[*' >/dev/null 2>&1 ; then mv -v Pawn\ Stars\ Australia\ -\ \[* "$TV_SYM"/"Pawn Stars Australia"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Aquarius\ \(2015\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Aquarius\ \(2015\)\ -\ \[* "$TV_SYM"/"Aquarius (2015)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Good\ Girls\ Revolt\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Good\ Girls\ Revolt\ -\ \[* "$TV_SYM"/"The Good Girls Revolt"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'UnREAL\ -\ \[*' >/dev/null 2>&1 ; then mv -v UnREAL\ -\ \[* "$TV_SYM"/"UnREAL"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
