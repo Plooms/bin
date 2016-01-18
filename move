@@ -398,7 +398,6 @@ if ls -U | grep -E 'Chicago\ Med\ -\ \[*' >/dev/null 2>&1 ; then mv -v Chicago\ 
 if ls -U | grep -E 'Into\ the\ Badlands\ -\ \[*' >/dev/null 2>&1 ; then mv -v Into\ the\ Badlands\ -\ \[* "$TV_SYM"/"Into the Badlands"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Agent\ X\ -\ \[*' >/dev/null 2>&1 ; then mv -v Agent\ X\ -\ \[* "$TV_SYM"/"Agent X"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Master\ of\ None\ -\ \[*' >/dev/null 2>&1 ; then mv -v Master\ of\ None\ -\ \[* "$TV_SYM"/"Master of None"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Good\ Girls\ Revolt\ -\ \[*' >/dev/null 2>&1 ; then mv -v Good\ Girls\ Revolt\ -\ \[* "$TV_SYM"/"Good Girls Revolt"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Supergirl\ -\ \[*' >/dev/null 2>&1 ; then mv -v Supergirl\ -\ \[* "$TV_SYM"/"Supergirl"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Crazy\ Ex-Girlfriend\ -\ \[*' >/dev/null 2>&1 ; then mv -v Crazy\ Ex-Girlfriend\ -\ \[* "$TV_SYM"/"Crazy Ex-Girlfriend"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Truth\ Be\ Told\ -\ \[*' >/dev/null 2>&1 ; then mv -v Truth\ Be\ Told\ -\ \[* "$TV_SYM"/"Truth Be Told"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
