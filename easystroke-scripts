@@ -54,7 +54,7 @@ fi
 if [ "$1" == "C03" ]  ; then
 _CHANGE_LANG_US
 CURRENTWIN="$(xdotool getwindowname $(xdotool getwindowfocus))"
-	if wmctrl -a friend && 
+	if wmctrl -a "Friend "
 	then wmctrl -a "Friend " ; sleep .2 ; xte "str hello" ; xte "key Return" ; sleep .1 ; wmctrl -a "$CURRENTWIN" ; notify-send "Pidgin" "Sent hello - Pidgin"
 	else notify-send "Gesture" "Pidgin window Not Found"
 	fi
@@ -230,7 +230,7 @@ fi
 ##########################################################
 # Pidgin Focus
 if [ "$1" == "C24" ] ; then
-wmctrl -a friend || (notify-send "Gesture" "Pidgin Window Not Found" ; sudo beep)
+wmctrl -a "Friend " || (notify-send "Gesture" "Pidgin Window Not Found" ; sudo beep)
 fi
 
 ##########################################################
