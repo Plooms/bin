@@ -423,7 +423,6 @@ if ls -U | grep -E 'Odd\ Mom\ Out\ -\ \[*' >/dev/null 2>&1 ; then mv -v Odd\ Mom
 if ls -U | grep -E 'The\ Astronaut\ Wives\ Club\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Astronaut\ Wives\ Club\ -\ \[* "$TV_SYM"/"The Astronaut Wives Club"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Complications\ -\ \[*' >/dev/null 2>&1 ; then mv -v Complications\ -\ \[* "$TV_SYM"/"Complications"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Clipped\ -\ \[*' >/dev/null 2>&1 ; then mv -v Clipped\ -\ \[* "$TV_SYM"/"Clipped"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'The\ Making\ Of\ The\ Mob\ New\ York\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Making\ Of\ The\ Mob\ New\ York\ -\ \[* "$TV_SYM"/"The Making Of The Mob: New York"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Mr.\ Robot\ -\ \[*' >/dev/null 2>&1 ; then mv -v Mr.\ Robot\ -\ \[* "$TV_SYM"/"Mr. Robot"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Brink\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Brink\ -\ \[* "$TV_SYM"/"The Brink"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Ballers\ -\ \[*' >/dev/null 2>&1 ; then mv -v Ballers\ -\ \[* "$TV_SYM"/"Ballers"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
@@ -437,3 +436,4 @@ if ls -U | grep -E 'Pawn\ Stars\ Australia\ -\ \[*' >/dev/null 2>&1 ; then mv -v
 if ls -U | grep -E 'Aquarius\ \(2015\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Aquarius\ \(2015\)\ -\ \[* "$TV_SYM"/"Aquarius (2015)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Good\ Girls\ Revolt\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Good\ Girls\ Revolt\ -\ \[* "$TV_SYM"/"The Good Girls Revolt"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'UnREAL\ -\ \[*' >/dev/null 2>&1 ; then mv -v UnREAL\ -\ \[* "$TV_SYM"/"UnREAL"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Making\ Of\ The\ Mob\ New\ York\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Making\ Of\ The\ Mob\ New\ York\ -\ \[* "$TV_SYM"/"The Making Of The Mob New York"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
