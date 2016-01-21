@@ -436,4 +436,4 @@ if ls -U | grep -E 'Pawn\ Stars\ Australia\ -\ \[*' >/dev/null 2>&1 ; then mv -v
 if ls -U | grep -E 'Aquarius\ \(2015\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v Aquarius\ \(2015\)\ -\ \[* "$TV_SYM"/"Aquarius (2015)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Good\ Girls\ Revolt\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Good\ Girls\ Revolt\ -\ \[* "$TV_SYM"/"The Good Girls Revolt"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'UnREAL\ -\ \[*' >/dev/null 2>&1 ; then mv -v UnREAL\ -\ \[* "$TV_SYM"/"UnREAL"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'The\ Making\ Of\ The\ Mob\ New\ York\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Making\ Of\ The\ Mob\ New\ York\ -\ \[* "$TV_SYM"/"The Making Of The Mob New York"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
+if ls -U | grep -E 'The\ Making\ of\ The\ Mob\ New\ York\ -\ \[*' >/dev/null 2>&1 ; then mv -v The\ Making\ of\ The\ Mob\ New\ York\ -\ \[* "$TV_SYM"/"The Making of The Mob New York"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
