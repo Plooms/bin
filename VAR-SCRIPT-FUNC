@@ -36,6 +36,17 @@ RANDOM_COLOR_SEQ()
 ####################################################
 ####################################################
 
+RANDOM_NUMBER_GENERATOR(){
+
+        xyz="$( perl -e 'print int rand 100,print int rand 100,print int rand 100,; ' 2>/dev/null | cut -b 1-3 )"
+
+        RANDOM_NUMBER="$xyz"
+
+}
+
+####################################################
+####################################################
+
 _CANCEL_MSG() { clear ; YELLOW ; echo -e "\n\n\n JOB CANCELED \n\n" ; }
 
 
