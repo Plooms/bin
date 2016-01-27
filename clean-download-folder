@@ -95,7 +95,7 @@ sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
 
 find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null
 find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null
-find "$TV_DOWNLOAD_DIR"/ -iname "*[[a-z]*" -exec rename "[" "" {} \; 2>/dev/null
+find "$TV_DOWNLOAD_DIR"/ -iname "*\[[a-z]*" -exec rename "[" "" {} \; 2>/dev/null
 find "$TV_DOWNLOAD_DIR"/ -iname "*[a-z]]*" -exec rename "]" "" {} \; 2>/dev/null
 
 GREEN
