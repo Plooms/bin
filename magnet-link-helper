@@ -1,3 +1,5 @@
 #!/bin/bash
+# Magnet links from firefox will be sent to "$home/magnet-links" file
 
-echo "$1" >> magnet-links-"$(date)"
+
+echo "$1" >> "$HOME"/magnet-links
