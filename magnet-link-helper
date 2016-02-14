@@ -1,5 +1,5 @@
 #!/bin/bash
 # Magnet links from firefox will be sent to "$home/magnet-links" file
 
-
+notify-send "Magnet Link" "Torrent Magnet added to file"
 echo "$1" >> "$HOME"/magnet-links
