@@ -7,10 +7,8 @@ PID=$$
 # Source the VAR MOAS
 source /usr/local/bin/VAR-SCRIPT
 
-
-# show date and time first for faster results
+# Generate gregorian date
 DATE="$( date +%A\ %d\ %B\ \ \ \(%r\) )"
-notify-send "$DATE" "$DATE"
 
 # Generate hijri date
 DAY="$( date +%_d | sed 's/^ //' )"
@@ -19,4 +17,4 @@ YEAR="$( date +%Y )"
 
 HIJRI="$( curl -s "http://www.islamicfinder.org/dateConversion.php?mode=ger-hij&day=$DAY&month=$MONTH&year=$YEAR&date_result=1&lang=english" | grep -o -P '(?<=The conversion result is: </b> ).*(?=<br>\*There is a small probability)' )"
 
-notify-send "$HIJRI" "$HIJRI"
+notify-send "$DATE" "$DATE $HIJRI"
