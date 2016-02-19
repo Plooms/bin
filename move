@@ -456,4 +456,3 @@ if ls -U | grep -E 'Workaholics\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----D
 if ls -U | grep -E 'Young\ \&\ Hungry\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Young\ \&\ Hungry\ -\ \[* "$TV_SYM"/"Young & Hungry"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Zoo\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Zoo\ -\ \[* "$TV_SYM"/"Zoo"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Zorro\ \(1957\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Zorro\ \(1957\)\ -\ \[* "$TV_SYM"/"Zorro (1957)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Teachers\ \(US\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S -----Duplicate-.mpeg Teachers\ \(US\)\ -\ \[* "$TV_SYM"/"Teachers (US)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
