@@ -223,6 +223,9 @@ _LOCK_MSG()
       rm -f $LOCKFILE  
 
       sudo kill -9 $(cat "$LOCKFILE")" 
+
+
+	notify-send "The process is already running" "The process is already running"
 	
 	exit 1
 }
