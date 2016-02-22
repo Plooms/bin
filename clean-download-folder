@@ -1,4 +1,4 @@
-'#!/bin/bash
+#!/bin/bash
 # Clean the download folder from junk
 SCRIPT_NAME="clean-download-folder"
 PID=$$
