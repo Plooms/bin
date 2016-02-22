@@ -41,6 +41,8 @@ RED
 rename ".srt" ".eng.srt" *.srt 2>/dev/null
 rename ".sub" ".eng.sub" *.sub 2>/dev/null
 
+YELLOW
+
 filebot -get-missing-subtitles --lang en -non-strict *
 
 CYAN

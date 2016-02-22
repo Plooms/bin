@@ -1,4 +1,4 @@
-#!/bin/bash
+'#!/bin/bash
 # Clean the download folder from junk
 SCRIPT_NAME="clean-download-folder"
 PID=$$
@@ -139,6 +139,26 @@ echo ""
 
 #########################################################
 
+# Download missing subs in Download dir
+
+CYAN
+echo "Searching for Subtitles"
+COLOR_OFF
+
+filebot -get-missing-subtitles --lang en -non-strict *
+
+GREEN
+echo "[*] Finished Searching for Subtitles"
+COLOR_OFF
+
+echo ""
+
+
+
+
+
+
+#########################################################
 # Time Calculation
 _END_TIME
 
