@@ -24,19 +24,24 @@ fi
 
 cd "$TV_DOWNLOAD_DIR" || exit 1
 
-sudo chmod 777 * ; sudo chown "$USERNANE":"$USERNAME" *
+sudo chmod 777 * ; sudo chown "$USERNAME":"$USERNAME" *
 
 PURPLE
 
+# Rename "Cops" only
 filebot -rename --format "{n} - [{s.pad(2)}x{e.pad(2)}] - {t}" --db TheTVDB -non-strict Cops* >/dev/null 2>&1
+
+# Rename all
 tvnamer -c ~/.tvnamer.json * | tee -a .Rename.Log ; date >> .Rename.Log
 
 RED
 
-tvnamer -c ~/.tvnamer.json * | grep skipping | tee -a .Rename.Log ; date >> .Rename.Log
+# tvnamer -c ~/.tvnamer.json * | grep skipping | tee -a .Rename.Log ; date >> .Rename.Log
 
 rename ".srt" ".eng.srt" *.srt 2>/dev/null
 rename ".sub" ".eng.sub" *.sub 2>/dev/null
+
+filebot -get-missing-subtitles --lang en -non-strict *
 
 CYAN
 
@@ -47,8 +52,6 @@ read confirmation
 if [ "$confirmation" = "y" ]
 
 then
-
-filebot -get-missing-subtitles --lang en -non-strict *
 
 /usr/local/bin/move 2>&1 | tee -a .Move.Log ; date >> .Move.Log
 
