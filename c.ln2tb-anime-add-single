@@ -38,7 +38,7 @@ sudo chmod 777 "$TV_SYM2"/"$name"
 if [ "$?" = 0 ]
 then
 
-sudo echo "if ls -U | grep -E '"$name3"' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" "$name3" \""\$TV_SYM2"\"/\""$name"\"/              2>/dev/null ; else false ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move
+sudo echo "if ls -U | grep -E '"$name3"' >/dev/null 2>&1 ; then mv -v -S \"-----Duplicate-\${RANDOM_NUMBER}.mpeg\" "$name3" \""\$TV_SYM2"\"/\""$name"\"/              2>/dev/null ; else false ; fi && echo -e \"\\n\\n\"" >> /usr/local/bin/move
 
 
 
