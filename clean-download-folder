@@ -145,7 +145,7 @@ CYAN
 echo "Searching for Subtitles"
 COLOR_OFF
 
-filebot -get-missing-subtitles --lang en -non-strict *
+filebot -get-missing-subtitles --lang en -non-strict "$TV_DOWNLOAD_DIR"/*
 
 GREEN
 echo "[*] Finished Searching for Subtitles"
