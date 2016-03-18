@@ -30,7 +30,19 @@ echo "Manipulating the episodes file"
 while read f ; do basename "$f" | cut -d "]" -f1 ;done < .abz1.txt >> .abz2.txt
 while read f ; do basename "$f" | cut -d "]" -f1 ;done < .sal1.txt >> .sal2.txt
 
-cut -d "]" -f1  .abz2.txt .sal2.txt | sort -f | uniq -u \
+cut -d "]" -f1  .abz2.txt .sal2.txt | sort -f | uniq -u > .c1.txt
+sed -i "s/\[/\\\[/g" .c1.txt
+
+
+
+echo ""
+echo "Finalizing the episodes file"
+
+while read -r a ; do grep -q "$a" .abz1.txt && echo "$a    -    is in abz only" ; done < .c1.txt > sal-missing.txt
+while read -r a ; do grep -q "$a" .sal1.txt && echo "$a    -    is in sal only" ; done < .c1.txt > abz-missing.txt
+
+
+cat abz-missing.txt \
 | grep -v "1000 Ways To Die" \
 | grep -v "30 Days" \
 | grep -v "Alaska State Troopers" \
@@ -55,7 +67,7 @@ cut -d "]" -f1  .abz2.txt .sal2.txt | sort -f | uniq -u \
 | grep -v "Extreme Couponing" \
 | grep -v "FlashForward" \
 | grep -v "Full Throttle Saloon" \
-| grep -v "Hairy Bikers \(US\)" \
+| grep -v "Hairy Bikers (US)" \
 | grep -v "Hardcore Pawn" \
 | grep -v "Hillbilly Handfishin" \
 | grep -v "Hoarders" \
@@ -79,32 +91,29 @@ cut -d "]" -f1  .abz2.txt .sal2.txt | sort -f | uniq -u \
 | grep -v "Pawn Stars" \
 | grep -v "Robot Chicken" \
 | grep -v "Scare Tactics" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-
-> .c1.txt
-sed -i "s/\[/\\\[/g" .c1.txt
-
-echo ""
-echo "Finalizing the episodes file"
-
-while read -r a ; do grep -q "$a" .abz1.txt && echo "$a    -    is in abz only" ; done < .c1.txt > sal-missing.txt
-while read -r a ; do grep -q "$a" .sal1.txt && echo "$a    -    is in sal only" ; done < .c1.txt > abz-missing.txt
+| grep -v "Sirens (2014)" \
+| grep -v "Sister Wives" \
+| grep -v "Sleeper Cell" \
+| grep -v "Sons of Guns" \
+| grep -v "Spawn" \
+| grep -v "Steven Seagal Lawman" \
+| grep -v "Strike Back" \
+| grep -v "Superman The Animated Series" \
+| grep -v "Surprise Homecoming" \
+| grep -v "Swords Life on the Line" \
+| grep -v "Take the Money and Run" \
+| grep -v "Teachers (2016)" \
+| grep -v "Thats Impossible\!" \
+| grep -v "The After" \
+| grep -v "The Boondocks" \
+| grep -v "The Bridge" \
+| grep -v "The Defenders (2010)" \
+| grep -v "The Event" \
+| grep -v "The Good Guys (2010)" \
+| grep -v "The Ren and Stimpy Show" \
+| grep -v "The Venture Bros." \
+| grep -v "Thundercats" \
+| grep -v "Underbelly" > abz-missing-really.txt
 
 
 echo "Finished - check ($Dropbox)"
