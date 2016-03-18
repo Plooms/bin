@@ -142,7 +142,7 @@ echo ""
 # Download missing subs in Download dir
 
 CYAN
-echo "Searching for Subtitles"
+echo "Searching for Subtitles (One by One)"
 COLOR_OFF
 
 find "$TV_DOWNLOAD_DIR"/ -type f -size +20M -exec filebot -get-missing-subtitles --lang en -non-strict {} \; 2>/dev/null
