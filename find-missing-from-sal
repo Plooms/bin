@@ -33,17 +33,52 @@ while read f ; do basename "$f" | cut -d "]" -f1 ;done < .sal1.txt >> .sal2.txt
 cut -d "]" -f1  .abz2.txt .sal2.txt | sort -f | uniq -u \
 | grep -v "1000 Ways To Die" \
 | grep -v "30 Days" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
-| grep -v "" \
+| grep -v "Alaska State Troopers" \
+| grep -v "Alcatraz" \
+| grep -v "All Worked Up" \
+| grep -v "American Guns" \
+| grep -v "Border Wars" \
+| grep -v "Breaking In" \
+| grep -v "Breakout Kings" \
+| grep -v "Cake Boss" \
+| grep -v "Car Warriors" \
+| grep -v "Chip n Dale Rescue Rangers" \
+| grep -v "Cow and Chicken" \
+| grep -v "Customs" \
+| grep -v "Deadliest Warrior" \
+| grep -v "Destroyed in Seconds" \
+| grep -v "Detroit 1-8-7" \
+| grep -v "Dexter\'s Lab" \
+| grep -v "Dexters Laboratory" \
+| grep -v "Dirty Sexy Money" \
+| grep -v "Drugs, Inc." \
+| grep -v "Extreme Couponing" \
+| grep -v "FlashForward" \
+| grep -v "Full Throttle Saloon" \
+| grep -v "Hairy Bikers \(US\)" \
+| grep -v "Hardcore Pawn" \
+| grep -v "Hillbilly Handfishin" \
+| grep -v "Hoarders" \
+| grep -v "Hustle" \
+| grep -v "Ice Pilots NWT" \
+| grep -v "Ice Road Truckers" \
+| grep -v "Invention USA" \
+| grep -v "Lizard Lick Towing" \
+| grep -v "Lock N Load with R. Lee Ermey" \
+| grep -v "Look Around You" \
+| grep -v "Luck" \
+| grep -v "Man v. Food" \
+| grep -v "Mas Roadhouse" \
+| grep -v "Men of a Certain Age" \
+| grep -v "Metalocalypse" \
+| grep -v "Moonshiners" \
+| grep -v "Mountain Men" \
+| grep -v "No Ordinary Family" \
+| grep -v "One Man Army" \
+| grep -v "Parks and Recreation" \
+| grep -v "Pawn Stars" \
+| grep -v "Robot Chicken" \
+| grep -v "Scare Tactics" \
 | grep -v "" \
 | grep -v "" \
 | grep -v "" \
