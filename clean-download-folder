@@ -96,11 +96,11 @@ sudo find "$TV_DOWNLOAD_DIR"/ -type f \( -iname "*.directory" \
 find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null
 find "$TV_DOWNLOAD_DIR"/ -type d -not -iname "znew Folder" -exec rmdir {} \; 2>/dev/null
 
-#Only rename "[" & "]"  to blanks in the main download folder
+# Rename "[" & "]"  to blanks in the main download folder
 find "$TV_DOWNLOAD_DIR"/ -maxdepth 1 -iname "*[*" -exec rename "[" "" {} \; 2>/dev/null
 find "$TV_DOWNLOAD_DIR"/ -maxdepth 1 -iname "*]*" -exec rename "]" "" {} \; 2>/dev/null
 
-#Only rename "[" & "]"  to blanks if they conatin letters not numbers
+# Rename "[" & "]"  to blanks if they contain letters not numbers
 find "$TV_DOWNLOAD_DIR"/ -mindepth 2 -iname "*\[[a-z]*" -exec rename "[" "" {} \; 2>/dev/null
 find "$TV_DOWNLOAD_DIR"/ -mindepth 2 -iname "*[a-z]]*" -exec rename "]" "" {} \; 2>/dev/null
 
@@ -115,7 +115,7 @@ CYAN
 echo "Creating mediainfo files"
 COLOR_OFF
 
-export DL_DIR=YES ; /usr/local/bin/mediainfo-helper
+#########export DL_DIR=YES ; /usr/local/bin/mediainfo-helper
 
 GREEN
 echo "[*] Finished Creating mediainfo files"
