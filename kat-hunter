@@ -1,7 +1,7 @@
 #!/bin/bash
 # Search KAT for many names by "while read a; do kat-hunter $a ;done < filename"
 # Search KAT for specific quality by "while read a; do kat-hunter "$a.720p" ;done < filename"
-# Clean up the episode name by " ls | sed -n -e "s/\(.*S[0-9][0-9]E[0-9][0-9]\).*/\1/p" "
+# Clean up the episode name by " ls | sed -n -e "s/\(.*[Ss][0-9][0-9][Ee][0-9][0-9]\).*/\1/p" | uniq "
 
 SCRIPT_NAME="kat-hunter"
 PID=$$
