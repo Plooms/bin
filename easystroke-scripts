@@ -285,7 +285,7 @@ fi
 # Press CTRL
 if [ "$1" == "C32" ] ; then
 xte "keydown Control_L"
-sleep 3
+sleep 1
 xte "keyup Control_L"
 notify-send "Gesture" "keyup CTRL"
 fi
