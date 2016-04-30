@@ -39,6 +39,7 @@ RED
 # tvnamer -c ~/.tvnamer.json * | grep skipping | tee -a .Rename.Log ; date >> .Rename.Log
 
 rename ".srt" ".eng.srt" *.srt 2>/dev/null
+rename ".eng.eng.srt" ".eng.srt" *.srt 2>/dev/null
 rename ".sub" ".eng.sub" *.sub 2>/dev/null
 
 YELLOW
