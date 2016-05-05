@@ -13,25 +13,44 @@ DIR="$(echo $( dirname "$( echo $FNAME )") | rev |cut -d/ -f1 |rev)"
 NAME="$(basename "$( echo $FNAME )")"
 SUB="$( echo $FNAME | rev | cut -d"." -f2- | rev )"
 NFO="$( echo $FNAME | rev | cut -d"." -f2- | rev )".nfo
-[ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g' | head -n1)" 2>/dev/null
+[ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<watched>//;s/<\/watched>//;s/ //g' | head -n1)" 2>/dev/null
+#[ -f "$NFO" ] && PLAY_COUNT="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g' | head -n1)" 2>/dev/null
 
 SUBTITLE="NO"
 if find "$SUB"*.srt -exec echo -n \; ; then SUBTITLE="YES" ; fi 2>/dev/null
 if find "$SUB"*.sub -exec echo -n \; ; then SUBTITLE="YES" ; fi 2>/dev/null
 
 
+
+### New nfo file where watched=false ###
 if [ -f "$NFO" ]
 then
 	if [ ! -z "$PLAY_COUNT" ]
 	then 
-		if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
+		if [ "$PLAY_COUNT" -eq "true" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
 	else
 		WATCHED="(N/A): Incomplete NFO file"
 	fi
 else
 	WATCHED="(N/A): No NFO file"
 fi
+######
 
+
+
+### Old nfo file where watched=2 ###
+#if [ -f "$NFO" ]
+#then
+#	if [ ! -z "$PLAY_COUNT" ]
+#	then 
+#		if [ "$PLAY_COUNT" -gt "0" ] ; then WATCHED="YES" ; else WATCHED="NO" ; fi
+#	else
+#		WATCHED="(N/A): Incomplete NFO file"
+#	fi
+#else
+#	WATCHED="(N/A): No NFO file"
+#fi
+######
 
 mysql -uroot -p"$DB_PASSWORD" tv << EOF
 INSERT INTO tv (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition,Date,Subtitle) 
