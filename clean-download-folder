@@ -145,7 +145,7 @@ CYAN
 echo "Searching for Subtitles (One by One)"
 COLOR_OFF
 
-##caused crash in system##   find "$TV_DOWNLOAD_DIR"/ -type f -size +20M -exec filebot -get-missing-subtitles --lang en -non-strict {} \; 2>/dev/null
+##caused java crash in system##   find "$TV_DOWNLOAD_DIR"/ -type f -size +20M -exec filebot -get-missing-subtitles --lang en -non-strict {} \; 2>/dev/null
 
 GREEN
 echo "[*] Finished Searching for Subtitles"
