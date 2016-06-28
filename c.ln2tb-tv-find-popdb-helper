@@ -13,8 +13,8 @@ DIR="$(echo $( dirname "$( echo $FNAME )") | rev |cut -d/ -f1 |rev)"
 NAME="$(basename "$( echo $FNAME )")"
 SUB="$( echo $FNAME | rev | cut -d"." -f2- | rev )"
 NFO="$( echo $FNAME | rev | cut -d"." -f2- | rev )".nfo
-[ -f "$NFO" ] && PLAY_COUNT1="$(grep watched "$NFO" | sed 's/<watched>//;s/<\/watched>//;s/ //g' | head -n1)" 2>/dev/null
-[ -f "$NFO" ] && PLAY_COUNT2="$(grep playcount "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g' | head -n1)" 2>/dev/null
+[ -f "$NFO" ] && PLAY_COUNT1="$(grep "<watched>" "$NFO" | sed 's/<watched>//;s/<\/watched>//;s/ //g' | head -n1)" 2>/dev/null
+[ -f "$NFO" ] && PLAY_COUNT2="$(grep "<playcount>" "$NFO" | sed 's/<playcount>//;s/<\/playcount>//;s/ //g' | head -n1)" 2>/dev/null
 
 SUBTITLE="NO"
 if find "$SUB"*.srt -exec echo -n \; ; then SUBTITLE="YES" ; fi 2>/dev/null
