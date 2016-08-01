@@ -40,7 +40,7 @@ firefox "http://www.imdb.com/title/$MOVIE" 2>/dev/null
 # YT
 firefox "www.youtube.com/results?search_query=$YT_NAME&sm=3" 2>/dev/null
 # KAT
-firefox "https://kat.am/usearch/$KAT_NAME" 2>/dev/null
+firefox "https://kickass.cd/usearch/$KAT_NAME" 2>/dev/null
 # TVDB
 #firefox "http://thetvdb.com/?string=$TVDB_NAME&searchseriesid=&tab=listseries&function=Search"
 

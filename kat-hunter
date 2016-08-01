@@ -13,4 +13,4 @@ source /usr/local/bin/VAR-SCRIPT
 KAT_NAME="$(  echo "$1"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g;s/\//+/g" )"
 
 # KAT
-firefox "https://kat.am/usearch/$KAT_NAME" 2>/dev/null
+firefox "https://kickass.cd/usearch/$KAT_NAME" 2>/dev/null
