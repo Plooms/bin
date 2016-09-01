@@ -2,7 +2,9 @@
 # Search KAT for many names by "while read a; do kat-hunter $a ;done < filename"
 # Search KAT for specific quality by "while read a; do kat-hunter "$a.720p" ;done < filename"
 # Clean up the episode name by " ls | sed -n -e "s/\(.*[Ss][0-9][0-9][Ee][0-9][0-9]\).*/\1/p" | uniq "
-# Do all this shit (one liner): " ls | sed -n -e "s/\(.*[Ss][0-9][0-9][Ee][0-9][0-9]\).*/\1/p" | uniq | while read a; do kat-hunter $a ;done "
+# Do all this shit (one liner): 
+#+++   " ls | sed -n -e "s/\(.*[Ss][0-9][0-9][Ee][0-9][0-9]\).*/\1/p" | uniq | while read a; do kat-hunter $a ;done "
+
 SCRIPT_NAME="kat-hunter"
 PID=$$
 
@@ -13,4 +15,4 @@ source /usr/local/bin/VAR-SCRIPT
 KAT_NAME="$(  echo "$1"  | sed "s/(//g;s/)//g;s/\./\+/g;s/&/and/g;s/,/\ /g;s/'//g;s/\!//g;s/\//+/g" )"
 
 # KAT
-firefox "https://kickass.cd/usearch/$KAT_NAME" 2>/dev/null
+firefox "https://kickass.cd/search.php?q=$KAT_NAME" 2>/dev/null
