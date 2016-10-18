@@ -13,4 +13,4 @@ sudo systemctl restart lvm2-lvmetad
 sudo vgscan
 sudo vgchange -an
 sudo vgchange -ay
-sudo mount -v /mnt/C1 && sudo mount -v /mnt/C1/Other/ISOs/VMs
+sudo mount -v /mnt/C1 && sudo mount -v /mnt/C1/Other/ISOs/VMs && sudo mount -v /mnt/Backup-Pool
