@@ -8,4 +8,4 @@ PID=$$
 source /usr/local/bin/VAR-SCRIPT
 
 
-x11vnc -forever -repeat
+x11vnc -forever -alwaysshared -repeat
