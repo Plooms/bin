@@ -35,7 +35,7 @@ sudo mkdir /etc/openvpn/ccd 2>/dev/null
 
 # Take the new cert and place it somewhere it can be downloaded securely
 	sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key /etc/openvpn/ca.crt /etc/openvpn/CLIENTS/"$CN"/
-	sudo rm pki/reqs/$CN.req pki/private/$CN.key
+	sudo rm pki/reqs/$CN.req pki/private/$CN.key pki/issued/$CN.crt
 
 cd /etc/openvpn/CLIENTS/"$CN"/
 	sudo mkdir Android 2>/dev/null
