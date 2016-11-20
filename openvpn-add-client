@@ -20,27 +20,24 @@ if [ -z "$CN" ]
 	exit
 fi
 
-# Check the CN doesn't already exist
-if [ -f $OPENVPN_KEYS/$CN.crt ]
-	then echo "Error: certificate with the CN $CN alread exists!"
-		echo "    $OPENVPN_KEYS/$CN.crt"
-	exit
-fi
 
 # Enter the easy-rsa directory and establish the default variables
 cd $OPENVPN_RSA_DIR
 
-# Copied from build-key script (to ensure it works!)
-export EASY_RSA="${EASY_RSA:-.}"
- sudo easyrsa build-client-full "$CN" nopass
+# Create the user
+	sudo easyrsa build-client-full "$CN" nopass
 
 # Take the new cert and place it somewhere it can be downloaded securely
+	sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key $OPENVPN_KEYS/ca.crt /etc/openvpn/CLIENTS/"$CN"/
 
- sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key $OPENVPN_KEYS/ca.crt /etc/openvpn/CLIENTS/"$CN"/
+cd /etc/openvpn/CLIENTS/"$CN"/
+	sudo mkdir Android
+	sudo openssl pkcs12 -export -inkey $CN.key -in $CN.crt -certfile ca.crt -out Android/$CN.p12
 
 # Celebrate!
 echo ""
 echo "#############################################################"
 echo "COMPLETE! Download the new certificate here:"
-echo "$KEY_DOWNLOAD_PATH/$CN"
+echo "Regular: $KEY_DOWNLOAD_PATH/$CN"
+echo "Android $KEY_DOWNLOAD_PATH/$CN/Android"
 echo "#############################################################"
