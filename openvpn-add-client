@@ -28,16 +28,17 @@ cd $OPENVPN_RSA_DIR
 	sudo easyrsa build-client-full "$CN" nopass
 
 # Create Needed directories
-sudo mkdir /etc/openvpn/keys
-sudo mkdir /etc/openvpn/CLIENTS
-sudo mkdir /etc/openvpn/ccd
+sudo mkdir /etc/openvpn/keys 2>/dev/null
+sudo mkdir /etc/openvpn/CLIENTS 2>/dev/null
+sudo mkdir /etc/openvpn/ccd 2>/dev/null
 
 
 # Take the new cert and place it somewhere it can be downloaded securely
-	sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key $OPENVPN_KEYS/ca.crt /etc/openvpn/CLIENTS/"$CN"/
+	sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key /etc/openvpn/ca.crt /etc/openvpn/CLIENTS/"$CN"/
+	sudo rm pki/reqs/$CN.req pki/private/$CN.key
 
 cd /etc/openvpn/CLIENTS/"$CN"/
-	sudo mkdir Android
+	sudo mkdir Android 2>/dev/null
 	sudo openssl pkcs12 -export -inkey $CN.key -in $CN.crt -certfile ca.crt -out Android/$CN.p12
 
 	echo "# Sample File for openvpn client $CN"  >> /etc/openvpn/ccd/"$CN"
