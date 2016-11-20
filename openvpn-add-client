@@ -44,10 +44,6 @@ cd /etc/openvpn/CLIENTS/"$CN"/
 	echo "# iroute 192.168.1.0 255.255.255.248"  >> /etc/openvpn/ccd/"$CN"
         echo "# ifconfig-push 11.1.1.111 11.1.1.112" >> /etc/openvpn/ccd/"$CN"
 
-   ifconfig-push 11.1.1.111 11.1.1.112
-
- Sample File for openvpn client $CN" > /etc/openvpn/ccd/"$CN"
-
 
 # Celebrate!
 echo ""

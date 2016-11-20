@@ -27,7 +27,7 @@ fi
 
 
 # Take the new cert and place it somewhere it can be downloaded securely
-	sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key pki/private/ca.crt /etc/openvpn/
+	sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key pki/ca.crt /etc/openvpn/
 
 
 # Celebrate!
