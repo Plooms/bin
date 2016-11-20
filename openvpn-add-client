@@ -9,7 +9,7 @@
 
 # Set where we're working from
 OPENVPN_RSA_DIR=/etc/easy-rsa
-OPENVPN_KEYS=$OPENVPN_RSA_DIR/keys
+OPENVPN_KEYS=/etc/openvpn/keys
 KEY_DOWNLOAD_PATH=/etc/openvpn/CLIENTS
 
 # Either read the CN from $1 or prompt for it
