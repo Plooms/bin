@@ -1,5 +1,5 @@
 #! /bin/bash
-# Script to automate creating new OpenVPN clients
+# Script to automate creating new OpenVPN servers
 
 # Set where we're working from
 OPENVPN_RSA_DIR=/etc/easy-rsa
