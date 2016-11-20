@@ -8,7 +8,7 @@ KEY_DOWNLOAD_PATH=/etc/openvpn/CLIENTS
 
 # Either read the CN from $1 or prompt for it
 if [ -z "$1" ]
-	then echo -n "Enter new client common name (CN): "
+	then echo -n "Enter new server common name (CN): "
 	read -e CN
 else
 	CN=$1
@@ -22,22 +22,22 @@ fi
 
 
 # Enter the easy-rsa directory and establish the default variables
-cd $OPENVPN_RSA_DIR
+	cd /etc/easy-rsa
+	easyrsa init-pki
+	easyrsa build-ca nopass
+	easyrsa build-server-full "$CN" nopass
+	openssl dhparam -out /etc/openvpn/dh.pem 2048
+	openvpn --genkey --secret /etc/openvpn/ta.key
+	
 
-# Create the user
-	sudo easyrsa build-client-full "$CN" nopass
 
 # Take the new cert and place it somewhere it can be downloaded securely
-	sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key $OPENVPN_KEYS/ca.crt /etc/openvpn/CLIENTS/"$CN"/
+	sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key pki/private/ca.crt /etc/openvpn/
 
-cd /etc/openvpn/CLIENTS/"$CN"/
-	sudo mkdir Android
-	sudo openssl pkcs12 -export -inkey $CN.key -in $CN.crt -certfile ca.crt -out Android/$CN.p12
 
 # Celebrate!
 echo ""
 echo "#############################################################"
-echo "COMPLETED! Download the new certificates here:"
-echo "Regular: $KEY_DOWNLOAD_PATH/$CN"
-echo "Android $KEY_DOWNLOAD_PATH/$CN/Android"
+echo "COMPLETED! Find the new certificates here:"
+echo "/etc/openvpn/"
 echo "#############################################################"
