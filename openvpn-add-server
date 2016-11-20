@@ -1,11 +1,6 @@
 #! /bin/bash
 # Script to automate creating new OpenVPN servers
 
-# Set where we're working from
-OPENVPN_RSA_DIR=/etc/easy-rsa
-OPENVPN_KEYS=/etc/openvpn/keys
-KEY_DOWNLOAD_PATH=/etc/openvpn/CLIENTS
-
 # Either read the CN from $1 or prompt for it
 if [ -z "$1" ]
 	then echo -n "Enter new server common name (CN): "
@@ -23,11 +18,11 @@ fi
 
 # Enter the easy-rsa directory and establish the default variables
 	cd /etc/easy-rsa
-	easyrsa init-pki
-	easyrsa build-ca nopass
-	easyrsa build-server-full "$CN" nopass
-	openssl dhparam -out /etc/openvpn/dh.pem 2048
-	openvpn --genkey --secret /etc/openvpn/ta.key
+	sudo easyrsa init-pki
+	sudo easyrsa build-ca nopass
+	sudo easyrsa build-server-full "$CN" nopass
+	sudo openssl dhparam -out /etc/openvpn/dh.pem 2048
+	sudo openvpn --genkey --secret /etc/openvpn/ta.key
 	
 
 
