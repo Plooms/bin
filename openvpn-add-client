@@ -35,7 +35,8 @@ export EASY_RSA="${EASY_RSA:-.}"
  sudo easyrsa build-client-full "$CN" nopass
 
 # Take the new cert and place it somewhere it can be downloaded securely
- sudo rsync -avhP $OPENVPN_KEYS/$CN.crt $OPENVPN_KEYS/$CN.key $OPENVPN_KEYS/ca.crt /etc/openvpn/CLIENTS/"$CN"/
+
+ sudo rsync -a pki/issued/$CN.crt pki/private/$CN.key $OPENVPN_KEYS/ca.crt /etc/openvpn/CLIENTS/"$CN"/
 
 # Celebrate!
 echo ""
