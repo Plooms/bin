@@ -33,22 +33,22 @@ comp-lzo
 remote-cert-tls server
 <ca>
 EOF
-cat ${cacert}
+sudo cat ${cacert}
 cat << EOF
 </ca>
 <cert>
 EOF
-cat ${client_cert}
+sudo cat ${client_cert}
 cat << EOF
 </cert>
 <key>
 EOF
-cat ${client_key}
+sudo cat ${client_key}
 cat << EOF
 </key>
 <tls-auth>
 EOF
-cat ${tls_key}
+sudo cat ${tls_key}
 cat << EOF
 </tls-auth>
 EOF
