@@ -44,7 +44,8 @@ cd /etc/openvpn/CLIENTS/"$CN"/
 	echo "# Sample File for openvpn client $CN"  | sudo tee -a /etc/openvpn/ccd/"$CN"
 	echo "#   iroute 192.168.1.0 255.255.255.248"  | sudo tee -a /etc/openvpn/ccd/"$CN"
         echo "#   ifconfig-push 11.1.1.111 11.1.1.112" | sudo tee -a /etc/openvpn/ccd/"$CN"
-
+	
+	sudo chmod 775 /etc/openvpn/CLIENTS -R 
 
 # Celebrate!
 echo ""
