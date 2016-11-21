@@ -41,9 +41,9 @@ cd /etc/openvpn/CLIENTS/"$CN"/
 	sudo mkdir Android 2>/dev/null
 	sudo openssl pkcs12 -export -inkey $CN.key -in $CN.crt -certfile ca.crt -out Android/$CN.p12
 
-	echo "# Sample File for openvpn client $CN"  >> /etc/openvpn/ccd/"$CN"
-	echo "# iroute 192.168.1.0 255.255.255.248"  >> /etc/openvpn/ccd/"$CN"
-        echo "# ifconfig-push 11.1.1.111 11.1.1.112" >> /etc/openvpn/ccd/"$CN"
+	echo "# Sample File for openvpn client $CN"  | sudo tee -a /etc/openvpn/ccd/"$CN"
+	echo "#   iroute 192.168.1.0 255.255.255.248"  | sudo tee -a /etc/openvpn/ccd/"$CN"
+        echo "#   ifconfig-push 11.1.1.111 11.1.1.112" | sudo tee -a /etc/openvpn/ccd/"$CN"
 
 
 # Celebrate!
