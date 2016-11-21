@@ -54,7 +54,7 @@ cd /etc/openvpn/CLIENTS/"$CN"/
 
 
 # Create ovpn file
-/usr/local/bin/openvpn-ovpn-creator "$address" "$port" "/etc/openvpn/ca.crt" "" ""
+/usr/local/bin/openvpn-ovpn-creator "$address" "$port" "/etc/openvpn/ca.crt" "$CN.crt" "$CN.key" "/etc/openvpn/ta.key" | sudo tee -a /etc/openvpn/CLIENTS/"$CN"/"$CN".ovpn
 
 # Celebrate!
 echo ""
