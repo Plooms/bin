@@ -6,15 +6,17 @@
 ##
 
 server=${1?"The server address is required"}
-cacert=${2?"The path to the ca certificate file is required"}
-client_cert=${3?"The path to the client certificate file is required"}
-client_key=${4?"The path to the client private key file is required"}
-tls_key=${5?"The path to the TLS shared secret file is required"}
+port=${2?"The server port is required"}
+cacert=${3?"The path to the ca certificate file is required"}
+client_cert=${4?"The path to the client certificate file is required"}
+client_key=${5?"The path to the client private key file is required"}
+tls_key=${6?"The path to the TLS shared secret file is required"}
 
 cat << EOF
 client
 dev tun
 remote ${server}
+port ${port}
 resolv-retry infinite
 nobind
 persist-key
@@ -25,7 +27,6 @@ key [inline]
 tls-auth [inline] 1
 verb 1
 keepalive 10 120
-port 1194
 proto udp
 cipher BF-CBC
 comp-lzo
