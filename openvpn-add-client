@@ -20,6 +20,11 @@ if [ -z "$CN" ]
 	exit
 fi
 
+echo "Server address?:"
+read -e address
+echo "Server port?:"
+read -e port
+
 
 # Enter the easy-rsa directory and establish the default variables
 cd $OPENVPN_RSA_DIR
@@ -46,6 +51,10 @@ cd /etc/openvpn/CLIENTS/"$CN"/
         echo "#   ifconfig-push 11.1.1.111 11.1.1.112" | sudo tee -a /etc/openvpn/ccd/"$CN"
 	
 	sudo chmod 775 /etc/openvpn/CLIENTS -R 
+
+
+# Create ovpn file
+/usr/local/bin/openvpn-ovpn-creator "$address" "$port" "/etc/openvpn/ca.crt" "" ""
 
 # Celebrate!
 echo ""
