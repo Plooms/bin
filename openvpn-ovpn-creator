@@ -28,7 +28,6 @@ tls-auth [inline] 1
 verb 1
 keepalive 10 120
 proto udp
-cipher BF-CBC
 comp-lzo
 remote-cert-tls server
 <ca>
