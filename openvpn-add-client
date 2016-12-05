@@ -63,3 +63,10 @@ echo "COMPLETED! Download the new certificates here:"
 echo "Regular: $KEY_DOWNLOAD_PATH/$CN"
 echo "Android $KEY_DOWNLOAD_PATH/$CN/Android"
 echo "#############################################################"
+
+
+echo "Where to copy the client file to:?   (eg:/x/xx/xxx/)"
+read -e copy-dest
+
+sudo rsync -avh --chmod 777 "$KEY_DOWNLOAD_PATH/$CN" "$copy-dest" 
+
