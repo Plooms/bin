@@ -9,7 +9,7 @@ STOREDIPFILE=/var/log/current_ip
 USERAGENT="Simple Bash No-IP updater"
 
 if [ ! -e $STOREDIPFILE ]; then 
-	touch $STOREDIPFILE
+	sudo touch $STOREDIPFILE
 fi
 
 NEWIP=$(wget -O - http://icanhazip.com/ -o /dev/null)
