@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # No-IP uses emails as passwords, so make sure that you encode the @ as %40
-USERNAME="$(cat /home/abz/.ddns-user)"
-PASSWORD="$(cat /home/abz/.ddns-password)"
+USERNAME="$(cat ~/.ddns-user)"
+PASSWORD="$(cat ~/.ddns-password)"
 HOST=sderawi.ddns.net
 LOGFILE=/var/log/noip.log
 STOREDIPFILE=/var/log/current_ip
