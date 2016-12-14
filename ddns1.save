@@ -1,0 +1,34 @@
+
+#!/bin/bash
+
+# No-IP uses emails as passwords, so make sure that you encode the @ as %40
+USERNAME="$(cat ~/.ddns-user)"
+PASSWORD="$(cat ~/.ddns-password)"
+HOST=sderawi.ddns.net
+LOGFILE=/var/log/noip.log
+STOREDIPFILE=/var/log/current_ip
+USERAGENT="Simple Bash No-IP updater"
+
+if [ ! -e $STOREDIPFILE ]; then 
+	sudo touch $STOREDIPFILE
+fi
+
+NEWIP=$(wget -O - http://icanhazip.com/ -o /dev/null)
+STOREDIP=$(cat $STOREDIPFILE)
+
+if [ "$NEWIP" != "$STOREDIP" ]; then
+	RESULT=$(wget -O "$LOGFILE" -q --user-agent="$USERAGENT" --no-check-certificate "https://$USERNAME:$PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$HOST&myip=$NEWIP")
+
+	LOGLINE="[$(date +"%Y-%m-%d %H:%M:%S")] $RESULT"
+	echo $NEWIP > $STOREDIPFILE
+	echo "Setting new IP to :$NEWIP"
+else
+	LOGLINE="[$(date +"%Y-%m-%d %H:%M:%S")] No IP change"
+	echo "No Change in IP"
+fi
+
+echo $LOGLINE >> $LOGFILE
+
+exit 0
+
+
