@@ -12,7 +12,7 @@ if [ ! -e $STOREDIPFILE ]; then
 	sudo touch $STOREDIPFILE
 fi
 
-NEWIP=$(wget -O - http://icanhazip.com/ -o /dev/null)
+NEWIP=$(wget -q -O - ip.changeip.com > /dev/null)
 STOREDIP=$(cat $STOREDIPFILE)
 
 if [ "$NEWIP" != "$STOREDIP" ]; then
