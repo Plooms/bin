@@ -19,7 +19,7 @@ USERAGENT="Simple Bash No-IP updater"
 NEWIP=$(wget -4 -q  -O - icanhazip.com)
 STOREDIP=$(cat $STOREDIPFILE)
 
-	wget -O "$LOGFILE" -q --user-agent="$USERAGENT" --no-check-certificate "https://$USERNAME:$PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$HOST&myip=$NEWIP"
+	wget -O "$LOGFILE" -q --no-check-certificate "https://$USERNAME:$PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$HOST&myip=$NEWIP"
 
 	echo "Setting new IP to :$NEWIP"
 
