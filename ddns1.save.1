@@ -8,12 +8,20 @@ LOGFILE=/var/log/noip.log
 STOREDIPFILE=/var/log/current_ip
 USERAGENT="Simple Bash No-IP updater"
 
-if [ ! -e $STOREDIPFILE ]; then 
+sudo touch $LOGFILE
+sudo touch $STOREDIPFILE
 
+
+if [ ! -e $STOREDIPFILE ]; then 
 	sudo touch $STOREDIPFILE
 	sudo chmod 777 $STOREDIPFILE
-fi
 
+fi
+if [ ! -e $STOREDIPFILE ]; then 
+	sudo touch $STOREDIPFILE
+	sudo chmod 777 $STOREDIPFILE
+
+fi
 
 NEWIP=$(wget -4 -q  -O - icanhazip.com)
 STOREDIP=$(cat $STOREDIPFILE)
