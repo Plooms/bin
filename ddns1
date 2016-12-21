@@ -12,6 +12,9 @@ if [ ! -e $STOREDIPFILE ]; then
 
 	sudo touch $STOREDIPFILE
 	sudo chmod 777 $STOREDIPFILE
+	sudo touch $LOGFILE
+	sudo chmod 777 $LOGFILE
+
 fi
 
 
