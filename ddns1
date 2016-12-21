@@ -8,32 +8,20 @@ LOGFILE=/var/log/noip.log
 STOREDIPFILE=/var/log/current_ip
 USERAGENT="Simple Bash No-IP updater"
 
-if [ ! -e $STOREDIPFILE ]; then 
 
 	sudo touch $STOREDIPFILE
 	sudo chmod 777 $STOREDIPFILE
 	sudo touch $LOGFILE
 	sudo chmod 777 $LOGFILE
 
-fi
 
 
 NEWIP=$(wget -4 -q  -O - icanhazip.com)
 STOREDIP=$(cat $STOREDIPFILE)
 
-if [ "$NEWIP" != "$STOREDIP" ]; then
-	RESULT=$(wget -O "$LOGFILE" -q --user-agent="$USERAGENT" --no-check-certificate "https://$USERNAME:$PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$HOST&myip=$NEWIP")
+	wget -O "$LOGFILE" -q --user-agent="$USERAGENT" --no-check-certificate "https://$USERNAME:$PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$HOST&myip=$NEWIP"
 
-	LOGLINE="[$(date +"%Y-%m-%d %H:%M:%S")] $RESULT"
-	echo $NEWIP > $STOREDIPFILE
 	echo "Setting new IP to :$NEWIP"
-else
-	LOGLINE="[$(date +"%Y-%m-%d %H:%M:%S")] No IP change"
-	echo "No Change in IP"
-fi
-
-echo $LOGLINE >> $LOGFILE
 
 exit 0
-
 
