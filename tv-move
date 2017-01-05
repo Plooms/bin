@@ -44,7 +44,7 @@ rename ".sub" ".eng.sub" *.sub 2>/dev/null
 
 YELLOW
 
-filebot -get-missing-subtitles --lang en -non-strict *
+###filebot -get-missing-subtitles --lang en -non-strict *
 
 CYAN
 
