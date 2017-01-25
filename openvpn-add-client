@@ -70,5 +70,5 @@ read -e copyplace
 
 echo " Coping from ($KEY_DOWNLOAD_PATH/$CN) to ($copyplace)" 
 
-sudo rsync -avh --chmod 777 "$KEY_DOWNLOAD_PATH/$CN" "$copyplace" 
 
+[ ! -z $copyplace ] && sudo rsync -avh --chmod 777 "$KEY_DOWNLOAD_PATH/$CN" "$copyplace"
