@@ -68,7 +68,7 @@ echo "#############################################################"
 echo "Where to copy the client file to:?   (eg:/x/xx/xxx/)"
 read -e copyplace
 
-echo " Coping from ($KEY_DOWNLOAD_PATH/$CN) to ($copyplace)" 
+echo " Copying from ($KEY_DOWNLOAD_PATH/$CN) to ($copyplace)" 
 
 
 [ ! -z $copyplace ] && sudo rsync -avh --chmod 777 "$KEY_DOWNLOAD_PATH/$CN" "$copyplace"
