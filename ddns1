@@ -3,7 +3,7 @@
 # No-IP uses emails as passwords, so make sure that you encode the @ as %40
 USERNAME="$(cat ~/.ddns-user)"
 PASSWORD="$(cat ~/.ddns-password)"
-HOST=sderawi.ddns.net
+HOST=sderawi.com
 LOGFILE=/var/log/noip.log
 STOREDIPFILE=/var/log/current_ip
 USERAGENT="Simple Bash No-IP updater"
