@@ -35,7 +35,6 @@ fi
 
 
 if ls -U | grep -E '21\ Jump\ Street\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" 21\ Jump\ Street\ -\ \[* "$TV_SYM"/"21 Jump Street"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E '24\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" 24\ -\ \[* "$TV_SYM"/"24"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E '30\ Rock\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" 30\ Rock\ -\ \[* "$TV_SYM"/"30 Rock"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E '3rd\ Rock\ from\ the\ Sun\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" 3rd\ Rock\ from\ the\ Sun\ -\ \[* "$TV_SYM"/"3rd Rock from the Sun"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E '8\ Simple\ Rules\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" 8\ Simple\ Rules\ -\ \[* "$TV_SYM"/"8 Simple Rules"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
@@ -125,7 +124,6 @@ if ls -U | grep -E 'Deadbeat\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Dupl
 if ls -U | grep -E 'Deadliest\ Catch\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Deadliest\ Catch\ -\ \[* "$TV_SYM"/"Deadliest Catch"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Dead\ Like\ Me\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Dead\ Like\ Me\ -\ \[* "$TV_SYM"/"Dead Like Me"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Deadwood\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Deadwood\ -\ \[* "$TV_SYM"/"Deadwood"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Desperate\ Housewives\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Desperate\ Housewives\ -\ \[* "$TV_SYM"/"Desperate Housewives"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Dexter\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Dexter\ -\ \[* "$TV_SYM"/"Dexter"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Dharma\ \&\ Greg\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Dharma\ \&\ Greg\ -\ \[* "$TV_SYM"/"Dharma & Greg"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Difficult\ People\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Difficult\ People\ -\ \[* "$TV_SYM"/"Difficult People"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
@@ -404,7 +402,6 @@ if ls -U | grep -E 'The\ West\ Wing\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "--
 if ls -U | grep -E 'The\ Whispers\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" The\ Whispers\ -\ \[* "$TV_SYM"/"The Whispers"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ Wire\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" The\ Wire\ -\ \[* "$TV_SYM"/"The Wire"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'The\ X-Files\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" The\ X-Files\ -\ \[* "$TV_SYM"/"The X-Files"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Third\ Watch\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Third\ Watch\ -\ \[* "$TV_SYM"/"Third Watch"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Threes\ Company\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Threes\ Company\ -\ \[* "$TV_SYM"/"Three's Company"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'T.J.\ Hooker\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" T.J.\ Hooker\ -\ \[* "$TV_SYM"/"T.J. Hooker"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Touch\ \(2012\)\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Touch\ \(2012\)\ -\ \[* "$TV_SYM"/"Touch (2012)"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
