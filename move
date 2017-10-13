@@ -78,7 +78,6 @@ if ls -U | grep -E 'Chicago\ Fire\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "----
 if ls -U | grep -E 'Chicago\ Hope\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Chicago\ Hope\ -\ \[* "$TV_SYM"/"Chicago Hope"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Chicago\ Med\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Chicago\ Med\ -\ \[* "$TV_SYM"/"Chicago Med"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Chicago\ P.D.\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Chicago\ P.D.\ -\ \[* "$TV_SYM"/"Chicago P.D."/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Chuck\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Chuck\ -\ \[* "$TV_SYM"/"Chuck"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Clipped\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Clipped\ -\ \[* "$TV_SYM"/"Clipped"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Coach\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Coach\ -\ \[* "$TV_SYM"/"Coach"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Cold\ Case\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Cold\ Case\ -\ \[* "$TV_SYM"/"Cold Case"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
