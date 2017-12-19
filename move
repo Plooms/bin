@@ -71,7 +71,6 @@ if ls -U | grep -E 'CSI\ Crime\ Scene\ Investigation\ -\ \[*' >/dev/null 2>&1 ; 
 if ls -U | grep -E 'CSI\ Miami\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" CSI\ Miami\ -\ \[* "$TV_SYM"/"CSI Miami"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'CSINY\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" CSINY\ -\ \[* "$TV_SYM"/"CSINY"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Dallas\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Dallas\ -\ \[* "$TV_SYM"/"Dallas"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
-if ls -U | grep -E 'Damages\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Damages\ -\ \[* "$TV_SYM"/"Damages"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Deadbeat\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Deadbeat\ -\ \[* "$TV_SYM"/"Deadbeat"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Dr.\ Ken\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Dr.\ Ken\ -\ \[* "$TV_SYM"/"Dr. Ken"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
 if ls -U | grep -E 'Eastbound\ \&\ Down\ -\ \[*' >/dev/null 2>&1 ; then mv -v -S "-----Duplicate-${RANDOM_NUMBER}.mpeg" Eastbound\ \&\ Down\ -\ \[* "$TV_SYM"/"Eastbound & Down"/              2>/dev/null ; else false ; fi && echo -e "\n\n"
