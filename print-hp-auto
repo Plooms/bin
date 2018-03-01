@@ -1,0 +1,15 @@
+#!/bin/bash
+
+place="/mnt/Cx/Other/Dropbox/HP-Printer"
+
+
+#Black
+lpoptions -o Quality=300GrayscaleK
+
+lp -o outputorder=reverse "$place"/Black/*.pdf && mv "$place"/Black/*.pdf "$place"/Done/
+
+
+#Color
+lpoptions -o Quality=300ColorCMYK
+
+lp -o outputorder=reverse "$place"/Color/*.pdf && mv "$place"/Color/*.pdf "$place"/Done/
